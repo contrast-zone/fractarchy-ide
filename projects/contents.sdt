@@ -1,0 +1,425 @@
+(
+    tree
+    (
+        (
+            node
+            (name "0")
+        )
+        (
+            title
+            fractarchy cms use instructions
+        ) (
+            paragraph These pages are displayed with Fractarchy, and they contain Fractarchy use and site building
+            instructions. The current version of Fractarchy represents a headless,
+            flat-file, and innovative content management system &lpar;CMS&rpar;. CMS is a software application
+            used to manage the creation and modification of digital content. Supported content pages include
+            static HTML, XHTML, SVG, PNG, GIF, and JPG files &lpar;whatever can be loaded in a web browser&rpar;.
+        ) (
+            paragraph
+            When creating a Fractarchy based site, one should be sure to prepare for a "slack" experience. This means
+            one should possess a basic knowledge about editing xml files, html pages, and bitmap or vector graphics by
+            third-party tools. Moreover, one should be familiar with usage of local file system, managing a local web
+            server, and uploading files to a remote web server. Nevertheless, once one gets into the stunt, maintaining
+            sites should be an easy-peasy task.
+        )
+    ) (
+        branches
+        (
+            tree
+            (
+                (
+                    node
+                    (name "0-1")
+                ) (
+                    title
+                    1. strengths and weaknesses
+                ) (
+                    paragraph
+                    Fractarchy is intended to display static contents arranged within zoomable oval system.
+                    The latest version of Fractarchy loads content element pages on display demand, thus it is
+                    scalable as long as all the visible ovals together with their parent ovals fit into RAM.
+                ) (
+                    paragraph
+                    However, interaction with pages is reduced only to page panning and following hyperhyperlinks.
+                    This limitation entails having no fancy event dependent animations or dynamic content tree
+                    structure. Still, Fractarchy could be used in a various scenarios where these limitations
+                    meet our expectations.
+                )
+            ) (
+                branches
+                (
+                    tree
+                    (
+                        (
+                            node
+                            (name "0-1-1")
+                        ) (
+                            title
+                            1.1. possible use cases
+                        ) (
+                            paragraph
+                            Considering Fractarchy static limitations, what kind of contents can we build with it? Let's overview a
+                            few examples of static content pages:
+                        ) (
+                            paragraph
+                            (
+                                ulist
+                                (litem personal or business showcase)
+                                (litem notice board)
+                                (litem catalog of litems)
+                                (litem happenings schedule)
+                                (litem presentation slide show)
+                                (litem ...)
+                            )
+                        ) (
+                            paragraph
+                            As the list goes on, we strenghten our belief that Fractarchy could still find a use in various
+                            cases, especially in a combination with custom outer iframe HTML contents and server side
+                            scripting technologies.
+                        )
+                    )
+                )
+            )
+        )
+        (
+            tree
+            (
+                (
+                    node
+                    (name "0-2")
+                ) (
+                    title
+                    2. browsing the contents
+                ) (
+                    paragraph
+                    Fractarchy brings a simple and minimalistic kind of contents structuring and organization. All the pages are
+                    displayed inside a number of ovals that hierarchically relate between each other. Central oval is supposed
+                    to be used for reading and viewing contents, while orbiting ovals are supposed to be used for contents
+                    navigation. All the actions of browsing contents are performed by dragging displayed elements by mouse
+                    &lpar;click-drag-release cycles&rpar;, or by touch screen interaction &lpar;point-drag-release cycles&rpar;.
+                    Of course, hyperhyperlinking is also supported by usual click or touch interaction.
+                )
+            ) (
+                branches
+                (
+                    tree
+                    (
+                        (
+                            node
+                            (name "0-2-1")
+                        )
+                        (
+                            title
+                            2.1. panning the content elements
+                        ) (
+                            paragraph
+                            The center oval of the Fractarchy content pages serves for reading the contents. By dragging its content,
+                            the content scrolls in dragging direction. Content size isn't restricted, but it is recommended to
+                            keep it within oval bounds. Scroll bars are not present as they could put graphical appearance
+                            of the contents out of the ballance.
+                        ) (
+                            paragraph
+                            On mobile platforms, it is possible to pinch-zoom the content of the central oval for clearer view. Desktop
+                            platforms provide the same functionality by mouse wheel.
+                        )
+                    )
+                ) (
+                    tree
+                    (
+                        (
+                            node
+                            (name "0-2-2")
+                        ) (
+                            title
+                            2.2. orbiting the content elements
+                        ) (
+                            paragraph
+                            The structure of content in Fractarchy is visualized in a distinctive way, resembling a form of a fractal
+                            arranged ovals where child ovals orbit around each parent oval recursively. Ovals themselves store
+                            textual or graphic information fitting into hierarchical parent-children relations. Dragging ovals
+                            around their parents enables walking horizontally through the tree &lpar;overviewing siblings&rpar;, while
+                            dragging in or out of oval parent or children positions enables walking vertically through the
+                            hierarchical structure of data &lpar;focusing a parent or a child oval at central browsing area&rpar;.
+                        )
+                    )
+                )
+            )
+        )
+        (
+            tree
+            (
+                (
+                    node
+                    (name "0-3")
+                ) (
+                    title
+                    3. building a site with fractarchy
+                ) (
+                    paragraph
+                    To populate Fractarchy site with custom contents, it is necessary to prepare HTML and graphic files
+                    representing our pages, to have an access to arbitrary textual editor, and it may be a good practice
+                    to have a local web server at disposition for testing our new site. Fractarchy represents a so-called flat
+                    file CMS, meaning there is no basic information stored in remote databases, yet all the information needed
+                    for basic functioning is extracted only from file and folder structure accessed over HTTP interface.
+                ) (
+                    paragraph
+                    To corroborate flat file data system, it is possible to pair it with server side scripting technologies
+                    like ASP, PHP, Node.js, and others. Fractarchy should collaborate very well with such technologies, as long
+                    as the outcome conforms Fractarchy file and folder structures.
+                ) (
+                    paragraph
+                    Some other more advanced topics that may be shown useful, but for a sake of simplicity will not be covered
+                    in these short instructions, may include file versioning systems which may operate on Fractarchy content
+                    files, and may provide an interesting file keeping arrangement for more advanced users.
+                )
+            ) (
+                branches
+                (
+                    tree
+                    (
+                        (
+                            node
+                            (name "0-3-1")
+                        ) (
+                            title
+                            3.1. making a local copy
+                        ) (
+                            paragraph
+                            First, we need to make sure we have installed a local web server like
+                            (
+                                (
+                                    hyperlink
+                                    (address "https://en.wikipedia.org/wiki/Apache_HTTP_Server")
+                                    (target "_new")
+                                )
+                                Apache HTTP Server
+                            )
+                            or similar software. We also need to make sure to have an access to a file manager and
+                            a text editor which we will use to access and edit Fractarchy files.
+                        ) (
+                            paragraph
+                            To install Fractarchy, we have to download the Fractarchy software bundle from
+                            (
+                                (
+                                    hyperlink
+                                    (address "https://github.com/contrast-zone/fractarchy")
+                                    (target "_new")
+                                )
+                                dedicated github pages
+                            )
+                            . After downloading the software, we have to unpack the downloaded zip archive to a local
+                            server folder. Unpacking the archive will produce the following file-folder structure:
+                        ) (
+                            paragraph
+                            (
+                                bcode
+                                " !                   "
+                                " +-+ cms-home-folder "
+                                "   +-+ contents      "
+                                "   ! +-- ...         "
+                                "   !                 "
+                                "   +-+ media         "
+                                "   ! +-- ...         "
+                                "   !                 "
+                                "   +-+ src           "
+                                "   ! +-- ...         "
+                                "   !                 "
+                                "   +-- changelog.md  "
+                                "   +-- index.html    "
+                                "   +-- init.json     "
+                                "   +-- README.md     "
+                                "   +-- LICENSE       "
+                            )
+                        ) (
+                            paragraph
+                            Now that we have unpacked the archive, we can test it by entering the local HTTP server address
+                            into a web browser. We should be able to see the exact copy of these instructions in the browser.
+                        )
+                    )
+                ) (
+                    tree
+                    (
+                        (
+                            node
+                            (name "0-3-2")
+                        ) (
+                            title
+                            3.2. customizing our site
+                        ) (
+                            paragraph
+                            Next, we have to modify the example site to adjust it to our own requirements and introduce
+                            our own contents instead of the existing one. Freshly unpacked files represent an example site
+                            containing these instructions we are currently reading. There are several files and folders
+                            of our interest:
+                        ) (
+                            paragraph
+                            (
+                                ulist
+                                (
+                                    litem
+                                    (icode "index.html") - this is the main file containing visible page
+                                    title, social media promotional informations, and meaningful
+                                    (
+                                        (
+                                            hyperlink
+                                            (address "https://en.wikipedia.org/wiki/Search_engine_optimization")
+                                            (target "_new")
+                                            SEO
+                                        )
+                                    )
+                                    texts enclosed within (icode "noscript") tags.
+                                ) (
+                                    litem
+                                    (icode "init.json") - in this file we can setup various Fractarchy rendering
+                                    parameters such as ovals and background color, power consumption, etc. The most important
+                                    part in this file is (icode "top-node") property that points to the top XML file.
+                                ) (
+                                    litem
+                                    (
+                                        paragraph
+                                        (icode "contents/") - this is a folder where we keep our site content files
+                                        &lpar;HTML, CSS, images, ...&rpar;. Nevertheles, the content files may reside in any
+                                        folder, but it is recommended to place the entire structure under the
+                                        (icode "contents") folder to keep our site clean and tidy.
+                                    ) (
+                                        paragraph
+                                        A site structure is spanned over multiple cascading XML files, each representing an oval, pointing
+                                        to its content and a number of children XML structure files, recursively. The structure resembles a
+                                        ramification of contents from the top node downwards.
+                                    ) (
+                                        paragraph
+                                        It may be wise to exclude HTML pages in this folder from search engine indexing by setting
+                                        (icode "meta") tag with (icode "name=\"robots     \"") and
+                                        (icode "noindex") attributes. All the search engine information
+                                        can be then extracted from (icode "noscript") tag in the
+                                        (icode "index.html") placed in the cms home folder.
+                                    )
+                                )
+                            )
+                        ) (
+                            paragraph
+                            Hopefully, examining the default site example &lpar;that is, files containing these instructions&rpar;
+                            should be descriptive enough to compose our own site. This is the steep part where we will be using
+                            (
+                                (
+                                    hyperlink
+                                    (address "https://en.wikipedia.org/wiki/File_manager")
+                                    (target "_new")
+                                )
+                                file manager
+                            )
+                            and
+                            (
+                                (
+                                    hyperlink
+                                    (address "https://en.wikipedia.org/wiki/Text_editor")
+                                    (target "_new")
+                                    text editor
+                                )
+                            )
+                            to arrange and edit files of our interest. Please refer to provided hyperlinks if you need to get more
+                            familiar with mentioned notions. This procedure is what makes Fractarchy site creating experience
+                            "slack", and requires a bit more advanced knowledge from the site creators, especially considering
+                            possible use of server side scripting or other technologies.
+                        ) (
+                            paragraph
+                            Upon each edit, we would want to test if changes we made reflect what we want them to be. Again, we
+                            can test them by entering the local HTTP server address into a web browser.
+                        )
+                    )
+                ) (
+                    tree
+                    (
+                        (
+                            node
+                            (name "0-3-3")
+                        ) (
+                            title
+                            3.3. publishing our site
+                        ) (
+                            paragraph
+                            Finally, when we are done testing our site, we would want to publish it to a remote online server. To do
+                            this, we have to copy the entire file and folder structure from below the cms-home-folder, to the remote
+                            online server home folder. We can usually do this by using control panel pages provided by the remote
+                            server, or using a custom
+                            (
+                                (
+                                    hyperlink
+                                    (address "https://en.wikipedia.org/wiki/File_Transfer_Protocol")
+                                    (target "_new")
+                                )
+                                FTP client software
+                            )
+                            if we have an access to remote site FTP user name and password. If everything goes well, our new web site
+                            should be happily spinning on the world wide web.
+                        )
+                    )
+                )
+            )
+        )
+        (
+            tree
+            (
+                (
+                    node
+                    (name "0-4")
+                ) (
+                    title
+                    4. licencing, owning a copy, and joining mailing list
+                ) (
+                    bquote
+                    (italic 
+                    Fractarchy is shared to public under
+                    (
+                        (
+                            hyperlink
+                            (address "http://creativecommons.org/licenses/by/4.0/")
+                            (target "_new")
+                        )
+                        conditional Creative Commons Attribution 4.0 International License
+                    )
+                    by
+                    (
+                        (
+                            hyperlink
+                            (address "https://github.com/contrast-zone/")
+                            (target "_new")
+                        )
+                        Contrast Zone
+                    )
+                    productions.
+                    )
+                ) (
+                    bquote
+                    A copy of Fractarchy software bundle can be downloaded
+                    from
+                    (
+                        (
+                            hyperlink
+                            (address "https://github.com/contrast-zone/fractarchy/")
+                            (target "_top")
+                        )
+                        dedicated github pages.
+                    )
+                ) (
+                    bquote
+                    To ask any questions about Fractarchy, to report a bug,
+                    or to track new releases, please refer to a 
+                    (
+                        (
+                            hyperlink
+                            (address "https://groups.google.com/g/contrast-zone")
+                            (target "_new")
+                        )
+                        dedicated mailing list
+                    )
+                    .
+                ) (
+                    paragraph
+                    With this section, we conclude Fractarchy instructions exposure.
+                    Good luck and have a creative and productive web knitting.
+                )
+            )
+        )
+    )
+)
