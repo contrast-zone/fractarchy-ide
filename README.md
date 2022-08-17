@@ -6,7 +6,7 @@
     
 ![](media/ssh.png)
 
-[IDE probe](https://contrast-zone.github.io/fractabase/ide.html)
+[IDE probe](https://contrast-zone.github.io/fractabase/index.html)
 
     // under construction //
 
