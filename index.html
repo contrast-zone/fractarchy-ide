@@ -172,7 +172,7 @@
                     rh.style.visibility = "hidden";
                     s.style.width = "calc(100% - " + 2 * (marg + padd + bord) + "px)";
                     t.style.width = "calc(100% - " + 2 * (marg + padd + bord) + "px)";
-                } else {
+                } else if (!onlyright) {
                     s.style.width = "calc(50% - " + 2 * (marg + padd + bord) + "px)";
                 }
                 
@@ -206,7 +206,7 @@
                     lh.style.visibility = "hidden";
                     t.style.width = "calc(100% - " + 2 * (marg + padd + bord) + "px)";
                     s.style.width = "calc(100% - " + 2 * (marg + padd + bord) + "px)";
-                } else {
+                } else if (!onlyleft) {
                     t.style.width = "calc(50% - " + 2 * (marg + padd + bord) + "px)";
                 }
                 
