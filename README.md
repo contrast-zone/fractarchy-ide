@@ -10,11 +10,7 @@
 
     // under construction //
 
-tags: digital-workbook, hierarchical-database, content-management-system, flat-file-cms, fractal-structure-inspired, parent-child-orbiting, zooming-elements-based
-
-![](media/socmedia.png)
-
-To overview an example site made with Fractabase CMS, please follow `[this link](https://contrast-zone.github.io/fractabase/projects/celestia/)`.
+tags: digital-workbook, text-processor, hierarchical-database, fractal-structure-inspired, parent-child-orbiting, zooming-elements-based
 
 > ## promotional material
 > 
