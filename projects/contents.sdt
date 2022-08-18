@@ -9,7 +9,7 @@
             title
             fractarchy cms use instructions
         ) (
-            paragraph These pages are displayed with Fractarchy, and they contain Fractarchy use and site building
+            paragraph These pages are displayed with (bold Fractarchy), and they contain Fractarchy use and site building
             instructions. The current version of Fractarchy represents a headless,
             flat-file, and innovative content management system &lpar;CMS&rpar;. CMS is a software application
             used to manage the creation and modification of digital content. Supported content pages include
@@ -289,7 +289,7 @@
                                     ) (
                                         paragraph
                                         It may be wise to exclude HTML pages in this folder from search engine indexing by setting
-                                        (icode "meta") tag with (icode "name=\"robots     \"") and
+                                        (icode "meta") tag with (icode "name=\"robots\"") and
                                         (icode "noindex") attributes. All the search engine information
                                         can be then extracted from (icode "noscript") tag in the
                                         (icode "index.html") placed in the cms home folder.

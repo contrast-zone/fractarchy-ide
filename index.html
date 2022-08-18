@@ -102,6 +102,7 @@
             <img id="help" src="media/instr.svg" height="90%" style="cursor:pointer"/>
         </div>
         <script>
+
             function msgOpen () {
                 /*
                 document.getElementById("target").contentWindow.postMessage({msg: "open"}, "*");
@@ -116,16 +117,20 @@
 
             var msg = (event) => {
                 if (event.data.msg === "enterEdit") {
-                    document.getElementById("source").src = "./src/source-edit.html";
-                    document.getElementById("target").src = "./src/target-edit.html";
+                    document.getElementById("source").contentWindow.location.replace("./src/source-edit.html");
+                    document.getElementById("target").contentWindow.location.replace("./src/target-edit.html");
+                    //document.getElementById("source").src = "./src/source-edit.html";
+                    //document.getElementById("target").src = "./src/target-edit.html";
                     document.getElementById("svginput").style.display = "none";
                     document.getElementById("svglose").style.display = "inline";
                     document.getElementById("svgoutput").style.display = "none";
                     document.getElementById("svgkeep").style.display = "inline";
                     
                 } else if (event.data.msg === "loseEdit") {
-                    document.getElementById("source").src = "./src/source-browse.html";
-                    document.getElementById("target").src = "./src/target-browse.html";
+                    document.getElementById("source").contentWindow.location.replace("./src/source-browse.html");
+                    document.getElementById("target").contentWindow.location.replace("./src/target-browse.html");
+                    //document.getElementById("source").src = "./src/source-browse.html";
+                    //document.getElementById("target").src = "./src/target-browse.html";
                     document.getElementById("svginput").style.display = "inline";
                     document.getElementById("svglose").style.display = "none";
                     document.getElementById("svgoutput").style.display = "inline";
