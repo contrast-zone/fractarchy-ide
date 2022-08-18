@@ -4,11 +4,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <head>
         <style media="screen">
+            /*
             section {
                 position: absolute; top:0; bottom:0; left:0; right:0;
                 overflow: hidden;
             }
-            
+            */
             html, body
             {
             /*
@@ -27,9 +28,8 @@
                 user-select: none;
             }
 
-            a, a.exHover:visited, a.exHover:link {cursor: pointer; color: lightgray; text-decoration:none; border:0px solid #4466DD;}
-            a.exHover:hover {cursor: pointer; color:white; text-decoration:none; border:0px solid #6699FF;}
-            a.exHover:active {cursor: pointer; color:white; text-decoration:none; border:0px solid #DDDDFF;}
+            a {opacity: 0.75;}
+            a:hover {opacity: 1; cursor: pointer;}
         </style>
         <script src="parse.js"></script>
         <script src="hilight.js"></script>
@@ -37,10 +37,21 @@
     </head>
     <body>
       <section>
+        <a id="btnedit" style="position: absolute; z-index: 4000000000; top: 0px, left: 0px;/*filter: drop-shadow(0px 0px 5px black);*/">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+                <path class="path" fill="rgb(48,48,48)" stroke="rgb(128,128,128)" stroke-width="1px" d="M23.15 42.85V38.1L34.2 27.05l4.75 4.75L27.9 42.85Zm-18-9.95v-4.75h17.3v4.75Zm35.95-3.25-4.75-4.75 1.45-1.45q.65-.65 1.65-.65 1 0 1.65.65l1.45 1.45q.65.65.65 1.65 0 1-.65 1.65Zm-35.95-6.2v-4.7h25.2v4.7Zm0-9.4v-4.7h25.2v4.7Z"/>
+            </svg>
+        </a>
         <div id="divContainer" style="/*border: 5px dotted rgb(208,208,208);*/ position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; /*filter: drop-shadow(0px 0px 20px black);*/">
-        </div>        
+        </div>
         <script>
-            function syncPanes () {
+            
+            var ed = document.getElementById("btnedit");
+            ed.onclick = function () {
+                par123.postMessage({msg: "enterEdit"}, "*");
+            }
+            
+            function liveSync () {
                 window.addEventListener('mousemove', function (evt) {
                     if (evt.detail.W !== undefined) return;
                     
@@ -221,7 +232,13 @@
             }
 
             var msg = (event) => {
-                console.log ("message from target: " + event.data.msg);
+                //console.log ("message from target: " + event.data.msg);
+                if (event.data.msg === "loaded") {
+                    loaded = true;
+                } else if (event.data.msg === "unloaded") {
+                    loaded = false;
+                }
+                
                 if (event.data.msg === "save") {
                     nodeRawTree = event.data.nodeTree;
                     
@@ -232,29 +249,31 @@
                 
                 } else if (event.data.msg === "open") {
                     window.parent.frames[0].postMessage({msg: "open", nodeTree: nodeRawTree}, "*");
-                }
-                /*
-                divStats.innerHTML = "cache size: 0 ovals, 0mb";
 
-                evt = event;
-
-                if (event.data === "clear") {
-                    divContainer.style.visibility = "hidden";
-                    divStats.style.visibility = "hidden";
-                } else {
-                    nodeTree = formArray (unfoldsexpr (JSON.parse (event.data)));
-                    onBusy();
-                    refr++;
-                    setTimeout( function () {
-                        divContainer.dispatchEvent(new CustomEvent('redefineData', {detail: nodeTree}));
-                        divContainer.style.visibility = "visible";
-                        divStats.style.visibility = "visible";
-                    }, 1);
+                } else if (event.data.msg === "sync") {
+                    divContainer.dispatchEvent(new CustomEvent('redefineCursor', {detail: {cursor: event.data.cursor, pathLength: event.data.pathLength}}));
                 }
-                */
             };
             
-            window.addEventListener("message", msg, false);
+            function msgSync () {
+                function stripCursor (c) {
+                    var ret = {index: c.index, angle: c.angle, children: []};
+                    for (var i = 0; i < c.children.length; i++)
+                        if (c.children[i])
+                            ret.children[i] = stripCursor (c.children[i]);
+                    
+                    return ret;
+                }
+                
+                var topc = objOrbit.getCursor ();
+                while (topc.parent)
+                    topc = topc.parent;
+                    
+                topc = stripCursor (topc)
+                var pl = objOrbit.getPathLength ()
+                if (!loaded)
+                    par123.postMessage({msg: "syncTarget", cursor: topc, pathLength: pl}, "*");
+           }
 
             var error;
             function getDesign() {
@@ -284,9 +303,10 @@
 
             wonload = function () {
                 setSize ();
-                Orbital (divContainer, nodeTree, env.quant / 100, env.contentScale / 100, env.ovalBackColor, env.ovalBorderColor, env.backColor, env.shadowRadius, env.shadowRadius? env.shadowColor: null, env.uiscale / 100, onIdle, onBusy, env.rodLength, Math.PI, 0.14);
+                objOrbit = Orbital (divContainer, nodeTree, env.quant / 100, env.contentScale / 100, env.ovalBackColor, env.ovalBorderColor, env.backColor, env.shadowRadius, env.shadowRadius? env.shadowColor: null, env.uiscale / 100, onIdle, onBusy, env.rodLength, Math.PI, 0.14);
                 dispatchSize ();
                 divContainer.style.visibility = "visible";
+                window.addEventListener("message", msg, false);
 
                 var resizeId;
                 window.addEventListener('resize', function () {
@@ -406,6 +426,7 @@
             }
 
             function onIdle (ovals) {
+                msgSync();
                 pauseLoading = false;
                 idleAgain = ovals;
                 continueLoading = idleAgain;
@@ -792,6 +813,9 @@
                 xhttp.send();
             }
             
+            var objOrbit;
+            var loaded = true;
+            var par123 = window.parent;
             var nodeTree;
             var nodeRawTree;
             
@@ -805,7 +829,7 @@
             });
             
             init ();
-            syncPanes ();
+            //liveSync ();
         </script>
       </section>
     </body>

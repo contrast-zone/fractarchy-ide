@@ -450,8 +450,9 @@ function fractalOvals (ctx, ratio, xx, yy, ww, hh, rr, squashX, squashY, drawCir
                                 pass.cursor.angle = Math.PI;
                                 pass.angle1 = pass.cursor.angle;
                             
-                            } else                                 
+                            } else {
                                 pass.angle1 = ang;
+                            }
                         },
                     };
                     
@@ -882,7 +883,7 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
         //clear ();
         hideOvals(data);
                     
-        div.style.zIndex = Math.pow(2, 31);
+        div.style.zIndex = 2000000000;//Math.pow(2, 31);
         
         renderData = [];
         var ret = n.render (minRadius, x1, y1, r1, orientation, 1, m, data, cursor?cursor.parent.index:null, cursor, selectedCursor, renderHint, renderData);
@@ -1375,7 +1376,11 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
                                 i = 0;
                                 t0 = (new Date()).getTime();
                                 tmpi = 0;
-                                
+// reset children position                                
+select.cursor.children = [];
+select.cursor.index = 0;
+select.cursor.angle = Math.PI;
+// end reset
                                 var angles = [];
                                 var cc = select.cursor.parent;
                                 var cp = select.parent;
@@ -1883,6 +1888,8 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
             onIdle (renderData);
     }
     
+    var onStop;
+    
     var magn = 1;
     var oldAng, newAng, oldPan, newPan;
     var renderData;
@@ -2181,6 +2188,70 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
         resize (divContainer.clientWidth, divContainer.clientHeight);
     });
 
+    divContainer.addEventListener('redefineCursor', function (e) {
+        function setCursorAndPath (c1, c2, idx) {
+            while (data.parent)
+                data = data.parent;
+            
+            data = data.children[0];
+
+            var topc1 = c1;
+            while (topc1.parent)
+                topc1 = topc1.parent;
+            
+            topc1 = topc1.children[0];
+            
+            var topc2 = c2;
+            while (topc2.parent)
+                topc2 = topc2.parent;
+            
+            topc2 = topc2.children[0];
+            
+            if (topc2) {
+                var parent = {index: 0, children: []};
+                //cursor = {parent: parent, index: topc2.index, data: data, centerX: 0, centerY: 0, angle: topc2.angle, children: []};
+                //parent.children = [cursor];
+                //parent = cursor;
+                for (var i = 0; i <= idx; i++) {
+                    var olddata = data;
+                    if (topc2) {
+                        cursor = {parent: parent, index: topc2.index, data: data, centerX: topc1?topc1.centerX: 0, centerY: topc1?topc1.centerY: 0, angle: topc2.angle, children: []};
+                        if (!topc1)
+                            alignOval (data, cursor)
+                    
+                    } else
+                        break;//cursor = {parent: parent, index: 0, data: data, centerX: 0, centerY: 0, angle: Math.PI, children: []};
+                        
+                    parent.children[parent.index] = cursor;
+                    parent = cursor;
+
+                    if (i === idx)
+                        break;
+                    
+                    else {
+                        path.push (data);
+                        if (topc2) {
+                            data = data.children[topc2.index];
+                            topc2 = topc2.children[topc2.index];
+         
+                        } else {
+                            break;//data = data.children[0];
+                        }
+                        if (topc1) {
+                            topc1 = topc1.children[topc1.index];
+                        }
+                    }
+                }
+            }
+        }
+    
+        path = [];
+        setCursorAndPath (cursor, e.detail.cursor, e.detail.pathLength);
+        redraw ();
+        idle ();
+        //resize (divContainer.clientWidth, divContainer.clientHeight);
+    });
+
     /*    
     function getIfrMouse(e) {
         return {
@@ -2202,4 +2273,13 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
         mouseup (getIfrMouse(e));
     });
     */
+    
+    return {
+        getCursor: function () {
+            return cursor;
+        },
+        getPathLength: function () {
+            return path.length;
+        }
+    }
 }

@@ -26,7 +26,7 @@ var edit = function (node, options) {
     ed.innerHTML = 
 
     `
-    <div id="container${rndid}" style="position: relative; width: inherit; height: inherit; overflow: auto;">
+    <div id="container${rndid}" style="position: relative; width: inherit; height: inherit; overflow: auto; visibility: hidden;">
       <div id="backdrop${rndid}" style = "z-index: 1; width: inherit; height: inherit; overflow: hidden;">
         <div id="hilights${rndid}" style="wrap: none; font: ${options.font}; white-space: pre; color: ${options.colorText}; background-color: ${options.colorTextBack}; width: inherit; height: inherit; overflow: hidden; margin: 0; padding:4px;">
         </div>
@@ -473,6 +473,7 @@ var edit = function (node, options) {
         
         container.style.width = "0px";
         container.style.height = "0px";
+        container.style.visibility = "hidden";
         
         setTimeout (function () {
             hh = ed.clientHeight;
@@ -481,6 +482,7 @@ var edit = function (node, options) {
             container.style.height = hh + "px";
             container.style.width = ww + "px";
             handleScroll ();
+            container.style.visibility = "visible";
         }, 0);
         
     }

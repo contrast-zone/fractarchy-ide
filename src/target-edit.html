@@ -33,7 +33,7 @@
 
             /* Firefox */
             html {
-              scrollbar-color: rgb(192,192,192) rgb(48,48,48);
+              scrollbar-color: rgb(192,192,192) rgb(32,32,32);
               scrollbar-width: thin;
             }
 
@@ -41,7 +41,7 @@
             ::-webkit-scrollbar {
               width: 8px;
               height: 8px;
-              background-color: rgb(48,48,48);
+              background-color: rgb(32,32,32);
             }
 
             ::-webkit-scrollbar-thumb {
@@ -50,57 +50,21 @@
             }
             
             ::-webkit-scrollbar-corner {
-              background-color: rgb(48,48,48);
+              background-color: rgb(32,32,32);
             }
         </style>
-        <script src="edit.js"></script>
         <script src="parse.js"></script>
-        <script src="orbital.js"></script>
+        <script src="node2html.js"></script>
     </head>
     <body>
       <section>
-        <div id="divEdit" style="position: absolute; visibility: hidden;">
-            <div id="divEditE" style="position: relative; width: 100%; height: 100%; visibility: hidden;">
-            </div>
+        <div id="divPreview" style="position: absolute; visibility: hidden;">
+        <iframe id="ifrPreview" src="../README.md" style="border-style:none; position:relative; width:100%; height:100%; border:none; background-color: gray;"></iframe>
         </div>
         <div id="divStat" align="right" style="position: absolute; font: 9pt monospace; color: rgb(208,208,208); visibility: hidden;">
         &nbsp;
         </div>
         <script>
-            function tag (str) {
-                return `((?<=\\((\\s|·)*)${str}(?=(\\s|·)))`
-            }
-            
-            var options = {
-                font: "9pt monospace",
-                tabWidth: 4,
-                colorText: "rgb(208,208,208)",
-                colorTextBack: "rgb(48,48,48)",
-                colorSelection: "white",
-                colorSelectionBack: "gray",
-                colorKeyword: "rgb(128,128,128)",
-                colorKeywordBack: "transparent",
-                colorBracketMatch: "white",
-                colorBracketMatchBack: "rgb(75,75,75)",
-                colorStringAndComment: "rgb(128,128,128)",
-                //keywords: ["\\btree\\b|\\bnode\\b|\\bname\\b|\\bbranches\\b|\\bheading1\\b|\\bparagraph\\b|\\blink\\b|\\baddress\\b|\\btarget\\b|\\bcode\\b|\\bicode\\b|\\bblockquote\\b|\\bulist\\b|\\bitem\\b"],
-                keywords: [`${tag('comment')}|${tag('tree')}|${tag('node')}|${tag('name')}|${tag('branches')}|${tag('title')}|${tag('heading1')}|${tag('paragraph')}|${tag('link')}|${tag('address')}|${tag('target')}|${tag('code')}|${tag('icode')}|${tag('bquote')}`],
-                stringsAndComments: "(\"([^\"\\\\\\n]|(\\\\.))*((\")|(\\n)|($)))",
-                hilightMatchingBraces: false,
-                spaceDots: true
-            }
-            var ed = edit ("divEditE", options);
-
-            document.addEventListener('selectionchange', function(e) {
-                onkd ();
-            });
-            
-            ed.getInput ().addEventListener("input", onkd, false);
-            
-            function onkd () {
-                var pos = getCoords(ed.getValue(), ed.getSelectionStart());
-                document.getElementById('divStat').innerHTML = "ln " + pos.row + ", col " + pos.col;
-            }
         </script>
         
         <script>
@@ -147,42 +111,34 @@
                 var bord = 4;
                 var btns = 48;
                 
-                divStat.style.backgroundColor = "rgb(48,48,48)"
-                divStat.style.border = bord + "px solid rgb(48,48,48)";
-                divStat.style.bottom = "0px";
-                divStat.style.left = "0px";
-                divStat.style.right = "0px";
-
-                //divEdit.style.borderColor = "rgb(48,48,48)"
-                divEdit.style.backgroundColor = "rgb(48,48,48)"
-                divEdit.style.margin = 0 + "px";
-                divEdit.style.padding = 0 + "px";
-                divEdit.style.border = bord + "px solid rgb(48,48,48)";
-                //divEdit.style.borderTopWidth = 24 + "px";
-                //divEdit.style.borderLeftWidth = btns + "px";
-                divEdit.style.top = "0px";
-                //divEdit.style.bottom = "0px";
-                divEdit.style.left = "0px";
-                divEdit.style.right = "0px";
-                divEdit.style.height = (document.body.clientHeight - 2 * bord - divStat.offsetHeight) + "px";
-                
-                divEditE.dispatchEvent(new CustomEvent('resize', null));
+                //divPreview.style.borderColor = "rgb(48,48,48)"
+                divPreview.style.backgroundColor = "rgb(232,232,232)"
+                divPreview.style.margin = 0 + "px";
+                divPreview.style.padding = 0 + "px";
+                divPreview.style.border = bord + "px solid rgb(208,208,208)";
+                //divPreview.style.borderTopWidth = 24 + "px";
+                //divPreview.style.borderLeftWidth = btns + "px";
+                divPreview.style.top = "0px";
+                //divPreview.style.bottom = "0px";
+                divPreview.style.left = "0px";
+                divPreview.style.right = "0px";
+                divPreview.style.bottom = "0px";
             }
 
             wonload = function () {
                 setSize ();
-                divEdit.style.visibility = "visible";
+                divPreview.style.visibility = "visible";
                 divStat.style.visibility = "visible";
 
                 var resizeId;
                 window.addEventListener('resize', function () {
-                    divEdit.style.visibility = "hidden";
+                    divPreview.style.visibility = "hidden";
                     divStat.style.visibility = "hidden";
                     
                     clearTimeout(resizeId);
                     resizeId = setTimeout(function () {
                         setSize ();
-                        divEdit.style.visibility = "visible";
+                        divPreview.style.visibility = "visible";
                         divStat.style.visibility = "visible";
                         
                     }, 100);
@@ -277,6 +233,53 @@
             }
             */
 
+            function stringify (node, indent) {
+                var str = ""
+                
+                var code = node[0] === "code";
+                str += indent + "(\n";
+                str += Array.isArray (node[0])? "": indent + "    ";
+                var linechars = 0;
+                for (var i = 0; i < node.length; i++) {
+                    if (Array.isArray (node[i])) {
+                        str += (i === 0 || Array.isArray (node[i - 1])? "": "\n") + stringify (node[i], indent + "    ");
+                        str += Array.isArray (node[i + 1]) || i === node.length - 1? "": indent + "    ";
+                        linechars = 0;
+                        
+                    } else {
+                        var part
+                        if (node [i] === undefined)
+                            part = "UNDEFINED";
+                            
+                        else if (node [i] === null)
+                            part = "";
+                            
+                        else
+                            part = node[i].replaceAll("\n", "\\n");
+                         
+                        if (code) {
+                            str += (i > 0? indent + "    ": "") + part + "\n";
+                        
+                        } else {
+                            if (linechars + part.length > 80) {
+                               str += "\n" + indent + "    ";
+                               str += part + " ";
+                               linechars = part.length + 1;
+
+                            } else {
+                                str += part + " ";
+                                linechars += part.length + 1;
+                            }
+                        }
+                    }
+                }
+                
+                if (!Array.isArray (node[i - 1]) && !code) str += "\n";
+                str += indent + ")\n" + indent + "\n";
+                
+                return str;
+            }
+
             var env;
             function init () {
                 var xhttp = new XMLHttpRequest ();
@@ -284,14 +287,51 @@
                     if (this.readyState == 4 && this.status == 200) {
                         window.addEventListener("load", wonload ());
 
+                        
                         nodeTree = ["branches", parsesexpr (this.responseText)];
                         if (nodeTree.err) {
                             var coords = getCoords (this.responseText, nodeTree.pos);
                             alert (nodeTree.err + ": " + coords.row + "-" + coords.column);
                         }
-                        
+                        /*
                         ed.setValue (stringify (nodeTree[1], ""));
                         onkd ();
+                        */
+                        ifrPreview.srcdoc = `<html style="font-size: 1.2em">`
+                            + `<head>`
+                                + `<style>`
+                                    + `html {`
+                                    + `  scrollbar-color: rgb(64,64,64) rgb(208,208,208);`
+                                    + `  scrollbar-width: thin;`
+                                    + `}`
+                                    
+                                    + `::-webkit-scrollbar {`
+                                    + `  width: 8px;`
+                                    + `  height: 8px;`
+                                    + `  background-color: rgb(208,208,208);`
+                                    + `}`
+
+                                    + `::-webkit-scrollbar-thumb {`
+                                    + `  background: rgb(64,64,64);`
+                                    + `  border-radius: 4px;`
+                                    + `}`
+                
+                                    + `::-webkit-scrollbar-corner {`
+                                    + `  background-color: rgb(208,208,208);`
+                                    + `}`
+                                    
+                                    + `html {`
+                                    + `  color: rgb(48,48,48);`
+                                    + `  background-color: rgb(208,208,208);`
+                                    + `  /*width: 480px;*/`
+                                    + `}`
+
+                                + `</style>`
+                            + `</head>`
+                            + `<body>`
+                                + packNodes (nodeTree, 0);//node2html (nodeTree[1][1]);//stringify (nodeTree[1], "");// this.responseText;
+                            + `</body>`
+                        + `</html>`;
                     }
                 };
 
@@ -299,12 +339,28 @@
                 xhttp.overrideMimeType("text/plain");
                 xhttp.send();
             }
+            
+            function packNodes (topNode, margin) {
+                var ret = "";
+                var node = topNode;
+                
+                for (var i = 1; i < node.length; i++) {
+                    ret += `<div style="width: 480px; border-radius: 48px; border: 4px solid rgb(64,64,64); padding: 8px; margin: 8px; margin-left: ` + margin + `px">`
+                        + node2html (node[i][1])
+                    + `</div>`;
+                    
+                    if (node[i][2])
+                        ret += packNodes (node[i][2], margin + 48);
+                }
+                
+                return ret;
+            }
 
             var nodeTree;
             
             var divStat = document.getElementById ("divStat");
-            var divEdit = document.getElementById ("divEdit");
-            var divEditE = document.getElementById ("divEditE");
+            var divPreview = document.getElementById ("divPreview");
+            var ifrPreview = document.getElementById ("ifrPreview");
             
             var pixelRatioBox = document.querySelector(".pixel-ratio");
             var mqString = `(resolution: ${window.devicePixelRatio}dppx)`;

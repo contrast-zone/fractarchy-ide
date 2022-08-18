@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-    <title>Fractarchy CMS</title>
+    <title>Fractabase</title>
     <link rel="icon" type="image/png" href="./media/favicon128.png"/>
 
     <!-- Primary Meta Tags -->
@@ -57,8 +57,8 @@
     </head>
     <body>
         <noscript>
-            title: Fractarchy CMS IDE
-            tags: content-management-system, fractal-structure-inspired, parent-child-orbiting, zooming-elements-based, flat-file-cms, light-cms
+            title: Fractabase
+            tags: fractal-structure-inspired, parent-child-orbiting, zooming-elements-based
             powered with ❤ by fractarchy cms
         </noscript>
         <iframe id="source" src="src/source-browse.html" style="border-style:none; position:fixed;/* top:0; left:0; bottom:0; right:0; width:100%; height:100%;*/ border:none; background-color: gray;"></iframe>
@@ -80,7 +80,8 @@
             <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><title>menu</title><path fill="rgb(208,208,208, 0.2)" d="M5.8 36.35v-3.4h36.4v3.4Zm0-10.65v-3.4h36.4v3.4Zm0-10.65v-3.4h36.4v3.4Z"/></svg>
         </a>
         <a id="btnupload" style="position: absolute; color: rgb(208,208,208);">
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><title>input from disk/lose changes</title><path fill="rgb(208,208,208, 0.2)" d="M9.1 42.3q-1.35 0-2.375-1.025T5.7 38.9V28.7h3.4v10.2h29.8V9H9.1v10.3H5.7V9q0-1.4 1.025-2.4t2.375-1h29.8q1.4 0 2.4 1t1 2.4v29.9q0 1.35-1 2.375T38.9 42.3ZM20.8 34l-2.5-2.5 5.75-5.8H5.7v-3.4h18.35l-5.75-5.8 2.5-2.5 10.05 10Z"/></svg>
+            <svg id="svginput" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:inline;"><title>input from disk</title><path fill="rgb(208,208,208,0.2)" d="M9.1 42.3q-1.35 0-2.375-1.025T5.7 38.9V28.7h3.4v10.2h29.8V9H9.1v10.3H5.7V9q0-1.4 1.025-2.4t2.375-1h29.8q1.4 0 2.4 1t1 2.4v29.9q0 1.35-1 2.375T38.9 42.3ZM20.8 34l-2.5-2.5 5.75-5.8H5.7v-3.4h18.35l-5.75-5.8 2.5-2.5 10.05 10Z"/></svg>
+            <svg id="svglose" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:none"><title>lose changes</title><path fill="rgb(208,208,208)" d="m16.6 33.6 7.4-7.4 7.4 7.4 2.2-2.2-7.4-7.4 7.4-7.4-2.2-2.2-7.4 7.4-7.4-7.4-2.2 2.2 7.4 7.4-7.4 7.4ZM24 44.3q-4.15 0-7.875-1.6-3.725-1.6-6.475-4.35Q6.9 35.6 5.3 31.9 3.7 28.2 3.7 24t1.6-7.925q1.6-3.725 4.35-6.45Q12.4 6.9 16.1 5.3T24 3.7q4.2 0 7.925 1.6 3.725 1.6 6.45 4.325T42.7 16.05q1.6 3.7 1.6 7.95 0 4.2-1.6 7.9t-4.325 6.45Q35.65 41.1 31.95 42.7q-3.7 1.6-7.95 1.6Zm0-3.4q7.05 0 11.975-4.95T40.9 24q0-7.05-4.925-11.975T24 7.1q-7 0-11.95 4.925Q7.1 16.95 7.1 24q0 7 4.95 11.95Q17 40.9 24 40.9ZM24 24Z"/></svg>
         </a>
         <a id="btnlcrop" style="position: absolute; color: rgb(208,208,208);">
             <svg id="svglcropfull" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:inline;"><title>full page</title><path fill="rgb(208,208,208)" d="m13.95 40.7-8.6-8.6 8.6-8.6 2.4 2.4-4.5 4.5h14v3.4h-14l4.5 4.5Zm16.7-6.8q-.75 0-1.275-.55-.525-.55-.525-1.25 0-.75.525-1.25t1.275-.5q.75 0 1.25.5t.5 1.25q0 .7-.5 1.25t-1.25.55Zm6.55 0q-.75 0-1.275-.55-.525-.55-.525-1.25 0-.75.525-1.25t1.275-.5q.75 0 1.25.5t.5 1.25q0 .7-.5 1.25t-1.25.55Zm-3.15-9.4-2.4-2.4 4.5-4.5h-14v-3.4h14l-4.5-4.5 2.4-2.4 8.6 8.6ZM10.8 17.65q-.7 0-1.225-.525Q9.05 16.6 9.05 15.9q0-.75.525-1.275.525-.525 1.225-.525.8 0 1.3.525t.5 1.275q0 .7-.5 1.225-.5.525-1.3.525Zm6.55 0q-.7 0-1.225-.525Q15.6 16.6 15.6 15.9q0-.75.525-1.275.525-.525 1.225-.525.8 0 1.3.525t.5 1.275q0 .7-.5 1.225-.5.525-1.3.525Z"/></svg>
@@ -91,7 +92,8 @@
             <svg id="svgrcrophalf" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:none;"><title>half page</title><path fill="rgb(48,48,48)" d="m13.95 40.7-8.6-8.6 8.6-8.6 2.4 2.4-4.5 4.5h14v3.4h-14l4.5 4.5Zm16.7-6.8q-.75 0-1.275-.55-.525-.55-.525-1.25 0-.75.525-1.25t1.275-.5q.75 0 1.25.5t.5 1.25q0 .7-.5 1.25t-1.25.55Zm6.55 0q-.75 0-1.275-.55-.525-.55-.525-1.25 0-.75.525-1.25t1.275-.5q.75 0 1.25.5t.5 1.25q0 .7-.5 1.25t-1.25.55Zm-3.15-9.4-2.4-2.4 4.5-4.5h-14v-3.4h14l-4.5-4.5 2.4-2.4 8.6 8.6ZM10.8 17.65q-.7 0-1.225-.525Q9.05 16.6 9.05 15.9q0-.75.525-1.275.525-.525 1.225-.525.8 0 1.3.525t.5 1.275q0 .7-.5 1.225-.5.525-1.3.525Zm6.55 0q-.7 0-1.225-.525Q15.6 16.6 15.6 15.9q0-.75.525-1.275.525-.525 1.225-.525.8 0 1.3.525t.5 1.275q0 .7-.5 1.225-.5.525-1.3.525Z"/></svg>
         </a>
         <a id="btndownload" style="position: absolute; color: rgb(48,48,48);">
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><title>keep changes/output to disk</title><path fill="rgb(48,48,48, 0.2)" d="M9.1 42.3q-1.35 0-2.375-1.025T5.7 38.9V9.1q0-1.4 1.025-2.4t2.375-1h29.8q1.4 0 2.4 1t1 2.4v4.4h-3.4V9.1H9.1v29.8h29.8v-4.4h3.4v4.4q0 1.35-1 2.375T38.9 42.3Zm25.4-8.85-2.35-2.4 5.3-5.35H18.9v-3.4h18.55l-5.3-5.35 2.35-2.4L43.95 24Z"/></svg>
+            <svg id="svgoutput" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:inline;"><title>output to disk</title><path fill="rgb(48,48,48,0.2)" d="M9.1 42.3q-1.35 0-2.375-1.025T5.7 38.9V9.1q0-1.4 1.025-2.4t2.375-1h29.8q1.4 0 2.4 1t1 2.4v4.4h-3.4V9.1H9.1v29.8h29.8v-4.4h3.4v4.4q0 1.35-1 2.375T38.9 42.3Zm25.4-8.85-2.35-2.4 5.3-5.35H18.9v-3.4h18.55l-5.3-5.35 2.35-2.4L43.95 24Z"/></svg>
+            <svg id="svgkeep" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:none"><title>keep changes</title><path fill="rgb(48,48,48,0.2)" d="M21.05 33.3 35.3 19l-2.55-2.5-11.7 11.75-5.9-5.9-2.5 2.5Zm2.95 11q-4.15 0-7.875-1.6-3.725-1.6-6.475-4.35Q6.9 35.6 5.3 31.9 3.7 28.2 3.7 24t1.6-7.925q1.6-3.725 4.35-6.45Q12.4 6.9 16.1 5.3T24 3.7q4.2 0 7.925 1.6 3.725 1.6 6.45 4.325T42.7 16.05q1.6 3.7 1.6 7.95 0 4.2-1.6 7.9t-4.325 6.45Q35.65 41.1 31.95 42.7q-3.7 1.6-7.95 1.6Zm0-3.4q7.05 0 11.975-4.95T40.9 24q0-7.05-4.925-11.975T24 7.1q-7 0-11.95 4.925Q7.1 16.95 7.1 24q0 7 4.95 11.95Q17 40.9 24 40.9ZM24 24Z"/></svg>
         </a>
         <a id="btnrmenu" style="position: absolute; color: rgb(208,208,208);" hidden>
             <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><title>menu</title><path fill="rgb(48,48,48, 0.2)" d="M5.8 36.35v-3.4h36.4v3.4Zm0-10.65v-3.4h36.4v3.4Zm0-10.65v-3.4h36.4v3.4Z"/></svg>
@@ -111,6 +113,69 @@
                 document.getElementById("source").contentWindow.postMessage({msg: "save"}, "*");
                 */
             }
+
+            var msg = (event) => {
+                if (event.data.msg === "enterEdit") {
+                    document.getElementById("source").src = "./src/source-edit.html";
+                    document.getElementById("target").src = "./src/target-edit.html";
+                    document.getElementById("svginput").style.display = "none";
+                    document.getElementById("svglose").style.display = "inline";
+                    document.getElementById("svgoutput").style.display = "none";
+                    document.getElementById("svgkeep").style.display = "inline";
+                    
+                } else if (event.data.msg === "loseEdit") {
+                    document.getElementById("source").src = "./src/source-browse.html";
+                    document.getElementById("target").src = "./src/target-browse.html";
+                    document.getElementById("svginput").style.display = "inline";
+                    document.getElementById("svglose").style.display = "none";
+                    document.getElementById("svgoutput").style.display = "inline";
+                    document.getElementById("svgkeep").style.display = "none";
+                    
+                } else if (event.data.msg === "syncSource") {
+                    document.getElementById("source").contentWindow.postMessage({msg: "sync", cursor: event.data.cursor, pathLength: event.data.pathLength}, "*");
+                    
+                } else  if (event.data.msg === "syncTarget") {
+                    document.getElementById("target").contentWindow.postMessage({msg: "sync", cursor: event.data.cursor, pathLength: event.data.pathLength}, "*");
+                }
+            };
+            
+            document.getElementById("svglose").addEventListener ("click", function () {
+                msg ({data: {msg: "loseEdit"}});
+                /*
+                document.getElementById("source").src = "./src/source-browse.html";
+                document.getElementById("svginput").style.display = "inline";
+                document.getElementById("svglose").style.display = "none";
+                document.getElementById("svgoutput").style.display = "inline";
+                document.getElementById("svgkeep").style.display = "none";
+                */
+            }, false)
+            
+            //document.getElementById("source").contentWindow.addEventListener("message", document.getElementById("source").contentWindow.msg, false);
+            //document.getElementById("target").contentWindow.addEventListener("message", document.getElementById("target").contentWindow.msg, false);
+
+            window.addEventListener("load", () => {
+                window.addEventListener("message", msg, false);
+                
+                document.getElementById("source").addEventListener("mouseenter", function () {
+                    //loaded1 = true;
+                    //if (loaded2) {
+                        document.getElementById("source").contentWindow.postMessage({msg: "unloaded"}, "*");
+                        document.getElementById("target").contentWindow.postMessage({msg: "loaded"}, "*");
+                    //}
+                }, false);
+                
+                document.getElementById("target").addEventListener("mouseenter", function () {
+                    //loaded2 = true;
+                    //if (loaded1) {
+                        document.getElementById("source").contentWindow.postMessage({msg: "loaded"}, "*");
+                        document.getElementById("target").contentWindow.postMessage({msg: "unloaded"}, "*");
+                    //}
+                }, false);
+
+                setSize();
+                
+            });
+
 
             document.body.style.fontSize = Math.sqrt(window.devicePixelRatio) + "em"
 
@@ -327,8 +392,6 @@
                 setSize();
             }, false);
 
-            setSize();
-            
             document.getElementById("btndownload").addEventListener('click', () => {
                 msgSave();
             });
