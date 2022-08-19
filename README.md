@@ -122,7 +122,7 @@ Sub-documents are a list of words that follow `node` s-expr. Also, instead of wo
 - block code: `bcode`
 - horizontal rule: `hrule`
 
-Restrictions in composing sub-documents are that `address`, `target`, and `icode`accept only quoted strings, while `bcode` accepts a list of quoted strings and interprets them as a span of code lines.
+Restrictions in composing sub-documents are that `address`, `target`, and `icode`accept only a single quoted string, while `bcode` accepts a list of quoted strings to interpret them as a span of code lines.
 
 Alternatively, sub-documents may be written by the following pattern:
 
