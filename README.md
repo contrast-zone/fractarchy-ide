@@ -122,7 +122,19 @@ Sub-documents are a list of words that follow `node` s-expr. Also, instead of wo
     - hyperlink target: `target`
 - horizontal rule: `hrule`
 
-Restrictions in composing sub-documents are that `icode`, `address`, and `target` accept only quoted strings, while `bcode` accepts a list of quoted strings and interprets them as a range of code lines. `node` head may be replaced by `(node (title ... XYZ ...))` where `XYZ` is a list of words representing the node title.
+Restrictions in composing sub-documents are that `icode`, `address`, and `target` accept only quoted strings, while `bcode` accepts a list of quoted strings and interprets them as a range of code lines. `node` head may be replaced in the following way:
+
+    (
+        (
+            node
+            
+            (title ... XYZ ...)
+        )
+        
+        ... sub-document contents ...
+    )
+
+where `XYZ` is a list of words representing the node title, and `sub-document contents` behaves as described.
 
 ### 3.3. templating system
 
