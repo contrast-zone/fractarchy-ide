@@ -10,7 +10,7 @@
 
     // under construction //
 
-tags: digital-workbook, text-processor, hierarchical-database, fractal-structure-inspired, parent-child-orbiting, zooming-elements-based
+tags: digital-workbook, text-processing, hierarchical-data, fractal-structure-inspired, parent-child-orbiting, zooming-elements-based
 
 > ## promotional material
 > 
