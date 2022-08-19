@@ -74,16 +74,8 @@ Composing contents in Fractabase is consisted of coding main SDT file and import
     
 ## 4. licensing, owning a copy, and joining mailing list
 
-- - -
-
 Fractabase is shared to public under [conditional Creative Commons Attribution 4.0 International License](LICENSE) by [Contrast Zone](https://github.com/contrast-zone/) productions. 
-
-- - -
 
 A copy of Fractabase software bundle can be downloaded from [dedicated github pages](https://github.com/contrast-zone/fractabase/).
 
-- - -
-
 To ask any questions about Fractabase, to report a bug, or to track new releases, please refer to [Contrast Zone mailing list](https://groups.google.com/g/contrast-zone).
-
-- - -
