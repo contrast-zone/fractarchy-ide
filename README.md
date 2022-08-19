@@ -2,7 +2,7 @@
 
 (v 0.1 - alpha)
 
-tags: digital-workbook, text-processing, hierarchical-data, fractal-structure-inspired, parent-child-orbiting, zooming-elements-based
+**tags:** digital-workbook, text-processing, hierarchical-data, fractal-structure-inspired, parent-child-orbiting, zooming-elements-based
 
 - - -
     // under construction //
