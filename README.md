@@ -58,8 +58,6 @@ From integration mode we can enter derivation mode. SDT code can be edited only 
 
 Composing contents in Fractabase is consisted of coding main SDT file and importing graphical or other resources. Simple, yet powerful SDT markup, templating and coding capabilities serve as a Turing complete data definition platform. SDT file format is based on a minimalist s-expr based environment created specifically for purposes of Fractabase, and it should bring an exciting "expert under the hub" atmosphere to the overall Fractabase user experience.
 
-    // under construction //
-
 ### 3.1. tree structure
 
 STD file format is structured in a following pattern:
@@ -94,6 +92,8 @@ STD file format is structured in a following pattern:
 
 There is really not much to say about tree structure. The tree structure is a s-expr combined with `tree`, `node`, and `branches` s-exprs. We start with `tree` s-expr, nesting `node` s-expr within. If we want the `node` to branch, we put a `branches` s-expr next to it, to further enumerate branching `tree` s-exprs. We can nest `tree` s-exprs recursively to any depth. When we reach the final nodes that don't branch further, we simply omit the `branches` s-expr.
 
+During visualizetion, each `node` s-expr is then rendered inside its own oval, while orbiting child nodes are extracted from relative `branches` s-expr.
+
 ### 3.2. document structure
 
 STD sub-documents are placed inside nodes from the tree structure in a following patern:
@@ -104,8 +104,25 @@ STD sub-documents are placed inside nodes from the tree structure in a following
         ... node contents ...
     )
 
+Sub-documents are a list of words that follow `node` s-expr. Also, instead of words, we can place s-exprs from the following enumeration:
 
-    // under construction //
+- headings in descending order: `heading1` to `heading6`
+- paragraph: `paragraph`
+- bold text: `bold`
+- italic text: `italic`
+- block code: `bcode`
+- inline code: `icode`
+- block quote: `bquote`
+- ordered list: `olist`
+    - ordered list item: `litem`
+- unordered list: `ulist`
+    - unordered list item: `litem`
+- hyperlink: `link`
+    - hyperlink address `address`
+    - hyperlink target: `target`
+- horizontal rule: `hrule`
+
+`icode`, `address`, and `target` accept only quoted strings, while `bcode` accepts a list of quoted strings and interprets them as a range of code lines. `node` head may be replaced by `(node (title ... XYZ ...))` where `XYZ` is a list of words representing the node title.
 
 ### 3.3. templating system
 
