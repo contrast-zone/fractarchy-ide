@@ -117,7 +117,7 @@ Sub-documents are a list of words that follow `node` s-expr. Also, instead of wo
     - ordered list item: `litem`
 - unordered list: `ulist`
     - unordered list item: `litem`
-- hyperlink: `link`
+- hyperlink: `hyperlink`
     - hyperlink address `address`
     - hyperlink target: `target`
 - horizontal rule: `hrule`
