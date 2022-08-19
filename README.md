@@ -130,7 +130,9 @@ Alternatively, sub-documents may be written by the following pattern:
         (
             node
             
-            (title ... description ...)
+            (
+                title ... description ...
+            )
         )
         
         ... sub-document contents ...
