@@ -40,15 +40,15 @@ Fractabase **is not suited** to be used for:
 
 ## 2. skimming over features
 
-Fractabase user interface and functionality is imbued with symmetry. Contents code pane (left) contrasts contents display pane (right), while initial integration mode contrasts derivation mode. These dualities shaped the direction of Fractabase design features. The dualities operate on top of structured document tree, thus forming an interface to a kind of hierarchical database of documents.
+Fractabase user interface and functionality is imbued with symmetry. Contents code pane (left) contrasts contents display pane (right), while integration mode (initial) contrasts derivation mode (alternate). These dualities shaped the direction of Fractabase design features. The dualities operate on top of structured document tree (SDT), thus forming an interface to a kind of hierarchical database of sub-documents.
 
 ### 2.1. integration mode
 
-Integration mode presents document fragments in orbitable and zoomable ovals that form a seamless dynamic fractal user interface. We navigate the entire fractal structure using only four kinds of gestures: (1) dragging inside the central oval area to pan its contents, (2) dragging orbiting ovals around the central oval to rotate them, (3) dragging any orbiting oval towards center to zoom it in, or (4) dragging central oval towards orbit to zoom it out.
+The application starts with integration mode. Integration mode presents document fragments in orbitable and zoomable ovals that form a seamless dynamic fractal user interface. We navigate the entire fractal structure using only four kinds of gestures: (1) dragging inside the central oval area to pan its contents, (2) dragging orbiting ovals around the central oval to rotate them, (3) dragging any orbiting oval towards center to zoom it in, or (4) dragging central oval towards orbit to zoom it out.
 
 ### 2.2. derivation mode
 
-Document code can be edited only in derivation mode. Derivation mode detaches and shows the current oval focused from integration mode. Prior to igniting derivation mode, we may fold the tree under the current node. The folding gathers up all the sub-tree children recursively, and provides a way to alter order and contents of node tree children. After modification and exiting derivation mode, we may unfold the current node back to the expanded tree form.
+From integration mode we can enter derivation mode. Document code can be edited only in derivation mode. Derivation mode detaches and shows the current oval focused from integration mode. Prior to igniting derivation mode, we may fold the tree under the current node. The folding gathers up all the sub-tree children recursively, and provides a way to alter order and contents of node tree children. After modification and exiting derivation mode, we may unfold the current node back to the expanded tree form.
 
 ## 3. code editing reference
 
