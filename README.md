@@ -5,11 +5,12 @@
 **tags:** digital-workbook, text-processing, hierarchical-data, fractal-structure-inspired, parent-child-orbiting, zooming-elements-based
 
 - - -
+
     // under construction //
         
 ![](media/ssh.png)
 
-[online IDE probe](https://contrast-zone.github.io/fractabase/index.html)
+[IDE probe](https://contrast-zone.github.io/fractabase/index.html)
 
     // under construction //
 
@@ -47,15 +48,15 @@ Fractabase user interface and functionality is imbued with symmetry. Contents co
 
 ### 2.1. integration mode
 
-The application starts with integration mode. Integration mode presents document fragments in orbitable and zoomable ovals that form a seamless dynamic fractal user interface. We navigate the entire fractal structure using only four kinds of gestures: (1) dragging inside the central oval area to pan its contents, (2) dragging orbiting ovals around the central oval to rotate them, (3) dragging any orbiting oval towards center to zoom it in, or (4) dragging central oval towards orbit to zoom it out.
+The application starts with integration mode. Integration mode presents SDT fragments in orbitable and zoomable ovals that form a seamless dynamic fractal user interface. We navigate the entire fractal structure using only four kinds of gestures: (1) dragging inside the central oval area to pan its contents, (2) dragging orbiting ovals around the central oval to rotate them, (3) dragging any orbiting oval towards center to zoom it in, or (4) dragging central oval towards orbit to zoom it out.
 
 ### 2.2. derivation mode
 
-From integration mode we can enter derivation mode. Document code can be edited only in derivation mode. Derivation mode detaches and shows the current oval focused from integration mode. Prior to igniting derivation mode, we may fold the tree under the current node. The folding gathers up all the sub-tree children recursively, so we can also alter order and contents of sub-tree children. After modification and exiting derivation mode, we may unfold the current node back to the expanded tree form.
+From integration mode we can enter derivation mode. SDT code can be edited only in derivation mode. Derivation mode detaches and shows the current oval focused from integration mode. Prior to igniting derivation mode, we may fold the tree under the current node. The folding gathers up all the sub-tree children recursively, so we can also alter order and contents of sub-tree children. After modification and exiting derivation mode, we may unfold the current node back to the expanded tree form.
 
 ## 3. structured document tree reference
 
-Composing contents in Fractabase is consisted of coding main `sdt` file and importing graphical or other resources. Simple, yet powerful `sdt` markup, templating and coding capabilities serve as a Turing complete data definition platform. `sdt` file format is based on a minimalist s-expr based environment created specifically for purposes of Fractabase, and it should bring an exciting "expert under the hub" atmosphere to the overall Fractabase user experience.
+Composing contents in Fractabase is consisted of coding main SDT file and importing graphical or other resources. Simple, yet powerful SDT markup, templating and coding capabilities serve as a Turing complete data definition platform. SDT file format is based on a minimalist s-expr based environment created specifically for purposes of Fractabase, and it should bring an exciting "expert under the hub" atmosphere to the overall Fractabase user experience.
 
     // under construction //
 
@@ -73,9 +74,16 @@ Composing contents in Fractabase is consisted of coding main `sdt` file and impo
     
 ## 4. licensing, owning a copy, and joining mailing list
 
+- - -
+
 Fractabase is shared to public under [conditional Creative Commons Attribution 4.0 International License](LICENSE) by [Contrast Zone](https://github.com/contrast-zone/) productions. 
+
+- - -
 
 A copy of Fractabase software bundle can be downloaded from [dedicated github pages](https://github.com/contrast-zone/fractabase/).
 
+- - -
+
 To ask any questions about Fractabase, to report a bug, or to track new releases, please refer to [Contrast Zone mailing list](https://groups.google.com/g/contrast-zone).
 
+- - -
