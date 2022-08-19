@@ -15,9 +15,9 @@ tags: digital-workbook, text-processing, hierarchical-data, fractal-structure-in
 
 - - -
 
-> ## promotional material
-> 
-> *Let me introduce you to Fractabase, a blend of a database tool and text processor. As one might already guess, Fractabase does things a bit differently. Some users will love it, some users will hate it, while some of us may even form mixed opinions given a plethora of affinity states. Distinctive design choices that were made in creation of Fractabase are supposed to embark users on a brave adventure while discovering its carefully weighed virtues and flaws. Its coding fragment requires an open minded approach to be understood, while its graphical fragment requires a venturesome spirit to have fun with. The combination of these two fragments provides an unique balance between contents creation and contents navigation. Finally, a fair amount of user creativity will be the judge of Fractabase fitness for particular purposes.*
+## introduction
+
+Let me introduce you to Fractabase, a blend of a database tool and text processor. As one might already guess, Fractabase does things a bit differently. Some users will love it, some users will hate it, while some of us may even form mixed opinions given a plethora of affinity states. Distinctive design choices that were made in creation of Fractabase are supposed to embark users on a brave adventure while discovering its carefully weighed virtues and flaws. Its coding fragment requires an open minded approach to be understood, while its graphical fragment requires a venturesome spirit to have fun with. The combination of these two fragments provides an unique balance between contents creation and contents navigation. Finally, a fair amount of user creativity will be the judge of Fractabase fitness for particular purposes.
 
 ## 1. about fractabase
 
