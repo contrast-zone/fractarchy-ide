@@ -90,6 +90,7 @@ STD file format is structured in a following pattern:
         )
     )
 
+
     // under construction //
 
 ### 3.2. document structure
@@ -101,6 +102,7 @@ STD sub-documents are placed inside nodes from the tree structure in a following
         
         ... node contents ...
     )
+
 
     // under construction //
 
