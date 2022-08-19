@@ -48,19 +48,31 @@ The application starts with integration mode. Integration mode presents document
 
 ### 2.2. derivation mode
 
-From integration mode we can enter derivation mode. Document code can be edited only in derivation mode. Derivation mode detaches and shows the current oval focused from integration mode. Prior to igniting derivation mode, we may fold the tree under the current node. The folding gathers up all the sub-tree children recursively, and provides a way to alter order and contents of node tree children. After modification and exiting derivation mode, we may unfold the current node back to the expanded tree form.
+From integration mode we can enter derivation mode. Document code can be edited only in derivation mode. Derivation mode detaches and shows the current oval focused from integration mode. Prior to igniting derivation mode, we may fold the tree under the current node. The folding gathers up all the sub-tree children recursively, so we can also alter order and contents of sub-tree children. After modification and exiting derivation mode, we may unfold the current node back to the expanded tree form.
 
-## 3. code editing reference
+## 3. structured document tree reference
 
-Composing contents in Fractabase is consisted of coding main `sdt` file and importing graphical or other resources. Simple, yet powerful `sdt` markup, templating and coding capabilities serve as a Turing complete data definition platform. `sdt` file format is based on a minimalist s-expr based environment created specifically for purposes of Fractabase, and it should bring an exciting "expert under the hub" glance to the overall Fractabase user experience.
+Composing contents in Fractabase is consisted of coding main `sdt` file and importing graphical or other resources. Simple, yet powerful `sdt` markup, templating and coding capabilities serve as a Turing complete data definition platform. `sdt` file format is based on a minimalist s-expr based environment created specifically for purposes of Fractabase, and it should bring an exciting "expert under the hub" atmosphere to the overall Fractabase user experience.
+
+    // under construction //
+
+### 3.1. tree structure
+
+    // under construction //
+
+### 3.2. document structure
+
+    // under construction //
+
+### 3.3. templating system
 
     // under construction //
     
-## 4. giving it a try
+## 4. licensing, owning a copy, and joining mailing list
 
-To get started with contents creation using Fractabase, please refer to `[use instructions](https://contrast-zone.github.io/fractabase/projects/instructions/)` made with Fractabase.
+Fractabase is shared to public under [conditional Creative Commons Attribution 4.0 International License](LICENSE) by [Contrast Zone](https://github.com/contrast-zone/) productions. 
 
-## 5. licensing
+A copy of Fractabase software bundle can be downloaded from [dedicated github pages](https://github.com/contrast-zone/fractabase/).
 
-This software is released under [conditional Creative Commons Attribution 4.0 International License](LICENSE). It is free for personal use, but if your plans meet commercial use, please refer to the licence file for details about pricing.
+To ask any questions about Fractabase, to report a bug, or to track new releases, please refer to [Contrast Zone mailing list](https://groups.google.com/g/contrast-zone).
 
