@@ -128,13 +128,13 @@ Restrictions in composing sub-documents are that `icode`, `address`, and `target
         (
             node
             
-            (title ... XYZ ...)
+            (title ... description ...)
         )
         
         ... sub-document contents ...
     )
 
-where `XYZ` is a list of words representing the node title, and `sub-document contents` behaves as described.
+where `... description ...` is a list of words representing the node title, and `... sub-document contents ...` behaves as described.
 
 ### 3.3. templating system
 
