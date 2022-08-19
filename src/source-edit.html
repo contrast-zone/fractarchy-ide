@@ -84,7 +84,7 @@
                 colorBracketMatchBack: "rgb(75,75,75)",
                 colorStringAndComment: "rgb(128,128,128)",
                 //keywords: ["\\btree\\b|\\bnode\\b|\\bname\\b|\\bbranches\\b|\\bheading1\\b|\\bparagraph\\b|\\blink\\b|\\baddress\\b|\\btarget\\b|\\bcode\\b|\\bicode\\b|\\bblockquote\\b|\\bulist\\b|\\bitem\\b"],
-                keywords: [`${tag('comment')}|${tag('tree')}|${tag('node')}|${tag('name')}|${tag('branches')}|${tag('title')}|${tag('heading1')}|${tag('paragraph')}|${tag('link')}|${tag('address')}|${tag('target')}|${tag('code')}|${tag('icode')}|${tag('bquote')}`],
+                keywords: [`${tag('bold')}|${tag('italic')}|${tag('comment')}|${tag('tree')}|${tag('node')}|${tag('name')}|${tag('branches')}|${tag('title')}|${tag('heading1')}|${tag('paragraph')}|${tag('link')}|${tag('address')}|${tag('target')}|${tag('code')}|${tag('icode')}|${tag('bquote')}`],
                 stringsAndComments: "(\"([^\"\\\\\\n]|(\\\\.))*((\")|(\\n)|($)))",
                 hilightMatchingBraces: false,
                 spaceDots: true
@@ -171,17 +171,20 @@
 
             wonload = function () {
                 setSize ();
+                divEditE.style.visibility = "visible";
                 divEdit.style.visibility = "visible";
                 divStat.style.visibility = "visible";
 
                 var resizeId;
                 window.addEventListener('resize', function () {
+                    divEditE.style.visibility = "hidden";
                     divEdit.style.visibility = "hidden";
                     divStat.style.visibility = "hidden";
                     
                     clearTimeout(resizeId);
                     resizeId = setTimeout(function () {
                         setSize ();
+                        divEditE.style.visibility = "visible";
                         divEdit.style.visibility = "visible";
                         divStat.style.visibility = "visible";
                         

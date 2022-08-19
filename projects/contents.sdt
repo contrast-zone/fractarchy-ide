@@ -3,13 +3,11 @@
     (
         (
             node
-            (name "0")
-        )
-        (
-            title
-            fractarchy cms use instructions
+            (   title
+                fractarchy cms use instructions 
+            )
         ) (
-            paragraph These pages are displayed with (bold Fractarchy), and they contain Fractarchy use and site building
+            paragraph These pages are displayed with (bold Fractarchy,) and they contain Fractarchy use and site building
             instructions. The current version of Fractarchy represents a headless,
             flat-file, and innovative content management system &lpar;CMS&rpar;. CMS is a software application
             used to manage the creation and modification of digital content. Supported content pages include
@@ -29,10 +27,10 @@
             (
                 (
                     node
-                    (name "0-1")
-                ) (
-                    title
-                    1. strengths and weaknesses
+                    (
+                        title
+                        1. strengths and weaknesses
+                    )
                 ) (
                     paragraph
                     Fractarchy is intended to display static contents arranged within zoomable oval system.
@@ -52,10 +50,10 @@
                     (
                         (
                             node
-                            (name "0-1-1")
-                        ) (
-                            title
-                            1.1. possible use cases
+                            (
+                                title
+                                1.1. possible use cases
+                            )
                         ) (
                             paragraph
                             Considering Fractarchy static limitations, what kind of contents can we build with it? Let's overview a
@@ -86,10 +84,10 @@
             (
                 (
                     node
-                    (name "0-2")
-                ) (
-                    title
-                    2. browsing the contents
+                    (
+                        title
+                        2. browsing the contents
+                    )
                 ) (
                     paragraph
                     Fractarchy brings a simple and minimalistic kind of contents structuring and organization. All the pages are
@@ -106,11 +104,10 @@
                     (
                         (
                             node
-                            (name "0-2-1")
-                        )
-                        (
-                            title
-                            2.1. panning the content elements
+                            (
+                                title
+                                2.1. panning the content elements
+                            )
                         ) (
                             paragraph
                             The center oval of the Fractarchy content pages serves for reading the contents. By dragging its content,
@@ -128,10 +125,10 @@
                     (
                         (
                             node
-                            (name "0-2-2")
-                        ) (
-                            title
-                            2.2. orbiting the content elements
+                            (
+                                title
+                                2.2. orbiting the content elements
+                            )
                         ) (
                             paragraph
                             The structure of content in Fractarchy is visualized in a distinctive way, resembling a form of a fractal
@@ -150,10 +147,10 @@
             (
                 (
                     node
-                    (name "0-3")
-                ) (
-                    title
-                    3. building a site with fractarchy
+                    (
+                        title
+                        3. building a site with fractarchy
+                    )
                 ) (
                     paragraph
                     To populate Fractarchy site with custom contents, it is necessary to prepare HTML and graphic files
@@ -179,10 +176,10 @@
                     (
                         (
                             node
-                            (name "0-3-1")
-                        ) (
-                            title
-                            3.1. making a local copy
+                            (
+                                title
+                                3.1. making a local copy
+                            )
                         ) (
                             paragraph
                             First, we need to make sure we have installed a local web server like
@@ -241,10 +238,10 @@
                     (
                         (
                             node
-                            (name "0-3-2")
-                        ) (
-                            title
-                            3.2. customizing our site
+                            (
+                                title
+                                3.2. customizing our site
+                            )
                         ) (
                             paragraph
                             Next, we have to modify the example site to adjust it to our own requirements and introduce
@@ -332,10 +329,10 @@
                     (
                         (
                             node
-                            (name "0-3-3")
-                        ) (
-                            title
-                            3.3. publishing our site
+                            (
+                                title
+                                3.3. publishing our site
+                            )
                         ) (
                             paragraph
                             Finally, when we are done testing our site, we would want to publish it to a remote online server. To do
@@ -362,10 +359,10 @@
             (
                 (
                     node
-                    (name "0-4")
-                ) (
-                    title
-                    4. licencing, owning a copy, and joining mailing list
+                    (
+                        title
+                        4. licencing, owning a copy, and joining mailing list
+                    )
                 ) (
                     bquote
                     (italic 

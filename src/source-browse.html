@@ -27,9 +27,6 @@
                 touch-action: none;
                 user-select: none;
             }
-
-            a {opacity: 0.75;}
-            a:hover {opacity: 1; cursor: pointer;}
         </style>
         <script src="parse.js"></script>
         <script src="hilight.js"></script>
@@ -37,20 +34,9 @@
     </head>
     <body>
       <section>
-        <a id="btnedit" style="position: absolute; z-index: 4000000000; top: 0px, left: 0px;/*filter: drop-shadow(0px 0px 5px black);*/">
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
-                <path class="path" fill="rgb(48,48,48)" stroke="rgb(128,128,128)" stroke-width="1px" d="M23.15 42.85V38.1L34.2 27.05l4.75 4.75L27.9 42.85Zm-18-9.95v-4.75h17.3v4.75Zm35.95-3.25-4.75-4.75 1.45-1.45q.65-.65 1.65-.65 1 0 1.65.65l1.45 1.45q.65.65.65 1.65 0 1-.65 1.65Zm-35.95-6.2v-4.7h25.2v4.7Zm0-9.4v-4.7h25.2v4.7Z"/>
-            </svg>
-        </a>
         <div id="divContainer" style="/*border: 5px dotted rgb(208,208,208);*/ position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; /*filter: drop-shadow(0px 0px 20px black);*/">
         </div>
         <script>
-            
-            var ed = document.getElementById("btnedit");
-            ed.onclick = function () {
-                par123.postMessage({msg: "enterEdit"}, "*");
-            }
-            
             function liveSync () {
                 window.addEventListener('mousemove', function (evt) {
                     if (evt.detail.W !== undefined) return;
@@ -745,19 +731,19 @@
                         colorBracketMatchBack: "rgb(75,75,75)",
                         colorStringAndComment: "rgb(128,128,128)",
                         //keywords: ["\\btree\\b|\\bnode\\b|\\bname\\b|\\bbranches\\b|\\bheading1\\b|\\bparagraph\\b|\\blink\\b|\\baddress\\b|\\btarget\\b|\\bcode\\b|\\bicode\\b|\\bblockquote\\b|\\bulist\\b|\\bitem\\b"],
-                        keywords: [`${tag('comment')}|${tag('tree')}|${tag('node')}|${tag('name')}|${tag('branches')}|${tag('title')}|${tag('heading1')}|${tag('paragraph')}|${tag('link')}|${tag('address')}|${tag('target')}|${tag('code')}|${tag('icode')}|${tag('bquote')}`],
+                        keywords: [`${tag('bold')}|${tag('italic')}|${tag('comment')}|${tag('tree')}|${tag('node')}|${tag('name')}|${tag('branches')}|${tag('title')}|${tag('heading1')}|${tag('paragraph')}|${tag('link')}|${tag('address')}|${tag('target')}|${tag('code')}|${tag('icode')}|${tag('bquote')}`],
                         stringsAndComments: "(\"([^\"\\\\\\n]|(\\\\.))*((\")|(\\n)|($)))",
                         hilightMatchingBraces: false,
                         spaceDots: true
                     }
                     
-                    nodeName = node.nodeRawData[1][0][1][1];
+                    nodeName = getTitle (node.nodeRawData[1][0][1]);
                     
                     node.srcdoc = '<html style="font-size: 1.2em">' 
                         //+ '<head><style>body {animation: fadein 0.5s;} @keyframes fadein {from { opacity: 0; /*transform: scale(0.5);*/} to { opacity: 1; /*transform: scale(1.0);*/}}</style></head>'
                         + '<body style="margin: 0; padding: 0; width: 480px; color:rgb(208,208,208)">'
-                            + '<heading1 style="font-family: monospace; font-size: 3em; font-weight: bold; margin-top: 0em;">'
-                                + (nodeName? stripQuotes (nodeName): unnamed)
+                            + '<heading1 style="font-family: monospace; font-size: 2.5em; font-weight: bold; margin-top: 0em;">'
+                                + nodeName
                             + '</heading1>'
                             + `<div style="wrap: none; font: ${options.font}; white-space: pre; color: ${options.colorText}; width: inherit; height: inherit; overflow: hidden; margin: 0; padding:4px;">`
                                 + hilight (stringify (node.nodeRawData[1], 50, ""), options)
@@ -773,7 +759,40 @@
                     resolve (node);
                 });
             }
+            
+            function getTitle (l) {
+                var ret = "";
+                for (var i = 1; i < l.length; i++) {
+                    if (Array.isArray (l[i]))
+                        ret += "(" + l[i][0] + " " + getTitle (l[i]) + ") ";
+                    else
+                        ret += l[i] + (i < l.length - 1? " ": "");
+                }
+                    
+                return ret
+            }
                         
+            function getCoords (text, offset) {
+                var i, ch, row = 1, col = 1, maxCol = 1;
+                if (text.length > 0)
+                    for (i = 0; i < offset && i < text.length; i += 1) {
+                        ch = text.charCodeAt(i);
+                        if (ch === 13 || ch === 10) {
+                            if (ch === 13 && text.charCodeAt (i + 1) === 10)
+                                i += 1;
+
+                            row += 1;
+                            col = 1;
+                            
+                        } else
+                          col += 1;
+                      
+                        maxCol = Math.max (maxCol, col);
+                    }
+                
+                return {row: row, col: col, maxCol: maxCol};
+            }
+
             var env;
             function init () {
                 var xhttp = new XMLHttpRequest ();

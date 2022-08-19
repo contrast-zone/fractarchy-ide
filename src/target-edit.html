@@ -54,7 +54,7 @@
             }
         </style>
         <script src="parse.js"></script>
-        <script src="node2html.js"></script>
+        <script src="x2html.js"></script>
     </head>
     <body>
       <section>
@@ -332,40 +332,26 @@
                                     + `html {`
                                     + `  color: rgb(48,48,48);`
                                     + `  background-color: rgb(208,208,208);`
-                                    + `  /*width: 480px;*/`
+                                    + `  margin: 0 auto;`
+                                    + `  width: 480px;`
+                                    + `  /*display: flex;`
+                                    + `  justify-content: center;*/`
                                     + `}`
 
                                 + `</style>`
                             + `</head>`
                             + `<body>`
-                                + packNodes (nodeTree, 0);//node2html (nodeTree[1][1]);//stringify (nodeTree[1], "");// this.responseText;
+                                + tree2html (nodeTree);//node2html (nodeTree[1][1]);//stringify (nodeTree[1], "");// this.responseText;
                             + `</body>`
                         + `</html>`;
                         
-                        divStat.innerHTML = "displaying " + numberOfNodes + " nodes";
+                        divStat.innerHTML = numberOfNodes + " nodes";
                     }
                 };
 
                 xhttp.open("GET", "../projects/contents.sdt", true);
                 xhttp.overrideMimeType("text/plain");
                 xhttp.send();
-            }
-            
-            function packNodes (topNode, margin) {
-                var ret = "";
-                var node = topNode;
-                
-                for (var i = 1; i < node.length; i++) {
-                    numberOfNodes++;
-                    ret += `<div style="background-color: rgb(208,208,208); width: 480px; border-radius: 48px; border: 4px solid rgb(64,64,64); padding: 8px; margin: 8px; margin-left: ` + margin + `px">`
-                        + node2html (node[i][1])
-                    
-                    if (node[i][2])
-                        ret += packNodes (node[i][2], 48);
-                    ret += `</div>`;
-                }
-                
-                return ret;
             }
 
             var nodeTree;

@@ -20,15 +20,7 @@ tags: digital-workbook, text-processor, hierarchical-database, fractal-structure
 
 Fractabase is a hierarchical fractal-structure inspired, parent-children orbiting, and zooming-elements based text and graphics organizer. It can be used to manage the creation and modification of digital content. Such purposes include organizing personal or business data and documentation.
 
-### 1.1. contents creation
-
-Composing contents in Fractabase is consisted of coding main `sdt` file and importing graphical or other resources. Simple, yet powerful `sdt` markup, templating and coding capabilities serve as a Turing complete data definition platform. `sdt` file format is based on a minimalist s-expr based environment created specifically for purposes of Fractabase, and it should bring an exciting "expert under the hub" glance to the overall Fractabase user experience.
-
-### 1.2. contents navigation
-
-The final result created by Fractabase brings all the contents to be shown inside orbitable and zoomable ovals that form a seamless dynamic fractal user interface. We navigate the entire fractal structure using only four kinds of gestures: (1) dragging inside the central oval area to pan its contents, (2) dragging orbiting ovals around the central oval to rotate them, (3) dragging any orbiting oval towards center to zoom it in, or (4) dragging central oval towards orbit to zoom it out.
-
-## 2. use cases
+### 1.1. use cases
 
 Fractabase **is suited** to be used as:
 
@@ -46,11 +38,29 @@ Fractabase **is not suited** to be used for:
 
 - dynamic content pages creation
 
-## 3. giving it a try
+## 2. skimming over features
+
+Fractabase user interface and functionality is imbued with symmetry. Contents code pane (left) contrasts contents display pane (right), while initial integration mode contrasts derivation mode. These dualities shaped the direction of Fractabase design features. The dualities operate on top of structured document tree, thus forming an interface to a kind of hierarchical database of documents.
+
+### 2.1. integration mode
+
+Integration mode presents document fragments in orbitable and zoomable ovals that form a seamless dynamic fractal user interface. We navigate the entire fractal structure using only four kinds of gestures: (1) dragging inside the central oval area to pan its contents, (2) dragging orbiting ovals around the central oval to rotate them, (3) dragging any orbiting oval towards center to zoom it in, or (4) dragging central oval towards orbit to zoom it out.
+
+### 2.2. derivation mode
+
+Document code can be edited only in derivation mode. Derivation mode detaches and shows the current oval focused from integration mode. Prior to igniting derivation mode, we may fold the tree under the current node. The folding gathers up all the sub-tree children recursively, and provides a way to alter order and contents of node tree children. After modification and exiting derivation mode, we may unfold the current node back to the expanded tree form.
+
+## 3. code editing reference
+
+Composing contents in Fractabase is consisted of coding main `sdt` file and importing graphical or other resources. Simple, yet powerful `sdt` markup, templating and coding capabilities serve as a Turing complete data definition platform. `sdt` file format is based on a minimalist s-expr based environment created specifically for purposes of Fractabase, and it should bring an exciting "expert under the hub" glance to the overall Fractabase user experience.
+
+    // under construction //
+    
+## 4. giving it a try
 
 To get started with contents creation using Fractabase, please refer to `[use instructions](https://contrast-zone.github.io/fractabase/projects/instructions/)` made with Fractabase.
 
-## 4. licensing
+## 5. licensing
 
 This software is released under [conditional Creative Commons Attribution 4.0 International License](LICENSE). It is free for personal use, but if your plans meet commercial use, please refer to the licence file for details about pricing.
 
