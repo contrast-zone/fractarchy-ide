@@ -1,16 +1,19 @@
 # fractabase
 
-    // under construction //
-    
 (v 0.1 - alpha)
-    
+
+tags: digital-workbook, text-processing, hierarchical-data, fractal-structure-inspired, parent-child-orbiting, zooming-elements-based
+
+- - -
+    // under construction //
+        
 ![](media/ssh.png)
 
 [IDE probe](https://contrast-zone.github.io/fractabase/index.html)
 
     // under construction //
 
-tags: digital-workbook, text-processing, hierarchical-data, fractal-structure-inspired, parent-child-orbiting, zooming-elements-based
+- - -
 
 > ## promotional material
 > 
