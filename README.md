@@ -101,7 +101,7 @@ STD sub-documents are placed inside nodes from the tree structure in a following
     (
         node
         
-        ... node contents ...
+        ... sub-document contents ...
     )
 
 Sub-documents are a list of words that follow `node` s-expr. Also, instead of words, we can place s-exprs from the following enumeration:
