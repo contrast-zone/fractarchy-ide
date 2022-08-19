@@ -9,7 +9,7 @@ tags: digital-workbook, text-processing, hierarchical-data, fractal-structure-in
         
 ![](media/ssh.png)
 
-[IDE probe](https://contrast-zone.github.io/fractabase/index.html)
+[online IDE probe](https://contrast-zone.github.io/fractabase/index.html)
 
     // under construction //
 
