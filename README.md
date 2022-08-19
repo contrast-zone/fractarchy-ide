@@ -58,8 +58,6 @@ From integration mode we can enter derivation mode. SDT code can be edited only 
 
 Composing contents in Fractabase is consisted of coding main SDT file and importing graphical or other resources. Simple, yet powerful SDT markup, templating and coding capabilities serve as a Turing complete data definition platform. SDT file format is based on a minimalist s-expr based environment created specifically for purposes of Fractabase, and it should bring an exciting "expert under the hub" atmosphere to the overall Fractabase user experience.
 
-- - -
-
     // under construction //
 
 ### 3.1. tree structure
@@ -68,6 +66,7 @@ STD file format is structured in a following pattern:
 
     (
         tree
+        
         (
             node
             
@@ -76,6 +75,7 @@ STD file format is structured in a following pattern:
         
         (
             branches
+            
             (
                 tree
                 
@@ -92,9 +92,7 @@ STD file format is structured in a following pattern:
         )
     )
 
-- - -
-
-    // under construction //
+There is really not much to say about tree structure. The tree structure is a s-expr combined with `tree`, `node`, and `branches` s-exprs. We start with `tree` s-expr, nesting `node` s-expr within. If we want the `node` to branch, we put a `branches` s-expr next to it, to further enumerate branching `tree` s-exprs. We can nest `tree` s-exprs recursively to any depth. When we reach the final nodes that don't branch further, we simply omit the `branches` s-expr.
 
 ### 3.2. document structure
 
@@ -106,15 +104,12 @@ STD sub-documents are placed inside nodes from the tree structure in a following
         ... node contents ...
     )
 
-- - -
 
     // under construction //
 
 ### 3.3. templating system
 
 SDT file format is being evaluated as a kind of a term rewriting system. As such, it may be suited even for some advanced tasks naturally involving formula applications, like proof construction for different kinds of logic, truth table calculations, or combinatorial problem solving. Although these kinds of uses may seem intimidating at first, the decision of supporting them doesn't steepen a learning curve needed for basic SDT use. SDT file format may go as deep into content creation as users let it, from simple macro expansions to complex formula calculations. Finally, user range targeted by SDT file format spans anywhere between enthusiastic beginners ready to dive into mysteries of coding, and demanding experts who will know how to reach for advanced SDT capabilities.
-
-- - -
 
     // under construction //
     
