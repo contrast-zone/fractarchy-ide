@@ -104,7 +104,7 @@ STD sub-documents are placed inside nodes from the tree structure in a following
         ... sub-document contents ...
     )
 
-Sub-documents are a list of words that follow `node` s-expr. Also, instead of words, we can nest s-exprs from the following itemization:
+`... sub-document contents ...` is a list of words that follow `node` s-expr. Also, instead of words, we can nest s-exprs from the following itemization:
 
 - headings in descending order: `heading1` to `heading6`
 - paragraph: `paragraph`
