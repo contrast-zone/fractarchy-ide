@@ -104,25 +104,27 @@ STD sub-documents are placed inside nodes from the tree structure in a following
         ... sub-document contents ...
     )
 
-Sub-documents are a list of words that follow `node` s-expr. Also, instead of words, we can place s-exprs from the following enumeration:
+Sub-documents are a list of words that follow `node` s-expr. Also, instead of words, we can nest s-exprs from the following itemization:
 
 - headings in descending order: `heading1` to `heading6`
 - paragraph: `paragraph`
 - bold text: `bold`
 - italic text: `italic`
-- block code: `bcode`
-- inline code: `icode`
 - block quote: `bquote`
-- ordered list: `olist`
-    - ordered list item: `litem`
 - unordered list: `ulist`
     - unordered list item: `litem`
+- ordered list: `olist`
+    - ordered list item: `litem`
 - hyperlink: `hyperlink`
     - hyperlink address `address`
     - hyperlink target: `target`
+- inline code: `icode`
+- block code: `bcode`
 - horizontal rule: `hrule`
 
-Restrictions in composing sub-documents are that `icode`, `address`, and `target` accept only quoted strings, while `bcode` accepts a list of quoted strings and interprets them as a range of code lines. `node` head may be replaced in the following way:
+Restrictions in composing sub-documents are that `address`, `target`, and `icode`accept only quoted strings, while `bcode` accepts a list of quoted strings and interprets them as a span of code lines.
+
+Alternatively, sub-documents may be written by the following pattern:
 
     (
         (
@@ -134,7 +136,7 @@ Restrictions in composing sub-documents are that `icode`, `address`, and `target
         ... sub-document contents ...
     )
 
-where `... description ...` is a list of words representing the node title, and `... sub-document contents ...` behaves as described.
+where `... description ...` is a list of words representing the node title (title is specially formatted in the largest font), and `... sub-document contents ...` behaves as described above.
 
 ### 3.3. templating system
 
