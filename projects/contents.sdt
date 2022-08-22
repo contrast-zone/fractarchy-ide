@@ -4,10 +4,11 @@
         (
             node
             (   title
-                fractarchy cms use instructions 
+                fractarchy cms use instructions
             )
         ) (
-            paragraph These pages are displayed with (bold Fractarchy,) and they contain Fractarchy use and site building
+            paragraph
+            These pages are displayed with (bold Fractarchy,) and they contain Fractarchy use and site building
             instructions. The current version of Fractarchy represents a headless,
             flat-file, and innovative content management system &lpar;CMS&rpar;. CMS is a software application
             used to manage the creation and modification of digital content. Supported content pages include
@@ -363,8 +364,8 @@
                         title
                         4. licencing, owning a copy, and joining mailing list
                     )
-                ) (
-                    bquote
+                ) (hruler) (
+                    paragraph
                     (italic 
                     Fractarchy is shared to public under
                     (
@@ -386,8 +387,8 @@
                     )
                     productions.
                     )
-                ) (
-                    bquote
+                ) (hruler) (
+                    paragraph
                     A copy of Fractarchy software bundle can be downloaded
                     from
                     (
@@ -398,8 +399,8 @@
                         )
                         dedicated github pages.
                     )
-                ) (
-                    bquote
+                ) (hruler) (
+                    paragraph
                     To ask any questions about Fractarchy, to report a bug,
                     or to track new releases, please refer to a 
                     (
@@ -408,10 +409,9 @@
                             (address "https://groups.google.com/g/contrast-zone")
                             (target "_new")
                         )
-                        dedicated mailing list
+                        dedicated mailing list.
                     )
-                    .
-                ) (
+                ) (hruler) (
                     paragraph
                     With this section, we conclude Fractarchy instructions exposure.
                     Good luck and have a creative and productive web knitting.

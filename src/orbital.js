@@ -1923,12 +1923,12 @@ select.cursor.angle = Math.PI;
     var noPan;
     
     function transformY () {
-        var ret = Math.floor ((hh - 2 * shadowRadius) / 2 * (1 - 1 / magn) - 2);
+        var ret = Math.floor ((hh / 2 - shadowRadius) * (1 - 1 / magn));
         
         if (orient !== 0) {
             ret = - ret;
         }
-        
+
         return ret;
     }
 
@@ -2053,11 +2053,14 @@ select.cursor.angle = Math.PI;
                     var scaleD1 = Math.sqrt(tx * tx + ty * ty);
 
                     magn = curMagn * scaleD1 / scaleD0;
+
+                    var ty = (hh / 2 - shadowRadius) * (1 - 1 / uiscale);
+                    var magnmax = 1 * (rr - rr * shiftY + ty / squashY) / (rr) / ratio / circleSize;
                     if (magn < 1)
                         magn = 1;
                         
-                    else if (magn > uiscale / ratio / circleSize)
-                        magn = uiscale / ratio / circleSize;
+                    else if (magn > magnmax)
+                        magn = magnmax;
                             
                     rescale (magn);
                     redraw();
@@ -2127,7 +2130,7 @@ select.cursor.angle = Math.PI;
             evt.preventDefault ();
         }, false);
     }
-    
+
     function setupWheelEvent () {
         window.addEventListener('wheel', function (evt) {
             if (evt.detail.DY !== undefined) {
@@ -2137,18 +2140,22 @@ select.cursor.angle = Math.PI;
                 noPan = false;
             }
             
-            magn = magn + Math.sign(event.deltaY) * -(uiscale / ratio / circleSize - 1)/10;//event.deltaY * -0.0025;
+            var ty = (hh / 2 - shadowRadius) * (1 - 1 / uiscale);
+            var magnmax = 1 * (rr - rr * shiftY + ty / squashY) / (rr) / ratio / circleSize;
+
+            magn = magn + Math.sign(event.deltaY) * Math.sign (Math.sin(orient + Math.PI / 2)) * (magnmax - 1) / 5;
+
             if (magn < 1)
                 magn = 1;
                 
-            else if (magn > uiscale / ratio / circleSize)
-                magn = uiscale / ratio / circleSize;
-                
+            else if (magn > magnmax)
+                magn = magnmax;
+
             rescale (magn);
             redraw();
         }, { passive: false });
     }
-    
+
     setupMouseEvents ();
     setupTouchEvents ();
     setupWheelEvent ();
