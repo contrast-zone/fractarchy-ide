@@ -481,6 +481,7 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
         }
         
         var data = {
+            xml: canvasScape.xml,
             nodeRawData: canvasScape.nodeRawData,
             img: canvasScape.img,
             src: canvasScape.src,
@@ -789,9 +790,9 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
                 
                 var l = ~~((xa * squashX - magn * (data.ifr.width / 2 + cx)));
                 var t = ~~((ya * squashY - magn * (data.ifr.height / 2 + cy)));
-                if (data.ifr.style.left === l + "px" && data.ifr.style.top === t + "px") {
+                //if (data.ifr.style.left === l + "px" && data.ifr.style.top === t + "px") { // it was scaling bug
                     //alert ("skip the same position");
-                } else {
+                //} else {
                     data.ifr.style.left = (cnv.parentNode.clientLeft + l) + "px";
                     data.ifr.style.top = (cnv.parentNode.clientTop + t) + "px";
 
@@ -835,7 +836,7 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
                     data.clip1 = clipPath1;
                     data.clip2 = clipPath2;
                     data.clip3 = clipPath3;
-                }
+                //}
 
                 data.ifr.style.visibility = "visible";
                 //if (level === 1)
@@ -2056,6 +2057,7 @@ select.cursor.angle = Math.PI;
 
                     var ty = (hh / 2 - shadowRadius) * (1 - 1 / uiscale);
                     var magnmax = 1 * (rr - rr * shiftY + ty / squashY) / (rr) / ratio / circleSize;
+                    
                     if (magn < 1)
                         magn = 1;
                         

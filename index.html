@@ -3,30 +3,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-    <title>Fractabase</title>
+    <title>Fractadocs</title>
     <link rel="icon" type="image/png" href="./media/favicon128.png"/>
 
     <!-- Primary Meta Tags -->
-    <meta name="title" content="Fractarchy">
+    <meta name="title" content="Fractadocs">
     <meta name="description" content="Structured document tree processing framework. Fractal-structure inspired, parent-child orbiting, zooming-elements based.">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://contrast-zone.github.io/moonlight">
-    <meta property="og:title" content="Fractarchy">
+    <meta property="og:url" content="https://contrast-zone.github.io/fractadocs">
+    <meta property="og:title" content="Fractabook">
     <meta property="og:description" content="Structured document tree processing framework. Fractal-structure inspired, parent-child orbiting, zooming-elements based.">
     <meta property="og:image" content="media/socmedia.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://contrast-zone.github.io/moonlight">
-    <meta property="twitter:title" content="Fractarchy">
+    <meta property="twitter:url" content="https://contrast-zone.github.io/fractadocs">
+    <meta property="twitter:title" content="Fractabook">
     <meta property="twitter:description" content="Structured document tree processing framework. Fractal-structure inspired, parent-child orbiting, zooming-elements based.">
     <meta property="twitter:image" content="media/socmedia.png">
 
     <!--meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" /-->
     
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"-->
    
     <head>
         <style media="screen">
@@ -59,11 +59,11 @@
     </head>
     <body>
         <noscript>
-            title: Fractabase
+            title: Fractadocs
             tags: digital-workbook, text-processing, hierarchical-data, fractal-structure-inspired, parent-child-orbiting, zooming-elements-based
         </noscript>
-        <iframe id="source" src="src/source-browse.html" style="border-style:none; position:fixed;/* top:0; left:0; bottom:0; right:0; width:100%; height:100%;*/ border:none; background-color: gray;"></iframe>
-        <iframe id="target" src="src/target-browse.html" style="border-style:none; position:fixed;/* top:0; left:0; bottom:0; right:0; width:100%; height:100%;*/ border:none; background-color: gray;"></iframe>
+        <iframe id="source" style="border-style:none; position:fixed;/* top:0; left:0; bottom:0; right:0; width:100%; height:100%;*/ border:none; background-color: gray;"></iframe>
+        <iframe id="target" style="border-style:none; position:fixed;/* top:0; left:0; bottom:0; right:0; width:100%; height:100%;*/ border:none; background-color: gray;"></iframe>
         <!--a id="fullscrbtn" class="btn" style="position: absolute; text-shadow: 0px 0px 10px black;" hidden>
             <i class="material-icons" style="font-size: 7em;">fullscreen</i>
         </a-->
@@ -85,7 +85,7 @@
         <a id="btnupload" style="position: absolute; color: rgb(208,208,208);">
             <svg id="svginput" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:inline;"><title>input</title><path fill="rgb(208,208,208,0.2)" d="M9.1 42.3q-1.35 0-2.375-1.025T5.7 38.9V28.7h3.4v10.2h29.8V9H9.1v10.3H5.7V9q0-1.4 1.025-2.4t2.375-1h29.8q1.4 0 2.4 1t1 2.4v29.9q0 1.35-1 2.375T38.9 42.3ZM20.8 34l-2.5-2.5 5.75-5.8H5.7v-3.4h18.35l-5.75-5.8 2.5-2.5 10.05 10Z"/></svg>
             <svg id="svglosel" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:none"><title>cancel</title><path fill="rgb(208,208,208)" d="m16.6 33.6 7.4-7.4 7.4 7.4 2.2-2.2-7.4-7.4 7.4-7.4-2.2-2.2-7.4 7.4-7.4-7.4-2.2 2.2 7.4 7.4-7.4 7.4ZM24 44.3q-4.15 0-7.875-1.6-3.725-1.6-6.475-4.35Q6.9 35.6 5.3 31.9 3.7 28.2 3.7 24t1.6-7.925q1.6-3.725 4.35-6.45Q12.4 6.9 16.1 5.3T24 3.7q4.2 0 7.925 1.6 3.725 1.6 6.45 4.325T42.7 16.05q1.6 3.7 1.6 7.95 0 4.2-1.6 7.9t-4.325 6.45Q35.65 41.1 31.95 42.7q-3.7 1.6-7.95 1.6Zm0-3.4q7.05 0 11.975-4.95T40.9 24q0-7.05-4.925-11.975T24 7.1q-7 0-11.95 4.925Q7.1 16.95 7.1 24q0 7 4.95 11.95Q17 40.9 24 40.9ZM24 24Z"/></svg>
-            <svg id="svgkeepl" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:none"><title>keep changes</title><path fill="rgb(208,208,208,0.2)" d="M21.05 33.3 35.3 19l-2.55-2.5-11.7 11.75-5.9-5.9-2.5 2.5Zm2.95 11q-4.15 0-7.875-1.6-3.725-1.6-6.475-4.35Q6.9 35.6 5.3 31.9 3.7 28.2 3.7 24t1.6-7.925q1.6-3.725 4.35-6.45Q12.4 6.9 16.1 5.3T24 3.7q4.2 0 7.925 1.6 3.725 1.6 6.45 4.325T42.7 16.05q1.6 3.7 1.6 7.95 0 4.2-1.6 7.9t-4.325 6.45Q35.65 41.1 31.95 42.7q-3.7 1.6-7.95 1.6Zm0-3.4q7.05 0 11.975-4.95T40.9 24q0-7.05-4.925-11.975T24 7.1q-7 0-11.95 4.925Q7.1 16.95 7.1 24q0 7 4.95 11.95Q17 40.9 24 40.9ZM24 24Z"/></svg>
+            <svg id="svgkeepl" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:none"><title>accept changes</title><path fill="rgb(208,208,208,0.2)" d="M21.05 33.3 35.3 19l-2.55-2.5-11.7 11.75-5.9-5.9-2.5 2.5Zm2.95 11q-4.15 0-7.875-1.6-3.725-1.6-6.475-4.35Q6.9 35.6 5.3 31.9 3.7 28.2 3.7 24t1.6-7.925q1.6-3.725 4.35-6.45Q12.4 6.9 16.1 5.3T24 3.7q4.2 0 7.925 1.6 3.725 1.6 6.45 4.325T42.7 16.05q1.6 3.7 1.6 7.95 0 4.2-1.6 7.9t-4.325 6.45Q35.65 41.1 31.95 42.7q-3.7 1.6-7.95 1.6Zm0-3.4q7.05 0 11.975-4.95T40.9 24q0-7.05-4.925-11.975T24 7.1q-7 0-11.95 4.925Q7.1 16.95 7.1 24q0 7 4.95 11.95Q17 40.9 24 40.9ZM24 24Z"/></svg>
         </a>
         <a id="btnledpr" style="position: absolute; color: rgb(208,208,208);">
             <svg id="fold" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="visibility: hidden;"><title>fold</title><path fill="rgb(208,208,208,0.2)" d="m17.15 40.3-2.45-2.45 9.3-9.3 9.3 9.3-2.45 2.45L24 33.45ZM24 19.45l-9.3-9.3 2.45-2.45L24 14.55l6.85-6.85 2.45 2.45Z"/></svg>
@@ -132,6 +132,18 @@
 
             var msg = (event) => {
                 if (event.data.msg === "edit/print") {
+                    /*
+                    document.getElementById("source").style.backgroundColor = "rgb(48,48,48)";
+                    document.getElementById("source").onload = function () {
+                        document.getElementById("source").style.backgroundColor = "gray";
+                    }
+                    
+                    document.getElementById("target").style.backgroundColor = "rgb(208,208,208)";
+                    document.getElementById("target").onload = function () {
+                        document.getElementById("target").style.backgroundColor = "gray";
+                    }
+                    */
+
                     document.getElementById("source").contentWindow.location.replace("./src/source-edit.html");
                     document.getElementById("btnledpr").style.display = "none";
                     document.getElementById("svginput").style.display = "none";
@@ -215,7 +227,7 @@
             });
 
 
-            document.body.style.fontSize = Math.sqrt(window.devicePixelRatio) + "em"
+            //document.body.style.fontSize = Math.sqrt(window.devicePixelRatio) + "em"
 
             var setSize = function (orientation) {
                 var s = document.getElementById("source");
@@ -291,7 +303,7 @@
                     bu.style.left = marg + bord + "px";
                     bu.style.top = mmarg + s.offsetTop + s.offsetHeight - bu.offsetHeight + "px";
 
-                    lc.style.left = (-marg - bord + s.offsetLeft + s.offsetWidth - lc.offsetWidth) + "px";
+                    lc.style.left = (- bord + s.offsetLeft + s.offsetWidth - lc.offsetWidth) + "px";
                     lc.style.top = mmarg + s.offsetTop + s.offsetHeight - lc.offsetHeight + "px";
 
                     lf.style.left = Math.round (s.offsetWidth / 2 - btns * 3 / 2) + "px"
@@ -326,7 +338,7 @@
                     bd.style.right = marg + bord + "px";
                     bd.style.top = marg + "px";
                     
-                    rc.style.left = (marg + bord + t.offsetLeft) + "px";
+                    rc.style.left = (bord + t.offsetLeft) + "px";
                     rc.style.top = marg + "px";
 
                     rf.style.top = marg + "px";
@@ -446,6 +458,9 @@
             document.getElementById("btnrhlp").addEventListener('click', showHelp);
 
             window.addEventListener("load", function () {
+                document.getElementById("source").contentWindow.location.replace("./src/source-browse.html");
+                document.getElementById("target").contentWindow.location.replace("./src/target-browse.html");
+
                 lnks = document.querySelectorAll("a");
                 for (var i = 0; i < lnks.length; i++)
                     lnks[i].style.display = "inline";

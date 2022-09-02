@@ -1,8 +1,8 @@
-# fractabase
+# fractadocs
 
 (v 0.1 - alpha)
 
-**tags:** digital-workbook, text-processing, hierarchical-data, fractal-structure-inspired, parent-child-orbiting, zooming-elements-based
+**tags:** content-management-system, hierarchical-data-organizer, text-processing-toolkit, fractal-structure-inspired, parent-children-orbiting, zooming-elements-based
 
 - - -
 
@@ -10,7 +10,7 @@
         
 ![](media/ssh.png)
 
-[online probe](https://contrast-zone.github.io/fractabase/index.html)
+[online probe](https://contrast-zone.github.io/fractadocs/index.html)
 
     // under construction //
 
@@ -18,33 +18,32 @@
 
 # introduction
 
-Let me introduce you to Fractabase, a blend of a database tool and text processor. As one might already guess, Fractabase does things a bit differently. Some users will love it, some users will hate it, while some of us may even form mixed opinions given a plethora of affinity states. Distinctive design choices that were made in creation of Fractabase are supposed to embark users on a brave adventure while discovering its carefully weighed virtues and flaws. Its coding fragment requires an open minded approach to be understood, while its graphical fragment requires a venturesome spirit to have fun with. The combination of these two fragments provides an unique balance between contents creation and contents navigation. Finally, a fair amount of user creativity will be the judge of Fractabase fitness for particular purposes.
+Let me introduce you to Fractadocs, a content management system in a guise of hierarchical data organizer and text processing toolkit. As one might already guess, Fractadocs does things a bit differently. Some users will love it, some users will hate it, while some of us may even form mixed opinions given a plethora of affinity states. Distinctive design choices that were made in creation of Fractadocs are supposed to embark users on a brave adventure while discovering its carefully weighed virtues and flaws. Its coding fragment requires an open minded approach to be understood, while its graphical fragment requires a venturesome spirit to have fun with. This combination provides an unique balance between contents creation and contents navigation. Finally, a fair amount of user creativity will be the judge of Fractadocs fitness for particular purposes.
 
-## 1. about fractabase
+## 1. about fractadocs
 
-Fractabase is a hierarchical fractal-structure inspired, parent-children orbiting, and zooming-elements based text and graphics organizer. It can be used to manage the creation and modification of digital content. Such purposes include organizing personal or business data and documentation.
+Fractadocs is a hierarchical fractal-structure inspired, parent-children orbiting, and zooming-elements based text and graphics organizer. It can be used to manage the creation and modification of static digital content. Such purposes include organizing personal or business data and documentation, optionally exporting it to a local web site ready for publishing to the Internet.
 
 ### 1.1. use cases
 
-Fractabase **is suited** to be used as:
+Fractadocs **is suited** to be used as:
 
 - static content pages creation platform
-- mind map tool
-- digital workbook
-- hierarchical database
-- presentation slide show
-- advanced studying organizer
+- mind map planner
+- slide show composer
+- text processing toolkit
+- hierarchical data organizer
 - personal knowledge base keeper
 - multi-purpose documentation system
 - ...
 
-Fractabase **is not suited** to be used for:
+Fractadocs **is not suited** to be used for:
 
 - dynamic content pages creation
 
 ## 2. skimming over features
 
-Fractabase user interface and functionality is imbued with symmetry. Although one may consider it unconventional, the symmetry was seriously taken into account upon shaping the direction of Fractabase user interface features. Contents code pane (left) contrasts contents display pane (right), while browsing mode (initial) contrasts edit/print mode (alternate). Underneath the Fractabase user interface, the backend core comprises structured document tree (SDT), thus forming a kind of hierarchical database of sub-documents.
+Fractadocs user interface and functionality is imbued with symmetry. Although one may consider it unconventional, the symmetry was seriously taken into account upon shaping the direction of Fractadocs user interface features. Contents code pane (left) contrasts contents display pane (right), while browsing mode (initial) contrasts edit/print mode (alternate). Underneath the Fractadocs user interface, the backend core comprises structured document tree (SDT), thus forming a kind of hierarchical database of sub-documents.
 
 ### 2.1. browsing mode
 
@@ -56,11 +55,11 @@ From browsing mode we can enter edit/print mode by clicking relevant icons. Edit
 
 ## 3. structured document tree reference
 
-Composing contents in Fractabase is consisted of coding main SDT file and importing graphical or other resources. Simple, yet powerful SDT markup, templating and coding capabilities serve as a Turing complete data definition platform. SDT file format is based on a minimalist s-expression based environment created specifically for purposes of Fractabase, and it should bring an exciting "expert under the hub" atmosphere to the overall Fractabase user experience.
+Composing contents in Fractadocs is consisted of coding main SDT file and importing graphical or other resources. Simple, yet powerful SDT markup, templating and coding capabilities serve as a Turing complete data definition platform. SDT file format is based on a minimalist s-expression based environment created specifically for purposes of Fractadocs, and it should bring an exciting "expert under the hub" atmosphere to the overall Fractadocs user experience.
 
-Contents of SDT file is a s-expression. In computer programming, an S-expression (or symbolic expression, abbreviated as sexpr or sexp) is an expression in a like-named notation for nested list (tree-structured) data. S-expression is written as a list of elements inside parenthesis. Elements may include words or other s-expressions delimited by whitespace. Whitespaces in s-expressions include any number of space characters, tabs, and line splits. Initially, in a case of Fractabase the first word to the left s-expression (also called head) is meant to identify a s-expression type. In example, s-expression like `(tree ... contents ...)` means that we assert `... contents ...` of a type `tree`, while in s-expression `(tree (node ... contents ...) (branches ... contents ...))` we nested `node` type and `branches` type s-expressions within `tree` type s-expression.
+Contents of SDT file is a s-expression. In computer programming, an S-expression (or symbolic expression, abbreviated as sexpr or sexp) is an expression in a like-named notation for nested list (tree-structured) data. S-expression is written as a list of elements inside parenthesis. Elements may include words or other s-expressions delimited by whitespace. Whitespaces in s-expressions include any number of space characters, tabs, and line splits. Initially, in a case of Fractadocs the first word to the left s-expression (also called head) is meant to identify a s-expression type. In example, s-expression like `(tree ... contents ...)` means that we assert `... contents ...` of a type `tree`, while in s-expression `(tree (node ... contents ...) (branches ... contents ...))` we nested `node` type and `branches` type s-expressions within `tree` type s-expression.
 
-In Fractabase, there exist a number of s-expression types which we will cover in the following sub-sections.
+In Fractadocs, there exist a number of s-expression types which we will cover in the following sub-sections.
 
 ### 3.1. tree structure s-expressions
 
@@ -153,15 +152,15 @@ Sub-items from the above itemization are describing acceptable assertions within
     
 SDT file format is being evaluated as a kind of a term rewriting system. As such, it may be suited even for some advanced tasks naturally involving formula applications, like proof construction for different kinds of logic, truth table calculations, or combinatorial problem solving. Although these kinds of uses may seem intimidating at first, the decision of supporting them doesn't steepen a learning curve needed for basic SDT use. SDT file format may go as deep into content creation as users let it, from simple macro expansions to complex formula calculations. Finally, user range targeted by SDT file format spans anywhere between enthusiastic beginners ready to dive into mysteries of coding, and demanding experts who will know how to reach for advanced SDT capabilities.
 
-While term rewriting used in SDT reach far beyond document templating, in this section we will cover only basic SDT templating capabilities that would be used to uniformly format SDT fragments. Readers interested in more thorough elaboration of the term rewriting used in SDT are invited to take a look at [Lissy programming language project page]().
+While term rewriting used in SDT reach far beyond document templating, in this section we will cover only basic SDT templating capabilities that would be used to uniformly format SDT fragments. Readers interested in more thorough elaboration of the term rewriting used in SDT are invited to take a look at original [Lissy programming language project page]().
 
     // under construction //
     
 ## 4. licensing, owning a copy, and joining mailing list
 
-Fractabase is shared to public under [conditional Creative Commons Attribution 4.0 International License](LICENSE) by [Contrast Zone](https://github.com/contrast-zone/) productions. 
+Fractadocs is shared to public under [conditional Creative Commons Attribution 4.0 International License](LICENSE) by [Contrast Zone](https://github.com/contrast-zone/) productions. 
 
-A copy of Fractabase software bundle can be downloaded from [dedicated github pages](https://github.com/contrast-zone/fractabase/).
+A copy of Fractadocs software bundle can be downloaded from [dedicated github pages](https://github.com/contrast-zone/fractadocs/).
 
-To ask any questions about Fractabase, to report a bug, or to track new releases, please refer to [Contrast Zone mailing list](https://groups.google.com/g/contrast-zone).
+To ask any questions about Fractadocs, to report a bug, or to track new releases, please refer to [Contrast Zone mailing list](https://groups.google.com/g/contrast-zone).
 

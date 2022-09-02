@@ -21,10 +21,11 @@
                 margin-top: 0px;
                 margin-left: 0px;
                 pointer-events: auto;
-                background-color: gray;
                 /*touch-action: pinch-zoom;*/
                 touch-action: none;
                 user-select: none;
+
+                background-color: gray;
             }
 
             a, a.exHover:visited, a.exHover:link {cursor: pointer; color: lightgray; text-decoration:none; border:0px solid #4466DD;}
@@ -306,7 +307,7 @@
                         onkd ();
                         */
                         numberOfNodes = 0;
-                        ifrPreview.srcdoc = `<html style="font-size: 1.5em">`
+                        ifrPreview.srcdoc = `<html style="font-size: 1.5em; background-color: inherit;">`
                             + `<head>`
                                 + `<style>`
                                     + `html {`
