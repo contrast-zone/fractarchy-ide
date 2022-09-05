@@ -784,17 +784,18 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
                 //var t2 = ~~((data.ifr.height / 2 + cy));
                 //var tr = "scale(" + magn + ") " + (level === 1?"": "translate(" + l2 + "px, " + t2 + "px) " + "scale("+ squashX + ", " + squashY + ") " + " rotate(" + (anglea - Math.PI / 2) + "rad) " + "scale(" + 1 / squashX + ", " + 1 / squashY + ") " + "translate(" + (-l2) + "px, " + (-t2) + "px) ");
 
-                var tr = "scale(" + magn + ") ";
                 if (data.ifr.style.transformOrigin !== "0px 0px 0px") data.ifr.style.transformOrigin = "0px 0px 0px";
-                if (data.ifr.style.transform !== tr) data.ifr.style.transform = tr;
+                var tr = "scale(" + magn.toFixed(2) + ") ";
+                //if (data.ifr.style.transform !== tr) data.ifr.style.transform = tr;
                 
                 var l = ~~((xa * squashX - magn * (data.ifr.width / 2 + cx)));
                 var t = ~~((ya * squashY - magn * (data.ifr.height / 2 + cy)));
-                //if (data.ifr.style.left === l + "px" && data.ifr.style.top === t + "px") { // it was scaling bug
+                if (data.ifr.style.left === l + "px" && data.ifr.style.top === t + "px" && data.ifr.style.transform === tr) { // it was scaling bug
                     //alert ("skip the same position");
-                //} else {
+                } else {
                     data.ifr.style.left = (cnv.parentNode.clientLeft + l) + "px";
                     data.ifr.style.top = (cnv.parentNode.clientTop + t) + "px";
+                    data.ifr.style.transform = tr;
 
                     if (data.clip1) data.clip1.remove();
                     if (data.clip2) data.clip2.remove();
@@ -836,7 +837,7 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
                     data.clip1 = clipPath1;
                     data.clip2 = clipPath2;
                     data.clip3 = clipPath3;
-                //}
+                }
 
                 data.ifr.style.visibility = "visible";
                 //if (level === 1)
@@ -1743,20 +1744,30 @@ select.cursor.angle = Math.PI;
     function setDimensions(width, height) {
         ww = width;
         hh = height;
-
+        /*
         if (ww > hh / ratio) {
             squashX = 1 / ratio;
             squashY = 1;
             rr = hh / 2 - shadowr;
             ferr = rr * uiscale;
-
             
         } else if (hh > ww / ratio){
             squashX = 1;
             squashY = 1 / ratio;
             rr = ww / 2 - shadowr;
             ferr = rr * uiscale;
-
+        */
+        if (ww > hh / ratio) {
+            squashX = 1 / ratio;
+            squashY = 1;
+            rr = (hh / 2 - shadowr);
+            ferr = rr * uiscale;
+            
+        } else if (hh > ww / ratio){
+            squashX = 1;
+            squashY = 1 / ratio;
+            rr = (hh / 2 - shadowr) * ratio;
+            ferr = rr * uiscale;
         } else {
             if (ww > hh) {
                 squashX = 1 / ratio;

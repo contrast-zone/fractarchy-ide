@@ -100,7 +100,22 @@
                         
                     } else {
                         window.parent.frames[1].postMessage({msg: "save", nodeTree: parser.parsesexpr (txt)}, "*");
-                    }                    
+                    }
+                    
+                } else if (event.data.msg === "populate") {
+                    ed.setValue (parser.stringify (event.data.nodeTree, 50));
+                    onkd ();
+
+                } else if (event.data.msg === "acceptChanges") {
+                    var txt = ed.getValue ();
+                    var parsed = parser.parsesexpr (txt);
+                    if (parsed.err) {
+                        var coord = parser.getCoords (txt, parsed.pos);
+                        alert ("Error: " + parsed.err + " at " + coord.row + ", " + coord.col);
+                        
+                    } else {
+                        window.parent.postMessage({msg: "acceptChanges", nodeTree: parsed}, "*");
+                    }
                 }
             };
             
@@ -194,27 +209,12 @@
             }
             */
 
-            var env;
+            //var env;
+            
             function init () {
-                var xhttp = new XMLHttpRequest ();
-                xhttp.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200) {
-                        window.addEventListener("load", wonload ());
-
-                        nodeTree = ["branches", parser.parsesexpr (this.responseText)];
-                        if (nodeTree.err) {
-                            var coords = parser.getCoords (this.responseText, nodeTree.pos);
-                            alert (nodeTree.err + ": " + coords.row + "-" + coords.column);
-                        }
-                        
-                        ed.setValue (parser.stringify (nodeTree[1], 50));
-                        onkd ();
-                    }
-                };
-
-                xhttp.open("GET", "../projects/contents.sdt", true);
-                xhttp.overrideMimeType("text/plain");
-                xhttp.send();
+                ed.setValue ("");
+                onkd ();
+                window.addEventListener("load", wonload ());
             }
 
             var nodeTree;

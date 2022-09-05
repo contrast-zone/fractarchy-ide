@@ -63,7 +63,7 @@
             &nbsp;
         </div>
         <div id="divPreview" style="position: absolute; visibility: hidden;">
-        <iframe id="ifrPreview" src="../README.md" style="border-style:none; position:relative; width:100%; height:100%; border:none; background-color: rgb(208,208,208);"></iframe>
+        <iframe id="ifrPreview" src="" style="border-style:none; position:relative; width:100%; height:100%; border:none; background-color: rgb(208,208,208);"></iframe>
         </div>
         &nbsp;
         </div>
@@ -72,6 +72,7 @@
         
         <script>
             var msg = (event) => {
+                
                 if (event.data.msg === "open") {
                     console.log ("message from source: " + event.data.msg);
 
@@ -88,6 +89,50 @@
                     } else {
                         window.parent.frames[1].postMessage({msg: "save", nodeTree: parser.parsesexpr (txt)}, "*");
                     }                    
+
+                } else if (event.data.msg === "populate") {
+                    nodeTree = ["branches", event.data.nodeTree];
+                    numberOfNodes = 0;
+                    ifrPreview.srcdoc = `<html style="font-size: 1.5em; background-color: inherit;">`
+                        + `<head>`
+                            + `<style>`
+                                + `html {`
+                                + `  scrollbar-color: rgb(64,64,64) rgb(208,208,208);`
+                                + `  scrollbar-width: thin;`
+                                + `}`
+                                
+                                + `::-webkit-scrollbar {`
+                                + `  width: 8px;`
+                                + `  height: 8px;`
+                                + `  background-color: rgb(208,208,208);`
+                                + `}`
+
+                                + `::-webkit-scrollbar-thumb {`
+                                + `  background: rgb(64,64,64);`
+                                + `  border-radius: 4px;`
+                                + `}`
+            
+                                + `::-webkit-scrollbar-corner {`
+                                + `  background-color: rgb(208,208,208);`
+                                + `}`
+                                
+                                + `html {`
+                                + `  color: rgb(48,48,48);`
+                                + `  background-color: rgb(208,208,208);`
+                                + `  margin: 0 auto;`
+                                + `  width: 24em;`
+                                + `  /*display: flex;`
+                                + `  justify-content: center;*/`
+                                + `}`
+
+                            + `</style>`
+                        + `</head>`
+                        + `<body>`
+                            + compiler.tree2html (nodeTree);
+                        + `</body>`
+                    + `</html>`;
+                    
+                    divStat.innerHTML = numberOfNodes + " nodes";
                 }
             };
             
@@ -153,72 +198,6 @@
                     }, 100);
                 });
             }
-            
-            function getCoords (text, offset) {
-                var i, ch, row = 1, col = 1;
-                if (text.length > 0)
-                    for (i = 0; i < offset; i += 1) {
-                        ch = text.charCodeAt(i);
-                        if (ch === 13 || ch === 10) {
-                            if (ch === 13 && text.charCodeAt (i + 1) === 10)
-                                i += 1;
-
-                            row += 1;
-                            col = 1;
-                            
-                        } else
-                          col += 1;
-                    }
-                
-                return {row: row, col: col};
-            }
-                        
-            function stringify (node, indent) {
-                var str = ""
-                
-                var code = node[0] === "code";
-                str += indent + "(\n";
-                str += Array.isArray (node[0])? "": indent + "    ";
-                var linechars = 0;
-                for (var i = 0; i < node.length; i++) {
-                    if (Array.isArray (node[i])) {
-                        str += (i === 0 || Array.isArray (node[i - 1])? "": "\n") + stringify (node[i], indent + "    ");
-                        str += Array.isArray (node[i + 1]) || i === node.length - 1? "": indent + "    ";
-                        linechars = 0;
-                        
-                    } else {
-                        var part
-                        if (node [i] === undefined)
-                            part = "UNDEFINED";
-                            
-                        else if (node [i] === null)
-                            part = "";
-                            
-                        else
-                            part = node[i].replaceAll("\n", "\\n");
-                         
-                        if (code) {
-                            str += (i > 0? indent + "    ": "") + part + "\n";
-                        
-                        } else {
-                            if (linechars + part.length > 80) {
-                               str += "\n" + indent + "    ";
-                               str += part + " ";
-                               linechars = part.length + 1;
-
-                            } else {
-                                str += part + " ";
-                                linechars += part.length + 1;
-                            }
-                        }
-                    }
-                }
-                
-                if (!Array.isArray (node[i - 1]) && !code) str += "\n";
-                str += indent + ")\n" + indent + "\n";
-                
-                return str;
-            }
 
             /*
             function getNode (node, path, next) {
@@ -242,117 +221,10 @@
             }
             */
 
-            function stringify (node, indent) {
-                var str = ""
-                
-                var code = node[0] === "code";
-                str += indent + "(\n";
-                str += Array.isArray (node[0])? "": indent + "    ";
-                var linechars = 0;
-                for (var i = 0; i < node.length; i++) {
-                    if (Array.isArray (node[i])) {
-                        str += (i === 0 || Array.isArray (node[i - 1])? "": "\n") + stringify (node[i], indent + "    ");
-                        str += Array.isArray (node[i + 1]) || i === node.length - 1? "": indent + "    ";
-                        linechars = 0;
-                        
-                    } else {
-                        var part
-                        if (node [i] === undefined)
-                            part = "UNDEFINED";
-                            
-                        else if (node [i] === null)
-                            part = "";
-                            
-                        else
-                            part = node[i].replaceAll("\n", "\\n");
-                         
-                        if (code) {
-                            str += (i > 0? indent + "    ": "") + part + "\n";
-                        
-                        } else {
-                            if (linechars + part.length > 80) {
-                               str += "\n" + indent + "    ";
-                               str += part + " ";
-                               linechars = part.length + 1;
-
-                            } else {
-                                str += part + " ";
-                                linechars += part.length + 1;
-                            }
-                        }
-                    }
-                }
-                
-                if (!Array.isArray (node[i - 1]) && !code) str += "\n";
-                str += indent + ")\n" + indent + "\n";
-                
-                return str;
-            }
-
-            var env;
             function init () {
-                var xhttp = new XMLHttpRequest ();
-                xhttp.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200) {
-                        window.addEventListener("load", wonload ());
-
-                        
-                        nodeTree = ["branches", parser.parsesexpr (this.responseText)];
-                        if (nodeTree.err) {
-                            var coords = parser.getCoords (this.responseText, nodeTree.pos);
-                            alert (nodeTree.err + ": " + coords.row + "-" + coords.column);
-                        }
-                        /*
-                        ed.setValue (stringify (nodeTree[1], ""));
-                        onkd ();
-                        */
-                        numberOfNodes = 0;
-                        ifrPreview.srcdoc = `<html style="font-size: 1.5em; background-color: inherit;">`
-                            + `<head>`
-                                + `<style>`
-                                    + `html {`
-                                    + `  scrollbar-color: rgb(64,64,64) rgb(208,208,208);`
-                                    + `  scrollbar-width: thin;`
-                                    + `}`
-                                    
-                                    + `::-webkit-scrollbar {`
-                                    + `  width: 8px;`
-                                    + `  height: 8px;`
-                                    + `  background-color: rgb(208,208,208);`
-                                    + `}`
-
-                                    + `::-webkit-scrollbar-thumb {`
-                                    + `  background: rgb(64,64,64);`
-                                    + `  border-radius: 4px;`
-                                    + `}`
-                
-                                    + `::-webkit-scrollbar-corner {`
-                                    + `  background-color: rgb(208,208,208);`
-                                    + `}`
-                                    
-                                    + `html {`
-                                    + `  color: rgb(48,48,48);`
-                                    + `  background-color: rgb(208,208,208);`
-                                    + `  margin: 0 auto;`
-                                    + `  width: 24em;`
-                                    + `  /*display: flex;`
-                                    + `  justify-content: center;*/`
-                                    + `}`
-
-                                + `</style>`
-                            + `</head>`
-                            + `<body>`
-                                + compiler.tree2html (nodeTree);//node2html (nodeTree[1][1]);//stringify (nodeTree[1], "");// this.responseText;
-                            + `</body>`
-                        + `</html>`;
-                        
-                        divStat.innerHTML = numberOfNodes + " nodes";
-                    }
-                };
-
-                xhttp.open("GET", "../projects/contents.sdt", true);
-                xhttp.overrideMimeType("text/plain");
-                xhttp.send();
+                window.addEventListener("load", wonload ());
+                nodeTree = {nodeRawData: ["tree", ["node"]], parent: {index: 0}};
+                nodeTree.parent.children = [nodeTree];
             }
 
             var nodeTree;

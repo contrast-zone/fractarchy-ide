@@ -219,7 +219,15 @@
                     loaded = false;
                 }
                 
-                if (event.data.msg === "save") {
+                if (event.data.msg === "populate") {
+                    nodeRawTree = event.data.nodeTree;
+                    
+                    nodeTree = {nodeRawData: nodeRawTree, parent: {index: 0}};
+                    nodeTree.parent.children = [nodeTree];
+                    
+                    divContainer.dispatchEvent(new CustomEvent('redefineData', {detail: nodeTree}));
+                
+                } else if (event.data.msg === "save") {
                     nodeRawTree = event.data.nodeTree;
                     
                     nodeTree = {nodeRawData: nodeRawTree, parent: {index: 0}};
@@ -252,7 +260,7 @@
                 topc = stripCursor (topc)
                 var pl = objOrbit.getPathLength ()
                 if (!loaded)
-                    par123.postMessage({msg: "syncTarget", cursor: topc, pathLength: pl}, "*");
+                    window.parent.postMessage({msg: "syncTarget", cursor: topc, pathLength: pl}, "*");
            }
 
             var error;
@@ -703,46 +711,27 @@
                         
             var env;
             function init () {
-                var xhttp = new XMLHttpRequest ();
-                xhttp.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200) {
-                        txt = this.responseText;
-                        var parsed = parser.parsesexpr (txt);
-                        if (parsed.err) {
-                            var coord = parser.getCoords (txt, parsed.pos);
-                            alert ("Error: " + parsed.err + " at " + coord.row + ", " + coord.col);
-                            
-                        } else {
-                            nodeRawTree = parsed;
-                        }                    
-                        
-                        env = setupEnv ({
-                                "background-color": "gray",
-                                "oval-color": "rgb(48,48,48)",
-                                "rod-length": "5%",
-                                "contents-scale": "100%",
-                                "ui-scale": "120%",
-                                "power-consumption-optimisation": "75%",
-                                "top-node": "contents/c-0.xml"
-                            }
-                        );
-                        
-                        nodeTree = {nodeRawData: nodeRawTree, parent: {index: 0}};
-                        nodeTree.parent.children = [nodeTree];
-                        
-                        document.body.style.backgroundColor = env.backColor;
-                        //divContainer.style.filter = "drop-shadow(0px 0px " + env.shadowRadius + "px " + env.shadowColor + ")";
-                        window.addEventListener("load", wonload ());
+                env = setupEnv ({
+                        "background-color": "gray",
+                        "oval-color": "rgb(48,48,48)",
+                        "rod-length": "5%",
+                        "contents-scale": "100%",
+                        "ui-scale": "120%",
+                        "power-consumption-optimisation": "75%",
                     }
-                };
-                xhttp.open("GET", "../projects/contents.sdt", true);
-                xhttp.overrideMimeType("text/plain");
-                xhttp.send();
+                );
+
+                //nodeTree = {nodeRawData: nodeRawTree, parent: {index: 0}};
+                nodeTree = {nodeRawData: ["tree", ["node"]], parent: {index: 0}};
+                nodeTree.parent.children = [nodeTree];
+                
+                document.body.style.backgroundColor = env.backColor;
+                //divContainer.style.filter = "drop-shadow(0px 0px " + env.shadowRadius + "px " + env.shadowColor + ")";
+                window.addEventListener("load", wonload ());
             }
             
             var objOrbit;
             var loaded = true;
-            var par123 = window.parent;
             var nodeTree;
             var nodeRawTree;
             
