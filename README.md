@@ -6,16 +6,6 @@
 
 - - -
 
-    // under construction //
-        
-![](media/ssh.png)
-
-[online probe](https://contrast-zone.github.io/fractarchy-ide/index.html)
-
-    // under construction //
-
-- - -
-
 > ## promotional material
 > 
 > ![](media/ad.png)
@@ -25,4 +15,12 @@
 > There are many types of coding super-powers, but in this project, I wrapped coding of visual contents into a fun interface, and I tried to make the coding itself a fun. A brand new language customized for a sake of coding visual contents is bundled together with a brand new visual interface extruded from a system of input/output duality. Keep your souls safe beneath the comfort zone, but keep your hearts open, and join me on a journey of coding visual contents using an interface inspired from another world. You may heard of that world before. It is called imagination. And, as you may already know, that world may be pretty awesome.
 
 - - -
+
+    // under construction //
+        
+![](media/ssh.png)
+
+[online probe](https://contrast-zone.github.io/fractarchy-ide/index.html)
+
+    // under construction //
 
