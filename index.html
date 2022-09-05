@@ -189,15 +189,15 @@
                     backToBrowse ();
 
                 } else if (event.data.msg === "keep") {
+                    document.getElementById("source").contentWindow.postMessage({msg: "acceptChanges"}, "*");
+
+                } else if (event.data.msg === "acceptChanges") {
                     srcloaded = false;
                     tgtloaded = false;
                     
-                    document.getElementById("source").contentWindow.postMessage({msg: "acceptChanges"}, "*");
+                    nodeTree = event.data.nodeTree;
 
                     backToBrowse ();
-
-                } else if (event.data.msg === "acceptChanges") {
-                    nodeTree = event.data.nodeTree;
                     
                 } else if (event.data.msg === "syncSource") {
                     document.getElementById("source").contentWindow.postMessage({msg: "sync", cursor: event.data.cursor, pathLength: event.data.pathLength}, "*");
