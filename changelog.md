@@ -2,4 +2,5 @@
     - initial commit  
     - synchronized left and right browsing panes  
     - prototyping edit/print mode   
+    - accepting edits
 
