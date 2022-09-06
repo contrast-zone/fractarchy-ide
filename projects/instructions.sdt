@@ -8,6 +8,12 @@
             )
         )
         (
+            image 
+            (
+                source "image.png" 
+            )
+        )
+        (
             paragraph Let me introduce you to 
             (
                 bold Fractarchy-IDE, 
@@ -31,9 +37,6 @@
             Finally, a fair amount of user creativity will be 
             the judge of Fractarchy-IDE fitness for particular 
             purposes. 
-        )
-        (
-            image (source "image.png")
         )
     )
     (
@@ -459,6 +462,9 @@
                             "!                                        !                           !" 
                             "!  * inline code: `icode`                !  quoted string            !" 
                             "!  * block code: `bcode`                 !  a list of quoted strings !" 
+                            "!  * image: `image`                      !                           !" 
+                            "!      * source: `source`                !  quoted string            !" 
+                            "!                                        !                           !" 
                             "!  * horizontal ruler: `hruler`          !                           !" 
                             "+----------------------------------------+---------------------------+" 
                         )
