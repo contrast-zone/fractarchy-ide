@@ -191,6 +191,14 @@
                 } else if (event.data.msg === "keep") {
                     document.getElementById("source").contentWindow.postMessage({msg: "acceptChanges"}, "*");
 
+                } else if (event.data.msg === "invalidEdit") {
+                    document.getElementById("svgkeepl").style.display = "none";
+                    document.getElementById("svgkeepr").style.display = "none";
+
+                } else if (event.data.msg === "validEdit") {
+                    document.getElementById("svgkeepl").style.display = "inline";
+                    document.getElementById("svgkeepr").style.display = "inline";
+
                 } else if (event.data.msg === "acceptChanges") {
                     srcloaded = false;
                     tgtloaded = false;
@@ -517,11 +525,10 @@
                 document.getElementById("target").contentWindow.addEventListener("touchstart", loadSource, false);
             }
             
-            var nodeTree;
-            var populateFrom;
-            
             function populate () {
                 if (!nodeTree) {
+                    nodeTree = ["tree", ["node"], ["branches"]];
+                    
                     fetch('./projects/instructions.sdt')
                       .then((response) => response.text ())
                       .then((txt) => {
@@ -572,8 +579,11 @@
                 }
             }
             
+            var currentNode;
             var srcloaded, tgtloaded;
-
+            var nodeTree;
+            var populateFrom;
+            
             document.getElementById("source").addEventListener ('load', () => {
                 srcloaded = true;
                 if (tgtloaded) {
@@ -598,14 +608,6 @@
             
             document.getElementById("source").contentWindow.location.replace("./src/source-browse.html");
             document.getElementById("target").contentWindow.location.replace("./src/target-browse.html");
-            
-            var currentNode;
-
-            function init () {
-                nodeTree = ["tree", ["node"], ["branches"]];
-            }
-            
-            //init ();
 
           </script>
     </body>

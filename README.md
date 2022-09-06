@@ -4,8 +4,6 @@
 
 **tags:** content-management-system, hierarchical-data-organizer, text-processing-toolkit, zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
 
-- - -
-
 > ## promotional material
 > 
 > ![](media/ad.png)
@@ -16,13 +14,13 @@
 > 
 > Keep your souls safe beneath the comfort zone, but keep your hearts open, and join me on a journey of coding visual contents using an interface inspired from another world. You may have already heard of that world. It is called imagination. And, as you may already know, that world may be pretty awesome.
 
-- - -
-
     // under construction //
         
 ![](media/ssh.png)
 
-[online probe](https://contrast-zone.github.io/fractarchy-ide/index.html)
-
     // under construction //
+
+- testing instructions
+    - online probe: visit [https://contrast-zone.github.io/fractarchy-ide/index.html](https://contrast-zone.github.io/fractarchy-ide/index.html)
+    - offline probe: unzip the package to a local web server and open `index.html` in a browser
 

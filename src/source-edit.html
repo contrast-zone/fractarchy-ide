@@ -70,17 +70,43 @@
         </div>
         <script>
             var ed = editor.edit ("divEditE", options);
+            
+            var firstVisit = true;
+            var myTimeout;
 
             document.addEventListener('selectionchange', function(e) {
                 onkd ();
             });
             
             ed.getInput ().addEventListener("input", onkd, false);
+
+            ed.getInput ().addEventListener("input", oninp, false);
             
             function onkd () {
                 var pos = parser.getCoords(ed.getValue(), ed.getSelectionStart());
                 document.getElementById('divStat').innerHTML = "ln " + pos.row + ", col " + pos.col;
             }
+                            
+            function oninp () {
+                window.parent.postMessage({msg: "invalidEdit"}, "*");
+                if (!firstVisit) {
+                    if (myTimeout) clearTimeout (myTimeout);
+                    myTimeout = setTimeout(function () {    
+                        var txt = ed.getValue ();
+                        var parsed = parser.parsesexpr (txt);
+                        if (parsed.err) {
+                            var coord = parser.getCoords (txt, parsed.pos);
+                            window.parent.frames[1].postMessage({msg: "error", err: "Error: " + parsed.err + " at " + coord.row + ", " + coord.col}, "*");
+                            
+                        } else {
+                            window.parent.postMessage({msg: "validEdit"}, "*");
+                            window.parent.frames[1].postMessage({msg: "populate", nodeTree: parsed}, "*");
+                        }
+                    }, 500);
+                }
+            }
+            
+            ed.getInput ().addEventListener("input", onkd, false);
         </script>
         
         <script>
@@ -108,6 +134,7 @@
                     currentNode = event.data.currentNode;
                     ed.setValue (parser.stringify (event.data.nodeTree, 50));
                     onkd ();
+                    firstVisit = false;
 
                 } else if (event.data.msg === "acceptChanges") {
                     var txt = ed.getValue ();

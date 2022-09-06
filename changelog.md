@@ -4,4 +4,5 @@
     - prototyping edit/print mode   
     - accepting edits  
     - edit/print in sync with current browsing node  
+    - print in live sync with edit  
 

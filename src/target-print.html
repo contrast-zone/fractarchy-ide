@@ -128,11 +128,55 @@
                             + `</style>`
                         + `</head>`
                         + `<body>`
-                            + compiler.tree2html (nodeTree);
+                            + compiler.tree2html (nodeTree)
                         + `</body>`
                     + `</html>`;
                     
-                    divStat.innerHTML = numberOfNodes + " nodes";
+                    divStat.innerHTML = numberOfNodes + (numberOfNodes === 1? " node": " nodes");
+                
+                } else if (event.data.msg === "error") {
+                    nodeTree = ["branches", event.data.nodeTree];
+                    numberOfNodes = 0;
+                    ifrPreview.srcdoc = `<html style="font-size: 1.5em; background-color: inherit;">`
+                        + `<head>`
+                            + `<style>`
+                                + `html {`
+                                + `  scrollbar-color: rgb(64,64,64) rgb(208,208,208);`
+                                + `  scrollbar-width: thin;`
+                                + `}`
+                                
+                                + `::-webkit-scrollbar {`
+                                + `  width: 8px;`
+                                + `  height: 8px;`
+                                + `  background-color: rgb(208,208,208);`
+                                + `}`
+
+                                + `::-webkit-scrollbar-thumb {`
+                                + `  background: rgb(64,64,64);`
+                                + `  border-radius: 4px;`
+                                + `}`
+            
+                                + `::-webkit-scrollbar-corner {`
+                                + `  background-color: rgb(208,208,208);`
+                                + `}`
+                                
+                                + `html {`
+                                + `  color: rgb(48,48,48);`
+                                + `  background-color: rgb(208,208,208);`
+                                + `  margin: 0 auto;`
+                                + `  width: 24em;`
+                                + `  /*display: flex;`
+                                + `  justify-content: center;*/`
+                                + `}`
+
+                            + `</style>`
+                        + `</head>`
+                        + `<body>`
+                            + event.data.err
+                        + `</body>`
+                    + `</html>`;
+                    
+                    divStat.innerHTML = numberOfNodes + (numberOfNodes === 1? " node": " nodes");
                 }
             };
             
