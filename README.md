@@ -30,7 +30,7 @@ Download and unzip this package to a local web server folder and open `index.htm
 
 ## use instructions
 
-Refer to `./projects/instructions.sdt` file.
+Refer to `projects/instructions.sdt` file.
 
 ## licensing
 
