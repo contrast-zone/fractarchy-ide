@@ -525,8 +525,23 @@
                 document.getElementById("target").contentWindow.addEventListener("touchstart", loadSource, false);
             }
             
+            function getBaseUrl (url) {
+                var baseUrl = url;
+                const base = document.createElement('base');
+                base.href = baseUrl;
+                const head = document.getElementsByTagName('head')[0];
+                head.insertBefore(base, head.childNodes[0]);
+                baseUrl = base.baseURI.substring(0, base.baseURI.lastIndexOf("/") + 1);
+                base.remove();
+                
+                return baseUrl;
+            }
+
             function populate () {
+                var url = "./projects/instructions.sdt"
                 if (!nodeTree) {
+                    baseUrl = getBaseUrl(url);
+
                     nodeTree = ["tree", ["node"], ["branches"]];
 
                     var xhttp = new XMLHttpRequest ();
@@ -541,14 +556,14 @@
                             } else {
                                 nodeTree = parsed;
                                 document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: parsed}, "*");
-                                document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: parsed}, "*");
+                                document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: parsed, baseUrl: baseUrl}, "*");
                             }                    
                         }
                     };
-                    xhttp.open("GET", "./projects/instructions.sdt", true);
+                    xhttp.open("GET", url, true);
                     xhttp.overrideMimeType("text/plain");
                     xhttp.send();
-                    
+                                
                 } else {
                     function getNode (pl, cn, nt) {
                         if (pl > 0)
@@ -560,19 +575,19 @@
                     
                     if (!currentNode) {
                         document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: nodeTree}, "*");
-                        document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: nodeTree}, "*");
+                        document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: nodeTree, baseUrl: baseUrl}, "*");
                         
                     } else if (populateFrom === "browse") {
                         var nt = getNode (currentNode.pathLength, currentNode.cursor.children[0], nodeTree);
                         
-                        document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: nt, currentNode: currentNode}, "*");
-                        document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: nt}, "*");
+                        document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: nt, currentNode: currentNode, baseUrl: baseUrl}, "*");
+                        document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: nt, baseUrl: baseUrl}, "*");
                     
                     } else if (populateFrom === "edit/print") {
                         var nt = nodeTree;
                         
                         document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: nt}, "*");
-                        document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: nt}, "*");
+                        document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: nt, baseUrl: baseUrl}, "*");
 
                         document.getElementById("source").contentWindow.postMessage({msg: "setCurNode", cursor: currentNode.cursor, pathLength: currentNode.pathLength}, "*");
                         document.getElementById("target").contentWindow.postMessage({msg: "setCurNode", cursor: currentNode.cursor, pathLength: currentNode.pathLength}, "*");
@@ -588,6 +603,7 @@
             var srcloaded, tgtloaded;
             var nodeTree;
             var populateFrom;
+            var baseUrl;
             
             document.getElementById("source").addEventListener ('load', () => {
                 srcloaded = true;

@@ -5,7 +5,7 @@ var compiler = (function (obj) {
     }
 }) (
     (function () {
-        function node2html (node) {
+        function node2html (node, baseUrl) {
             "use strict";
             
             var maps= {
@@ -96,6 +96,10 @@ var compiler = (function (obj) {
                 "yitem": {
                     "open": '<li><b>☑</b>&nbsp;&nbsp;',
                     "close": '</li>'
+                },
+                "image": {
+                    "open": '<img src="$source$" width="100%">',
+                    "close": '</img>'
                 }
             }
             
@@ -124,11 +128,15 @@ var compiler = (function (obj) {
                         var map = maps[tmpmap];
                             
                         if (map) {
-                            if (tmpmap === "hyperlink")
+                            if (tmpmap === "hyperlink") {
                                 txt += map["open"].replace("$address$", stripQuotes (node[0][1][1])).replace("$target$", stripQuotes (node[0][2][1]));
                             
-                            else
+                            } else if (tmpmap === "image") {
+                                txt += map["open"].replace("$source$", baseUrl + stripQuotes (node[1][1]));
+                            
+                            } else {
                                 txt += map["open"];
+                            }
                                 
                             for (var i = 1; i < node.length; i++) {
                                 if (tmpmap === "icode" || tmpmap === "bcode") {
@@ -158,7 +166,7 @@ var compiler = (function (obj) {
         }
 
                     
-        function tree2html (topNode) {
+        function tree2html (topNode, baseUrl) {
             function getNode (topNode, margin) {
                 if (!margin) margin = 0;
                 var ret = "";
@@ -167,7 +175,7 @@ var compiler = (function (obj) {
                 for (var i = 1; i < node.length; i++) {
                     numberOfNodes++;
                     ret += `<div style="background-color: rgb(208,208,208); width: 24em; border-radius: 2em; border: 0.2em solid rgb(64,64,64); padding: 1em; margin: 1em; margin-left: ` + margin + `;">`
-                        + node2html (node[i][1])
+                        + node2html (node[i][1], baseUrl)
                     
                     if (node[i][2])
                         ret += getNode (node[i][2]);//tree2html (node[i][2]);

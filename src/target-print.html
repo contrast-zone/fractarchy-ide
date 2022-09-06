@@ -91,6 +91,7 @@
                     }                    
 
                 } else if (event.data.msg === "populate") {
+                    baseUrl = event.data.baseUrl;
                     nodeTree = ["branches", event.data.nodeTree];
                     numberOfNodes = 0;
                     ifrPreview.srcdoc = `<html style="font-size: 1.5em; background-color: inherit;">`
@@ -128,7 +129,7 @@
                             + `</style>`
                         + `</head>`
                         + `<body>`
-                            + compiler.tree2html (nodeTree)
+                            + compiler.tree2html (nodeTree, baseUrl)
                         + `</body>`
                     + `</html>`;
                     
@@ -272,6 +273,7 @@
             }
 
             var nodeTree;
+            var baseUrl;
             
             var divStat = document.getElementById ("divStat");
             var divPreview = document.getElementById ("divPreview");

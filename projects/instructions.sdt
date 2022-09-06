@@ -32,6 +32,9 @@
             the judge of Fractarchy-IDE fitness for particular 
             purposes. 
         )
+        (
+            image (source "image.png")
+        )
     )
     (
         branches 
