@@ -574,7 +574,7 @@
                     }
                     
                     if (!currentNode) {
-                        document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: nodeTree}, "*");
+                        document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: nodeTree, baseUrl: baseUrl}, "*");
                         document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: nodeTree, baseUrl: baseUrl}, "*");
                         
                     } else if (populateFrom === "browse") {
