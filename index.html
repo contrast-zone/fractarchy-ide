@@ -528,22 +528,27 @@
             function populate () {
                 if (!nodeTree) {
                     nodeTree = ["tree", ["node"], ["branches"]];
+
+                    var xhttp = new XMLHttpRequest ();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            var txt = this.responseText;
+                            var parsed = parser.parsesexpr (txt);
+                            if (parsed.err) {
+                                var coord = parser.getCoords (txt, parsed.pos);
+                                alert ("Error: " + parsed.err + " at " + coord.row + ", " + coord.col);
+                                
+                            } else {
+                                nodeTree = parsed;
+                                document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: parsed}, "*");
+                                document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: parsed}, "*");
+                            }                    
+                        }
+                    };
+                    xhttp.open("GET", "./projects/instructions.sdt", true);
+                    xhttp.overrideMimeType("text/plain");
+                    xhttp.send();
                     
-                    fetch('./projects/instructions.sdt')
-                      .then((response) => response.text ())
-                      .then((txt) => {
-                        var parsed = parser.parsesexpr (txt);
-                        if (parsed.err) {
-                            var coord = parser.getCoords (txt, parsed.pos);
-                            alert ("Error: " + parsed.err + " at " + coord.row + ", " + coord.col);
-                            
-                        } else {
-                            nodeTree = parsed;
-                            document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: parsed}, "*");
-                            document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: parsed}, "*");
-                        }                    
-                      });
-                      
                 } else {
                     function getNode (pl, cn, nt) {
                         if (pl > 0)
