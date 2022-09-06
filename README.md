@@ -18,9 +18,11 @@
 > 
 > Using Fractarchy-IDE, we uncommonly combine coding with visual designing. Keep your souls safe in the comfort zone, but keep your hearts open, and join me on a journey of coding visual contents using a creation inspired from another world. You may have already heard of that world. It is called imagination. And, as you may already know, that world may be pretty awesome.
 
-## actual screenshot
+## actual screenshots
         
-![](media/ssh.png)
+![](media/ssh1.png)
+
+![](media/ssh2.png)
 
 ## online test
 
@@ -36,7 +38,7 @@ Refer to `projects/instructions.sdt` file.
 
 ## licensing
 
-This software is released under [conditional Creative Commons Attribution 4.0 International License](LICENSE). It is free for personal use, but if your plans meet commercial use, please refer to the licence file for details about pricing.
+This software is released under [conditional Creative Commons Attribution 4.0 International License](LICENSE). It is free for limited personal use, but if your plans meet commercial use, please refer to the licence file for details about pricing.
 
     // under construction //
 
