@@ -84,6 +84,8 @@
         </script>
         
         <script>
+            var currentNode;
+            
             var msg = (event) => {
                 if (event.data.msg === "open") {
                     console.log ("message from source: " + event.data.msg);
@@ -103,6 +105,7 @@
                     }
                     
                 } else if (event.data.msg === "populate") {
+                    currentNode = event.data.currentNode;
                     ed.setValue (parser.stringify (event.data.nodeTree, 50));
                     onkd ();
 
@@ -114,7 +117,7 @@
                         alert ("Error: " + parsed.err + " at " + coord.row + ", " + coord.col);
                         
                     } else {
-                        window.parent.postMessage({msg: "acceptChanges", nodeTree: parsed}, "*");
+                        window.parent.postMessage({msg: "acceptChanges", nodeTree: parsed, currentNode: currentNode}, "*");
                     }
                 }
             };

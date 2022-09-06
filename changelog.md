@@ -2,5 +2,6 @@
     - initial commit  
     - synchronized left and right browsing panes  
     - prototyping edit/print mode   
-    - accepting edits
+    - accepting edits  
+    - edit/print in sync with current browsing node  
 

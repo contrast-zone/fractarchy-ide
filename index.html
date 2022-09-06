@@ -3,31 +3,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-    <title>Fractadocs</title>
+    <title>Fractarchy-IDE</title>
     <link rel="icon" type="image/png" href="./media/favicon128.png"/>
 
     <!-- Primary Meta Tags -->
-    <meta name="title" content="Fractadocs">
+    <meta name="title" content="Fractarchy-IDE">
     <meta name="description" content="Structured document tree processing framework. Fractal-structure inspired, parent-child orbiting, zooming-elements based.">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://contrast-zone.github.io/fractadocs">
-    <meta property="og:title" content="Fractabook">
+    <meta property="og:url" content="https://github.com/contrast-zone/fractarchy-ide">
+    <meta property="og:title" content="Fractarchy-IDE">
     <meta property="og:description" content="Structured document tree processing framework. Fractal-structure inspired, parent-child orbiting, zooming-elements based.">
     <meta property="og:image" content="media/socmedia.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://contrast-zone.github.io/fractadocs">
-    <meta property="twitter:title" content="Fractabook">
+    <meta property="twitter:url" content="https://github.com/contrast-zone/fractarchy-ide">
+    <meta property="twitter:title" content="Fractarchy-IDE">
     <meta property="twitter:description" content="Structured document tree processing framework. Fractal-structure inspired, parent-child orbiting, zooming-elements based.">
     <meta property="twitter:image" content="media/socmedia.png">
 
     <!--meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" /-->
     
-    <!--link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"-->
-   
     <head>
         <style media="screen">
             html, body
@@ -94,12 +92,12 @@
             <svg id="unfold" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="visibility: hidden;"><title>unfold</title><path fill="rgb(208,208,208,0.2)" d="M24 42.3 14.7 33l2.5-2.5 6.8 6.8 6.8-6.8 2.5 2.5Zm-6.8-24.6-2.5-2.5L24 5.9l9.3 9.3-2.5 2.5-6.8-6.85Z"/></svg>
         </a>
         <a id="btnlslide" style="position: absolute; color: rgb(208,208,208);">
-            <svg id="svglcropfull" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:inline;"><title>full page</title><path fill="rgb(208,208,208)" d="M9.1 42.3q-1.35 0-2.375-1.025T5.7 38.9V9.1q0-1.4 1.025-2.4t2.375-1h29.8q1.4 0 2.4 1t1 2.4v29.8q0 1.35-1 2.375T38.9 42.3Zm0-3.4h29.8V9.1H9.1v29.8Zm0 0V9.1v29.8Z"/></svg>
-            <svg id="svglcrophalf" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:none;"><title>half page</title><path fill="rgb(208,208,208)" d="M28.85 42.3q-1.4 0-2.4-1.025t-1-2.375V9.1q0-1.4 1-2.4t2.4-1h10.2q1.4 0 2.425 1T42.5 9.1v29.8q0 1.35-1.025 2.375T39.05 42.3Zm0-33.2v29.8h10.2V9.1h-10.2ZM8.95 42.3q-1.4 0-2.425-1.025T5.5 38.9V9.1q0-1.4 1.025-2.4t2.425-1h10.2q1.4 0 2.4 1t1 2.4v29.8q0 1.35-1 2.375t-2.4 1.025Zm0-33.2v29.8h10.2V9.1H8.95Zm30.1 0h-10.2 10.2Zm-19.9 0H8.95h10.2Z"/></svg>
+            <svg id="svglcropfull" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:inline;"><title>full width</title><path fill="rgb(208,208,208)" d="M9.1 42.3q-1.35 0-2.375-1.025T5.7 38.9V9.1q0-1.4 1.025-2.4t2.375-1h29.8q1.4 0 2.4 1t1 2.4v29.8q0 1.35-1 2.375T38.9 42.3Zm0-3.4h29.8V9.1H9.1v29.8Zm0 0V9.1v29.8Z"/></svg>
+            <svg id="svglcrophalf" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:none;"><title>half width</title><path fill="rgb(208,208,208)" d="M28.85 42.3q-1.4 0-2.4-1.025t-1-2.375V9.1q0-1.4 1-2.4t2.4-1h10.2q1.4 0 2.425 1T42.5 9.1v29.8q0 1.35-1.025 2.375T39.05 42.3Zm0-33.2v29.8h10.2V9.1h-10.2ZM8.95 42.3q-1.4 0-2.425-1.025T5.5 38.9V9.1q0-1.4 1.025-2.4t2.425-1h10.2q1.4 0 2.4 1t1 2.4v29.8q0 1.35-1 2.375t-2.4 1.025Zm0-33.2v29.8h10.2V9.1H8.95Zm30.1 0h-10.2 10.2Zm-19.9 0H8.95h10.2Z"/></svg>
         </a>
         <a id="btnrslide" style="position: absolute; color: rgb(208,208,208);">
-            <svg id="svgrcropfull" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:inline;"><title>full page</title><path fill="rgb(48,48,48)" d="M9.1 42.3q-1.35 0-2.375-1.025T5.7 38.9V9.1q0-1.4 1.025-2.4t2.375-1h29.8q1.4 0 2.4 1t1 2.4v29.8q0 1.35-1 2.375T38.9 42.3Zm0-3.4h29.8V9.1H9.1v29.8Zm0 0V9.1v29.8Z"/></svg>
-            <svg id="svgrcrophalf" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:none;"><title>half page</title><path fill="rgb(48,48,48)" d="M28.85 42.3q-1.4 0-2.4-1.025t-1-2.375V9.1q0-1.4 1-2.4t2.4-1h10.2q1.4 0 2.425 1T42.5 9.1v29.8q0 1.35-1.025 2.375T39.05 42.3Zm0-33.2v29.8h10.2V9.1h-10.2ZM8.95 42.3q-1.4 0-2.425-1.025T5.5 38.9V9.1q0-1.4 1.025-2.4t2.425-1h10.2q1.4 0 2.4 1t1 2.4v29.8q0 1.35-1 2.375t-2.4 1.025Zm0-33.2v29.8h10.2V9.1H8.95Zm30.1 0h-10.2 10.2Zm-19.9 0H8.95h10.2Z"/></svg>
+            <svg id="svgrcropfull" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:inline;"><title>full width</title><path fill="rgb(48,48,48)" d="M9.1 42.3q-1.35 0-2.375-1.025T5.7 38.9V9.1q0-1.4 1.025-2.4t2.375-1h29.8q1.4 0 2.4 1t1 2.4v29.8q0 1.35-1 2.375T38.9 42.3Zm0-3.4h29.8V9.1H9.1v29.8Zm0 0V9.1v29.8Z"/></svg>
+            <svg id="svgrcrophalf" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:none;"><title>half width</title><path fill="rgb(48,48,48)" d="M28.85 42.3q-1.4 0-2.4-1.025t-1-2.375V9.1q0-1.4 1-2.4t2.4-1h10.2q1.4 0 2.425 1T42.5 9.1v29.8q0 1.35-1.025 2.375T39.05 42.3Zm0-33.2v29.8h10.2V9.1h-10.2ZM8.95 42.3q-1.4 0-2.425-1.025T5.5 38.9V9.1q0-1.4 1.025-2.4t2.425-1h10.2q1.4 0 2.4 1t1 2.4v29.8q0 1.35-1 2.375t-2.4 1.025Zm0-33.2v29.8h10.2V9.1H8.95Zm30.1 0h-10.2 10.2Zm-19.9 0H8.95h10.2Z"/></svg>
         </a>
         <a id="btnredpr" style="position: absolute; color: rgb(208,208,208);">
             <svg id="unfold" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="visibility: hidden;"><title>unfold</title><path fill="rgb(48,48,48,0.2)" d="M24 42.3 14.7 33l2.5-2.5 6.8 6.8 6.8-6.8 2.5 2.5Zm-6.8-24.6-2.5-2.5L24 5.9l9.3 9.3-2.5 2.5-6.8-6.85Z"/></svg>
@@ -166,6 +164,7 @@
                     
                     srcloaded = false;
                     tgtloaded = false;
+                    populateFrom = "browse";
 
                     document.getElementById("source").contentWindow.location.replace("./src/source-edit.html");
                     document.getElementById("btnledpr").style.display = "none";
@@ -185,6 +184,7 @@
                 } else if (event.data.msg === "lose") {
                     srcloaded = false;
                     tgtloaded = false;
+                    populateFrom = "edit/print";
                     
                     backToBrowse ();
 
@@ -194,15 +194,34 @@
                 } else if (event.data.msg === "acceptChanges") {
                     srcloaded = false;
                     tgtloaded = false;
+                    populateFrom = "edit/print";
                     
-                    nodeTree = event.data.nodeTree;
+                    function setNodeTree (pl, cn, nt, newnt) {
+                        if (pl > 1) {
+                            setNodeTree (pl - 1, cn.children[cn.index], nt[2][cn.index + 1], newnt);
+                        
+                        } else if (pl === 0 && nt === nodeTree) {
+                            nodeTree = newnt;
+                            
+                        } else {
+                            nt[2][cn.index + 1] = newnt;
+                        }
+                    }
+
+                    if (!currentNode)
+                        nodeTree = event.data.nodeTree;
+                    
+                    else
+                        setNodeTree (event.data.currentNode.pathLength, event.data.currentNode.cursor.children[0], nodeTree, event.data.nodeTree);
 
                     backToBrowse ();
                     
                 } else if (event.data.msg === "syncSource") {
+                    currentNode = {cursor: event.data.cursor, pathLength: event.data.pathLength};
                     document.getElementById("source").contentWindow.postMessage({msg: "sync", cursor: event.data.cursor, pathLength: event.data.pathLength}, "*");
                     
                 } else  if (event.data.msg === "syncTarget") {
+                    currentNode = {cursor: event.data.cursor, pathLength: event.data.pathLength};
                     document.getElementById("target").contentWindow.postMessage({msg: "sync", cursor: event.data.cursor, pathLength: event.data.pathLength}, "*");
                 }
             };
@@ -499,6 +518,7 @@
             }
             
             var nodeTree;
+            var populateFrom;
             
             function populate () {
                 if (!nodeTree) {
@@ -516,9 +536,39 @@
                             document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: parsed}, "*");
                         }                    
                       });
+                      
                 } else {
-                    document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: nodeTree}, "*");
-                    document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: nodeTree}, "*");
+                    function getNode (pl, cn, nt) {
+                        if (pl > 0)
+                            return getNode (pl - 1, cn.children[cn.index], nt[2][cn.index + 1]);
+                        
+                        else
+                            return nt;
+                    }
+                    
+                    if (!currentNode) {
+                        document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: nodeTree}, "*");
+                        document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: nodeTree}, "*");
+                        
+                    } else if (populateFrom === "browse") {
+                        var nt = getNode (currentNode.pathLength, currentNode.cursor.children[0], nodeTree);
+                        
+                        document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: nt, currentNode: currentNode}, "*");
+                        document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: nt}, "*");
+                    
+                    } else if (populateFrom === "edit/print") {
+                        var nt = nodeTree;
+                        
+                        document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: nt}, "*");
+                        document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: nt}, "*");
+
+                        document.getElementById("source").contentWindow.postMessage({msg: "setCurNode", cursor: currentNode.cursor, pathLength: currentNode.pathLength}, "*");
+                        document.getElementById("target").contentWindow.postMessage({msg: "setCurNode", cursor: currentNode.cursor, pathLength: currentNode.pathLength}, "*");
+    
+                        document.getElementById("source").contentWindow.postMessage({msg: "sync", cursor: currentNode.cursor, pathLength: currentNode.pathLength}, "*");
+                        document.getElementById("target").contentWindow.postMessage({msg: "sync", cursor: currentNode.cursor, pathLength: currentNode.pathLength}, "*");
+    
+                    }
                 }
             }
             
@@ -548,6 +598,8 @@
             
             document.getElementById("source").contentWindow.location.replace("./src/source-browse.html");
             document.getElementById("target").contentWindow.location.replace("./src/target-browse.html");
+            
+            var currentNode;
 
             function init () {
                 nodeTree = ["tree", ["node"], ["branches"]];

@@ -4,7 +4,7 @@
         (
             node 
             (
-                title fractarchy ide use instructions 
+                title fractarchy-ide use instructions 
             )
         )
         (
@@ -68,8 +68,11 @@
                             )
                         )
                         (
-                            paragraph Fractarchy-IDE **is suited** to be used 
-                            as: 
+                            paragraph Fractarchy-IDE 
+                            (
+                                bold is suited 
+                            )
+                            to be used as: 
                             (
                                 ulist 
                                 (
@@ -99,8 +102,11 @@
                             )
                         )
                         (
-                            paragraph Fractarchy-IDE **is not suited** to be 
-                            used for: 
+                            paragraph Fractarchy-IDE 
+                            (
+                                bold is not suited 
+                            )
+                            to be used for: 
                             (
                                 ulist 
                                 (
@@ -127,30 +133,14 @@
                     one may consider it unconventional, the symmetry 
                     was seriously taken into account upon shaping the 
                     direction of Fractarchy-IDE user interface 
-                    features. Contents code pane 
-                    (
-                        left 
-                    )
-                    contrasts contents display pane 
-                    (
-                        right 
-                    )
-                    , while browsing mode 
-                    (
-                        initial 
-                    )
-                    contrasts edit/print mode 
-                    (
-                        alternate 
-                    )
-                    . Underneath the Fractarchy-IDE user interface, 
-                    the backend core comprises structured document 
-                    tree 
-                    (
-                        SDT 
-                    )
-                    , thus forming a kind of hierarchical database of 
-                    sub-documents. 
+                    features. Contents code pane &lpar;left&rpar; 
+                    contrasts contents display pane &lpar;right&rpar;, 
+                    while browsing mode &lpar;initial&rpar; contrasts 
+                    edit/print mode &lpar;alternate&rpar;. Underneath 
+                    the Fractarchy-IDE user interface, the backend 
+                    core comprises structured document tree 
+                    &lpar;SDT&rpar;, thus forming a kind of 
+                    hierarchical database of sub-documents. 
                 )
             )
             (
@@ -170,27 +160,13 @@
                             and zoomable ovals that form a seamless dynamic 
                             fractal user interface. We navigate the entire 
                             fractal structure using only four kinds of 
-                            gestures: 
-                            (
-                                1 
-                            )
-                            dragging inside the central oval area to pan its 
-                            contents, 
-                            (
-                                2 
-                            )
-                            dragging orbiting ovals around the central oval to 
-                            rotate them, 
-                            (
-                                3 
-                            )
+                            gestures: &lpar;1&rpar; dragging inside the 
+                            central oval area to pan its contents, 
+                            &lpar;2&rpar; dragging orbiting ovals around the 
+                            central oval to rotate them, &lpar;3&rpar; 
                             dragging any orbiting oval towards center to zoom 
-                            it in, or 
-                            (
-                                4 
-                            )
-                            dragging central oval towards orbit to zoom it 
-                            out. 
+                            it in, or &lpar;4&rpar; dragging central oval 
+                            towards orbit to zoom it out. 
                         )
                     )
                 )
@@ -206,19 +182,15 @@
                         (
                             paragraph From browsing mode we can enter 
                             edit/print mode by clicking relevant icons. 
-                            Edit/print mode detaches and shows the current 
-                            oval in browsing mode. Prior to igniting 
-                            edit/print mode, we may fold all the children 
-                            ovals to the current oval. This action makes 
-                            possible altering order and contents of sub-tree 
-                            children. When we are done editing/printing, we 
-                            exit the edit/print mode by clicking relevant 
+                            Edit/print mode detaches and prepares the current 
+                            oval &lpar;together with its subsequent 
+                            ovals&rpar; for editing/printing. 
+                        )
+                        (
+                            paragraph When we are done editing/printing, we 
+                            can exit the edit/print mode by clicking relevant 
                             icons. The interface then brings us back to 
-                            browsing mode, when we may unfold the current oval 
-                            (
-                                if we already folded it 
-                            )
-                            back to the expanded tree form. 
+                            browsing mode. 
                         )
                     )
                 )
@@ -247,7 +219,7 @@
                 )
                 (
                     paragraph Contents of SDT file is a s-expr. In 
-                    computer programming, an S-expr &lpar;or symbolic 
+                    computer programming, an s-expr &lpar;or symbolic 
                     expression, abbreviated as sexpr or sexp&rpar; is 
                     an expression in a like-named notation for nested 
                     list &lpar;tree-structured&rpar; data. S-expr is 
@@ -378,7 +350,7 @@
                             (
                                 icode "branches" 
                             )
-                            s-expr. 
+                            type s-expr. 
                         )
                         (
                             paragraph During visualization, each 
@@ -410,25 +382,27 @@
                             s-expr: 
                         )
                         (
-                            bcode " (                                " 
-                            "     node                         " 
-                            "     ... sub-document contents ..." 
-                            " )                                " 
+                            bcode 
+                            " (                                         " 
+                            "     node                                  " 
+                            "     ... sub-document contents ...         " 
+                            " )                                         " 
                         )
                         (
                             paragraph Alternatively, sub-documents may be 
                             additionally written by the following s-expr: 
                         )
                         (
-                            bcode " (                                    " 
-                            "     (                                " 
-                            "         node                         " 
-                            "         (                            " 
-                            "             title ... description ..." 
-                            "         )                            " 
-                            "     )                                " 
-                            "     ... sub-document contents ...    " 
-                            " )                                    " 
+                            bcode 
+                            " (                                         " 
+                            "     (                                     " 
+                            "         node                              " 
+                            "         (                                 " 
+                            "             title ... description ...     " 
+                            "         )                                 " 
+                            "     )                                     " 
+                            "     ... sub-document contents ...         " 
+                            " )                                         " 
                         )
                         (
                             paragraph where 
@@ -501,7 +475,7 @@
                             )
                         )
                         (
-                            bcode "// under construction //" 
+                            bcode " // under construction //" 
                         )
                         (
                             paragraph SDT file format is being evaluated as a 
@@ -537,7 +511,7 @@
                             . 
                         )
                         (
-                            bcode "// under construction //" 
+                            bcode " // under construction //" 
                         )
                     )
                 )
@@ -560,6 +534,7 @@
                     paragraph 
                     (
                         italic Fractarchy-IDE is shared to public under 
+                        conditional 
                         (
                             (
                                 hyperlink 
@@ -571,8 +546,8 @@
                                     target "_new" 
                                 )
                             )
-                            conditional Creative Commons Attribution 4.0 
-                            International License 
+                            Creative Commons Attribution 4.0 International 
+                            License 
                         )
                         by 
                         (
@@ -587,48 +562,55 @@
                             )
                             Contrast Zone 
                         )
-                        productions. 
+                        productions. For details about conditions, please 
+                        refer to Fractarchy-IDE software bundle. 
                     )
                 )
                 (
                     hruler 
                 )
                 (
-                    paragraph A copy of Fractarchy-IDE software bundle 
-                    can be downloaded from 
+                    paragraph 
                     (
+                        italic A copy of Fractarchy-IDE software bundle 
+                        can be downloaded from 
                         (
-                            hyperlink 
                             (
-                                address 
-                                "https://github.com/contrast-zone/fractarchy-ide/" 
+                                hyperlink 
+                                (
+                                    address 
+                                    "https://github.com/contrast-zone/fractarchy-ide/" 
+                                )
+                                (
+                                    target "_top" 
+                                )
                             )
-                            (
-                                target "_top" 
-                            )
+                            dedicated github pages. 
                         )
-                        dedicated github pages. 
                     )
                 )
                 (
                     hruler 
                 )
                 (
-                    paragraph To ask any questions about 
-                    Fractarchy-IDE, to report a bug, or to track new 
-                    releases, please refer to a 
+                    paragraph 
                     (
+                        italic To ask any questions about Fractarchy-IDE, 
+                        to report a bug, or to track new releases, please 
+                        refer to 
                         (
-                            hyperlink 
                             (
-                                address 
-                                "https://groups.google.com/g/contrast-zone" 
+                                hyperlink 
+                                (
+                                    address 
+                                    "https://groups.google.com/g/contrast-zone" 
+                                )
+                                (
+                                    target "_new" 
+                                )
                             )
-                            (
-                                target "_new" 
-                            )
+                            our mailing list. 
                         )
-                        dedicated mailing list. 
                     )
                 )
                 (
@@ -636,9 +618,8 @@
                 )
                 (
                     paragraph With this section, we conclude 
-                    Fractarchy-IDE instructions exposure. Good luck 
-                    and have a creative and productive visual contents 
-                    coding. 
+                    Fractarchy-IDE instructions exposure. Have a 
+                    creative and productive visual contents coding. 
                 )
             )
         )

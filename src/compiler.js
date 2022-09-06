@@ -10,7 +10,7 @@ var compiler = (function (obj) {
             
             var maps= {
                 "hruler": {
-                    "open": '<hr style="border-top: 0.3em solid gray; border-bottom: 0; border-left: 0; border-right: 0;">',
+                    "open": '<hr style="border-top: 0.2em solid gray; border-bottom: 0; border-left: 0; border-right: 0;">',
                     "close": '</hr>'
                 },
                 "bold": {
@@ -54,15 +54,15 @@ var compiler = (function (obj) {
                     "close": '</p>'
                 },
                 "bquote": {
-                    "open": '<blockquote style="border-left: 0.3em solid gray; margin-left: 0px; padding-left: 0.7em;">',
+                    "open": '<blockquote style="border-left: 0.2em solid gray; margin-left: 0px; padding-left: 0.7em;">',
                     "close": '</blockquote>'
                 },
                 "icode": {
-                    "open": '<code style="background-color: rgb(180,180,180); border: 1px solid black; white-space: pre-wrap;">',
+                    "open": '<code style="background-color: rgb(180,180,180); border: 1px solid black; white-space: pre-wrap; font-size: 0.9em;">',
                     "close": '</code>'
                 },
                 "bcode": {
-                    "open": '<code><pre style="background-color: rgb(180,180,180); border: 1px solid black;">',
+                    "open": '<code><pre style="background-color: rgb(180,180,180); border: 1px solid black; overflow-x: auto; font-size: 0.9em;">',
                     "close": '</pre></code>'
                 },
                 "hyperlink": {

@@ -224,6 +224,18 @@
                     
                     divContainer.dispatchEvent(new CustomEvent('redefineData', {detail: nodeTree}));
                 
+                } else if (event.data.msg === "sync") {
+                    divContainer.dispatchEvent(new CustomEvent('redefineCursor', {detail: {cursor: event.data.cursor, pathLength: event.data.pathLength}}));
+                
+                } else if (event.data.msg === "setCurNode") {
+                    function loadNodes (pl, cn, nt) {
+                        loadNode (nt)
+                        if (pl > 0)
+                            loadNodes (pl - 1, cn.children[cn.index], nt.children[cn.index]);
+                    }
+
+                    loadNodes (event.data.pathLength, event.data.cursor.children[0], objOrbit.getData ());
+                    
                 } else if (event.data.msg === "save") {
                     nodeRawTree = event.data.nodeTree;
                     
@@ -234,9 +246,7 @@
                 
                 } else if (event.data.msg === "open") {
                     window.parent.frames[0].postMessage({msg: "open", nodeTree: nodeRawTree}, "*");
-                
-                } else if (event.data.msg === "sync") {
-                    divContainer.dispatchEvent(new CustomEvent('redefineCursor', {detail: {cursor: event.data.cursor, pathLength: event.data.pathLength}}));
+
                 }
             };
             
@@ -663,7 +673,7 @@
             }
 
             async function loadNode (node) {
-                return new Promise(async function(resolve, reject) {
+//                return new Promise(async function(resolve, reject) {
                     /*
                     function stringify (node, maxcols, indent) {
                         var str = ""
@@ -730,8 +740,9 @@
                             node.children.push ({parent: node, children: [], index: i - 1, nodeRawData: node.nodeRawData[2][i]});
                         }
                         
-                    resolve (node);
-                });
+//                    resolve (node);
+//                });
+                return node;
             }
                         
             function getCoords (text, offset) {
