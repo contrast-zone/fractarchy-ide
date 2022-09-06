@@ -683,7 +683,11 @@
                     //node.hAlign = att.nodeValue;
                     //node.backColor = "yellow";
                     
-                    nodeName = getTitle (node.nodeRawData[1][0][1]);
+                    if (Array.isArray (node.nodeRawData[1][0][1]))
+                        nodeName = getTitle (node.nodeRawData[1][0][1]);
+                    
+                    else
+                        nodeName = "";
                     
                     node.srcdoc = '<html style="font-size: 1em">' 
                         //+ '<head><style>body {animation: fadein 0.5s;} @keyframes fadein {from { opacity: 0; /*transform: scale(0.5);*/} to { opacity: 1; /*transform: scale(1.0);*/}}</style></head>'
@@ -708,6 +712,7 @@
             }
             
             function getTitle (l) {
+                if (!l) l = "";
                 var ret = "";
                 for (var i = 1; i < l.length; i++) {
                     if (Array.isArray (l[i]))

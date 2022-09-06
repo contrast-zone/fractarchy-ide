@@ -108,7 +108,7 @@ var compiler = (function (obj) {
                 
                 if (Array.isArray (node)) {
                     if (node[0] === "node" || (Array.isArray (node[0]) && node[0][0] === "node")) {
-                        if (Array.isArray (node[0]))
+                        if (Array.isArray (node[0]) && node[0][1])
                             txt += getNode (node[0][1]) + " ";
                         
                         for (var i = 1; i < node.length; i++) {
