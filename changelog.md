@@ -6,4 +6,5 @@
     - edit/print in sync with current browsing node  
     - print in live sync with edit  
     - rudimentay image support  
+    - printing support  
 

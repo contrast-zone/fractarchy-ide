@@ -35,6 +35,8 @@
         <div id="divContainer" style="/*border: 5px dotted rgb(208,208,208);*/ position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; /*filter: drop-shadow(0px 0px 20px black);*/">
         </div>
         <script>
+            document.addEventListener('contextmenu', event => event.preventDefault());
+
             function liveSync () {
                 window.addEventListener('mousemove', function (evt) {
                     if (evt.detail.W !== undefined) return;

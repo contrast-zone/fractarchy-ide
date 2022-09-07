@@ -127,6 +127,17 @@
                                 + `}`
 
                             + `</style>`
+                            
+                            + '<style>'
+                            + '    @media print {'
+                            + '      html, body {'
+                            + '        font-size: 0.75em;'
+                            + '      }'
+                            + '      @page {'
+                            + '      }'
+                            + '    }'
+                            + '</style>'
+                            
                         + `</head>`
                         + `<body>`
                             + compiler.tree2html (nodeTree, baseUrl)
