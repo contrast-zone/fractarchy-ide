@@ -2,6 +2,8 @@
 
 (v 0.1 - alpha)
 
+(minimum viable version)
+
 **tags:** content-management-system, hierarchical-data-organizer, text-processing-toolkit, zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
 
 > ## promotional material
