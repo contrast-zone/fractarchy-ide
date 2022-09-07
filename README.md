@@ -48,7 +48,7 @@ Visit [https://contrast-zone.github.io/fractarchy-ide/](https://contrast-zone.gi
 ## installing on local computer
 
 1. Make sure you have already installed HTTP server and PHP.
-2. Download and unzip this package to an arbitrary local web server folder and open `index.html` in a browser.
+2. Download and unzip this package to an arbitrary local server folder and open `index.html` in a browser.
 
 ## use instructions
 
