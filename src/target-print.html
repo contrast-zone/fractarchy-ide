@@ -132,6 +132,7 @@
                             + '    @media print {'
                             + '      html, body {'
                             + '        font-size: 0.75em;'
+                            + '        margin: auto;'
                             + '      }'
                             + '      @page {'
                             + '      }'
@@ -139,7 +140,7 @@
                             + '</style>'
                             
                         + `</head>`
-                        + `<body>`
+                        + `<body style="font-family: Times New Roman, Georgia, Garamond;">`
                             + compiler.tree2html (nodeTree, baseUrl)
                         + `</body>`
                     + `</html>`;

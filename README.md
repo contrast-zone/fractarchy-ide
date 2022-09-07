@@ -12,7 +12,7 @@
 > 
 > Fractarchy-IDE is a content management system that tries to amplify the simplicity of coding in a fun and exciting direction of composing visual contents. This project blends a brand new markup language with a brand new visual interface.
 > 
-> Coders combine the heart of a playful child with the wisdom of an experienced elderly. Sure, there is a certain value in all the WYSIWYG tools around, but the most of them miss that mystical aura about having a full control at our fingertips. Something magical happens in the moment when a code begins to exhibit intended behavior, and capturing that valuable moment is something I want to convey to users of this project.
+> Coders combine the heart of a playful child with the wisdom of an experienced elderly. Sure, there is a certain value in all the WYSIWYG tools around, but the most of them miss that mystical aura of having a full control at our fingertips. Something magical happens at the moment when a code begins to exhibit intended behavior, and capturing that valuable moment is something I want to convey to users of this project.
 > 
 > Visual designers combine the chaotic art of creativity with the intentional art of applicability. Personal preferences may play an important role in this process, but it seems there may exist a kind of universal phenomenon worth of converging about: the symmetry. That is why visual interface of this project tries to resemble a coherent system of input/output duality, hoping to get closer to igniting designer inspiration.
 > 
