@@ -7,4 +7,6 @@
     - print preview in live sync with edit  
     - rudimentay image support  
     - printing support  
+    - providing loading/saving support  
+    - finalizing minimum viable version  
 

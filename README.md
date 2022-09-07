@@ -1,5 +1,3 @@
-    // under construction //
-
 # fractarchy-ide
 
 (v 0.1 - alpha)
@@ -24,21 +22,37 @@
 
 ![](media/ssh2.png)
 
+## use cases
+
+Fractarchy-IDE **is suited** to be used as:
+
+- static content pages creation platform
+- mind map planner
+- slide show composer
+- text processing toolkit
+- hierarchical data organizer
+- personal knowledge base keeper
+- multi-purpose documentation system
+- ...
+
+Fractarchy-IDE **is not suited** to be used for:
+
+- dynamic content pages creation
+
 ## online test
 
 Visit [https://contrast-zone.github.io/fractarchy-ide/](https://contrast-zone.github.io/fractarchy-ide/).
 
-## installing
+## installing on local computer
 
-Download and unzip this package to a local web server folder and open `index.html` in a browser.
+1. Make sure you have already installed HTTP server and PHP.
+2. Download and unzip this package to an arbitrary local web server folder and open `index.html` in a browser.
 
 ## use instructions
 
-Refer to `projects/instructions.sdt` file.
+Refer to `projects/instructions/instructions.sdt` file.
 
 ## licensing
 
 This software is released under [conditional Creative Commons Attribution 4.0 International License](LICENSE). It is free for limited personal use, but if your plans meet commercial use, please refer to the licence file for details about pricing.
-
-    // under construction //
 

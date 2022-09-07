@@ -256,28 +256,6 @@
                 });
             }
 
-            /*
-            function getNode (node, path, next) {
-                if (!node) node = nodeTree;
-                
-                if (path)
-                    if (!path[1]) {
-                        if (next)
-                            return node[path[0] + 1][2];
-                        else
-                            return node[path[0] + 1];
-                            
-                    } else {
-                        if (next)
-                            return getNode(node, path[1], true)[path[0] + 1][2];
-                        else
-                            return getNode(node, path[1], true)[path[0] + 1];
-                    }
-                else
-                    return nodeTree;
-            }
-            */
-
             function init () {
                 window.addEventListener("load", wonload ());
                 nodeTree = {nodeRawData: ["tree", ["node"]], parent: {index: 0}};
