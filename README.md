@@ -52,7 +52,7 @@ Visit [https://contrast-zone.github.io/fractarchy-ide/](https://contrast-zone.gi
 
 ## use instructions
 
-Refer to `projects/instructions/instructions.sdt` file.
+Open `projects/instructions/instructions.sdt` in visual interface.
 
 ## licensing
 
