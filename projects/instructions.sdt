@@ -59,7 +59,10 @@
                     content. Such purposes include organizing personal 
                     or business data and documentation, optionally 
                     exporting it to a local web site ready for 
-                    publishing to the Internet. 
+                    publishing to the Internet.
+                )
+                (
+                    bcode " // exporting under construction // " 
                 )
             )
             (
@@ -484,7 +487,7 @@
                             )
                         )
                         (
-                            bcode " // under construction //" 
+                            bcode " // templating under construction //" 
                         )
                         (
                             paragraph SDT file format is being evaluated as a 
@@ -520,7 +523,7 @@
                             . 
                         )
                         (
-                            bcode " // under construction //" 
+                            bcode " // templating under construction //" 
                         )
                     )
                 )
