@@ -2,21 +2,21 @@
 
 (v 0.1 - alpha)
 
-(minimum viable version)
+(minimal viable version)
 
-**tags:** hierarchical-data-organizer, text-processing-toolkit, structured-document-tree, zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
+**tags:** hierarchical-content-organizer, structured-document-tree, text-processing-toolkit, zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
 
 > ## promotional material
 > 
 > ![](media/socmedia.png)
 > 
-> Fractarchy-IDE is a content management system that tries to amplify the simplicity of coding in a fun and exciting direction of composing visual contents. This project bundles a brand new markup language with a brand new visual interface.
+> Fractarchy-IDE is a hierarchical content organizer that tries to amplify the simplicity of coding in a fun and exciting direction of composing visual contents. This project bundles a brand new content markup language with a brand new visual interface.
 > 
 > Coders combine the heart of a playful child with the wisdom of an experienced elderly. Sure, there is a certain value in all the WYSIWYG tools around, but the most of them miss that mystical aura of having a full control at our fingertips. Something magical happens at the moment when a code begins to exhibit intended behavior, and capturing that valuable moment is something intended to be conveyed to users of this project.
 > 
-> Visual designers combine the chaotic art of creativity with the intentional art of applicability. Personal preferences may play an important role in this process, but it seems there may exist a kind of universal phenomenon worth of converging about: the symmetry. That is why visual interface of this project tries to resemble a coherent system of input/output duality, hoping to get closer to igniting designer inspiration.
+> Visual designers combine the chaotic art of creativity with the intentional art of applicability. Personal preferences may play an important role in this process, but it seems there may exist a kind of universal phenomenon worth of converging about: the symmetry. That is why visual interface of this project tries to resemble a coherent system of input/output duality, hoping to get closer to igniting designer artistry.
 > 
-> Using Fractarchy-IDE, we uncommonly combine coding with visual designing. Keep your mind safe in the comfort zone, but keep your heart open. Keep your focus on actual usability, but keep your creativity unleashed. Give Fractarchy-IDE a chance, and take a journey of coding visual contents using this unusual creation inspired from another world. You may have already heard of that world. It is called imagination. And with a little luck, that world can become awesome.
+> Using Fractarchy-IDE, we uncommonly combine coding with visual designing. Keep your intention safe in the comfort zone, but keep your heart open. Keep your focus on actual usability, but keep your creativity unleashed. Give Fractarchy-IDE a chance, and take a journey of coding visual contents using this unusual creation inspired from another world. You may have already heard of that world. It is called imagination. And with a little luck, that world can become awesome.
 
 ## actual screenshots
         
