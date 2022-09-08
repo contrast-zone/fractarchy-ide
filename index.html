@@ -548,7 +548,16 @@
                 var xhttp = new XMLHttpRequest ();
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 404) {
-                        alert (url + " not found!");
+                        var ret = confirm("File '" + url + "' does not exist. Create a new file?");
+                        
+                        if (ret) {
+                            baseUrl = getBaseUrl(url);
+                            fullUrl = url;
+                            document.title = url.substring (url.lastIndexOf("/") + 1);
+                            nodeTree = ["tree", ["node"], ["branches", ["tree", ["node"], ["branches"]], ["tree", ["node"], ["branches"]]]];
+                            document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: nodeTree}, "*");
+                            document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: nodeTree, baseUrl: baseUrl}, "*");
+                        }
                         
                     } else if (this.readyState == 4 && this.status == 200) {
                         var txt = this.responseText;
@@ -595,7 +604,7 @@
                     baseUrl = getBaseUrl(url);
                     fullUrl = url;
                     document.title = url.substring (url.lastIndexOf("/") + 1);
-                    nodeTree = ["tree", ["node"], ["branches"]];
+                    nodeTree = ["tree", ["node"], ["branches", ["tree", ["node"], ["branches"]], ["tree", ["node"], ["branches"]]]];
                     fileInput (url);
 
                 } else {
