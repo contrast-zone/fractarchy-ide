@@ -4,7 +4,7 @@
         (
             node 
             (
-                title fractarchy-ide use instructions 
+                title Fractarchy-IDE use instructions 
             )
         )
         (
@@ -59,7 +59,7 @@
                     content. Such purposes include organizing personal 
                     or business data and documentation, optionally 
                     exporting it to a local web site, ready for 
-                    publishing to the Internet.
+                    publishing to the Internet. 
                 )
                 (
                     bcode " // exporting under construction // " 
@@ -241,7 +241,7 @@
                     &lpar;also called head&rpar; is meant to identify 
                     a s-expr type. In example, s-expr like 
                     (
-                        icode "tree ... contents ..." 
+                        icode "(tree ... contents ...)" 
                     )
                     means that we assert 
                     (
@@ -293,29 +293,29 @@
                         )
                         (
                             bcode 
-                            " (                                               " 
-                            "     tree                                        " 
-                            "     (                                           " 
-                            "         node                                    " 
-                            "         ... node contents ...                   " 
-                            "     )                                           " 
-                            "     (                                           " 
-                            "         branches                                " 
-                            "         (                                       " 
-                            "             tree                                " 
-                            "             ... tree contents recursively ...   " 
-                            "         )                                       " 
-                            "         (                                       " 
-                            "             tree                                " 
-                            "             ... tree contents recursively ...   " 
-                            "         )                                       " 
-                            "         ... other tree items as branches ...    " 
-                            "     )                                           " 
-                            " )                                               " 
+                            " (                                                " 
+                            "     tree                                         " 
+                            "     (                                            " 
+                            "         node                                     " 
+                            "         ... node contents ...                    " 
+                            "     )                                            " 
+                            "     (                                            " 
+                            "         branches                                 " 
+                            "         (                                        " 
+                            "             tree                                 " 
+                            "             ... tree contents, recursively ...   " 
+                            "         )                                        " 
+                            "         (                                        " 
+                            "             tree                                 " 
+                            "             ... tree contents, recursively ...   " 
+                            "         )                                        " 
+                            "         ... other tree items as branches ...     " 
+                            "     )                                            " 
+                            " )                                                " 
                         )
                         (
                             paragraph There is really not much to say about 
-                            tree structure. The tree structure is a s-expr 
+                            tree structure. The tree structure is an s-expr 
                             combined by 
                             (
                                 icode "tree" 
@@ -366,9 +366,8 @@
                             (
                                 icode "node" 
                             )
-                            type s-expr is then rendered within its own oval, 
-                            while orbiting child ovals are extracted from 
-                            relative 
+                            type s-expr is rendered within its own oval, while 
+                            orbiting child ovals are extracted from relative 
                             (
                                 icode "branches" 
                             )
@@ -438,9 +437,9 @@
                         )
                         (
                             bcode 
-                            "+----------------------------------------+---------------------------+" 
+                            " ---------------------------------------- --------------------------- " 
                             "!  s-expr type                           !  accepts contents         !" 
-                            "+----------------------------------------+---------------------------+" 
+                            " ---------------------------------------- --------------------------- " 
                             "!  * ignored comments: `comment`         !  prose                    !" 
                             "!  * bold text: `bold`                   !  prose                    !" 
                             "!  * italic text: `italic`               !  prose                    !" 
@@ -469,11 +468,15 @@
                             "!      * source: `source`                !  quoted string            !" 
                             "!                                        !                           !" 
                             "!  * horizontal ruler: `hruler`          !                           !" 
-                            "+----------------------------------------+---------------------------+" 
+                            " ---------------------------------------- --------------------------- " 
                         )
                         (
                             paragraph Sub-items from the above itemization are 
                             describing acceptable assertions within the items. 
+                        )
+                        (
+                            bcode 
+                            " // extending s-expr types under construction // " 
                         )
                     )
                 )
@@ -487,7 +490,8 @@
                             )
                         )
                         (
-                            bcode " // templating under construction //" 
+                            bcode 
+                            " // templating system under construction //" 
                         )
                         (
                             paragraph SDT file format is being evaluated as a 
@@ -523,7 +527,8 @@
                             . 
                         )
                         (
-                            bcode " // templating under construction //" 
+                            bcode 
+                            " // templating system under construction //" 
                         )
                     )
                 )
@@ -637,4 +642,3 @@
         )
     )
 )
-
