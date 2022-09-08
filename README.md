@@ -49,13 +49,13 @@ Visit [https://contrast-zone.github.io/fractarchy-ide/](https://contrast-zone.gi
 
 1. Make sure you have already installed HTTP server and PHP.
 2. Download and unzip this package to an arbitrary local server folder and open `index.html` in a browser.
-3. Don't forget to adjust proper file access privileges to folder `projects/` and below to be able to save your work.
+3. Don't forget to adjust proper file access privileges to folders below `projects/` to be able to save your work.
 
 ## use instructions
 
-Open `projects/instructions/instructions.sdt` in visual interface.
+Open `projects/instructions/instructions.sdt` in the visual interface.
 
 ## licensing
 
-This software is released under [conditional Creative Commons Attribution 4.0 International License](LICENSE). It is free for students and limited personal use, but if your plans meet commercial use, please refer to the licence file for details about pricing.
+This software is released under [conditional Creative Commons Attribution 4.0 International License](LICENSE). It is free for students and for limited personal use, but if your plans meet commercial use, please refer to the licence file for details about pricing.
 
