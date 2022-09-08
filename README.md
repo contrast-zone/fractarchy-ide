@@ -1,16 +1,16 @@
-# fractarchy-ide
+# Fractarchy-IDE
 
 (v 0.1 - alpha)
 
 (minimum viable version)
 
-**tags:** content-management-system, hierarchical-data-organizer, text-processing-toolkit, zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
+**tags:** hierarchical-personal-organizer, text-processing-toolkit, structured-document-tree, zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
 
 > ## promotional material
 > 
-> ![](media/ad.png)
+> ![](media/socmedia.png)
 > 
-> Fractarchy-IDE is a content management system that tries to amplify the simplicity of coding in a fun and exciting direction of composing visual contents. This project blends a brand new markup language with a brand new visual interface.
+> Fractarchy-IDE is a content management system that tries to amplify the simplicity of coding in a fun and exciting direction of composing visual contents. This project bundles a brand new markup language with a brand new visual interface.
 > 
 > Coders combine the heart of a playful child with the wisdom of an experienced elderly. Sure, there is a certain value in all the WYSIWYG tools around, but the most of them miss that mystical aura of having a full control at our fingertips. Something magical happens at the moment when a code begins to exhibit intended behavior, and capturing that valuable moment is something I want to convey to users of this project.
 > 
