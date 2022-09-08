@@ -4,7 +4,7 @@
 
 (minimal viable version)
 
-**tags:**  hierarchical-content-organizer, structured-document-tree, text-processing-toolkit, data-visualization-project, zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
+**tags:** workbook-cms, structured-document-tree, hierarchical-content-organizer, data-visualization-project, text-processing-toolkit, zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
 
 > ## promotional material
 > 
