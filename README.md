@@ -12,12 +12,6 @@
 > 
 > Fractarchy-ORG is a hierarchical content organizer that tries to amplify the simplicity of coding in a fun and exciting direction of composing visual contents. This project bundles a brand new content markup language with a brand new visual interface. Using Fractarchy-ORG, we uncommonly combine coding with visual designing.
 
-## actual screenshots
-        
-![](media/ssh1.png)
-
-![](media/ssh2.png)
-
 ## why fractarchy-org?
 
 Coders combine the heart of a playful child with the wisdom of an experienced elderly. Sure, there is a certain value in all the WYSIWYG tools around, but the most of them miss that mystical aura of having a full control at our fingertips. Something magical happens at the moment when a code begins to exhibit intended behavior, and capturing that valuable moment is something intended to be conveyed to users of this project.
@@ -25,6 +19,12 @@ Coders combine the heart of a playful child with the wisdom of an experienced el
 Visual designers combine the chaotic art of creativity with the intentional art of applicability. Personal preferences may play an important role in this process, but it seems there may exist a kind of universal phenomenon worth of converging about: the symmetry. That is why visual interface of this project tries to resemble a coherent system of input/output duality, hoping to get closer to igniting designer artistry.
 
 Our goal was to combine these two exciting activities, and we got Fractarchy-ORG as a result. We hope you'll like it.
+
+## actual screenshots
+        
+![](media/ssh1.png)
+
+![](media/ssh2.png)
 
 ## use cases
 
