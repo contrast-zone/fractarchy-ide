@@ -10,7 +10,7 @@
 > 
 > ![](media/socmedia.png)
 > 
-> Fractarchy-ORG is a hierarchical content organizer that tries to amplify the simplicity of coding in a fun and exciting direction of composing visual contents. This project bundles a brand new content markup language with a brand new visual interface. Using Fractarchy-ORG, we uncommonly combine coding with visual designing.
+> Fractarchy-ORG is a hierarchical content organizer that tries to amplify the simplicity of coding in a fun and exciting direction of composing interactive visual contents. This project bundles a brand new content markup language with a brand new visual interface. Using Fractarchy-ORG, we uncommonly combine coding with visual designing.
 
 ## why fractarchy-org?
 
