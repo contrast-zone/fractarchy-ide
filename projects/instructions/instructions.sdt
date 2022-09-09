@@ -4,7 +4,7 @@
         (
             node 
             (
-                title Fractarchy-IDE use instructions 
+                title Fractarchy-ORG use instructions 
             )
         )
         (
@@ -16,16 +16,16 @@
         (
             paragraph Let me introduce you to 
             (
-                bold Fractarchy-IDE, 
+                bold Fractarchy-ORG, 
             )
             a hierarchical content organizer and text 
             processing toolkit. As one might already guess, 
-            Fractarchy-IDE is a bit unusual creation. Some 
+            Fractarchy-ORG is a bit unusual creation. Some 
             users will love it, some users will hate it, while 
             some of us may even form mixed opinions given a 
             plethora of affinity states. Distinctive design 
             choices that were made in creation of 
-            Fractarchy-IDE are supposed to embark users on a 
+            Fractarchy-ORG are supposed to embark users on a 
             brave adventure while discovering its carefully 
             weighed virtues and flaws. Its coding fragment 
             requires an open minded approach to be understood, 
@@ -34,7 +34,7 @@
             combination provides an unique balance between 
             contents creation and contents navigation. 
             Finally, a fair amount of user creativity will be 
-            the judge of Fractarchy-IDE fitness for particular 
+            the judge of Fractarchy-ORG fitness for particular 
             purposes. 
         )
     )
@@ -46,11 +46,11 @@
                 (
                     node 
                     (
-                        title 1. about fractarchy-ide 
+                        title 1. about fractarchy-org 
                     )
                 )
                 (
-                    paragraph Fractarchy-IDE is a hierarchical 
+                    paragraph Fractarchy-ORG is a hierarchical 
                     fractal-structure inspired, parent-children 
                     orbiting, and zooming-elements based text and 
                     graphics organizer. It can be used to manage the 
@@ -76,7 +76,7 @@
                             )
                         )
                         (
-                            paragraph Fractarchy-IDE 
+                            paragraph Fractarchy-ORG 
                             (
                                 bold is suited 
                             )
@@ -110,7 +110,7 @@
                             )
                         )
                         (
-                            paragraph Fractarchy-IDE 
+                            paragraph Fractarchy-ORG 
                             (
                                 bold is not suited 
                             )
@@ -136,16 +136,16 @@
                     )
                 )
                 (
-                    paragraph Fractarchy-IDE user interface and 
+                    paragraph Fractarchy-ORG user interface and 
                     functionality is imbued with symmetry. Although 
                     one may consider it unconventional, the symmetry 
                     was seriously taken into account upon shaping the 
-                    direction of Fractarchy-IDE user interface 
+                    direction of Fractarchy-ORG user interface 
                     features. Contents code pane &lpar;left&rpar; 
                     contrasts contents display pane &lpar;right&rpar;, 
                     while browsing mode &lpar;initial&rpar; contrasts 
                     edit/print mode &lpar;alternate&rpar;. Underneath 
-                    the Fractarchy-IDE user interface, the backend 
+                    the Fractarchy-ORG user interface, the backend 
                     core comprises structured document tree 
                     &lpar;SDT&rpar;, thus forming a kind of 
                     hierarchical database of sub-documents. 
@@ -214,16 +214,16 @@
                     )
                 )
                 (
-                    paragraph Composing contents in Fractarchy-IDE is 
+                    paragraph Composing contents in Fractarchy-ORG is 
                     consisted of coding main SDT file and importing 
                     graphical or other resources. Simple, yet powerful 
                     SDT markup, templating and coding capabilities 
                     serve as a Turing complete data definition 
                     platform. SDT file format is based on a minimalist 
                     s-expr based environment created specifically for 
-                    purposes of Fractarchy-IDE, and it should bring an 
+                    purposes of Fractarchy-ORG, and it should bring an 
                     exciting "expert under the hub" atmosphere to the 
-                    overall Fractarchy-IDE user experience. 
+                    overall Fractarchy-ORG user experience. 
                 )
                 (
                     paragraph Contents of SDT file is a s-expr. In 
@@ -236,7 +236,7 @@
                     delimited by whitespace. Whitespaces in s-exprs 
                     include any number of space characters, tabs, and 
                     line splits. Initially, in a case of 
-                    Fractarchy-IDE the first word to the left s-expr 
+                    Fractarchy-ORG the first word to the left s-expr 
                     &lpar;also called head&rpar; is meant to identify 
                     a s-expr type. In example, s-expr like 
                     (
@@ -270,7 +270,7 @@
                     type s-expr. 
                 )
                 (
-                    paragraph In Fractarchy-IDE, there exist a number 
+                    paragraph In Fractarchy-ORG, there exist a number 
                     of s-expr types which we will cover in the 
                     following sub-sections. 
                 )
@@ -549,7 +549,7 @@
                 (
                     paragraph 
                     (
-                        italic Fractarchy-IDE is shared to public under 
+                        italic Fractarchy-ORG is shared to public under 
                         conditional 
                         (
                             (
@@ -579,7 +579,7 @@
                             Contrast Zone 
                         )
                         productions. For details about conditions, please 
-                        refer to Fractarchy-IDE software bundle. 
+                        refer to Fractarchy-ORG software bundle. 
                     )
                 )
                 (
@@ -588,14 +588,14 @@
                 (
                     paragraph 
                     (
-                        italic A copy of Fractarchy-IDE software bundle 
+                        italic A copy of Fractarchy-ORG software bundle 
                         can be downloaded from 
                         (
                             (
                                 hyperlink 
                                 (
                                     address 
-                                    "https://github.com/contrast-zone/fractarchy-ide/" 
+                                    "https://github.com/contrast-zone/fractarchy-org/" 
                                 )
                                 (
                                     target "_top" 
@@ -611,7 +611,7 @@
                 (
                     paragraph 
                     (
-                        italic To ask any questions about Fractarchy-IDE, 
+                        italic To ask any questions about Fractarchy-ORG, 
                         to report a bug, or to track new releases, please 
                         refer to 
                         (
@@ -634,7 +634,7 @@
                 )
                 (
                     paragraph With this section, we conclude 
-                    Fractarchy-IDE instructions exposure. Have a 
+                    Fractarchy-ORG instructions exposure. Have a 
                     creative and productive visual contents coding. 
                 )
             )
