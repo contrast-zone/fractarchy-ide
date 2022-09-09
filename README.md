@@ -18,7 +18,7 @@ Coders combine the heart of a playful child with the wisdom of an experienced el
 
 Visual designers combine the chaotic art of creativity with the intentional art of applicability. Personal preferences may play an important role in this process, but it seems there may exist a kind of universal phenomenon worth of converging about: the symmetry. That is why visual interface of this project tries to resemble a coherent system of input/output duality, hoping to get closer to igniting designer artistry.
 
-Our goal was to combine these two exciting activities, and we got Fractarchy-ORG as a result. We hope you'll like it.
+Our goal was to combine these two exciting activities, and to apply them to content creation. We got Fractarchy-ORG as a result. We hope you'll like it.
 
 ## actual screenshots
         
