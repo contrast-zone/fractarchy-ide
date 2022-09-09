@@ -10,7 +10,7 @@
 > 
 > ![](media/socmedia.png)
 > 
-> Fractarchy-ORG is a hierarchical content organizer that tries to amplify the simplicity of coding in a fun and exciting direction of composing interactive visual contents. This project bundles a brand new content markup language with a brand new visual interface. Using Fractarchy-ORG, we uncommonly combine coding with visual designing.
+> Fractarchy-ORG is a hierarchical content organizer that tries to amplify the simplicity of coding in a fun and exciting direction of composing interactive visual contents. This project bundles a brand new content markup language with a brand new visual interface. Give Fractarchy-IDE a chance, and take a journey of coding visual contents using this unusual creation inspired from the world of imagination.
 
 ## why fractarchy-org?
 
@@ -59,5 +59,5 @@ Open `projects/instructions/instructions.sdt` in the visual interface.
 
 ## licensing
 
-This software is released under [conditional Creative Commons Attribution 4.0 International License](LICENSE). It is free for students and for limited personal use, but if your plans meet commercial use, please refer to the licence file for details about pricing.
+This software is released under [conditional Creative Commons Attribution 4.0 International License](LICENSE). It is free for students and for limited personal use, but if you use it a lot, or your plans meet commercial use, please refer to the licence file for details about pricing.
 
