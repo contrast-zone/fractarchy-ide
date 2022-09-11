@@ -51,7 +51,7 @@ Visit [https://contrast-zone.github.io/fractarchy-org/](https://contrast-zone.gi
 
 1. Make sure you have installed Node.js
 2. Download and unzip this package to an arbitrary local directory
-3. Open the download directory in terminal and run `node main.js`
+3. Open the download directory in terminal and run `node main.js` to start the server
 4. Open browser and type `http://localhost:8080/` at the address bar
 
 Don't forget to adjust proper file access privileges to folders below `projects/` to be able to save your work.
