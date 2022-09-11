@@ -1,6 +1,6 @@
 # Fractarchy-ORG
 
-(v 0.1 - alpha)
+(v 0.1 - beta)
 
 (minimal viable version)
 
@@ -10,7 +10,7 @@
 > 
 > ![](media/socmedia.png)
 > 
-> Fractarchy-ORG is a hierarchical content organizer that tries to amplify the simplicity of coding in a fun and exciting direction of composing interactive visual contents. This project bundles a brand new content markup language with a brand new visual interface. Give Fractarchy-ORG a chance, and take a journey of coding visual contents using this unusual creation inspired from the world of imagination.
+> Fractarchy-ORG is a hierarchical content organizer that tries to amplify the simplicity of coding in a fun and exciting direction of composing interactive visual contents. This project bundles a brand new content markup language with a brand new visual interface. Give Fractarchy-ORG a chance, and take a journey of coding visual contents in this unusual creation inspired from the world of imagination.
 
 ## why fractarchy-org?
 
@@ -49,9 +49,12 @@ Visit [https://contrast-zone.github.io/fractarchy-org/](https://contrast-zone.gi
 
 ## installing on local computer
 
-1. Make sure you have already installed HTTP server and PHP.
-2. Download and unzip this package to an arbitrary local server folder and open `index.html` in a browser.
-3. Don't forget to adjust proper file access privileges to folders below `projects/` to be able to save your work.
+1. Make sure you have installed Node.js
+2. Download and unzip this package to an arbitrary local directory
+3. Open the download directory in terminal and run `node main.js`
+4. Open browser and type `http://localhost:8080/` at the address bar
+
+Don't forget to adjust proper file access privileges to folders below `projects/` to be able to save your work.
 
 ## use instructions
 

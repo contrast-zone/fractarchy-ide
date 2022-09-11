@@ -544,7 +544,73 @@
                 return baseUrl;
             }
             
+            function openFile (url) {
+                var input = document.createElement('input');
+                input.type = 'file';
+
+                input.onchange = e => { 
+
+                   // getting a hold of the file reference
+                   var file = e.target.files[0]; 
+
+                   // setting up the reader
+                   var reader = new FileReader();
+                   reader.readAsText(file,'UTF-8');
+
+                   // here we tell the reader what to do when it's done reading...
+                   reader.onload = readerEvent => {
+                      var content = readerEvent.target.result; // this is the content!
+                      console.log( content );
+                   }
+
+                }
+
+                input.click();
+            }
+            
+            function saveFile () {
+                async function getNewFileHandle() {
+                  const opts = {
+                    types: [{
+                      description: 'Text file',
+                      accept: {'text/plain': ['.txt']},
+                    }],
+                  };
+                  return await window.showSaveFilePicker(opts);
+                }
+            }
+            
             function fileInput (url) {
+                /*
+                // only chrome HTTPS
+                const opts = {
+                    types: [{
+                        description: 'Structured document tree',
+                        accept: {'text/plain': ['.sdt']},
+                    }],
+                };
+                const fileHandle = await window.showOpenFilePicker(opts);
+
+                const file = await fileHandle.getFile();
+                if (fileHandle.type = "file") {
+                    const content = await file.text();
+
+                    var parsed = parser.parsesexpr (content);
+                    if (parsed.err) {
+                        var coord = parser.getCoords (txt, parsed.pos);
+                        alert ("Error: " + parsed.err + " at " + coord.row + ", " + coord.col);
+                        
+                    } else {
+                        baseUrl = getBaseUrl(url);
+                        fullUrl = url;
+                        document.title = url.substring (url.lastIndexOf("/") + 1);
+                        nodeTree = parsed;
+                        document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: parsed}, "*");
+                        document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: parsed, baseUrl: baseUrl}, "*");
+                    }                    
+                }
+                */
+                
                 var xhttp = new XMLHttpRequest ();
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 404) {
@@ -582,6 +648,39 @@
             }
 
             function fileOutput (url) {
+                /*
+                // only chrome
+                const opts = {
+                    types: [{
+                        description: 'Structured document tree',
+                        accept: {'text/plain': ['.sdt']},
+                    }],
+                };
+                const fileHandle = await window.showSaveFilePicker(opts);
+                const fileStream = await fileHandle.createWritable();
+                await fileStream.write(new Blob([parser.stringify (nodeTree, 50)], {type: "text/plain"}));
+                await fileStream.close();
+                */
+                var xhttp = new XMLHttpRequest ();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 405) {
+                        alert ("HTTP Error 405. Failed outputting '" + url + "'.");
+                        
+                    } else if (this.readyState == 4 && this.status == 200) {
+                        baseUrl = getBaseUrl(url);
+                        fullUrl = url;
+                        document.title = url.substring (url.lastIndexOf("/") + 1);
+                        alert (this.responseText);
+                    }
+                };
+                
+                var dir = encodeURIComponent (url.substring(0, url.lastIndexOf("/") + 1))
+                var fname = encodeURIComponent (url.substring (url.lastIndexOf("/") + 1));
+                var fcontents = encodeURIComponent (parser.stringify (nodeTree, 50));
+                xhttp.open("POST", "save-file", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("fdir=" + dir + "&fname=" + fname + "&fcontents=" + fcontents);
+                /*
                 var xhttp = new XMLHttpRequest ();
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 405) {
@@ -598,6 +697,7 @@
                 xhttp.open("POST", "src/save-file.php", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xhttp.send("dir=" + dir + "&fname=" + fname + "&fcontents=" + fcontents);
+                */
             }
 
             function populate () {

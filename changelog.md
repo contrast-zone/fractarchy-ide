@@ -10,3 +10,6 @@
     - providing loading/saving support  
     - finalizing minimum viable version  
 
+- v 0.1 - beta  
+    - migrated server side code to Node.js  
+    
