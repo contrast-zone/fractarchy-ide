@@ -1,13 +1,10 @@
-const https = require('https');
-
-var http = require('http');
-var url = require('url');
-var qs = require('querystring');
-var fs = require('fs');
-
-var files = require ("./src/file-funcs.js");
-
-var mimeTypes = {
+var http = require("http"),
+    url = require("url"),
+    path = require("path"),
+    fs = require("fs"),
+    qs = require('querystring'),
+    port = process.argv[2] || 8080,
+    mimeTypes = {
       "html": "text/html",
       "jpeg": "image/jpeg",
       "jpg": "image/jpeg",
@@ -18,18 +15,25 @@ var mimeTypes = {
       "css": "text/css"
     };
 
-http.createServer(async function (req, res) {
-    var q = url.parse(req.url, true);
-    var filename = "." + q.pathname;
+var files = require ("./src/file-funcs.js");
 
-    if (filename === "./")
-    filename = "./index.html";
+const options = {
+  key: fs.readFileSync("./config/cert.key"),
+  cert: fs.readFileSync("./config/cert.crt"),
+};
 
-    if (filename === "./save-file") {
-        switch (req.method) {
+//https.createServer(options, async function (request, response) {
+http.createServer(async function (request, response) {
+    var uri = url.parse(request.url).pathname, 
+        filename = path.join(process.cwd(), uri);
+
+    //console.log(filename);
+
+    if (filename.split('/').pop() === "save-file") {
+        switch (request.method) {
             case "POST": {
               const buffers = [];
-              for await (const chunk of req) {
+              for await (const chunk of request) {
                   buffers.push(chunk);
               }
               const data = Buffer.concat(buffers).toString();
@@ -37,39 +41,45 @@ http.createServer(async function (req, res) {
               var post = qs.parse(data)
               
               if (files.save(post.fdir + post.fname, post.fcontents))
-                  res.end("saved");
+                  response.end("File saved");
               else
-                  res.end("Error saving '" + post.fdir + post.fname + "'");
+                  response.end("Error saving '" + post.fdir + post.fname + "'");
             }
             default: {
-              res.end();
+              response.end();
             }        
         }
-
-    } else {
-        fs.readFile(filename, function(err, data) {
-            if (err) {
-                res.writeHead(404, {'Content-Type': 'text/html'});
-                return res.end("404 Not Found: " + filename);
-                console.log(filename);
+    }
+    
+    fs.exists(filename, function(exists) {
+        if(!exists) {
+            response.writeHead(404, {'Content-Type': 'text/html'});
+            return response.end("404 Not Found: " + filename);
+        }
+     
+        if (fs.statSync(filename).isDirectory()) 
+          filename += '/index.html';
+     
+        fs.readFile(filename, "binary", function(err, file) {
+            if(err) {        
+                response.writeHead(500, {"Content-Type": "text/plain"});
+                response.write(err + "\n");
+                response.end();
+                return;
             }
-            /*
-            if (filename.substring (filename.length - 3, filename.length) === "svg") {
-                res.writeHead(200, {'Content-Type': mime.contentType(filename)});
-                console.debug (mime.contentType(filename));
-            } else {
-                res.writeHead(200, {'Content-Type': 'text/html'});
-            }
-            */
+          
             var mimeType = mimeTypes[filename.split('.').pop()];
           
             if (!mimeType) {
                 mimeType = 'text/plain';
             }
-          
-            res.writeHead(200, { "Content-Type": mimeType });
-            res.write(data);
-            return res.end();
+              
+            response.writeHead(200, { "Content-Type": mimeType });
+            response.write(file, "binary");
+            response.end();
         });
-    }
-}).listen(8080);
+    });
+}).listen(parseInt(port, 10));
+
+console.log("Static file server running at\n  => http://localhost:" + port + "/\nCTRL + C to shutdown");
+

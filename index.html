@@ -242,7 +242,8 @@
                 document.getElementById("target").contentWindow.frames[0].print();
             }, false);
                         
-            document.getElementById("svginput").addEventListener ("click", function () {
+            document.getElementById("svginput").addEventListener ("click", async function () {
+                
                 var filename = prompt("Reading from source media. Please enter input file name:", fullUrl);
 
                 if (filename == null || filename == "") {
@@ -251,9 +252,60 @@
                 } else {
                     fileInput (filename);
                 }
+                /*
+                const opts = {
+                    suggestedName: fullUrl.substring (fullUrl.lastIndexOf("/") + 1),
+                    types: [{
+                        description: 'Structured document tree',
+                        accept: {'text/plain': ['.sdt']},
+                    }],
+                };
+                try {
+                    [fileHandle] = await window.showOpenFilePicker(opts);
+
+                    const file = await fileHandle.getFile();
+                    url = (file.path || "") + file.name;
+                    if (fileHandle.type = "file") {
+                        const content = await file.text();
+
+                        var parsed = parser.parsesexpr (content);
+                        if (parsed.err) {
+                            var coord = parser.getCoords (content, parsed.pos);
+                            alert ("Error: " + parsed.err + " at " + coord.row + ", " + coord.col);
+                            
+                        } else {
+                            baseUrl = getBaseUrl(url);
+                            fullUrl = url;
+                            document.title = url.substring (url.lastIndexOf("/") + 1);
+                            nodeTree = parsed;
+                            document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: parsed}, "*");
+                            document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: parsed, baseUrl: baseUrl}, "*");
+                        }                    
+                    }
+                } catch (e) {
+                }
+                */
             }, false);
 
-            document.getElementById("svgoutput").addEventListener ("click", function () {
+            document.getElementById("svgoutput").addEventListener ("click", async function () {
+                /*
+                const opts = {
+                  suggestedName: fullUrl.substring (fullUrl.lastIndexOf("/") + 1),
+                  types: [{
+                    description: 'Structured document tree',
+                    accept: {
+                      'text/plain': ['.sdt'],
+                    },
+                  }],
+                };
+                try {
+                    const fileHandle = await window.showSaveFilePicker(opts);
+                    const fileStream = await fileHandle.createWritable();
+                    await fileStream.write(new Blob([parser.stringify (nodeTree, 50)], {type: "text/plain"}));
+                    await fileStream.close();
+                } catch (e) {
+                }
+                */
                 var filename = prompt("Writing to target media. Please enter output file name:", fullUrl);
 
                 if (filename == null || filename == "") {
@@ -262,6 +314,7 @@
                 } else {
                     fileOutput (filename);
                 }
+                
             }, false);
                         
             window.addEventListener("load", () => {
@@ -543,7 +596,7 @@
                 
                 return baseUrl;
             }
-            
+            /*            
             function openFile (url) {
                 var input = document.createElement('input');
                 input.type = 'file';
@@ -579,38 +632,8 @@
                   return await window.showSaveFilePicker(opts);
                 }
             }
-            
+            */
             function fileInput (url) {
-                /*
-                // only chrome HTTPS
-                const opts = {
-                    types: [{
-                        description: 'Structured document tree',
-                        accept: {'text/plain': ['.sdt']},
-                    }],
-                };
-                const fileHandle = await window.showOpenFilePicker(opts);
-
-                const file = await fileHandle.getFile();
-                if (fileHandle.type = "file") {
-                    const content = await file.text();
-
-                    var parsed = parser.parsesexpr (content);
-                    if (parsed.err) {
-                        var coord = parser.getCoords (txt, parsed.pos);
-                        alert ("Error: " + parsed.err + " at " + coord.row + ", " + coord.col);
-                        
-                    } else {
-                        baseUrl = getBaseUrl(url);
-                        fullUrl = url;
-                        document.title = url.substring (url.lastIndexOf("/") + 1);
-                        nodeTree = parsed;
-                        document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: parsed}, "*");
-                        document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: parsed, baseUrl: baseUrl}, "*");
-                    }                    
-                }
-                */
-                
                 var xhttp = new XMLHttpRequest ();
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 404) {
@@ -648,25 +671,12 @@
             }
 
             function fileOutput (url) {
-                /*
-                // only chrome
-                const opts = {
-                    types: [{
-                        description: 'Structured document tree',
-                        accept: {'text/plain': ['.sdt']},
-                    }],
-                };
-                const fileHandle = await window.showSaveFilePicker(opts);
-                const fileStream = await fileHandle.createWritable();
-                await fileStream.write(new Blob([parser.stringify (nodeTree, 50)], {type: "text/plain"}));
-                await fileStream.close();
-                */
                 var xhttp = new XMLHttpRequest ();
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 405) {
                         alert ("HTTP Error 405. Failed outputting '" + url + "'.");
                         
-                    } else if (this.readyState == 4 && this.status == 200) {
+                    } else if (this.readyState == 4 && this.status == 200 && this.responseText.substring(0, "Error".length) !== "Error") {
                         baseUrl = getBaseUrl(url);
                         fullUrl = url;
                         document.title = url.substring (url.lastIndexOf("/") + 1);
@@ -680,6 +690,7 @@
                 xhttp.open("POST", "save-file", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xhttp.send("fdir=" + dir + "&fname=" + fname + "&fcontents=" + fcontents);
+                
                 /*
                 var xhttp = new XMLHttpRequest ();
                 xhttp.onreadystatechange = function () {
@@ -701,7 +712,7 @@
             }
 
             function populate () {
-                var url = "projects/instructions/instructions.sdt"
+                var url = "./projects/instructions/instructions.sdt"
 
                 if (!nodeTree) {
                     baseUrl = getBaseUrl(url);
@@ -740,7 +751,6 @@
     
                         document.getElementById("source").contentWindow.postMessage({msg: "sync", cursor: currentNode.cursor, pathLength: currentNode.pathLength}, "*");
                         document.getElementById("target").contentWindow.postMessage({msg: "sync", cursor: currentNode.cursor, pathLength: currentNode.pathLength}, "*");
-    
                     }
                 }
             }
@@ -776,7 +786,6 @@
             
             document.getElementById("source").contentWindow.location.replace("./src/source-browse.html");
             document.getElementById("target").contentWindow.location.replace("./src/target-browse.html");
-
           </script>
     </body>
 </html>

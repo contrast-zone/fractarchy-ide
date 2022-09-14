@@ -254,7 +254,7 @@
                 }
             };
             
-            function msgSync () {
+            function getCursor () {
                 function stripCursor (c) {
                     var ret = {index: c.index, angle: c.angle, children: []};
                     for (var i = 0; i < c.children.length; i++)
@@ -267,11 +267,17 @@
                 var topc = objOrbit.getCursor ();
                 while (topc.parent)
                     topc = topc.parent;
-
+                    
                 topc = stripCursor (topc)
                 var pl = objOrbit.getPathLength ()
+                
+                return {cursor: topc, pathLength: pl};
+            }
+            
+            function msgSync () {
+                var c = getCursor ();
                 if (!loaded)
-                    window.parent.postMessage({msg: "syncSource", cursor: topc, pathLength: pl}, "*");
+                    window.parent.postMessage({msg: "syncSource", cursor: c.cursor, pathLength: c.pathLength}, "*");
             }
 
             var error;
@@ -293,7 +299,13 @@
             }
 
             function dispatchSize () {
+                var c = getCursor ();
+
                 divContainer.dispatchEvent(new CustomEvent('resize1', null));
+                divContainer.dispatchEvent(new CustomEvent('redefineData', {detail: nodeTree}));
+
+                msg ({data: {msg: "setCurNode", cursor: c.cursor, pathLength: c.pathLength}});
+                msg ({data: {msg: "sync", cursor: c.cursor, pathLength: c.pathLength}});
             }
 
             function dispatchDraw () {
@@ -460,7 +472,7 @@
                     var node = sortedOvals[i].data;
                     if (!node.ifr) {
                         try {
-                            await loadOval (node);
+                            await loadOval (node, sortedOvals[i].radius);
                         } catch (e) {
                             break;
                         }
@@ -498,7 +510,7 @@
                 onIdleRunning = false;
             }
             
-            async function loadOval(node) {
+            async function loadOval(node, radius) {
                 return new Promise(async function(resolve, reject) {
                     if (node.ifr)
                         resolve();
@@ -594,7 +606,7 @@
                         reject ();
                     });
 
-                    loadNode (node).then ((loaded) => {
+                    loadNode (node, radius).then ((loaded) => {
                         //delete node.xml;
                         node.children = loaded.children;
 
@@ -676,7 +688,7 @@
                 }
             }
 
-            async function loadNode (node) {
+            async function loadNode (node, radius) {
 //                return new Promise(async function(resolve, reject) {
                     /*
                     function stringify (node, maxcols, indent) {
@@ -734,9 +746,11 @@
                     //node.hAlign = att.nodeValue;
                     //node.backColor = "yellow";
 
+                    var width = Math.round (window.innerWidth / (1920 / 2) * 24); // 24em
+                    width = Math.min (width, 36);
                     node.srcdoc = '<html style="font-size: 1.25em">' 
                         //+ '<head><style>body {animation: fadein 0.5s;} @keyframes fadein {from { opacity: 0; /*transform: scale(0.5);*/} to { opacity: 1; /*transform: scale(1.0);*/}}</style></head>'
-                        + '<body style="margin: 0; padding: 0; width: 24em; font-family: Times New Roman, Georgia, Garamond; color: rgb(48,48,48)">' + compiler.node2html (node.nodeRawData[1], baseUrl) + '</body>'
+                        + `<body style="margin: 0; padding: 0; width: ${width}em; font-family: Times New Roman, Georgia, Garamond; color: rgb(48,48,48)">` + compiler.node2html (node.nodeRawData[1], baseUrl) + '</body>'
                     + '</html>'
                     node.children = [];
                     if (node.nodeRawData[2])

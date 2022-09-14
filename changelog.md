@@ -12,4 +12,5 @@
 
 - v 0.1 - beta  
     - migrated server side code to Node.js  
+    - content boundary size relative to window width  
     

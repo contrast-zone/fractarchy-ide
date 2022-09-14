@@ -254,7 +254,7 @@
                 }
             };
             
-            function msgSync () {
+            function getCursor () {
                 function stripCursor (c) {
                     var ret = {index: c.index, angle: c.angle, children: []};
                     for (var i = 0; i < c.children.length; i++)
@@ -270,8 +270,14 @@
                     
                 topc = stripCursor (topc)
                 var pl = objOrbit.getPathLength ()
+                
+                return {cursor: topc, pathLength: pl};
+            }
+            
+            function msgSync () {
+                var c = getCursor ();
                 if (!loaded)
-                    window.parent.postMessage({msg: "syncTarget", cursor: topc, pathLength: pl}, "*");
+                    window.parent.postMessage({msg: "syncTarget", cursor: c.cursor, pathLength: c.pathLength}, "*");
            }
 
             var error;
@@ -293,7 +299,13 @@
             }
 
             function dispatchSize () {
+                var c = getCursor ();
+
                 divContainer.dispatchEvent(new CustomEvent('resize1', null));
+                divContainer.dispatchEvent(new CustomEvent('redefineData', {detail: nodeTree}));
+
+                msg ({data: {msg: "setCurNode", cursor: c.cursor, pathLength: c.pathLength}});
+                msg ({data: {msg: "sync", cursor: c.cursor, pathLength: c.pathLength}});
             }
 
             function dispatchDraw () {
@@ -691,14 +703,16 @@
                     else
                         nodeName = "";
                     
+                    var width = Math.round (window.innerWidth / (1920 / 2) * 30); // 30em
+                    width = Math.min (width, 45);
                     node.srcdoc = '<html style="font-size: 1em">' 
                         //+ '<head><style>body {animation: fadein 0.5s;} @keyframes fadein {from { opacity: 0; /*transform: scale(0.5);*/} to { opacity: 1; /*transform: scale(1.0);*/}}</style></head>'
-                        + '<body style="margin: 0; padding: 0; width: 30em; color:rgb(208,208,208)">'
+                        + `<body style="margin: 0; padding: 0; width: ${width}em; color:rgb(208,208,208)">`
                             + '<heading1 style="font-family: monospace; font-size: 3em; font-weight: bold; margin-top: 0em;">'
                                 + nodeName
                             + '</heading1>'
 //                            + `<div style="wrap: none; font: ${options.font}; white-space: pre; color: ${options.colorText}; width: inherit; height: inherit; overflow: hidden; margin: 0; padding:4px;">`
-                                + editor.hilight (parser.stringify (node.nodeRawData[1], 50), options)
+                                + editor.hilight (parser.stringify (node.nodeRawData[1], Math.round (width / 30 * 50)), options)
 //                            + `</div>`
                         + '</body>'
                     + '</html>'
