@@ -258,16 +258,7 @@
                         
             document.getElementById("svginput").addEventListener ("click", async function () {
                 showIO ("readDoc", fullUrl);
-                /*
-                var filename = prompt("Reading from source media. Please enter input file name:", fullUrl);
 
-                if (filename == null || filename == "") {
-                    //console.debug ("User cancelled the prompt.");
-
-                } else {
-                    fileInput (filename);
-                }
-                */
                 /*
                 const opts = {
                     suggestedName: fullUrl.substring (fullUrl.lastIndexOf("/") + 1),
@@ -323,25 +314,12 @@
                 } catch (e) {
                 }
                 */
-                /*
-                var filename = prompt("Writing to target media. Please enter output file name:", fullUrl);
-
-                if (filename == null || filename == "") {
-                    //console.debug ("User cancelled the prompt.");
-
-                } else {
-                    fileOutput (filename);
-                }
-                */
             }, false);
                         
             window.addEventListener("load", () => {
                 window.addEventListener("message", msg, false);
                 setSize();                
             });
-
-
-            //document.body.style.fontSize = Math.sqrt(window.devicePixelRatio) + "em"
 
             var setSize = function (orientation) {
                 var s = document.getElementById("source");
@@ -664,43 +642,6 @@
                 
                 return baseUrl;
             }
-            /*            
-            function openFile (url) {
-                var input = document.createElement('input');
-                input.type = 'file';
-
-                input.onchange = e => { 
-
-                   // getting a hold of the file reference
-                   var file = e.target.files[0]; 
-
-                   // setting up the reader
-                   var reader = new FileReader();
-                   reader.readAsText(file,'UTF-8');
-
-                   // here we tell the reader what to do when it's done reading...
-                   reader.onload = readerEvent => {
-                      var content = readerEvent.target.result; // this is the content!
-                      console.log( content );
-                   }
-
-                }
-
-                input.click();
-            }
-            
-            function saveFile () {
-                async function getNewFileHandle() {
-                  const opts = {
-                    types: [{
-                      description: 'Text file',
-                      accept: {'text/plain': ['.txt']},
-                    }],
-                  };
-                  return await window.showSaveFilePicker(opts);
-                }
-            }
-            */
 
             function fileInput (url) {
                 var xhttp = new XMLHttpRequest ();
@@ -764,25 +705,6 @@
                 xhttp.open("POST", "save-file", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xhttp.send("fdir=" + dir + "&fname=" + fname + "&fcontents=" + fcontents);
-                
-                /*
-                var xhttp = new XMLHttpRequest ();
-                xhttp.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 405) {
-                        alert ("HTTP Error 405. Failed outputting '" + url + "'.");
-                        
-                    } else if (this.readyState == 4 && this.status == 200) {
-                        alert (this.responseText);
-                    }
-                };
-                
-                var dir = encodeURIComponent (url.substring(0, url.lastIndexOf("/") + 1))
-                var fname = encodeURIComponent (url.substring (url.lastIndexOf("/") + 1));
-                var fcontents = encodeURIComponent (parser.stringify (nodeTree, 50));
-                xhttp.open("POST", "src/save-file.php", true);
-                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send("dir=" + dir + "&fname=" + fname + "&fcontents=" + fcontents);
-                */
             }
 
             function populate () {

@@ -166,9 +166,6 @@
                 
                 var width = window.innerWidth;//document.body.clientWidth;
                 var height = window.innerHeight;//document.body.clientHeight;
-                
-                //document.body.style.width = width + "px";
-                //document.body.style.height = height + "px";
 
                 title.style.color = "rgb(48,48,48)";
                 title.style.backgroundColor = "rgb(208,208,208)";
@@ -223,13 +220,6 @@
                 } else {
                     var path = curDir.split ("/");
                 }
-                /*
-                fname = path.pop ();
-                if (fname.trim () === "") {
-                    fname = path.pop ();
-                    var isPath = true
-                }
-                */
                 
                 var fpath = fname.split ("/");
                 var path1 = [], path2 = path.concat (fpath);
@@ -325,8 +315,8 @@
             }
             
             document.getElementById("svgkeep").addEventListener('click', function () {
-                if (document.getElementById("fname").value !== "") {
-                    keep (document.getElementById("fname").value);
+                if (document.getElementById("fname").value.trim () !== "") {
+                    keep (document.getElementById("fname").value.trim ());
                 }
             });
 
@@ -336,7 +326,7 @@
             
             document.getElementById("fname").addEventListener('keyup', function (e) {
                 if(e.keyCode === 13){
-                    keep (document.getElementById("fname").value);
+                    keep (document.getElementById("fname").value.trim ());
                     
                 } else if(e.keyCode === 27){
                     lose ();
