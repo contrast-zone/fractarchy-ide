@@ -30,7 +30,7 @@ module.exports = {
             var fnames = fs.readdirSync(folder);
         } catch (e) {
             console.log(e)
-            return flist;
+            return "Error reading directory: '" + folder + "'";
         }
         
         fnames = fnames.filter(item => !(/(^|\/)\.[^\/\.]/g).test(item));

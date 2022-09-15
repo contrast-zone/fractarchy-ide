@@ -65,10 +65,15 @@
                 var xhttp = new XMLHttpRequest ();
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
-                        curDir = dir;
-                        var dir1 = JSON.parse (this.responseText).sort((a, b) => ((a.isDir ? "0" + a.fname : "1" + a.fname) < (b.isDir ? "0" + b.fname : "1" + b.fname) ? -1 : 1));
-                        dir1.unshift ({fname: "..", mtime: "", isDir: true});
-                        callback (dir1);
+                        if (this.responseText.charAt(0) !== '"') {
+                            curDir = dir;
+                            var dir1 = JSON.parse (this.responseText).sort((a, b) => ((a.isDir ? "0" + a.fname : "1" + a.fname) < (b.isDir ? "0" + b.fname : "1" + b.fname) ? -1 : 1));
+                            dir1.unshift ({fname: "..", mtime: "", isDir: true});
+                            callback (dir1);
+                            
+                        } else {
+                            alert (this.responseText.substring (1, this.responseText.length - 2));
+                        }
                     }
                 };
                 xhttp.open("GET", "readDir?dir=" + encodeURIComponent (dir), true);
@@ -264,7 +269,7 @@
                             
                             } else {
                                 if (opMode === "writeDoc") {
-                                    if (confirm(`File '${fname} already exist. Do you want to overwrite it?`)) {
+                                    if (confirm(`File '${fname} already exist. Overwrite?`)) {
                                         window.parent.postMessage({msg: "writeFile", fname: dir + "/" + fname}, "*");
                                         readDir (dir, composeDir);
                                     }

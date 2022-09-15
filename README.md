@@ -43,7 +43,7 @@ Fractarchy-ORG **is not suited** to be used for:
 
 ## online test
 
-Visit [https://contrast-zone.github.io/fractarchy-org/](https://contrast-zone.github.io/fractarchy-org/).
+Visit [https://contrast-zone.github.io/fractarchy-org/](https://contrast-zone.github.io/fractarchy-org/) (will be enabled once that beta is merged to main branch).
 
 ## installing on local computer
 
