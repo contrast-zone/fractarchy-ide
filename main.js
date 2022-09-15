@@ -16,20 +16,70 @@ var http = require("http"),
     };
 
 var files = require ("./src/file-funcs.js");
-
+/*
 const options = {
   key: fs.readFileSync("./config/cert.key"),
   cert: fs.readFileSync("./config/cert.crt"),
 };
 
-//https.createServer(options, async function (request, response) {
+https.createServer(options, async function (request, response) {
+*/
+
 http.createServer(async function (request, response) {
     var uri = url.parse(request.url).pathname, 
         filename = path.join(process.cwd(), uri);
 
     //console.log(filename);
-
-    if (filename.split('/').pop() === "save-file") {
+    var fn = filename.split('/').pop();
+    
+    if (fn === "getAbsDir") {
+        switch (request.method) {
+            case "GET": {
+              var get = qs.parse(url.parse(request.url).query);
+              response.end(files.getAbsolutePath(get.fname));
+            }
+            default: {
+              response.end();
+            }        
+        }
+    }
+    
+    else if (fn === "getHomeDir") {
+        switch (request.method) {
+            case "GET": {
+              response.end(files.getHomeDir());
+            }
+            default: {
+              response.end();
+            }        
+        }
+    }
+    
+    else if (fn === "readDir") {
+        switch (request.method) {
+            case "GET": {
+              var get = qs.parse(url.parse(request.url).query);
+              response.end(JSON.stringify (files.readDir (get.dir)));
+            }
+            default: {
+              response.end();
+            }        
+        }
+    }
+    
+    else if (fn === "open-file") {
+        switch (request.method) {
+            case "GET": {
+              var get = qs.parse(url.parse(request.url).query);
+              response.end(files.open(get.fname));
+            }
+            default: {
+              response.end();
+            }        
+        }
+    }
+    
+    else if (fn === "save-file") {
         switch (request.method) {
             case "POST": {
               const buffers = [];
@@ -38,7 +88,7 @@ http.createServer(async function (request, response) {
               }
               const data = Buffer.concat(buffers).toString();
               
-              var post = qs.parse(data)
+              var post = qs.parse(data);
               
               if (files.save(post.fdir + post.fname, post.fcontents))
                   response.end("File saved");

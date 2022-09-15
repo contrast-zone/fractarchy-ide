@@ -94,7 +94,7 @@
                     baseUrl = event.data.baseUrl;
                     nodeTree = ["branches", event.data.nodeTree];
                     numberOfNodes = 0;
-                    var width = window.innerWidth / (1920 / 2) * 24; // 24em
+                    var width = Math.round (window.innerWidth / ((1920 - 32) / 2) * 24); // 24em
                     width = Math.min (width, 36);
                     ifrPreview.srcdoc = `<html style="font-size: 1.5em; background-color: inherit;">`
                         + `<head>`

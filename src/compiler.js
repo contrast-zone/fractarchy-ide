@@ -132,7 +132,11 @@ var compiler = (function (obj) {
                                 txt += map["open"].replace("$address$", stripQuotes (node[0][1][1])).replace("$target$", stripQuotes (node[0][2][1]));
                             
                             } else if (tmpmap === "image") {
-                                txt += map["open"].replace("$source$", baseUrl + stripQuotes (node[1][1]));
+                                if (baseUrl.substring(0, 1) === "/") {
+                                    txt += map["open"].replace("$source$", "open-file?fname=" + encodeURIComponent (baseUrl + stripQuotes (node[1][1])));
+                                } else {
+                                    txt += map["open"].replace("$source$", baseUrl + stripQuotes (node[1][1]));
+                                }
                             
                             } else {
                                 txt += map["open"];

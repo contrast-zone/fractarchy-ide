@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<!--?xml version="1.0"?-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <head>
+        <style media="screen">
+            section {
+                position: absolute; top:0; bottom:0; left:0; right:0;
+                overflow: hidden;
+            }
+            
+            html, body
+            {
+                overflow: hidden;
+                /*height: 100%;*/
+                /*width: 100%;*/
+                margin-top: 0px;
+                margin-left: 0px;
+                pointer-events: auto;
+                background-color: gray;
+                color: rgb(208,208,208);
+                /*touch-action: pinch-zoom;*/
+                touch-action: none;
+                user-select: none;
+
+                font-size: 1em;
+            }
+
+            .grid {display: grid; grid-template-columns: 275px 125px 200px; column-gap: 10px;}
+            
+            svg {opacity : 0.7;}
+            svg:hover {cursor: pointer; opacity :1;}
+
+            /* WebKit and Chromiums */
+            ::-webkit-scrollbar {
+              width: 8px;
+              height: 8px;
+              background-color: rgb(48,48,48);
+            }
+
+            ::-webkit-scrollbar-thumb {
+              background: rgb(192,192,192);
+              border-radius: 4px;
+            }
+            
+            ::-webkit-scrollbar-corner {
+              background-color: rgb(48,48,48);
+            }
+        </style>
+    </head>
+    <body>
+      <section>
+      <div id="title" align="center" style="position: absolute; font: bold 2em sans-serif;">Browse file</div>
+      <div id="container" style="position: absolute;">
+          <div id="dir" style="position: absolute; font: 1.2em monospace; padding: 4px; word-wrap: break-word; word-break: break-all; overflow: hidden;"></div>
+          <div id="flist" style="position: absolute; font: 1.2em monospace; padding: 4px; overflow-y: auto; overflow-x: hidden;"></div>
+          <svg id="svglose" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="position: absolute"><title>cancel</title><path fill="rgb(208,208,208)" d="m16.6 33.6 7.4-7.4 7.4 7.4 2.2-2.2-7.4-7.4 7.4-7.4-2.2-2.2-7.4 7.4-7.4-7.4-2.2 2.2 7.4 7.4-7.4 7.4ZM24 44.3q-4.15 0-7.875-1.6-3.725-1.6-6.475-4.35Q6.9 35.6 5.3 31.9 3.7 28.2 3.7 24t1.6-7.925q1.6-3.725 4.35-6.45Q12.4 6.9 16.1 5.3T24 3.7q4.2 0 7.925 1.6 3.725 1.6 6.45 4.325T42.7 16.05q1.6 3.7 1.6 7.95 0 4.2-1.6 7.9t-4.325 6.45Q35.65 41.1 31.95 42.7q-3.7 1.6-7.95 1.6Zm0-3.4q7.05 0 11.975-4.95T40.9 24q0-7.05-4.925-11.975T24 7.1q-7 0-11.95 4.925Q7.1 16.95 7.1 24q0 7 4.95 11.95Q17 40.9 24 40.9ZM24 24Z"/></svg>
+          <svg id="svgkeep" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="position: absolute"><title>accept</title><path fill="rgb(208,208,208)" d="M21.05 33.3 35.3 19l-2.55-2.5-11.7 11.75-5.9-5.9-2.5 2.5Zm2.95 11q-4.15 0-7.875-1.6-3.725-1.6-6.475-4.35Q6.9 35.6 5.3 31.9 3.7 28.2 3.7 24t1.6-7.925q1.6-3.725 4.35-6.45Q12.4 6.9 16.1 5.3T24 3.7q4.2 0 7.925 1.6 3.725 1.6 6.45 4.325T42.7 16.05q1.6 3.7 1.6 7.95 0 4.2-1.6 7.9t-4.325 6.45Q35.65 41.1 31.95 42.7q-3.7 1.6-7.95 1.6Zm0-3.4q7.05 0 11.975-4.95T40.9 24q0-7.05-4.925-11.975T24 7.1q-7 0-11.95 4.925Q7.1 16.95 7.1 24q0 7 4.95 11.95Q17 40.9 24 40.9ZM24 24Z"/></svg>
+          <input type="text" id="fname" name="fname" autocomplete="off" spellcheck="false" style="position: absolute; border: none;  font: 1.2em monospace;"/>
+      </div>
+        <script>
+            "use strict"
+            
+            function readDir (dir, callback) {
+                var xhttp = new XMLHttpRequest ();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        curDir = dir;
+                        var dir1 = JSON.parse (this.responseText).sort((a, b) => ((a.isDir ? "0" + a.fname : "1" + a.fname) < (b.isDir ? "0" + b.fname : "1" + b.fname) ? -1 : 1));
+                        dir1.unshift ({fname: "..", mtime: "", isDir: true});
+                        callback (dir1);
+                    }
+                };
+                xhttp.open("GET", "readDir?dir=" + encodeURIComponent (dir), true);
+                xhttp.overrideMimeType("text/plain");
+                xhttp.send();
+            }
+            
+            function getHomeDir () {
+                var xhttp = new XMLHttpRequest ();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        curDir = this.responseText + "";
+                        readDir (curDir, composeDir);
+                    }
+                };
+                xhttp.open("GET", "getHomeDir", true);
+                xhttp.overrideMimeType("text/plain");
+                xhttp.send();
+            }
+            
+            function getAbsDir (url) {
+                var xhttp = new XMLHttpRequest ();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var dir = this.responseText + "";
+                        var path = dir.split ("/");
+                        document.getElementById ("fname").value = path.pop ();
+                        document.getElementById ("fname").select ();
+                        curDir = path.join ("/");
+                        
+                        readDir (curDir, composeDir);
+                    }
+                };
+                xhttp.open("GET", "getAbsDir?fname=" + encodeURIComponent (url), true);
+                xhttp.overrideMimeType("text/plain");
+                xhttp.send();
+            }
+            
+            function composeDir (dir) {                
+                var txt = "";
+                for (var i = 0; i < dir.length; i++)
+                    txt += `<div class="grid" name="filediv"><div style="word-wrap: break-word; word-break: break-all; overflow: hidden;">${(dir[i].isDir ? "&lt;" + dir[i].fname + "&gt;" : dir[i].fname)}</div><div align="right">${(dir[i].isDir ? "" : dir[i].fsize)}</div><div>${dir[i].mtime}</div></div>`
+                
+                document.getElementById("dir").innerHTML = "path:" + curDir + (curDir === "/"? "": "/");
+                document.getElementById("flist").innerHTML = txt;
+            
+                var fdivs = document.getElementsByName("filediv");
+                for (var i = 0; i < fdivs.length; i++) {
+                    fdivs[i].fentry = dir[i];
+                    fdivs[i].addEventListener('mouseenter', function (e) {
+                        if (this !== selection) {
+                            this.style.backgroundColor = "gray";
+                            this.style.color = "rgb(24,24,24)";
+                        }
+                    });
+                    fdivs[i].addEventListener('mouseleave', function (e) {
+                        if (this !== selection) {
+                            this.style.backgroundColor = "rgb(48,48,48)";
+                            this.style.color = "rgb(208,208,208)";
+                        }
+                    });
+                    fdivs[i].addEventListener('click', function (e) {
+                        if (selection) {
+                            selection.style.backgroundColor = "rgb(48,48,48)";
+                            selection.style.color = "rgb(208,208,208)";
+                        }
+                        this.style.backgroundColor = "rgb(208,208,208)";
+                        this.style.color = "rgb(48,48,48)";
+                        selection = this;
+                        var fn = selection.fentry.fname;
+                        document.getElementById("fname").value = fn;
+                    });
+                    fdivs[i].addEventListener('dblclick', function (e) {
+                        keep (this.fentry.fname);
+                    });
+                }
+                setSize ();
+            }
+            
+            function setSize () {
+                var cont = document.getElementById("container");
+                var title = document.getElementById("title");
+                var dl = document.getElementById("dir");
+                var fl = document.getElementById("flist");
+                var sk = document.getElementById("svgkeep");
+                var sl = document.getElementById("svglose");
+                var fn = document.getElementById("fname");
+                
+                var wrappad = 2 * 4;
+                
+                var marg = 4;
+                var padd = 1;
+                var bord = 4;
+                var btns = 48;
+                
+                var width = window.innerWidth;//document.body.clientWidth;
+                var height = window.innerHeight;//document.body.clientHeight;
+                
+                //document.body.style.width = width + "px";
+                //document.body.style.height = height + "px";
+
+                title.style.color = "rgb(48,48,48)";
+                title.style.backgroundColor = "rgb(208,208,208)";
+                title.style.padding = bord + "px";
+                title.style.width = width  + "px";
+                title.style.top = "0px";
+                title.style.left = "0px";
+
+                cont.style.backgroundColor = "gray";
+                cont.style.top = title.clientHeight + "px";
+                cont.style.width = width - 2 * bord + "px";
+                cont.style.height = height - title.clientHeight - btns - bord + "px";
+                cont.style.border = bord + "px solid rgb(48,48,48)";
+                cont.style.borderBottom = btns + "px solid rgb(48,48,48)";
+
+                dl.style.color = "rgb(208,208,208)";
+                dl.style.backgroundColor = "rgb(48,48,48)";
+                dl.style.top = padd + "px";
+                dl.style.left = padd + "px";
+                dl.style.width = (cont.clientWidth - 2 * padd - wrappad) + "px";
+                
+                fl.style.color = "rgb(208,208,208)";
+                fl.style.backgroundColor = "rgb(48,48,48)";
+                fl.style.top = padd + dl.offsetTop + dl.clientHeight + "px";
+                fl.style.left = padd + "px";
+                fl.style.width = (cont.clientWidth - 2 * padd - wrappad) + "px";
+                setTimeout (() => {
+                    fl.style.height = (cont.clientHeight - dl.clientHeight - 3 * padd - wrappad) + "px";
+                }, 0);
+                
+                sl.style.left = "0px";
+                sl.style.bottom = "-48px";
+                sk.style.right = "0px";
+                sk.style.bottom = "-48px";
+
+                fn.style.color = "rgb(48,48,48)";
+                fn.style.backgroundColor = "rgb(208,208,208)";
+                setTimeout (() => {
+                    fn.style.bottom = (-48 / 2 - fn.clientHeight / 2) + "px";
+                    fn.style.width = "300px";
+                    fn.style.left = (width / 2 - fn.clientWidth / 2) + "px";
+                }, 0);
+            }
+
+            function keep (fname) {
+                //var fname = document.getElementById("fname").value;
+                var dir;
+                
+                if (fname.substring(0, 1) === "/") {
+                    var path = [];
+                    
+                } else {
+                    var path = curDir.split ("/");
+                }
+                /*
+                fname = path.pop ();
+                if (fname.trim () === "") {
+                    fname = path.pop ();
+                    var isPath = true
+                }
+                */
+                
+                var fpath = fname.split ("/");
+                var path1 = [], path2 = path.concat (fpath);
+                for (var i = 0; i < path2.length; i++) {
+                    if (path2[i].trim () == "..") {
+                        path1.pop();
+                    } else if (path2[i].trim() !== ".") {
+                        path1.push (path2[i]);
+                    }
+                }
+                
+                fname = path1.pop () || "";
+                dir = path1.join ("/");
+                
+                readDir (dir, function (entries) {
+                    if (fname.trim () === "") {
+                        readDir (dir, composeDir);
+                        
+                        document.getElementById("flist").scrollTop = 0;
+                        document.getElementById("fname").value = "";
+                    
+                    } else {
+                        for (var i = 0; i < entries.length; i++)
+                            if (entries[i].fname === fname)
+                                break;
+                        
+                        // file exists
+                        if (i < entries.length) {
+                            var item = entries[i];
+                            if (item.isDir) {
+                                if (item.fname.substring (item.fname.length - 2) === "..") {
+                                    var cd = dir.split ("/");
+                                    cd.pop();
+
+                                    readDir (cd.join ("/"), composeDir);
+                                    
+                                } else
+                                    readDir (dir + "/" + item.fname, composeDir);
+                                
+                                document.getElementById("flist").scrollTop = 0;
+                                document.getElementById("fname").value = "";
+                            
+                            } else {
+                                if (opMode === "writeDoc") {
+                                    if (confirm(`File '${fname} already exist. Do you want to overwrite it?`)) {
+                                        window.parent.postMessage({msg: "writeFile", fname: dir + "/" + fname}, "*");
+                                        readDir (dir, composeDir);
+                                    }
+                                    
+                                } else if (opMode === "readDoc") {
+                                    window.parent.postMessage({msg: "readFile", fname: dir + "/" + fname}, "*");
+                                    readDir (dir, composeDir);
+                                }
+                            }
+                        } else {
+                            if (opMode === "readDoc") {
+                                alert (`File ${fname} does not exist`);
+                                
+                            } else if (opMode === "writeDoc") {
+                                window.parent.postMessage({msg: "writeFile", fname: dir + "/" + fname}, "*");
+                                readDir (dir, composeDir);
+                            }
+                        }
+                    }
+                });
+            }
+            
+            function lose () {
+                window.parent.postMessage({msg: "cancelIO"}, "*");
+            }
+            
+            function setType () {
+                var paramString = document.URL.split('?')[1];
+
+                var paramSection0 = paramString.split('&')[0];
+                opMode = paramSection0.split('=')[1];
+                
+                var paramSection1 = paramString.split('&')[1];
+                if (paramSection1) {
+                    var url = decodeURIComponent (paramSection1.split('=')[1]);
+                    getAbsDir (url);
+
+                } else {
+                    getHomeDir ();
+                }
+
+                if (opMode === "readDoc") {
+                    document.getElementById("title").innerHTML = "Read document from storage";
+                    
+                } else if (opMode === "writeDoc") {
+                    document.getElementById("title").innerHTML = "Write document to storage";
+                }
+            }
+            
+            document.getElementById("svgkeep").addEventListener('click', function () {
+                if (document.getElementById("fname").value !== "") {
+                    keep (document.getElementById("fname").value);
+                }
+            });
+
+            document.getElementById("svglose").addEventListener('click', function () {
+                lose ();
+            });
+            
+            document.getElementById("fname").addEventListener('keyup', function (e) {
+                if(e.keyCode === 13){
+                    keep (document.getElementById("fname").value);
+                    
+                } else if(e.keyCode === 27){
+                    lose ();
+                }
+            });
+            
+            var curDir, selection, opMode;
+            
+            setType ();
+        </script>
+      </section>
+    </body>
+</html>

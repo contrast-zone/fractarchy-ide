@@ -119,9 +119,12 @@
         <!--a id="btnrmenu" style="position: absolute; color: rgb(208,208,208);" hidden>
             <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><title>menu</title><path fill="rgb(48,48,48, 0.2)" d="M5.8 36.35v-3.4h36.4v3.4Zm0-10.65v-3.4h36.4v3.4Zm0-10.65v-3.4h36.4v3.4Z"/></svg>
         </a-->
-        <div id="helpcontainer" class="center" style="position: absolute; visibility: hidden; left: 0; top: 0; right: 0; bottom: 0; background-color: rgb(48, 48, 48, 0.95);">
+        <div id="helpcontainer" class="center" style="position: absolute; visibility: hidden; left: 0; top: 0; right: 0; bottom: 0; background-color: rgb(128,128,128,0.95);">
             <img id="helpl" src="./media/instrl.svg" height="90%" style="cursor:pointer; display: none"/>
             <img id="helpd" src="./media/instrd.svg" height="90%" style="cursor:pointer; display: none"/>
+        </div>
+        <div id="iocontainer" class="center" style="position: absolute; visibility: hidden; left: 0; top: 0; right: 0; bottom: 0; background-color: rgb(128,128,128,0.95);">
+            <iframe id="iofr" style="display: none; border: none;"></iframe>
         </div>
         <script>
             document.addEventListener('contextmenu', event => event.preventDefault());
@@ -164,6 +167,17 @@
 
                     document.getElementById("btnlhlp").style.display = "none";
                     document.getElementById("btnrhlp").style.display = "none";
+                    
+                } else if (event.data.msg === "cancelIO") {
+                    hideIO ();
+                    
+                } else if (event.data.msg === "readFile") {
+                    hideIO ();
+                    fileInput (event.data.fname);
+                    
+                } else if (event.data.msg === "writeFile") {
+                    hideIO ();
+                    fileOutput (event.data.fname);
                     
                 } else if (event.data.msg === "lose") {
                     srcloaded = false;
@@ -243,7 +257,8 @@
             }, false);
                         
             document.getElementById("svginput").addEventListener ("click", async function () {
-                
+                showIO ("readDoc", fullUrl);
+                /*
                 var filename = prompt("Reading from source media. Please enter input file name:", fullUrl);
 
                 if (filename == null || filename == "") {
@@ -252,6 +267,7 @@
                 } else {
                     fileInput (filename);
                 }
+                */
                 /*
                 const opts = {
                     suggestedName: fullUrl.substring (fullUrl.lastIndexOf("/") + 1),
@@ -288,6 +304,7 @@
             }, false);
 
             document.getElementById("svgoutput").addEventListener ("click", async function () {
+                showIO ("writeDoc", fullUrl);
                 /*
                 const opts = {
                   suggestedName: fullUrl.substring (fullUrl.lastIndexOf("/") + 1),
@@ -306,6 +323,7 @@
                 } catch (e) {
                 }
                 */
+                /*
                 var filename = prompt("Writing to target media. Please enter output file name:", fullUrl);
 
                 if (filename == null || filename == "") {
@@ -314,7 +332,7 @@
                 } else {
                     fileOutput (filename);
                 }
-                
+                */
             }, false);
                         
             window.addEventListener("load", () => {
@@ -505,6 +523,56 @@
                 setTimeout(fun, 50);
             }
             
+            var showIO = function (mode, url) {
+                document.getElementById("iofr").style.display = "inline";
+                document.getElementById("iofr").style.width = "640px";
+                document.getElementById("iofr").style.height = "480px";
+                
+                if (mode === "readDoc") {
+                    document.getElementById("iofr").contentWindow.location.replace("./src/file-picker.html?mode=" + mode + "&url=" + url);
+
+                } else if (mode === "writeDoc") {
+                    document.getElementById("iofr").contentWindow.location.replace("./src/file-picker.html?mode=" + mode + "&url=" + url);
+                }
+
+                var h = document.getElementById("iocontainer");
+                var f = 0.95;
+                var fun = function () {
+                    if (f > 0) {
+                        h.style.opacity = 1 - f;
+                        f -= 0.5;
+                        setTimeout (fun, 50);
+                    } else {
+                        h.style.visibility = "visible";
+                        h.style.opacity = 1;
+                    }
+                };
+                
+                h.style.opacity = 0;
+                h.style.visibility = "visible";
+                setTimeout(fun, 50);
+            }
+            
+            var hideIO = function () {
+                var h = document.getElementById("iocontainer");
+                var f = 0.95;
+                var fun = function () {
+                    if (f > 0) {
+                        h.style.opacity = f;
+                        f -= 0.5;
+                        setTimeout (fun, 50);
+                    } else {
+                        h.style.visibility = "hidden";
+                        h.style.opacity = 0;
+                        document.getElementById("iofr").style.display = "none";
+                    }
+                };
+                
+                h.style.opacity = 1;
+                h.style.visibility = "visible";
+                setTimeout(fun, 50);
+            }
+            
             window.addEventListener('resize', function () {
                 setSize (screen.orientation.type);
             });
@@ -633,6 +701,7 @@
                 }
             }
             */
+
             function fileInput (url) {
                 var xhttp = new XMLHttpRequest ();
                 xhttp.onreadystatechange = function () {
@@ -656,7 +725,12 @@
                             alert ("Error: " + parsed.err + " at " + coord.row + ", " + coord.col);
                             
                         } else {
-                            baseUrl = getBaseUrl(url);
+                            if (url.substring (0, 1) === "/")
+                                baseUrl = url.substring (0, url.lastIndexOf("/") + 1);
+                            
+                            else
+                                baseUrl = getBaseUrl(url);
+                                
                             fullUrl = url;
                             document.title = url.substring (url.lastIndexOf("/") + 1);
                             nodeTree = parsed;
@@ -665,7 +739,7 @@
                         }                    
                     }
                 };
-                xhttp.open("GET", url, true);
+                xhttp.open("GET", "open-file?fname=" + encodeURIComponent (url), true);
                 xhttp.overrideMimeType("text/plain");
                 xhttp.send();
             }
@@ -680,7 +754,7 @@
                         baseUrl = getBaseUrl(url);
                         fullUrl = url;
                         document.title = url.substring (url.lastIndexOf("/") + 1);
-                        alert (this.responseText);
+                        //alert (this.responseText);
                     }
                 };
                 
@@ -712,7 +786,7 @@
             }
 
             function populate () {
-                var url = "./projects/instructions/instructions.sdt"
+                var url = "projects/instructions/instructions.sdt"
 
                 if (!nodeTree) {
                     baseUrl = getBaseUrl(url);
