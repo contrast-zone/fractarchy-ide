@@ -52,7 +52,7 @@ Visit [https://contrast-zone.github.io/fractarchy-org/](https://contrast-zone.gi
 3. Open the download directory in terminal and run `node main.js` to start the server. Default port is 8080. If you want to start server at another port, type the port number after the command. For example, for port 8088, run `node main.js 8088`
 4. Open a browser and type `http://localhost:8080/` at the address bar
 
-Don't forget to adjust proper file access privileges to folders below `./user/` to be able to save your work.
+Don't forget to adjust proper file access privileges to folders below `./projects/` to be able to save your work.
 
 ## use instructions
 
