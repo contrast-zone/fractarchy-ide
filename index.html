@@ -178,6 +178,11 @@
                 } else if (event.data.msg === "writeFile") {
                     hideIO ();
                     fileOutput (event.data.fname);
+
+                    var t = document.title;
+                    if (t.substring (0, 1) === "*")
+                        document.title = t.substring (1, t.length);
+
                     
                 } else if (event.data.msg === "lose") {
                     srcloaded = false;
@@ -221,6 +226,9 @@
                         setNodeTree (event.data.currentNode.pathLength, event.data.currentNode.cursor.children[0], nodeTree, event.data.nodeTree);
 
                     backToBrowse ();
+                    var t = document.title;
+                    if (t.substring (0, 1) !== "*")
+                        document.title = "*" + t;
                     
                 } else if (event.data.msg === "syncSource") {
                     currentNode = {cursor: event.data.cursor, pathLength: event.data.pathLength};
