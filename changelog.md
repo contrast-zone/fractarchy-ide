@@ -10,3 +10,8 @@
     - providing loading/saving support  
     - finalizing minimum viable version  
 
+- v 0.1 - beta  
+    - migrated server side code to Node.js  
+    - content boundary size relative to window width  
+    - zero dependencies file picker  
+    - input/output menu  

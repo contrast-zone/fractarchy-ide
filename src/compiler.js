@@ -22,31 +22,31 @@ var compiler = (function (obj) {
                     "close": '</i>'
                 },
                 "title": {
-                    "open": '<h1 style="font-size: 3em; font-weight: bold; margin-top: 0em;">',
+                    "open": '<h1 style="overflow: hidden; font-size: 3em; font-weight: bold; margin-top: 0em;">',
                     "close": '</h1>'
                 },
                 "heading1": {
-                    "open": '<h1>',
+                    "open": '<h1 style="overflow: hidden;">',
                     "close": '</h1>'
                 },
                 "heading2": {
-                    "open": '<h2>',
+                    "open": '<h2 style="overflow: hidden;">',
                     "close": '</h2>'
                 },
                 "heading3": {
-                    "open": '<h3>',
+                    "open": '<h3 style="overflow: hidden;">',
                     "close": '</h3>'
                 },
                 "heading4": {
-                    "open": '<h4>',
+                    "open": '<h4 style="overflow: hidden;">',
                     "close": '</h4>'
                 },
                 "heading5": {
-                    "open": '<h5>',
+                    "open": '<h5 style="overflow: hidden;">',
                     "close": '</h5>'
                 },
                 "heading6": {
-                    "open": '<h6>',
+                    "open": '<h6 style="overflow: hidden;">',
                     "close": '</h6>'
                 },
                 "paragraph": {
@@ -132,7 +132,14 @@ var compiler = (function (obj) {
                                 txt += map["open"].replace("$address$", stripQuotes (node[0][1][1])).replace("$target$", stripQuotes (node[0][2][1]));
                             
                             } else if (tmpmap === "image") {
-                                txt += map["open"].replace("$source$", baseUrl + stripQuotes (node[1][1]));
+                                if (stripQuotes (node[1][1]).substring(0, 7) === "http://" || stripQuotes (node[1][1]).substring(0, 8) === "https://") {
+                                    txt += map["open"].replace("$source$", stripQuotes (node[1][1]));
+                                    
+                                } else if (baseUrl.substring(0, 1) === "/") {
+                                    txt += map["open"].replace("$source$", "open-file?fname=" + encodeURIComponent (baseUrl + "/" + stripQuotes (node[1][1])));
+                                } else {
+                                    txt += map["open"].replace("$source$", baseUrl + "/" + stripQuotes (node[1][1]));
+                                }
                             
                             } else {
                                 txt += map["open"];
@@ -162,11 +169,15 @@ var compiler = (function (obj) {
                 return txt;
             }
             
+            //width = 1920 / window.innerWidth * 480;
+            //var ret = `<section style="overflow: hidden;">` + getNode(node) + `</div>`;
+            //return ret;
+            
             return getNode (node);
         }
 
                     
-        function tree2html (topNode, baseUrl) {
+        function tree2html (topNode, baseUrl, width) {
             function getNode (topNode, margin) {
                 if (!margin) margin = 0;
                 var ret = "";
@@ -174,7 +185,7 @@ var compiler = (function (obj) {
                 
                 for (var i = 1; i < node.length; i++) {
                     numberOfNodes++;
-                    ret += `<div style="background-color: rgb(208,208,208); width: 24em; border-radius: 2em; border: 0.2em solid rgb(64,64,64); padding: 1em; margin: 1em; margin-left: ` + margin + `;">`
+                    ret += `<div style="background-color: rgb(208,208,208); width: ${width}em; border-radius: 2em; border: 0.2em solid rgb(64,64,64); padding: 1em; margin: 1em; margin-left: ` + margin + `;">`
                         + node2html (node[i][1], baseUrl)
                     
                     if (node[i][2])
@@ -185,7 +196,7 @@ var compiler = (function (obj) {
                 return ret;
             }
             
-            return getNode (topNode, "-1em");
+            return getNode (topNode, "0");
         }
         
         return {

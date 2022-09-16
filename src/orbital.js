@@ -1833,6 +1833,8 @@ select.cursor.angle = Math.PI;
         function updateData (d) {
             if (d.ifr) {
                 alignOval (d, d)
+                //d.ifr.remove();
+                //d.ifr = null;
             }
                             
             for (var i = 0; i < d.children.length; i++)
