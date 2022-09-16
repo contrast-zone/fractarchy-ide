@@ -56,12 +56,17 @@
                     graphics organizer. It can be used to manage the 
                     creation and modification of static digital 
                     content. Such purposes include organizing personal 
-                    or business data and documentation, optionally 
-                    exporting it as a web site, ready for publishing 
-                    to the Internet. 
+                    or business data and documentation. 
                 )
                 (
-                    bcode " // exporting under construction // " 
+                    paragraph Fractarchy-ORG is a flat-file system, 
+                    and it uses its own structured document tree 
+                    &lpar;SDT&rpar; file format for storing the data 
+                    it operates on. Beside integrated hierarhical 
+                    organization of documents or document snippets, 
+                    SDT may interact with native filesystem in 
+                    necessity, for example, to display bitmaps or 
+                    vector graphics within documents. 
                 )
             )
             (
@@ -474,8 +479,12 @@
                             describing acceptable assertions within the items. 
                         )
                         (
-                            bcode 
-                            " // extending s-expr types under construction // " 
+                            paragraph There are plans for the future versions 
+                            of Fractarchy-ORG to extend s-expr types in a 
+                            direction of flexible output styling. Also, 
+                            planned templating and scripting documents would 
+                            follow these extensions to bring a full control 
+                            over generated documents. 
                         )
                     )
                 )
@@ -489,45 +498,27 @@
                             )
                         )
                         (
-                            bcode 
-                            " // templating system under construction //" 
+                            paragraph Templating in SDT file format is 
+                            something reserved for the future versions of 
+                            Fractarchy-ORG. Coupled with already mentioned 
+                            planned styling extensions, templating could bring 
+                            powerful scripting capabilities to Fractarchy-ORG 
+                            platform. This would open a wide space for 
+                            managing diverse libraries in a pursuit for 
+                            displaying expressions like math, chemistry, 
+                            physics, or similar expressions. Not to stop 
+                            there, one could conceive maybe even graph 
+                            visualization libraries that would render vector 
+                            graphics within the Fractarchy-ORG user interface. 
                         )
                         (
-                            paragraph SDT file format is being evaluated as a 
-                            kind of a term rewriting system. As such, it may 
-                            be suited even for some advanced tasks naturally 
-                            involving formula applications, like proof 
-                            construction for different kinds of logic, truth 
-                            table calculations, or combinatorial problem 
-                            solving. Although these kinds of uses may seem 
-                            intimidating at first, the decision of supporting 
-                            them doesn't steepen a learning curve needed for 
-                            basic SDT use. SDT file format may go as deep into 
-                            content creation as users let it, from simple 
-                            macro expansions to complex formula calculations. 
-                            Finally, user range targeted by SDT file format 
-                            spans anywhere between enthusiastic beginners 
-                            ready to dive into mysteries of coding, and 
-                            demanding experts who will know how to reach for 
-                            advanced SDT capabilities. 
-                        )
-                        (
-                            paragraph While term rewriting used in SDT reach 
-                            far beyond document templating, in this section we 
-                            will cover only basic SDT templating capabilities 
-                            that would be used to uniformly format SDT 
-                            fragments. Readers interested in more thorough 
-                            elaboration of the term rewriting used in SDT are 
-                            invited to take a look at original [Lissy 
-                            programming language project page] 
-                            (
-                                 
-                            )
-                            . 
-                        )
-                        (
-                            bcode 
-                            " // templating system under construction //" 
+                            paragraph We have to say that we are excited about 
+                            all the planned extensions. If you are interested 
+                            in flexible styling, and document templating in 
+                            conjunction with document scripting, we would be 
+                            delighted to receive occasional visit to our 
+                            official GitHub repository, if you'd want to check 
+                            for new Fractarchy-ORG version updates. 
                         )
                     )
                 )
