@@ -43,7 +43,7 @@ Fractarchy-ORG **is not suited** to be used for:
 
 ## online test
 
-Visit [https://contrast-zone.github.io/fractarchy-org/](https://contrast-zone.github.io/fractarchy-org/). Notice that this is online test only version with opening/saving documents disabled. To enable processing documents from disk, install Fractarchy-ORG on a local computer.
+Visit [https://contrast-zone.github.io/fractarchy-org/](https://contrast-zone.github.io/fractarchy-org/). Notice that this links to online test only version with opening/saving documents disabled. To enable processing documents from disk, install Fractarchy-ORG on a local computer.
 
 ## installing on local computer
 
