@@ -1,0 +1,17 @@
+- v 0.1 - alpha  
+    - initial commit  
+    - synchronized left and right browsing panes  
+    - prototyping edit/print mode   
+    - accepting edits  
+    - edit/print in sync with current browsing node  
+    - print preview in live sync with edit  
+    - rudimentay image support  
+    - printing support  
+    - providing loading/saving support  
+    - finalizing minimum viable version  
+
+- v 0.1 - beta  
+    - migrated server side code to Node.js  
+    - content boundary size relative to window width  
+    - zero dependencies file picker  
+    - input/output menu  
