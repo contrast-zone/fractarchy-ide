@@ -221,21 +221,12 @@
                 (
                     paragraph Composing contents in Fractarchy-ORG is 
                     consisted of coding main SDT file and importing 
-                    graphical or other resources. Simple, yet powerful 
-                    SDT markup, templating and coding capabilities 
-                    serve as a Turing complete data definition 
-                    platform. SDT file format is based on a minimalist 
-                    s-expr based environment created specifically for 
-                    purposes of Fractarchy-ORG, and it should bring an 
-                    exciting "expert under the hub" atmosphere to the 
-                    overall Fractarchy-ORG user experience. 
-                )
-                (
-                    paragraph Contents of SDT file is a s-expr. In 
-                    computer programming, an s-expr &lpar;or symbolic 
-                    expression, abbreviated as sexpr or sexp&rpar; is 
-                    an expression in a like-named notation for nested 
-                    list &lpar;tree-structured&rpar; data. S-expr is 
+                    graphical or other resources. Contents of SDT file 
+                    is a s-expr. In computer programming, an s-expr 
+                    &lpar;or symbolic expression, abbreviated as sexpr 
+                    or sexp&rpar; is an expression in a like-named 
+                    notation for nested list 
+                    &lpar;tree-structured&rpar; data. S-expr is 
                     written as a list of elements inside parenthesis. 
                     Elements may include words or other s-exprs 
                     delimited by whitespace. Whitespaces in s-exprs 
