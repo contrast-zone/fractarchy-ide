@@ -767,7 +767,7 @@
                                 xhttp.send();
 
                             } else if (url.charAt(0) === "/") {
-                                baseUrl = url.substring (0, url.lastIndexOf("/") + 1);
+                                baseUrl = url.substring (0, url.lastIndexOf("/"));
                                 fullUrl = url;
                                 afterGettingUrl (fullUrl, baseUrl, parsed);
                             
@@ -811,10 +811,10 @@
                         
                     } else if (this.readyState == 4 && this.status == 200 && this.responseText.substring(0, "Error".length) !== "Error") {
                         //baseUrl = getBaseUrl(url);
-                        baseUrl = url.substring (0, url.lastIndexOf("/") + 1);
+                        baseUrl = url.substring (0, url.lastIndexOf("/"));
                         fullUrl = url;
                         document.title = url.substring (url.lastIndexOf("/") + 1);
-                        //alert (this.responseText);
+                        backToBrowse ();
                     }
                 };
                 
