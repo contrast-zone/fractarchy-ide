@@ -1,6 +1,6 @@
 # Fractarchy-ORG
 
-(v 0.1 - beta)
+(v 0.1 - beta1)
 
 **tags:** workbook-cms, structured-document-tree, hierarchical-content-organizer, data-visualization-project, text-processing-toolkit, zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
 
@@ -48,8 +48,8 @@ Visit [https://contrast-zone.github.io/fractarchy-org/](https://contrast-zone.gi
 ## installing on local computer
 
 1. Download and unzip this package to an arbitrary local directory
-2. Make sure you have installed "Node.js" (it's only about 30MB - npm is not necessary)
-3. Open the download directory in terminal and run `node main.js` to start the server. Default port is 8080. If you want to start server at another port, type the port number after the command. For example, for port 8088, run `node main.js 8088`
+2. Make sure you have installed *Node.js* (it's only about 30MB - *npm* is not necessary)
+3. Open the download directory in terminal and enter `node main.js` to start the server. Default port is 8080. If you want to start server at another port, type the port number after the command. For example, for port 8088, enter `node main.js 8088`
 4. Open a browser and type `http://localhost:8080/` at the address bar
 
 Don't forget to adjust proper file access privileges to folders below `./projects/` to be able to save your work.

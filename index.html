@@ -126,6 +126,26 @@
         <div id="iocontainer" class="center" style="position: absolute; visibility: hidden; left: 0; top: 0; right: 0; bottom: 0; background-color: rgb(128,128,128,0.95);">
             <iframe id="iofr" style="display: none; border: none;"></iframe>
         </div>
+        <div id="myPopupContainer" style="position: absolute; display: none; left: 0; top: 0; right: 0; bottom: 0;">
+            <span id="myPopup" style="position: absolute; width: 175px; font-family: sans-serif; background-color: rgb(208,208,208); color: rgb(48,48,48);">
+                <div id="openDocument" onmouseenter="this.style.backgroundColor='rgb(48,48,48)';this.style.color='rgb(208,208,208)';" onmouseleave="this.style.backgroundColor='rgb(208,208,208)';this.style.color='rgb(48,48,48)';" style="width: 175px;">
+                    &nbsp;&nbsp;&nbsp; open document
+                </div>
+                <div id="newDocument" onmouseenter="this.style.backgroundColor='rgb(48,48,48)';this.style.color='rgb(208,208,208)';" onmouseleave="this.style.backgroundColor='rgb(208,208,208)';this.style.color='rgb(48,48,48)';" style="width: 175px;">
+                    &nbsp;&nbsp;&nbsp; new document
+                </div>
+            </span>
+        </div>
+        <div id="myPopdownContainer" style="position: absolute; display: none; left: 0; top: 0; right: 0; bottom: 0;">
+            <span id="myPopdown" style="position: absolute; width: 175px; font-family: sans-serif; background-color: rgb(48,48,48); color: rgb(208,208,208)">
+                <div id="saveDocument" onmouseenter="this.style.backgroundColor='rgb(208,208,208)';this.style.color='rgb(48,48,48)';" onmouseleave="this.style.backgroundColor='rgb(48,48,48)';this.style.color='rgb(208,208,208)';" style="width: 175px;">
+                    &nbsp;&nbsp;&nbsp; save document
+                </div>
+                <div id="saveAsDocument" onmouseenter="this.style.backgroundColor='rgb(208,208,208)';this.style.color='rgb(48,48,48)';" onmouseleave="this.style.backgroundColor='rgb(48,48,48)';this.style.color='rgb(208,208,208)';" style="width: 175px;">
+                    &nbsp;&nbsp;&nbsp; save as
+                </div>
+            </span>
+        </div>
         <script>
             document.addEventListener('contextmenu', event => event.preventDefault());
             
@@ -264,8 +284,44 @@
                 document.getElementById("target").contentWindow.frames[0].print();
             }, false);
                         
+            document.getElementById("openDocument").addEventListener ("click", function () {
+                if (document.title.charAt(0) === "*") {
+                    if (confirm("You have unsaved changes. Do you want to lose them?"))
+                        showIO ("readDoc", fullUrl);
+
+                } else {
+                    showIO ("readDoc", fullUrl);
+                }
+            }, false);
+
+            document.getElementById("newDocument").addEventListener ("click", function () {
+                if (document.title.charAt(0) === "*") {
+                    if (confirm("You have unsaved changes. Do you want to lose them?"))
+                        newFile ();
+
+                } else {
+                    newFile ();
+                }
+            }, false);
+            
+            document.getElementById("myPopupContainer").addEventListener ("click", function () {
+                if (event.target.id !== "svginput") {
+                    document.getElementById("myPopupContainer").style.display = "none";
+                }
+            }, false);
+            
             document.getElementById("svginput").addEventListener ("click", async function () {
-                showIO ("readDoc", fullUrl);
+                document.getElementById("myPopup").draggable = false;
+                document.getElementById("myPopup").ondragstart = function () {return false};
+                
+                setTimeout (() => {
+                    document.getElementById("myPopup").style.left = document.getElementById("btnupload").offsetLeft + 3 + "px";
+                    document.getElementById("myPopup").style.top = document.getElementById("btnupload").offsetTop - document.getElementById("myPopup").clientHeight - 3 + "px";
+                }, 0);                
+
+                document.getElementById("myPopupContainer").style.display = "inline";
+
+                //showIO ("readDoc", fullUrl);
 
                 /*
                 const opts = {
@@ -302,8 +358,31 @@
                 */
             }, false);
 
-            document.getElementById("svgoutput").addEventListener ("click", async function () {
+            document.getElementById("saveDocument").addEventListener ("click", function () {
+                fileOutput (fullUrl);
+            }, false);
+
+            document.getElementById("saveAsDocument").addEventListener ("click", function () {
                 showIO ("writeDoc", fullUrl);
+            }, false);
+            
+            document.getElementById("myPopdownContainer").addEventListener ("click", function () {
+                if (event.target.id !== "svgoutput") {
+                    document.getElementById("myPopdownContainer").style.display = "none";
+                }
+            }, false);
+
+            document.getElementById("svgoutput").addEventListener ("click", async function () {
+                document.getElementById("myPopdown").draggable = false;
+                document.getElementById("myPopdown").ondragstart = function () {return false};
+                setTimeout (() => {
+                    document.getElementById("myPopdown").style.left = document.getElementById("btndownload").offsetLeft + document.getElementById("btndownload").clientWidth - document.getElementById("myPopdown").clientWidth - 3 + "px";
+                    document.getElementById("myPopdown").style.top = document.getElementById("btndownload").offsetTop + document.getElementById("btndownload").clientHeight - 1 + "px";
+                }, 0);
+
+                document.getElementById("myPopdownContainer").style.display = "inline";
+
+                //showIO ("writeDoc", fullUrl);
                 /*
                 const opts = {
                   suggestedName: fullUrl.substring (fullUrl.lastIndexOf("/") + 1),
@@ -650,21 +729,19 @@
                 
                 return baseUrl;
             }
+            
+            function afterGettingUrl (url, baseUrl, parsed) {
+                document.title = url.substring (url.lastIndexOf("/") + 1);
+                nodeTree = parsed;
+                document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: parsed}, "*");
+                document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: parsed, baseUrl: baseUrl}, "*");
+            }
 
             function fileInput (url) {
                 var xhttp = new XMLHttpRequest ();
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 404) {
-                        var ret = confirm("File '" + url + "' does not exist. Create a new file?");
-                        
-                        if (ret) {
-                            baseUrl = getBaseUrl(url);
-                            fullUrl = url;
-                            document.title = url.substring (url.lastIndexOf("/") + 1);
-                            nodeTree = ["tree", ["node"], ["branches", ["tree", ["node"], ["branches"]], ["tree", ["node"], ["branches"]]]];
-                            document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: nodeTree}, "*");
-                            document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: nodeTree, baseUrl: baseUrl}, "*");
-                        }
+                        alert("ERROR: File '" + url + "' does not exist.");
                         
                     } else if (this.readyState == 4 && this.status == 200) {
                         var txt = this.responseText;
@@ -674,23 +751,56 @@
                             alert ("Error: " + parsed.err + " at " + coord.row + ", " + coord.col);
                             
                         } else {
-                            if (url.substring (0, 1) === "/")
+                            if (url.charAt(0) === ".") {
+                                var xhttp = new XMLHttpRequest ();
+                                xhttp.onreadystatechange = function () {
+                                    if (this.readyState == 4 && this.status == 200) {
+                                        fullUrl = this.responseText;
+                                        var bu = fullUrl.split ("/");
+                                        bu.pop ();
+                                        baseUrl = bu.join("/");
+                                        afterGettingUrl (fullUrl, baseUrl, parsed);
+                                    }
+                                }
+                                xhttp.open("GET", "getAbsDir?fname=" + encodeURIComponent (url), true);
+                                xhttp.overrideMimeType("text/plain");
+                                xhttp.send();
+
+                            } else if (url.charAt(0) === "/") {
                                 baseUrl = url.substring (0, url.lastIndexOf("/") + 1);
+                                fullUrl = url;
+                                afterGettingUrl (fullUrl, baseUrl, parsed);
                             
-                            else
+                            } else {
                                 baseUrl = getBaseUrl(url);
+                                fullUrl = url;
+                                afterGettingUrl (fullUrl, baseUrl, parsed);
+                            }
                                 
-                            fullUrl = url;
-                            document.title = url.substring (url.lastIndexOf("/") + 1);
-                            nodeTree = parsed;
-                            document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: parsed}, "*");
-                            document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: parsed, baseUrl: baseUrl}, "*");
                         }                    
                     }
                 };
                 xhttp.open("GET", "open-file?fname=" + encodeURIComponent (url), true);
                 xhttp.overrideMimeType("text/plain");
                 xhttp.send();
+            }
+            
+            function newFile () {
+                var xhttp = new XMLHttpRequest ();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        baseUrl = this.responseText;
+                        fullUrl = this.responseText + "/new document.sdt";
+                        document.title = "*new document";
+                        nodeTree = ["tree", ["node"], ["branches", ["tree", ["node"], ["branches"]], ["tree", ["node"], ["branches"]]]];
+                        document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: nodeTree}, "*");
+                        document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: nodeTree, baseUrl: baseUrl}, "*");
+                    }
+                };
+                xhttp.open("GET", "getHomeDir", true);
+                xhttp.overrideMimeType("text/plain");
+                xhttp.send();
+
             }
 
             function fileOutput (url) {
@@ -700,7 +810,8 @@
                         alert ("HTTP Error 405. Failed outputting '" + url + "'.");
                         
                     } else if (this.readyState == 4 && this.status == 200 && this.responseText.substring(0, "Error".length) !== "Error") {
-                        baseUrl = getBaseUrl(url);
+                        //baseUrl = getBaseUrl(url);
+                        baseUrl = url.substring (0, url.lastIndexOf("/") + 1);
                         fullUrl = url;
                         document.title = url.substring (url.lastIndexOf("/") + 1);
                         //alert (this.responseText);
@@ -716,10 +827,11 @@
             }
 
             function populate () {
-                var url = "projects/instructions/instructions.sdt"
+                var url = "./projects/instructions/instructions.sdt";
 
                 if (!nodeTree) {
-                    baseUrl = getBaseUrl(url);
+                    //baseUrl = getBaseUrl(url);
+                    baseUrl = "./projects/instructions"
                     fullUrl = url;
                     document.title = url.substring (url.lastIndexOf("/") + 1);
                     nodeTree = ["tree", ["node"], ["branches", ["tree", ["node"], ["branches"]], ["tree", ["node"], ["branches"]]]];

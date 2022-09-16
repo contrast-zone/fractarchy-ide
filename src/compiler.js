@@ -136,9 +136,9 @@ var compiler = (function (obj) {
                                     txt += map["open"].replace("$source$", stripQuotes (node[1][1]));
                                     
                                 } else if (baseUrl.substring(0, 1) === "/") {
-                                    txt += map["open"].replace("$source$", "open-file?fname=" + encodeURIComponent (baseUrl + stripQuotes (node[1][1])));
+                                    txt += map["open"].replace("$source$", "open-file?fname=" + encodeURIComponent (baseUrl + "/" + stripQuotes (node[1][1])));
                                 } else {
-                                    txt += map["open"].replace("$source$", baseUrl + stripQuotes (node[1][1]));
+                                    txt += map["open"].replace("$source$", baseUrl + "/" + stripQuotes (node[1][1]));
                                 }
                             
                             } else {

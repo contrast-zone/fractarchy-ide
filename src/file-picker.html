@@ -26,7 +26,7 @@
                 font-size: 1em;
             }
 
-            .grid {display: grid; grid-template-columns: 275px 125px 200px; column-gap: 10px;}
+            .grid {display: grid; grid-template-columns: 250px 125px 200px; column-gap: 10px;}
             
             svg {opacity : 0.7;}
             svg:hover {cursor: pointer; opacity :1;}
@@ -53,13 +53,16 @@
       <div id="title" align="center" style="position: absolute; font: bold 2em sans-serif;">Browse file</div>
       <div id="container" style="position: absolute;">
           <div id="dir" style="position: absolute; font: 1.2em monospace; padding: 4px; word-wrap: break-word; word-break: break-all; overflow: hidden;"></div>
-          <div id="flist" style="position: absolute; font: 1.2em monospace; padding: 4px; overflow-y: auto; overflow-x: hidden;"></div>
+          <div id="flist" style="position: absolute; font: 1.2em monospace; padding: 4px; overflow: auto;"></div>
           <svg id="svglose" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="position: absolute"><title>cancel</title><path fill="rgb(208,208,208)" d="m16.6 33.6 7.4-7.4 7.4 7.4 2.2-2.2-7.4-7.4 7.4-7.4-2.2-2.2-7.4 7.4-7.4-7.4-2.2 2.2 7.4 7.4-7.4 7.4ZM24 44.3q-4.15 0-7.875-1.6-3.725-1.6-6.475-4.35Q6.9 35.6 5.3 31.9 3.7 28.2 3.7 24t1.6-7.925q1.6-3.725 4.35-6.45Q12.4 6.9 16.1 5.3T24 3.7q4.2 0 7.925 1.6 3.725 1.6 6.45 4.325T42.7 16.05q1.6 3.7 1.6 7.95 0 4.2-1.6 7.9t-4.325 6.45Q35.65 41.1 31.95 42.7q-3.7 1.6-7.95 1.6Zm0-3.4q7.05 0 11.975-4.95T40.9 24q0-7.05-4.925-11.975T24 7.1q-7 0-11.95 4.925Q7.1 16.95 7.1 24q0 7 4.95 11.95Q17 40.9 24 40.9ZM24 24Z"/></svg>
           <svg id="svgkeep" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="position: absolute"><title>accept</title><path fill="rgb(208,208,208)" d="M21.05 33.3 35.3 19l-2.55-2.5-11.7 11.75-5.9-5.9-2.5 2.5Zm2.95 11q-4.15 0-7.875-1.6-3.725-1.6-6.475-4.35Q6.9 35.6 5.3 31.9 3.7 28.2 3.7 24t1.6-7.925q1.6-3.725 4.35-6.45Q12.4 6.9 16.1 5.3T24 3.7q4.2 0 7.925 1.6 3.725 1.6 6.45 4.325T42.7 16.05q1.6 3.7 1.6 7.95 0 4.2-1.6 7.9t-4.325 6.45Q35.65 41.1 31.95 42.7q-3.7 1.6-7.95 1.6Zm0-3.4q7.05 0 11.975-4.95T40.9 24q0-7.05-4.925-11.975T24 7.1q-7 0-11.95 4.925Q7.1 16.95 7.1 24q0 7 4.95 11.95Q17 40.9 24 40.9ZM24 24Z"/></svg>
-          <input type="text" id="fname" name="fname" autocomplete="off" spellcheck="false" style="position: absolute; border: none;  font: 1.2em monospace;"/>
       </div>
+      <input type="text" id="fname" name="fname" autocomplete="off" spellcheck="false" style="position: absolute; border: none;  font: 1.2em monospace;"/>
         <script>
             "use strict"
+            
+            document.getElementById("title").addEventListener('contextmenu', event => event.preventDefault());
+            document.getElementById("container").addEventListener('contextmenu', event => event.preventDefault());
             
             function readDir (dir, callback) {
                 var xhttp = new XMLHttpRequest ();
@@ -100,11 +103,22 @@
                     if (this.readyState == 4 && this.status == 200) {
                         var dir = this.responseText + "";
                         var path = dir.split ("/");
-                        document.getElementById ("fname").value = path.pop ();
-                        document.getElementById ("fname").select ();
-                        curDir = path.join ("/");
-                        
-                        readDir (curDir, composeDir);
+                        if (opMode === "writeDoc") {
+                            document.getElementById ("fname").value = path.pop ();
+                            
+                            document.getElementById ("fname").select ();
+                            curDir = path.join ("/");
+                            readDir (curDir, composeDir);
+                            
+                        } else {
+                            document.getElementById ("fname").value = "";
+                            
+                            document.getElementById ("fname").select ();
+                            
+                            path.pop ();
+                            curDir = path.join ("/");
+                            readDir (curDir, composeDir);
+                        }
                     }
                 };
                 xhttp.open("GET", "getAbsDir?fname=" + encodeURIComponent (url), true);
@@ -166,7 +180,7 @@
                 
                 var marg = 4;
                 var padd = 1;
-                var bord = 4;
+                var bord = 12;
                 var btns = 48;
                 
                 var width = window.innerWidth;//document.body.clientWidth;
@@ -175,7 +189,7 @@
                 title.style.color = "rgb(48,48,48)";
                 title.style.backgroundColor = "rgb(208,208,208)";
                 title.style.padding = bord + "px";
-                title.style.width = width  + "px";
+                title.style.width = width - 2 * bord + "px";
                 title.style.top = "0px";
                 title.style.left = "0px";
 
@@ -206,6 +220,7 @@
                 sk.style.right = "0px";
                 sk.style.bottom = "-48px";
 
+                /*
                 fn.style.color = "rgb(48,48,48)";
                 fn.style.backgroundColor = "rgb(208,208,208)";
                 setTimeout (() => {
@@ -213,10 +228,17 @@
                     fn.style.width = "300px";
                     fn.style.left = (width / 2 - fn.clientWidth / 2) + "px";
                 }, 0);
+                */
+                fn.style.color = "rgb(48,48,48)";
+                fn.style.backgroundColor = "rgb(208,208,208)";
+                setTimeout (() => {
+                    fn.style.bottom = (btns / 2 - fn.clientHeight / 2) + "px";
+                    fn.style.width = "300px";
+                    fn.style.left = (bord + width / 2 - fn.clientWidth / 2) + "px";
+                }, 0);
             }
 
             function keep (fname) {
-                //var fname = document.getElementById("fname").value;
                 var dir;
                 
                 if (fname.substring(0, 1) === "/") {
@@ -231,7 +253,7 @@
                 for (var i = 0; i < path2.length; i++) {
                     if (path2[i].trim () == "..") {
                         path1.pop();
-                    } else if (path2[i].trim() !== ".") {
+                    } else if (path2[i].trim() !== "." && (i === 0 || path2[i].trim() !== "")) {
                         path1.push (path2[i]);
                     }
                 }
