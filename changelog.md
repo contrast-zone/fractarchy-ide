@@ -15,3 +15,5 @@
     - content boundary size relative to window width  
     - zero dependencies file picker  
     - input/output menu  
+    - home directory link in file picker  
+
