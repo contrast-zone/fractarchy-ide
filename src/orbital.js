@@ -1136,13 +1136,14 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
                 //select.parent.setAngle (ang[1], dr);
                 var myang = 0;
                 var myangadd = 0;
+                
                 while (Math.abs (myang) < Math.abs (ang1 - Math.PI)) {
                     myangadd = qang * Math.sign(ang1 - Math.PI) * select.parent.getCircle(myang + Math.PI).r / (select.parent.largeR * (1 - ratio));
                     myang += myangadd;
                 }
                 myang -= myangadd;
-                if (ang1 <= select.getAngMin () || ang1 >= select.getAngMax ())
-                    myang += myangadd;
+                //if (ang1 < select.getAngMin () || ang1 > select.getAngMax ())
+                //    myang += myangadd;
                 
                 var qang1 = Math.PI + myang;
                 select.parent.setAngle (qang1, 0);
@@ -1603,8 +1604,8 @@ select.cursor.angle = Math.PI;
                                     myang += myangadd;
                                 }
                                 myang -= myangadd;
-                                if (a0 <= select.getAngMin () || a0 >= select.getAngMax ())
-                                    myang += myangadd;
+                                //if (a0 < select.getAngMin () || a0 > select.getAngMax ())
+                                //    myang += myangadd;
                                 
                                 var qang1 = Math.PI + myang;
                                 if (tmpa0 !== qang1) {
