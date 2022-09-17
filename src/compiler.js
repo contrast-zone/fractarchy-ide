@@ -22,31 +22,31 @@ var compiler = (function (obj) {
                     "close": '</i>'
                 },
                 "title": {
-                    "open": '<h1 style="overflow: hidden; font-size: 3em; font-weight: bold; margin-top: 0em;">',
+                    "open": '<h1 style="overflow: hidden; font-size: 3em; font-weight: bold; margin-top: 0em; border-bottom: 1px solid gray;">',
                     "close": '</h1>'
                 },
                 "heading1": {
-                    "open": '<h1 style="overflow: hidden;">',
+                    "open": '<h1 style="overflow: hidden; border-bottom: 1px solid gray;">',
                     "close": '</h1>'
                 },
                 "heading2": {
-                    "open": '<h2 style="overflow: hidden;">',
+                    "open": '<h2 style="overflow: hidden; border-bottom: 1px solid gray;">',
                     "close": '</h2>'
                 },
                 "heading3": {
-                    "open": '<h3 style="overflow: hidden;">',
+                    "open": '<h3 style="overflow: hidden; border-bottom: 1px solid gray;">',
                     "close": '</h3>'
                 },
                 "heading4": {
-                    "open": '<h4 style="overflow: hidden;">',
+                    "open": '<h4 style="overflow: hidden; border-bottom: 1px solid gray;">',
                     "close": '</h4>'
                 },
                 "heading5": {
-                    "open": '<h5 style="overflow: hidden;">',
+                    "open": '<h5 style="overflow: hidden; border-bottom: 1px solid gray;">',
                     "close": '</h5>'
                 },
                 "heading6": {
-                    "open": '<h6 style="overflow: hidden;">',
+                    "open": '<h6 style="overflow: hidden; border-bottom: 1px solid gray;">',
                     "close": '</h6>'
                 },
                 "paragraph": {

@@ -220,11 +220,12 @@
                 )
                 (
                     paragraph Composing contents in Fractarchy-ORG is 
-                    consisted of coding main SDT file and importing 
-                    graphical or other resources. Contents of SDT file 
-                    is a s-expr. In computer programming, an s-expr 
-                    &lpar;or symbolic expression, abbreviated as sexpr 
-                    or sexp&rpar; is an expression in a like-named 
+                    consisted of coding main structure document tree 
+                    &lpar;SDT&rpar; file and importing graphical or 
+                    other resources. Contents of SDT file is a s-expr. 
+                    In computer programming, an s-expr &lpar;or 
+                    symbolic expression, abbreviated as sexpr or 
+                    sexp&rpar; is an expression in a like-named 
                     notation for nested list 
                     &lpar;tree-structured&rpar; data. S-expr is 
                     written as a list of elements inside parenthesis. 

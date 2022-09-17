@@ -239,7 +239,7 @@
                     }
 
                     loadNodes (event.data.pathLength, event.data.cursor.children[0], objOrbit.getData ());
-                    
+/*                    
                 } else if (event.data.msg === "save") {
                     nodeRawTree = event.data.nodeTree;
                     
@@ -250,7 +250,7 @@
                 
                 } else if (event.data.msg === "open") {
                     window.parent.frames[0].postMessage({msg: "open", nodeTree: nodeRawTree}, "*");
-
+*/
                 }
             };
             
@@ -330,7 +330,7 @@
                         dispatchSize ();
                         divContainer.style.visibility = "visible";
                         
-                    }, 100);
+                    }, 500);
                 });
             }
             
