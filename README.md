@@ -35,7 +35,7 @@ Fractarchy Designer **is not suited** to be used for:
 
 ## online test
 
-Visit [https://fractarchy.github.io/fractarchy-designer/](https://fractarchy.github.io/fractarchy-designer/) to try Fractarchy Designer. Notice that this links to online test-only version without loading/saving documents. To enable processing documents from local storage, please install Fractarchy Designer to a local computer.
+Visit [https://fractarchy.github.io/fractarchy-designer/](https://fractarchy.github.io/fractarchy-designer/) to try Fractarchy Designer.
 
 ## installing on local computer
 
@@ -53,4 +53,5 @@ Open `./projects/instructions/instructions.sdt` in the visual interface.
 ## licensing
 
 This software is released under [conditional Creative Commons Attribution 4.0 International License](LICENSE). It is free for students and for limited personal use, but if you use it a lot, or your plans meet commercial use, please refer to the licence file for details about pricing.
+
 
