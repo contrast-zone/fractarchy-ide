@@ -35,7 +35,7 @@ Fractarchy Designer **is not suited** to be used for:
 
 ## online test
 
-Visit [https://contrast-zone.github.io/fractarchy-designer/](https://contrast-zone.github.io/fractarchy-designer/) to try Fractarchy Designer. Notice that this links to online test-only version without loading/saving documents. To enable processing documents from local storage, please install Fractarchy Designer to a local computer.
+Visit [https://fractarchy.github.io/fractarchy-designer/](https://contrast-zone.github.io/fractarchy-designer/) to try Fractarchy Designer. Notice that this links to online test-only version without loading/saving documents. To enable processing documents from local storage, please install Fractarchy Designer to a local computer.
 
 ## installing on local computer
 
