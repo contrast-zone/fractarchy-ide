@@ -785,7 +785,7 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
                 //var tr = "scale(" + magn + ") " + (level === 1?"": "translate(" + l2 + "px, " + t2 + "px) " + "scale("+ squashX + ", " + squashY + ") " + " rotate(" + (anglea - Math.PI / 2) + "rad) " + "scale(" + 1 / squashX + ", " + 1 / squashY + ") " + "translate(" + (-l2) + "px, " + (-t2) + "px) ");
 
                 if (data.ifr.style.transformOrigin !== "0px 0px 0px") data.ifr.style.transformOrigin = "0px 0px 0px";
-                var tr = "scale(" + magn.toFixed(2) + ") ";
+                var tr = "scale(" + magn.toFixed(2) + ")";
                 //if (data.ifr.style.transform !== tr) data.ifr.style.transform = tr;
                 
                 var l = ~~((xa * squashX - magn * (data.ifr.width / 2 + cx)));
@@ -793,8 +793,8 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
                 if (data.ifr.style.left === l + "px" && data.ifr.style.top === t + "px" && data.ifr.style.transform === tr) { // it was scaling bug
                     //alert ("skip the same position");
                 } else {
-                    data.ifr.style.left = (cnv.parentNode.clientLeft + l) + "px";
-                    data.ifr.style.top = (cnv.parentNode.clientTop + t) + "px";
+                    data.ifr.style.left = ~~(cnv.parentNode.clientLeft + l) + "px";
+                    data.ifr.style.top = ~~(cnv.parentNode.clientTop + t) + "px";
                     data.ifr.style.transform = tr;
 
                     if (data.clip1) data.clip1.remove();

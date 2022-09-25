@@ -1,22 +1,14 @@
-# Fractarchy-ORG
+# Fractarchy Designer
 
-(v 0.1 - beta1)
+(v 0.1 - beta2)
 
-**tags:** workbook-cms, structured-document-tree, hierarchical-content-organizer, data-visualization-project, text-processing-toolkit, zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
+**tags:** data-visualization, mind-mapping, note-taking, personal-knowledge-base, text-processing, structured-document-tree, hierarchical-content-organizer, data-visualization-project, text-processing-toolkit, zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
 
 > ## promotional material
 > 
 > ![](media/socmedia.png)
 > 
-> Fractarchy-ORG is a hierarchical content organizer that tries to amplify the simplicity of coding in a fun and exciting direction of composing interactive visual contents. This project bundles a brand new content markup language with a brand new visual interface. Use it for different purposes, from mind map planner and personal organizer to personal knowledge base keeper and text processing toolkit. Give Fractarchy-ORG a chance, and take a journey of coding visual contents in this unusual creation inspired from the world of imagination.
-
-## why fractarchy-org?
-
-Coders combine the heart of a playful child with the wisdom of an experienced elderly. Sure, there is a certain value in all the WYSIWYG tools around, but the most of them miss that mystical aura of having a full control at our fingertips. Something magical happens at the moment when a code begins to exhibit intended behavior, and capturing that valuable moment is something intended to be conveyed to users of this project.
-
-Visual designers combine the chaotic art of creativity with the intentional art of applicability. Personal preferences may play an important role in this process, but it seems there may exist a kind of universal phenomenon worth of converging about: the symmetry. That is why visual interface of this project tries to resemble a system of mutual input/output duality, hoping to get closer to igniting designer artistry.
-
-Our goal was to combine these two exciting activities (coding and visual design), and to apply them to content creation. We got Fractarchy-ORG as a result. We hope you'll like it.
+> Fractarchy Designer is hierarchical content organizer featuring structured document tree (*.sdt) file format. It is a blend between content management system and integrated development environment. Use it for different purposes, from mind map planning and note taking to personal knowledge base keeping and text processing.
 
 ## actual screenshots
         
@@ -26,7 +18,7 @@ Our goal was to combine these two exciting activities (coding and visual design)
 
 ## use cases
 
-Fractarchy-ORG **is suited** to be used as:
+Fractarchy Designer **is suited** to be used as:
 
 - static content pages creation platform
 - mind map planner
@@ -37,13 +29,13 @@ Fractarchy-ORG **is suited** to be used as:
 - multi-purpose documentation system
 - ...
 
-Fractarchy-ORG **is not suited** to be used for:
+Fractarchy Designer **is not suited** to be used for:
 
 - dynamic content pages creation
 
 ## online test
 
-Visit [https://contrast-zone.github.io/fractarchy-org/](https://contrast-zone.github.io/fractarchy-org/). Notice that this links to online test only version with opening/saving documents disabled. To enable processing documents from disk, install Fractarchy-ORG on a local computer.
+Visit [https://contrast-zone.github.io/fractarchy-designer/](https://contrast-zone.github.io/fractarchy-designer/) to try Fractarchy Designer. Notice that this links to online test-only version without loading/saving documents. To enable processing documents from local storage, please install Fractarchy Designer to a local computer.
 
 ## installing on local computer
 

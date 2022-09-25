@@ -16,4 +16,8 @@
     - zero dependencies file picker  
     - input/output menu  
     - home directory link in file picker  
-
+    - bcode linebreaks each line  
+    - alert on closing unsaved changes  
+    - creating new file ignites save-as  
+    - remembering print pane scrolltop after editing  
+    - responsive mode font sizes

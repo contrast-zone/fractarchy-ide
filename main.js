@@ -32,7 +32,11 @@ http.createServer(async function (request, response) {
     //console.log(filename);
     var fn = filename.split('/').pop();
     
-    if (fn === "getAbsDir") {
+    if (fn === "checkServer") {
+        response.end("Node.js");
+    }
+    
+    else if (fn === "getAbsDir") {
         switch (request.method) {
             case "GET": {
               var get = qs.parse(url.parse(request.url).query);

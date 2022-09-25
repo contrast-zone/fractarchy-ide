@@ -5,7 +5,7 @@ var compiler = (function (obj) {
     }
 }) (
     (function () {
-        function node2html (node, baseUrl) {
+        function node2html (node, baseUrl, fromPrint) {
             "use strict";
             
             var maps= {
@@ -173,7 +173,7 @@ var compiler = (function (obj) {
             //var ret = `<section style="overflow: hidden;">` + getNode(node) + `</div>`;
             //return ret;
             
-            return getNode (node);
+            return getNode (node) + (fromPrint? "": "<br/>");
         }
 
                     
@@ -186,7 +186,7 @@ var compiler = (function (obj) {
                 for (var i = 1; i < node.length; i++) {
                     numberOfNodes++;
                     ret += `<div style="background-color: rgb(208,208,208); width: ${width}em; border-radius: 2em; border: 0.2em solid rgb(64,64,64); padding: 1em; margin: 1em; margin-left: ` + margin + `;">`
-                        + node2html (node[i][1], baseUrl)
+                        + node2html (node[i][1], baseUrl, true)
                     
                     if (node[i][2])
                         ret += getNode (node[i][2]);//tree2html (node[i][2]);

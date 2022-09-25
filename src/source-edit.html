@@ -100,7 +100,7 @@
                             
                         } else {
                             window.parent.postMessage({msg: "validEdit"}, "*");
-                            window.parent.frames[1].postMessage({msg: "populate", nodeTree: parsed, baseUrl: baseUrl}, "*");
+                            window.parent.frames[1].postMessage({msg: "populate", nodeTree: parsed, baseUrl: baseUrl, scrollTop: window.parent.targetScrollTop}, "*");
                         }
                     }, 500);
                 }

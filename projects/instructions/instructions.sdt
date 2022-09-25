@@ -4,7 +4,7 @@
         (
             node 
             (
-                title Fractarchy-ORG use instructions 
+                title Fractarchy Designer Basics 
             )
         )
         (
@@ -14,28 +14,27 @@
             )
         )
         (
-            paragraph Let me introduce you to 
+            paragraph Let me introduce 
             (
-                bold Fractarchy-ORG, 
+                bold Fractarchy Designer, 
             )
             a hierarchical content organizer and text 
             processing toolkit. As one might already guess, 
-            Fractarchy-ORG is a bit unusual creation. Some 
-            users will love it, some users will hate it, while 
-            some of us may even form mixed opinions given a 
-            plethora of affinity states. Distinctive design 
-            choices that were made in creation of 
-            Fractarchy-ORG are supposed to embark users on a 
-            brave adventure while discovering its carefully 
-            weighed virtues and flaws. Its coding fragment 
-            requires an open minded approach to be understood, 
-            while its graphical fragment requires a 
-            venturesome spirit to have fun with. This 
-            combination provides an unique balance between 
-            contents creation and contents navigation. 
-            Finally, a fair amount of user creativity will be 
-            the judge of Fractarchy-ORG fitness for particular 
-            purposes. 
+            Fractarchy Designer is a bit unusual creation. 
+            Distinctive design choices made in creation of 
+            Fractarchy Designer are supposed to embark users 
+            on a brave adventure while discovering its 
+            carefully weighed virtues and flaws. 
+        )
+        (
+            paragraph Its coding fragment requires an open 
+            minded approach to be understood, while its 
+            graphical fragment requires a venturesome spirit 
+            to have fun with. This combination provides an 
+            unique balance between contents creation and 
+            contents navigation. Finally, a fair amount of 
+            user creativity will be the judge of Fractarchy 
+            Designer fitness for particular purposes. 
         )
     )
     (
@@ -46,11 +45,11 @@
                 (
                     node 
                     (
-                        title 1. about fractarchy-org 
+                        title 1. system outline 
                     )
                 )
                 (
-                    paragraph Fractarchy-ORG is a hierarchical 
+                    paragraph Fractarchy Designer is a hierarchical 
                     fractal-structure inspired, parent-children 
                     orbiting, and zooming-elements based text and 
                     graphics organizer. It can be used to manage the 
@@ -59,10 +58,10 @@
                     or business data and documentation. 
                 )
                 (
-                    paragraph Fractarchy-ORG is a flat-file system, 
-                    and it uses its own structured document tree 
-                    &lpar;SDT&rpar; file format for storing the data 
-                    it operates on. Beside integrated hierarhical 
+                    paragraph Fractarchy Designer is a flat-file 
+                    system, and it uses its own structured document 
+                    tree &lpar;SDT&rpar; file format for storing the 
+                    data it operates on. Beside integrated hierarhical 
                     organization of documents or document snippets, 
                     SDT may interact with native filesystem in 
                     necessity, for example, to display bitmaps or 
@@ -81,7 +80,7 @@
                             )
                         )
                         (
-                            paragraph Fractarchy-ORG 
+                            paragraph Fractarchy Designer 
                             (
                                 bold is suited 
                             )
@@ -115,7 +114,7 @@
                             )
                         )
                         (
-                            paragraph Fractarchy-ORG 
+                            paragraph Fractarchy Designer 
                             (
                                 bold is not suited 
                             )
@@ -137,21 +136,21 @@
                 (
                     node 
                     (
-                        title 2. skimming over features 
+                        title 2. skimming the features 
                     )
                 )
                 (
-                    paragraph Fractarchy-ORG user interface and 
+                    paragraph Fractarchy Designer user interface and 
                     functionality is imbued with symmetry. Although 
                     one may consider it unconventional, the symmetry 
                     was seriously taken into account upon shaping the 
-                    direction of Fractarchy-ORG user interface 
+                    direction of Fractarchy Designer user interface 
                     features. Contents code pane &lpar;left&rpar; 
                     contrasts contents display pane &lpar;right&rpar;, 
                     while browsing mode &lpar;initial&rpar; contrasts 
                     edit/print mode &lpar;alternate&rpar;. Underneath 
-                    the Fractarchy-ORG user interface, the backend 
-                    core comprises structured document tree 
+                    the Fractarchy Designer user interface, the 
+                    backend core comprises structured document tree 
                     &lpar;SDT&rpar;, thus forming a kind of 
                     hierarchical database of sub-documents. 
                 )
@@ -219,21 +218,21 @@
                     )
                 )
                 (
-                    paragraph Composing contents in Fractarchy-ORG is 
-                    consisted of coding main structure document tree 
-                    &lpar;SDT&rpar; file and importing graphical or 
-                    other resources. Contents of SDT file is a s-expr. 
-                    In computer programming, an s-expr &lpar;or 
-                    symbolic expression, abbreviated as sexpr or 
-                    sexp&rpar; is an expression in a like-named 
+                    paragraph Composing contents in Fractarchy 
+                    Designer is consisted of coding main structure 
+                    document tree &lpar;SDT&rpar; file and importing 
+                    graphical or other resources. Contents of SDT file 
+                    is a s-expr. In computer programming, an s-expr 
+                    &lpar;or symbolic expression, abbreviated as sexpr 
+                    or sexp&rpar; is an expression in a like-named 
                     notation for nested list 
                     &lpar;tree-structured&rpar; data. S-expr is 
                     written as a list of elements inside parenthesis. 
                     Elements may include words or other s-exprs 
                     delimited by whitespace. Whitespaces in s-exprs 
                     include any number of space characters, tabs, and 
-                    line splits. Initially, in a case of 
-                    Fractarchy-ORG the first word to the left s-expr 
+                    line splits. Initially, in a case of Fractarchy 
+                    Designer the first word to the left s-expr 
                     &lpar;also called head&rpar; is meant to identify 
                     a s-expr type. In example, s-expr like 
                     (
@@ -267,8 +266,8 @@
                     type s-expr. 
                 )
                 (
-                    paragraph In Fractarchy-ORG, there exist a number 
-                    of s-expr types which we will cover in the 
+                    paragraph In Fractarchy Designer, there exist a 
+                    number of s-expr types which we will cover in the 
                     following sub-sections. 
                 )
             )
@@ -288,31 +287,30 @@
                             following pattern: 
                         )
                         (
-                            bcode 
-                            " (                                                " 
-                            "     tree                                         " 
-                            "     (                                            " 
-                            "         node                                     " 
-                            "         ... node contents ...                    " 
-                            "     )                                            " 
-                            "     (                                            " 
-                            "         branches                                 " 
-                            "         (                                        " 
-                            "             tree                                 " 
-                            "             ... tree contents, recursively ...   " 
-                            "         )                                        " 
-                            "         (                                        " 
-                            "             tree                                 " 
-                            "             ... tree contents, recursively ...   " 
-                            "         )                                        " 
-                            "         ... other tree items as branches ...     " 
-                            "     )                                            " 
-                            " )                                                " 
+                            bcode
+                            " (                                                "
+                            "     tree                                         "
+                            "     (                                            "
+                            "         node                                     "
+                            "         ... node contents ...                    "
+                            "     )                                            "
+                            "     (                                            "
+                            "         branches                                 "
+                            "         (                                        "
+                            "             tree                                 "
+                            "             ... tree contents, recursively ...   "
+                            "         )                                        "
+                            "         (                                        "
+                            "             tree                                 "
+                            "             ... tree contents, recursively ...   "
+                            "         )                                        "
+                            "         ... other tree items as branches ...     "
+                            "     )                                            "
+                            " )                                                "
                         )
                         (
-                            paragraph There is really not much to say about 
-                            tree structure. The tree structure is an s-expr 
-                            combined by 
+                            paragraph The tree structure is an s-expr combined 
+                            by 
                             (
                                 icode "tree" 
                             )
@@ -386,27 +384,27 @@
                             s-expr: 
                         )
                         (
-                            bcode 
-                            " (                                         " 
-                            "     node                                  " 
-                            "     ... sub-document contents ...         " 
-                            " )                                         " 
+                            bcode
+                            " (                                         "
+                            "     node                                  "
+                            "     ... sub-document contents ...         "
+                            " )                                         "
                         )
                         (
                             paragraph Alternatively, sub-documents may be 
                             additionally written by the following s-expr: 
                         )
                         (
-                            bcode 
-                            " (                                         " 
-                            "     (                                     " 
-                            "         node                              " 
-                            "         (                                 " 
-                            "             title ... description ...     " 
-                            "         )                                 " 
-                            "     )                                     " 
-                            "     ... sub-document contents ...         " 
-                            " )                                         " 
+                            bcode
+                            " (                                         "
+                            "     (                                     "
+                            "         node                              "
+                            "         (                                 "
+                            "             title ... description ...     "
+                            "         )                                 "
+                            "     )                                     "
+                            "     ... sub-document contents ...         "
+                            " )                                         "
                         )
                         (
                             paragraph where 
@@ -432,39 +430,39 @@
                             s-exprs of types from the following table: 
                         )
                         (
-                            bcode 
-                            " ---------------------------------------- --------------------------- " 
-                            "!  s-expr type                           !  accepts contents         !" 
-                            " ---------------------------------------- --------------------------- " 
-                            "!  * ignored comments: `comment`         !  prose                    !" 
-                            "!  * bold text: `bold`                   !  prose                    !" 
-                            "!  * italic text: `italic`               !  prose                    !" 
-                            "!  * title: `title`                      !  prose                    !" 
-                            "!  * headings: `heading1` to `heading6`  !  prose                    !" 
-                            "!  * paragraph: `paragraph`              !  prose                    !" 
-                            "!  * block quote: `bquote`               !  prose                    !" 
-                            "!  * unordered list: `ulist`             !                           !" 
-                            "!      * unordered list item: `litem`    !  prose                    !" 
-                            "!                                        !                           !" 
-                            "!  * ordered list: `olist`               !                           !" 
-                            "!      * ordered list item: `litem`      !  prose                    !" 
-                            "!                                        !                           !" 
-                            "!  * checklist: `clist`                  !                           !" 
-                            "!      * empty box item: `eitem`         !  prose                    !" 
-                            "!      * crossed box item: `xitem`       !  prose                    !" 
-                            "!      * checked box item: `yitem`       !  prose                    !" 
-                            "!                                        !                           !" 
-                            "!  * hyperlink: `hyperlink`              !                           !" 
-                            "!      * hyperlink address: `address`    !  quoted string            !" 
-                            "!      * hyperlink target: `target`      !  quoted string            !" 
-                            "!                                        !                           !" 
-                            "!  * inline code: `icode`                !  quoted string            !" 
-                            "!  * block code: `bcode`                 !  a list of quoted strings !" 
-                            "!  * image: `image`                      !                           !" 
-                            "!      * source: `source`                !  quoted string            !" 
-                            "!                                        !                           !" 
-                            "!  * horizontal ruler: `hruler`          !                           !" 
-                            " ---------------------------------------- --------------------------- " 
+                            bcode
+                            "+----------------------------------------+---------------------------+"
+                            "!  s-expr type                           !  accepts contents         !"
+                            "+----------------------------------------+---------------------------+"
+                            "!  * `comment`: ignored comments         !  prose                    !"
+                            "!  * `bold`: bold text                   !  prose                    !"
+                            "!  * `italic`: italic text               !  prose                    !"
+                            "!  * `title`: title:                     !  prose                    !"
+                            "!  * `heading1` to `heading6`: headings  !  prose                    !"
+                            "!  * `paragraph`: paragraph              !  prose                    !"
+                            "!  * `bquote`: block quote               !  prose                    !"
+                            "!  * `ulist`: unordered list             !                           !"
+                            "!      * `litem`: unordered list item    !  prose                    !"
+                            "!                                        !                           !"
+                            "!  * `olist`: ordered list               !                           !"
+                            "!      * `litem`: ordered list item      !  prose                    !"
+                            "!                                        !                           !"
+                            "!  * `clist`: checklist                  !                           !"
+                            "!      * `eitem`: empty box item         !  prose                    !"
+                            "!      * `xitem`: crossed box item       !  prose                    !"
+                            "!      * `yitem`: checked box item       !  prose                    !"
+                            "!                                        !                           !"
+                            "!  * `hyperlink`: hyperlink              !                           !"
+                            "!      * `address`: hyperlink address    !  quoted string            !"
+                            "!      * `target`: hyperlink target      !  quoted string            !"
+                            "!                                        !                           !"
+                            "!  * `icode`: inline code                !  quoted string            !"
+                            "!  * `bcode`: block code                 !  a list of quoted strings !"
+                            "!  * `image`: image                      !                           !"
+                            "!      * `source`: source                !  quoted string            !"
+                            "!                                        !                           !"
+                            "!  * `hruler`: horizontal ruler          !                           !"
+                            "+----------------------------------------+---------------------------+"
                         )
                         (
                             paragraph Sub-items from the above itemization are 
@@ -472,7 +470,7 @@
                         )
                         (
                             paragraph There are plans for the future versions 
-                            of Fractarchy-ORG to extend s-expr types in a 
+                            of Fractarchy Designer to extend s-expr types in a 
                             direction of flexible output styling. Also, 
                             planned templating and scripting documents would 
                             follow these extensions to bring a full control 
@@ -492,16 +490,17 @@
                         (
                             paragraph Templating in SDT file format is 
                             something reserved for the future versions of 
-                            Fractarchy-ORG. Coupled with already mentioned 
-                            planned styling extensions, templating could bring 
-                            powerful scripting capabilities to Fractarchy-ORG 
-                            platform. This would open a wide space for 
-                            managing diverse libraries in a pursuit for 
-                            displaying expressions like math, chemistry, 
-                            physics, or similar expressions. Not to stop 
-                            there, one could conceive maybe even graph 
+                            Fractarchy Designer. Coupled with already 
+                            mentioned planned styling extensions, templating 
+                            could bring powerful scripting capabilities to 
+                            Fractarchy Designer platform. This would open a 
+                            wide space for managing diverse libraries in a 
+                            pursuit for displaying expressions like math, 
+                            chemistry, physics, or similar expressions. Not to 
+                            stop there, one could conceive maybe even graph 
                             visualization libraries that would render vector 
-                            graphics within the Fractarchy-ORG user interface. 
+                            graphics within the Fractarchy Designer user 
+                            interface. 
                         )
                         (
                             paragraph We have to say that we are excited about 
@@ -510,7 +509,7 @@
                             conjunction with document scripting, we would be 
                             delighted to receive occasional visit to our 
                             official GitHub repository, if you'd want to check 
-                            for new Fractarchy-ORG version updates. 
+                            for new Fractarchy Designer version updates. 
                         )
                     )
                 )
@@ -532,8 +531,8 @@
                 (
                     paragraph 
                     (
-                        italic Fractarchy-ORG is shared to public under 
-                        conditional 
+                        italic Fractarchy Designer is shared to public 
+                        under conditional 
                         (
                             (
                                 hyperlink 
@@ -562,7 +561,7 @@
                             Contrast Zone 
                         )
                         productions. For details about conditions, please 
-                        refer to Fractarchy-ORG software bundle. 
+                        refer to Fractarchy Designer software bundle. 
                     )
                 )
                 (
@@ -571,8 +570,8 @@
                 (
                     paragraph 
                     (
-                        italic A copy of Fractarchy-ORG software bundle 
-                        can be downloaded from 
+                        italic A copy of Fractarchy Designer software 
+                        bundle can be downloaded from 
                         (
                             (
                                 hyperlink 
@@ -594,9 +593,9 @@
                 (
                     paragraph 
                     (
-                        italic To ask any questions about Fractarchy-ORG, 
-                        to report a bug, or to track new releases, please 
-                        refer to 
+                        italic To ask any questions about Fractarchy 
+                        Designer, to report a bug, or to track new 
+                        releases, please refer to 
                         (
                             (
                                 hyperlink 
@@ -617,7 +616,7 @@
                 )
                 (
                     paragraph With this section, we conclude 
-                    Fractarchy-ORG instructions exposure. Have a 
+                    Fractarchy Designer instructions exposure. Have a 
                     creative and productive visual contents coding. 
                 )
             )

@@ -198,10 +198,12 @@
                 } else if (event.data.msg === "readFile") {
                     hideIO ();
                     fileInput (event.data.fname);
+                    unnamed = false;
                     
                 } else if (event.data.msg === "writeFile") {
                     hideIO ();
                     fileOutput (event.data.fname);
+                    unnamed = false;
 
                     var t = document.title;
                     if (t.substring (0, 1) === "*")
@@ -300,9 +302,10 @@
 
             document.getElementById("newDocument").addEventListener ("click", function () {
                 if (document.title.charAt(0) === "*") {
-                    if (confirm("You have unsaved changes. Do you want to lose them?"))
+                    if (confirm("You have unsaved changes. Do you want to lose them?")) {
                         newFile ();
-
+                    }
+                    
                 } else {
                     newFile ();
                 }
@@ -315,15 +318,17 @@
             }, false);
             
             document.getElementById("svginput").addEventListener ("click", async function () {
-                document.getElementById("myPopup").draggable = false;
-                document.getElementById("myPopup").ondragstart = function () {return false};
-                
-                setTimeout (() => {
-                    document.getElementById("myPopup").style.left = document.getElementById("btnupload").offsetLeft + 3 + "px";
-                    document.getElementById("myPopup").style.top = document.getElementById("btnupload").offsetTop - document.getElementById("myPopup").clientHeight - 3 + "px";
-                }, 0);                
+                if (server === "Node.js") {
+                    document.getElementById("myPopup").draggable = false;
+                    document.getElementById("myPopup").ondragstart = function () {return false};
+                    
+                    setTimeout (() => {
+                        document.getElementById("myPopup").style.left = document.getElementById("btnupload").offsetLeft + 3 + "px";
+                        document.getElementById("myPopup").style.top = document.getElementById("btnupload").offsetTop - document.getElementById("myPopup").clientHeight - 3 + "px";
+                    }, 0);                
 
-                document.getElementById("myPopupContainer").style.display = "inline";
+                    document.getElementById("myPopupContainer").style.display = "inline";
+                }
 
                 //showIO ("readDoc", fullUrl);
 
@@ -363,7 +368,10 @@
             }, false);
 
             document.getElementById("saveDocument").addEventListener ("click", function () {
-                fileOutput (fullUrl);
+                if (unnamed)
+                    showIO ("writeDoc", fullUrl);
+                else
+                    fileOutput (fullUrl);
             }, false);
 
             document.getElementById("saveAsDocument").addEventListener ("click", function () {
@@ -377,14 +385,16 @@
             }, false);
 
             document.getElementById("svgoutput").addEventListener ("click", async function () {
-                document.getElementById("myPopdown").draggable = false;
-                document.getElementById("myPopdown").ondragstart = function () {return false};
-                setTimeout (() => {
-                    document.getElementById("myPopdown").style.left = document.getElementById("btndownload").offsetLeft + document.getElementById("btndownload").clientWidth - document.getElementById("myPopdown").clientWidth - 3 + "px";
-                    document.getElementById("myPopdown").style.top = document.getElementById("btndownload").offsetTop + document.getElementById("btndownload").clientHeight - 1 + "px";
-                }, 0);
+                if (server === "Node.js") {
+                    document.getElementById("myPopdown").draggable = false;
+                    document.getElementById("myPopdown").ondragstart = function () {return false};
+                    setTimeout (() => {
+                        document.getElementById("myPopdown").style.left = document.getElementById("btndownload").offsetLeft + document.getElementById("btndownload").clientWidth - document.getElementById("myPopdown").clientWidth - 3 + "px";
+                        document.getElementById("myPopdown").style.top = document.getElementById("btndownload").offsetTop + document.getElementById("btndownload").clientHeight - 1 + "px";
+                    }, 0);
 
-                document.getElementById("myPopdownContainer").style.display = "inline";
+                    document.getElementById("myPopdownContainer").style.display = "inline";
+                }
 
                 //showIO ("writeDoc", fullUrl);
                 
@@ -501,6 +511,7 @@
                 t.style.borderTopWidth = btns + "px";
                 t.style.top = "0px";
                 t.style.right = "0px";
+                //t.style.left = Math.floor (window.innerWidth / 2) + "px";
                 t.style.height = "calc(100% - " + (2 * (marg + padd) + bord) + "px - " + btns + "px)";
 
                 if (onlyright) {
@@ -557,6 +568,7 @@
                 }
 
                 var h = document.getElementById("helpcontainer");
+                /*
                 var f = 0.95;
                 var fun = function () {
                     if (f > 0) {
@@ -572,10 +584,14 @@
                 h.style.opacity = 0;
                 h.style.visibility = "visible";
                 setTimeout(fun, 50);
+                */
+                h.style.visibility = "visible";
+                h.style.opacity = 1;
             }
             
             var hideHelp = function () {
                 var h = document.getElementById("helpcontainer");
+                /*
                 var f = 0.95;
                 var fun = function () {
                     if (f > 0) {
@@ -591,6 +607,9 @@
                 h.style.opacity = 1;
                 h.style.visibility = "visible";
                 setTimeout(fun, 50);
+                */
+                h.style.visibility = "hidden";
+                h.style.opacity = 0;
             }
             
             var showIO = function (mode, url) {
@@ -598,6 +617,11 @@
                 document.getElementById("iofr").style.width = "640px";
                 document.getElementById("iofr").style.height = "480px";
                 
+                document.getElementById("iofr").onload = function () {
+                    h.style.visibility = "visible";
+                    h.style.opacity = 1;
+                }
+
                 if (mode === "readDoc") {
                     document.getElementById("iofr").contentWindow.location.replace("./src/file-picker.html?mode=" + mode + "&url=" + url);
 
@@ -606,6 +630,7 @@
                 }
 
                 var h = document.getElementById("iocontainer");
+                /*
                 var f = 0.95;
                 var fun = function () {
                     if (f > 0) {
@@ -621,10 +646,12 @@
                 h.style.opacity = 0;
                 h.style.visibility = "visible";
                 setTimeout(fun, 50);
+                */
             }
             
             var hideIO = function () {
                 var h = document.getElementById("iocontainer");
+                /*
                 var f = 0.95;
                 var fun = function () {
                     if (f > 0) {
@@ -641,6 +668,10 @@
                 h.style.opacity = 1;
                 h.style.visibility = "visible";
                 setTimeout(fun, 50);
+                */
+                h.style.visibility = "hidden";
+                h.style.opacity = 0;
+                document.getElementById("iofr").style.display = "none";
             }
             
             window.addEventListener('resize', function () {
@@ -742,6 +773,28 @@
                 document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: parsed, baseUrl: baseUrl}, "*");
             }
 
+            function onlineInput (url) {
+                var xhttp = new XMLHttpRequest ();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var txt = this.responseText;
+                        var parsed = parser.parsesexpr (txt);
+                        if (parsed.err) {
+                            var coord = parser.getCoords (txt, parsed.pos);
+                            alert ("Error: " + parsed.err + " at " + coord.row + ", " + coord.col);
+                            
+                        } else {
+                            baseUrl = getBaseUrl(url);
+                            fullUrl = url;
+                            afterGettingUrl (fullUrl, baseUrl, parsed);
+                        }
+                    }
+                }
+                xhttp.open("GET", url, true);
+                xhttp.overrideMimeType("text/plain");
+                xhttp.send();
+            }
+
             function fileInput (url) {
                 var xhttp = new XMLHttpRequest ();
                 xhttp.onreadystatechange = function () {
@@ -794,6 +847,7 @@
                 var xhttp = new XMLHttpRequest ();
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
+                        unnamed = true;
                         baseUrl = this.responseText;
                         fullUrl = this.responseText + "/new document.sdt";
                         document.title = "*new document";
@@ -844,7 +898,11 @@
                     fullUrl = url;
                     document.title = url.substring (url.lastIndexOf("/") + 1);
                     nodeTree = ["tree", ["node"], ["branches", ["tree", ["node"], ["branches"]], ["tree", ["node"], ["branches"]]]];
-                    fileInput (url);
+                    if (server === "Node.js")
+                        fileInput (url);
+                        
+                    else
+                        onlineInput (url);
 
                 } else {
                     function getNode (pl, cn, nt) {
@@ -880,12 +938,36 @@
                 }
             }
             
+            function detectServer (callback) {
+                var xhttp = new XMLHttpRequest ();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        callback (this.responseText);
+                    }
+                };
+                xhttp.open("GET", "checkServer", true);
+                xhttp.overrideMimeType("text/plain");
+                xhttp.send();
+
+            }
+            
+            window.onbeforeunload = function (event) {
+                if (document.title.charAt(0) === "*") {
+                    if (!confirm(`You have unsaved changes. Close anyway?`)) {
+                        event.preventDefault();
+                        event.returnValue = '';
+                    }
+                }
+            };
+            
             var currentNode;
             var srcloaded, tgtloaded;
             var nodeTree;
             var populateFrom;
             var baseUrl;
             var fullUrl;
+            var unnamed;
+            var server;
             
             document.getElementById("source").addEventListener ('load', () => {
                 srcloaded = true;
@@ -911,6 +993,8 @@
             
             document.getElementById("source").contentWindow.location.replace("./src/source-browse.html");
             document.getElementById("target").contentWindow.location.replace("./src/target-browse.html");
+            
+            detectServer ((responseText) => {server = responseText});
           </script>
     </body>
 </html>

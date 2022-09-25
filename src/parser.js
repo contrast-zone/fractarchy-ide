@@ -177,7 +177,7 @@ var parser = (function (obj) {
             if (!indent) indent = "";
             if (!index) index = 0;
             
-            var code = node[0] === "code";
+            var code = node[0] === "bcode";
             str += indent + "(\n";
             str += Array.isArray (node[0])? "": indent + "    ";
             var linechars = 0;
