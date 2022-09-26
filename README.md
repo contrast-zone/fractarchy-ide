@@ -2,13 +2,13 @@
 
 (v 0.1 - beta2)
 
-**tags:** data-visualization, mind-mapping, note-taking, personal-knowledge-base, text-processing, structured-document-tree, hierarchical-content-organizer, data-visualization-project, text-processing-toolkit, zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
+**tags:** data-visualization, mind-mapping, note-taking, personal-knowledge-base, text-processing, structured-document-tree, hierarchical-content-organizer, zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
 
 > ## promotional material
 > 
 > ![](media/socmedia.png)
 > 
-> Fractarchy Designer is hierarchical content organizer featuring structured document tree (*.sdt) file format. It is a blend between content management system and integrated development environment. Use it for different purposes, from mind map planning and note taking to personal knowledge base keeping and text processing.
+> Fractarchy Designer is hierarchical content organizer featuring structured document tree (*.sdt) file format. It is a blend between content management system and integrated development environment. Use it for different purposes, from mind mapping and note taking to personal knowledge base keeping and text processing.
 
 ## actual screenshots
         
@@ -35,7 +35,7 @@ Fractarchy Designer **is not suited** to be used for:
 
 ## online test
 
-Visit [https://fractarchy.github.io/fractarchy-designer/](https://fractarchy.github.io/fractarchy-designer/) to try Fractarchy Designer.
+Visit [https://fractarchy.github.io/fractarchy-designer/](https://fractarchy.github.io/fractarchy-designer/) to try Fractarchy Designer online.
 
 ## installing on local computer
 

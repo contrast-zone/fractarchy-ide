@@ -591,7 +591,7 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
     var lineWidth = 40;
 
     var minRadius;
-    var shadowr = shadowRadius;
+    var shadowr = 0;// shadowRadius;
     var recCount = 4;
 
     var dragPrecision = Math.pow (2, 8);
@@ -629,7 +629,7 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
             
             var magn = r / (rr * ratio);
             
-            var lw = lineWidth * rr / 1000 * magn;
+            var lw = lineWidth * rr / 2048 * magn;
             if (fill === stroke)
                 lw = 0;
             
@@ -641,11 +641,13 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
             data.currYA = ya;
             data.currRA = ra;
             data.currMagn = magn;
+            data.lineWidth = lineWidth * rr / 2048 * magn;
             if (!data.parent.currXA) {
                 data.parent.currXA = xx;
                 data.parent.currYA = yy * ratio;
                 data.parent.currRA = rr * ratio;
                 data.parent.currAngleA = Math.PI / 2;
+                data.parent.lineWidth = lineWidth * rr / 2048 * magn * ratio * 2;
             }
 
             var anglea = Math.atan2(ya - data.parent.currYA, xa - data.parent.currXA);
@@ -696,36 +698,48 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
             var n = ngonsides;
 
             ctx.beginPath ();
-            ctx.moveTo((ra - lw / 2) * Math.cos (0), (ra - lw / 2) * Math.sin (0));
+            ctx.moveTo(xa + (ra - lw / 2) * Math.cos (2 * Math.PI / n * -0.5), ya + (ra - lw / 2) * Math.sin (2 * Math.PI / n * -0.5));
             for (var i = 0.5; i < n + 1.5; i++){
                 ctx.lineTo(xa + (ra - lw / 2) * Math.cos (2 * Math.PI / n * i), ya + (ra - lw / 2) * Math.sin (2 * Math.PI / n * i));
             }
-            ctx.closePath ();
-            ctx.lineWidth = 0;
+            ctx.lineWidth = lw;
             if (data.backColor)
                 ctx.fillStyle = data.backColor;
             else
                 ctx.fillStyle = fill;
             ctx.fill ();
+            ctx.closePath ();
 
+            if (fill !== stroke) {
+                ctx.beginPath ();
+                ctx.moveTo(xa + (ra - lw / 2) * Math.cos (2 * Math.PI / n * -0.5), ya + (ra - lw / 2) * Math.sin (2 * Math.PI / n * -0.5));
+                for (var i = 0.5; i < n + 1.5; i++){
+                    ctx.lineTo(xa + (ra - lw / 2) * Math.cos (2 * Math.PI / n * i), ya + (ra - lw / 2) * Math.sin (2 * Math.PI / n * i));
+                }
+                ctx.lineWidth = lw;
+                ctx.strokeStyle = stroke;
+                ctx.stroke ();
+                ctx.closePath ();
+            }
+            
             ctx.restore ();
 
             // line
-            var lw = lineWidth * rr / 1000 * magn;
+            var lw = lineWidth * rr / 1024 * magn;
             if (level !== 1 && data.parent.parent){
                 
-                //ctx.globalCompositeOperation = "source-over";
+                ctx.globalCompositeOperation = "source-over";
                 ctx.lineWidth = lw;//lineWidth * rr / 500 * magn;
                 //ctx.lineCap = "round"
-                //var x1 = xa + (ctx.lineWidth / 2 + ra) * Math.cos (anglea - Math.PI);
-                //var y1 = ya + (ctx.lineWidth / 2 + ra) * Math.sin (anglea - Math.PI);
-                //var x2 = data.parent.currXA + (ctx.lineWidth / 2 + data.parent.currRA) * Math.cos (anglea);
-                //var y2 = data.parent.currYA + (ctx.lineWidth / 2 + data.parent.currRA) * Math.sin (anglea);
+                var x1 = xa + (-data.lineWidth * ratio + ra) * Math.cos (anglea - Math.PI);
+                var y1 = ya + (-data.lineWidth * ratio + ra) * Math.sin (anglea - Math.PI);
+                var x2 = data.parent.currXA + (-data.parent.lineWidth + data.parent.currRA) * Math.cos (anglea);
+                var y2 = data.parent.currYA + (-data.parent.lineWidth + data.parent.currRA) * Math.sin (anglea);
                 
-                var x1 = xa;// + (-1 + ra) * Math.cos (anglea - Math.PI);
-                var y1 = ya;// + (-1 + ra) * Math.sin (anglea - Math.PI);
-                var x2 = data.parent.currXA;// + (-1 + data.parent.currRA) * Math.cos (anglea);
-                var y2 = data.parent.currYA;// + (-1 + data.parent.currRA) * Math.sin (anglea);
+                //var x1 = xa;// + (-1 + ra) * Math.cos (anglea - Math.PI);
+                //var y1 = ya;// + (-1 + ra) * Math.sin (anglea - Math.PI);
+                //var x2 = data.parent.currXA;// + (-1 + data.parent.currRA) * Math.cos (anglea);
+                //var y2 = data.parent.currYA;// + (-1 + data.parent.currRA) * Math.sin (anglea);
                 ctx.save ();
                 ctx.scale(squashX, squashY)
                 ctx.beginPath ();
@@ -744,7 +758,7 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
                 ctx.stroke();
                 ctx.restore ();
 
-                //ctx.globalCompositeOperation = "source-over";
+                ctx.globalCompositeOperation = "source-over";
             }
 
             /*
@@ -762,7 +776,7 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
             ctx.fill ();
             */
 
-            var lw = lineWidth * rr / 1000 * magn;
+            var lw = lineWidth * rr / 2048 * magn;
             if (fill === stroke)
                 lw = 0;
 
@@ -790,7 +804,7 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
                 
                 var l = ~~((xa * squashX - magn * (data.ifr.width / 2 + cx)));
                 var t = ~~((ya * squashY - magn * (data.ifr.height / 2 + cy)));
-                if (data.ifr.style.left === l + "px" && data.ifr.style.top === t + "px" && data.ifr.style.transform === tr) { // it was scaling bug
+                if (data.ifr.style.left === ~~(cnv.parentNode.clientLeft + l) + "px" && data.ifr.style.top === ~~(cnv.parentNode.clientLeft + t) + "px" && data.ifr.style.transform === tr) { // it was scaling bug
                     //alert ("skip the same position");
                 } else {
                     data.ifr.style.left = ~~(cnv.parentNode.clientLeft + l) + "px";
@@ -1938,7 +1952,7 @@ select.cursor.angle = Math.PI;
     var noPan;
     
     function transformY () {
-        var ret = Math.floor ((hh / 2 - shadowRadius) * (1 - 1 / magn));
+        var ret = Math.floor ((hh / 2 - shadowr) * (1 - 1 / magn));
         
         if (orient !== 0) {
             ret = - ret;
@@ -2069,7 +2083,7 @@ select.cursor.angle = Math.PI;
 
                     magn = curMagn * scaleD1 / scaleD0;
 
-                    var ty = (hh / 2 - shadowRadius) * (1 - 1 / uiscale);
+                    var ty = (hh / 2 - shadowr) * (1 - 1 / uiscale);
                     var magnmax = 1 * (rr - rr * shiftY + ty / squashY) / (rr) / ratio / circleSize;
                     
                     if (magn < 1)
@@ -2156,7 +2170,7 @@ select.cursor.angle = Math.PI;
                 noPan = false;
             }
             
-            var ty = (hh / 2 - shadowRadius) * (1 - 1 / uiscale);
+            var ty = (hh / 2 - shadowr) * (1 - 1 / uiscale);
             var magnmax = 1 * (rr - rr * shiftY + ty / squashY) / (rr) / ratio / circleSize;
 
             magn = magn + Math.sign(event.deltaY) * Math.sign (Math.sin(orient + Math.PI / 2)) * (magnmax - 1) / 5;

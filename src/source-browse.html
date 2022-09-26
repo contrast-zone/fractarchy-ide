@@ -315,7 +315,7 @@
 
             wonload = function () {
                 setSize ();
-                objOrbit = Orbital (divContainer, nodeTree, env.quant / 100, env.contentScale / 100, env.ovalBackColor, env.ovalBorderColor, env.backColor, env.shadowRadius, env.shadowRadius? env.shadowColor: null, env.uiscale / 100, onIdle, onBusy, env.rodLength, Math.PI, 0.14);
+                objOrbit = Orbital (divContainer, nodeTree, env.quant / 100, env.contentScale / 100, env.ovalBackColor, env.ovalBorderColor, env.backColor, env.shadowRadius, env.shadowRadius? env.shadowColor: null, env.uiscale / 100, onIdle, onBusy, env.rodLength, Math.PI, env.vShift / 100);
                 dispatchSize ();
                 divContainer.style.visibility = "visible";
                 window.addEventListener("message", msg, false);
@@ -384,6 +384,22 @@
                 else
                     rodlength = 5;
 
+                if (data["vertical-shift"])
+                    try {
+                        if (data["vertical-shift"].substr(data["vertical-shift"].length - 1, 1) !== "%")
+                            throw new error ();
+                        
+                        var vShift = parseFloat (data["vertical-shift"].substr(0, data["vertical-shift"].length - 1));
+                        if (vShift < 0 || vShift >= 100)
+                            throw new error ();
+                        
+                    } catch (e) {
+                        alert ('Error in init.json: "vertical-shift" has to be a percent between "0%" and "100%"');
+                        throw new error ();
+                    }
+                else
+                    vShift = 0;
+
                 if (data["power-consumption-optimisation"])
                     try {
                         if (data["power-consumption-optimisation"].substr(data["power-consumption-optimisation"].length - 1, 1) !== "%")
@@ -401,7 +417,7 @@
                     quant = 80;
                 
                 if (data["oval-shadow-radius"]) {
-                    var sradius = parseFloat (data["oval-shadow-radius"]) * window.devicePixelRatio;
+                    var sradius = parseFloat (data["oval-shadow-radius"]);// * window.devicePixelRatio;
                     
                 } else {
                     sradius = 0;
@@ -417,7 +433,8 @@
                     shadowRadius: sradius,
                     shadowColor: data["oval-shadow-color"],
                     contentScale: cscale,
-                    uiscale: 140,//uiscale,
+                    uiscale: uiscale,
+                    vShift: vShift,
                     quant: quant,
                     rodLength: rodlength,
                     topNode: data["top-node"]
@@ -757,17 +774,17 @@
                         "oval-color": "rgb(48,48,48)",
                         "rod-length": "5%",
                         "contents-scale": "100%",
-                        "ui-scale": "120%",
+                        "ui-scale": "140%",
+                        "vertical-shift": "14%",
                         "power-consumption-optimisation": "75%",
                     }
                 );
 
-                //nodeTree = {nodeRawData: nodeRawTree, parent: {index: 0}};
                 nodeTree = {nodeRawData: ["tree", ["node"]], parent: {index: 0}};
                 nodeTree.parent.children = [nodeTree];
                 
                 document.body.style.backgroundColor = env.backColor;
-                //divContainer.style.filter = "drop-shadow(0px 0px " + env.shadowRadius + "px " + env.shadowColor + ")";
+                divContainer.style.filter = "drop-shadow(0px 0px " + env.shadowRadius + "px " + env.shadowColor + ")";
                 window.addEventListener("load", wonload ());
             }
             
