@@ -4,8 +4,11 @@
         (
             node 
             (
-                title Fractarchy Designer Basics 
+                name "Fractarchy Designer Basics" 
             )
+        )
+        (
+            title Fractarchy Designer Basics 
         )
         (
             image 
@@ -45,8 +48,11 @@
                 (
                     node 
                     (
-                        title 1. system outline 
+                        name "1. system outline" 
                     )
+                )
+                (
+                    title 1. system outline 
                 )
                 (
                     paragraph Fractarchy Designer is a hierarchical 
@@ -76,8 +82,11 @@
                         (
                             node 
                             (
-                                title 1.1. use cases 
+                                name "1.1. use cases" 
                             )
+                        )
+                        (
+                            title 1.1. use cases 
                         )
                         (
                             paragraph Fractarchy Designer 
@@ -136,8 +145,11 @@
                 (
                     node 
                     (
-                        title 2. skimming the features 
+                        name "2. skimming the features" 
                     )
+                )
+                (
+                    title 2. skimming the features 
                 )
                 (
                     paragraph Fractarchy Designer user interface and 
@@ -163,8 +175,11 @@
                         (
                             node 
                             (
-                                title 2.1. browsing mode 
+                                name "2.1. browsing mode" 
                             )
+                        )
+                        (
+                            title 2.1. browsing mode 
                         )
                         (
                             paragraph The application starts in browsing mode. 
@@ -188,8 +203,11 @@
                         (
                             node 
                             (
-                                title 2.2. edit/print mode 
+                                name "2.2. edit/print mode" 
                             )
+                        )
+                        (
+                            title 2.2. edit/print mode 
                         )
                         (
                             paragraph From browsing mode we can enter 
@@ -214,8 +232,11 @@
                 (
                     node 
                     (
-                        title 3. structured document tree reference 
+                        name "3. structured document tree reference" 
                     )
+                )
+                (
+                    title 3. structured document tree reference 
                 )
                 (
                     paragraph Composing contents in Fractarchy 
@@ -279,8 +300,11 @@
                         (
                             node 
                             (
-                                title 3.1. tree structure s-exprs 
+                                name "3.1. tree structure s-exprs" 
                             )
+                        )
+                        (
+                            title 3.1. tree structure s-exprs 
                         )
                         (
                             paragraph STD file format is structured in a 
@@ -375,8 +399,11 @@
                         (
                             node 
                             (
-                                title 3.2. document structure s-exprs 
+                                name "3.2. document structure s-exprs" 
                             )
+                        )
+                        (
+                            title 3.2. document structure s-exprs 
                         )
                         (
                             paragraph STD sub-documents are placed inside 
@@ -400,7 +427,7 @@
                             "     (                                     "
                             "         node                              "
                             "         (                                 "
-                            "             title ... description ...     "
+                            "             name ... node name ...        "
                             "         )                                 "
                             "     )                                     "
                             "     ... sub-document contents ...         "
@@ -409,12 +436,9 @@
                         (
                             paragraph where 
                             (
-                                icode "... description ..." 
+                                icode "... node name ..." 
                             )
-                            is a list of words representing the node title. 
-                            Title is specifically formatted in the largest 
-                            font and placed at the top of each node 
-                            representing sub-document. 
+                            is a list of words representing the node name. 
                         )
                         (
                             paragraph 
@@ -484,8 +508,11 @@
                         (
                             node 
                             (
-                                title 3.3. templating system s-exprs 
+                                name "3.3. templating system s-exprs" 
                             )
+                        )
+                        (
+                            title 3.3. templating system s-exprs 
                         )
                         (
                             paragraph Templating in SDT file format is 
@@ -505,11 +532,11 @@
                         (
                             paragraph We have to say that we are excited about 
                             all the planned extensions. If you are interested 
-                            in flexible styling, and document templating in 
+                            in flexible styling and document templating in 
                             conjunction with document scripting, we would be 
                             delighted to receive occasional visit to our 
-                            official GitHub repository, if you'd want to check 
-                            for new Fractarchy Designer version updates. 
+                            official GitHub repository to check for new 
+                            Fractarchy Designer version updates. 
                         )
                     )
                 )
@@ -521,9 +548,13 @@
                 (
                     node 
                     (
-                        title 4. licencing, owning a copy, and joining 
-                        mailing list 
+                        name 
+                        "4. licencing, owning a copy, and joining mailing list" 
                     )
+                )
+                (
+                    title 4. licencing, owning a copy, and joining 
+                    mailing list 
                 )
                 (
                     hruler 
