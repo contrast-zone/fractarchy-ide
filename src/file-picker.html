@@ -137,7 +137,7 @@
                 for (var i = 0; i < dir.length; i++)
                     txt += `<div class="grid" name="filediv"><div style="word-wrap: break-word; word-break: break-all; overflow: hidden;">${(dir[i].isDir ? "&lt;" + dir[i].fname + "&gt;" : dir[i].fname)}</div><div align="right">${(dir[i].isDir ? "" : dir[i].fsize)}</div><div>${dir[i].mtime}</div></div>`
                 
-                document.getElementById("dir").innerHTML = '<a title="home directory" onclick="getHomeDir();">⌂</a>' + "path:" + curDir + (curDir === "/"? "": "/");
+                document.getElementById("dir").innerHTML = '<a title="home directory" onclick="getHomeDir();">⌂</a><br/>' + "path:" + curDir + (curDir === "/"? "": "/");
                 document.getElementById("flist").innerHTML = txt;
             
                 var fdivs = document.getElementsByName("filediv");

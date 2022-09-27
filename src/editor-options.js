@@ -6,7 +6,7 @@ var options = {
     font: "1em monospace",
     tabWidth: 4,
     colorText: "rgb(208,208,208)",
-    colorTextBack: "rgb(48,48,48)",
+    colorTextBack: "transparent",
     colorSelection: "white",
     colorSelectionBack: "gray",
     colorKeyword: "rgb(128,128,128)",

@@ -68,6 +68,9 @@
         <div id="divStat" align="right" style="position: absolute; font: 9pt monospace; color: rgb(208,208,208); visibility: hidden;">
         &nbsp;
         </div>
+        <div id="divErr" align="left" style="position: absolute; font: 9pt monospace; color: rgb(208,208,208); visibility: hidden;">
+        &nbsp;
+        </div>
         <script>
             var ed = editor.edit ("divEditE", options);
             
@@ -96,9 +99,11 @@
                         var parsed = parser.parsesexpr (txt);
                         if (parsed.err) {
                             var coord = parser.getCoords (txt, parsed.pos);
+                            document.getElementById('divErr').innerHTML = "Error: " + parsed.err + " at " + coord.row + ", " + coord.col;
                             window.parent.frames[1].postMessage({msg: "error", err: "Error: " + parsed.err + " at " + coord.row + ", " + coord.col, baseUrl: baseUrl}, "*");
                             
                         } else {
+                            document.getElementById('divErr').innerHTML = "";
                             window.parent.postMessage({msg: "validEdit"}, "*");
                             window.parent.frames[1].postMessage({msg: "populate", nodeTree: parsed, baseUrl: baseUrl, scrollTop: window.parent.targetScrollTop}, "*");
                         }
@@ -179,15 +184,17 @@
                 divStat.style.left = "0px";
                 divStat.style.right = "0px";
 
-                //divEdit.style.borderColor = "rgb(48,48,48)"
+                divErr.style.backgroundColor = "transparent"
+                divErr.style.border = bord + "px solid rgb(48,48,48)";
+                divErr.style.bottom = "0px";
+                divErr.style.left = "0px";
+                divErr.style.right = "0px";
+
                 divEdit.style.backgroundColor = "rgb(48,48,48)"
                 divEdit.style.margin = 0 + "px";
                 divEdit.style.padding = 0 + "px";
                 divEdit.style.border = bord + "px solid rgb(48,48,48)";
-                //divEdit.style.borderTopWidth = 24 + "px";
-                //divEdit.style.borderLeftWidth = btns + "px";
                 divEdit.style.top = "0px";
-                //divEdit.style.bottom = "0px";
                 divEdit.style.left = "0px";
                 divEdit.style.right = "0px";
                 divEdit.style.height = (document.body.clientHeight - 2 * bord - divStat.offsetHeight) + "px";
@@ -200,12 +207,14 @@
                 divEditE.style.visibility = "visible";
                 divEdit.style.visibility = "visible";
                 divStat.style.visibility = "visible";
+                divErr.style.visibility = "visible";
 
                 var resizeId;
                 window.addEventListener('resize', function () {
                     divEditE.style.visibility = "hidden";
                     divEdit.style.visibility = "hidden";
                     divStat.style.visibility = "hidden";
+                    divErr.style.visibility = "hidden";
                     
                     clearTimeout(resizeId);
                     resizeId = setTimeout(function () {
@@ -213,6 +222,7 @@
                         divEditE.style.visibility = "visible";
                         divEdit.style.visibility = "visible";
                         divStat.style.visibility = "visible";
+                        divErr.style.visibility = "visible";
                         
                     }, 100);
                 });
@@ -228,6 +238,7 @@
             var baseUrl;
             
             var divStat = document.getElementById ("divStat");
+            var divErr = document.getElementById ("divErr");
             var divEdit = document.getElementById ("divEdit");
             var divEditE = document.getElementById ("divEditE");
             
