@@ -26,7 +26,6 @@
             }
         </style>
         <script src="parser.js"></script>
-        <script src="editor-options.js"></script>
         <script src="editor.js"></script>
         <script src="orbital.js"></script>
     </head>
@@ -741,7 +740,7 @@
                                 + nodeName
                             + '</h1>'
 //                            + `<div style="wrap: none; font: ${options.font}; white-space: pre; color: ${options.colorText}; width: inherit; height: inherit; overflow: hidden; margin: 0; padding:4px;">`
-                                + editor.hilight (parser.stringify (node.nodeRawData[1], Math.round (width / 30 * 50)), options)
+                                + editor.hilight (parser.stringify (node.nodeRawData[1], Math.round (width / 30 * 50)), null)
 //                            + `</div>`
                         + '</body>'
                     + '</html>'

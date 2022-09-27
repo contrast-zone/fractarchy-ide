@@ -55,7 +55,6 @@
               background-color: rgb(48,48,48);
             }
         </style>
-        <script src="editor-options.js"></script>
         <script src="editor.js"></script>
         <script src="parser.js"></script>
     </head>
@@ -72,7 +71,7 @@
         &nbsp;
         </div>
         <script>
-            var ed = editor.edit ("divEditE", options);
+            var ed = editor.edit ("divEditE", null);
             
             var firstVisit = true;
             var myTimeout;
