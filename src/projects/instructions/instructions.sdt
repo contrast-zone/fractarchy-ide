@@ -1,0 +1,656 @@
+(
+    tree 
+    (
+        (
+            node 
+            (
+                name "Fractarchy Designer Basics" 
+            )
+        )
+        (
+            title Fractarchy Designer Basics 
+        )
+        (
+            image 
+            (
+                source "image1.png" 
+            )
+        )
+        (
+            paragraph Let me introduce 
+            (
+                bold Fractarchy Designer, 
+            )
+            a hierarchical content organizer and text 
+            processing toolkit. As one might already guess, 
+            Fractarchy Designer is a bit unusual creation. 
+            Distinctive design choices made in creation of 
+            Fractarchy Designer are supposed to embark users 
+            on a brave adventure while discovering its 
+            carefully weighed virtues and flaws. 
+        )
+        (
+            paragraph Its coding fragment requires an open 
+            minded approach to be understood, while its 
+            graphical fragment requires a venturesome spirit 
+            to have fun with. This combination provides an 
+            unique balance between contents creation and 
+            contents navigation. Finally, a fair amount of 
+            user creativity will be the judge of Fractarchy 
+            Designer fitness for particular purposes. 
+        )
+    )
+    (
+        branches 
+        (
+            tree 
+            (
+                (
+                    node 
+                    (
+                        name "1. system outline" 
+                    )
+                )
+                (
+                    title 1. system outline 
+                )
+                (
+                    paragraph Fractarchy Designer is a hierarchical 
+                    fractal-structure inspired, parent-children 
+                    orbiting, and zooming-elements based text and 
+                    graphics organizer. It can be used to manage the 
+                    creation and modification of static digital 
+                    content. Such purposes include organizing personal 
+                    or business data and documentation. 
+                )
+                (
+                    paragraph Fractarchy Designer is a flat-file 
+                    system, and it uses its own structured document 
+                    tree &lpar;SDT&rpar; file format for storing the 
+                    data it operates on. Beside integrated hierarhical 
+                    organization of documents or document snippets, 
+                    SDT may interact with native filesystem in 
+                    necessity, for example, to display bitmaps or 
+                    vector graphics within documents. 
+                )
+            )
+            (
+                branches 
+                (
+                    tree 
+                    (
+                        (
+                            node 
+                            (
+                                name "1.1. use cases" 
+                            )
+                        )
+                        (
+                            title 1.1. use cases 
+                        )
+                        (
+                            paragraph Fractarchy Designer 
+                            (
+                                bold is suited 
+                            )
+                            to be used as: 
+                            (
+                                ulist 
+                                (
+                                    litem static content pages creation platform 
+                                )
+                                (
+                                    litem mind map planner 
+                                )
+                                (
+                                    litem slide show composer 
+                                )
+                                (
+                                    litem text processing toolkit 
+                                )
+                                (
+                                    litem hierarchical data organizer 
+                                )
+                                (
+                                    litem personal knowledge base keeper 
+                                )
+                                (
+                                    litem multi-purpose documentation system 
+                                )
+                                (
+                                    litem ... 
+                                )
+                            )
+                        )
+                        (
+                            paragraph Fractarchy Designer 
+                            (
+                                bold is not suited 
+                            )
+                            to be used for: 
+                            (
+                                ulist 
+                                (
+                                    litem dynamic content pages creation 
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
+        (
+            tree 
+            (
+                (
+                    node 
+                    (
+                        name "2. skimming the features" 
+                    )
+                )
+                (
+                    title 2. skimming the features 
+                )
+                (
+                    paragraph Fractarchy Designer user interface and 
+                    functionality is imbued with symmetry. Although 
+                    one may consider it unconventional, the symmetry 
+                    was seriously taken into account upon shaping the 
+                    direction of Fractarchy Designer user interface 
+                    features. Contents code pane &lpar;left&rpar; 
+                    contrasts contents display pane &lpar;right&rpar;, 
+                    while browsing mode &lpar;initial&rpar; contrasts 
+                    edit/print mode &lpar;alternate&rpar;. Underneath 
+                    the Fractarchy Designer user interface, the 
+                    backend core comprises structured document tree 
+                    &lpar;SDT&rpar;, thus forming a kind of 
+                    hierarchical database of sub-documents. 
+                )
+            )
+            (
+                branches 
+                (
+                    tree 
+                    (
+                        (
+                            node 
+                            (
+                                name "2.1. browsing mode" 
+                            )
+                        )
+                        (
+                            title 2.1. browsing mode 
+                        )
+                        (
+                            paragraph The application starts in browsing mode. 
+                            Browsing mode presents SDT fragments in orbitable 
+                            and zoomable ovals that form a seamless dynamic 
+                            fractal user interface. We navigate the entire 
+                            fractal structure using only four kinds of 
+                            gestures: &lpar;1&rpar; dragging inside the 
+                            central oval area to pan its contents, 
+                            &lpar;2&rpar; dragging orbiting ovals around the 
+                            central oval to rotate them, &lpar;3&rpar; 
+                            dragging any orbiting oval towards center to zoom 
+                            it in, or &lpar;4&rpar; dragging central oval 
+                            towards orbit to zoom it out. 
+                        )
+                    )
+                )
+                (
+                    tree 
+                    (
+                        (
+                            node 
+                            (
+                                name "2.2. edit/print mode" 
+                            )
+                        )
+                        (
+                            title 2.2. edit/print mode 
+                        )
+                        (
+                            paragraph From browsing mode we can enter 
+                            edit/print mode by clicking relevant icons. 
+                            Edit/print mode detaches and prepares the current 
+                            oval &lpar;together with its subsequent 
+                            ovals&rpar; for editing/printing. 
+                        )
+                        (
+                            paragraph When we are done editing/printing, we 
+                            can exit the edit/print mode by clicking relevant 
+                            icons. The interface then brings us back to 
+                            browsing mode. 
+                        )
+                    )
+                )
+            )
+        )
+        (
+            tree 
+            (
+                (
+                    node 
+                    (
+                        name "3. structured document tree reference" 
+                    )
+                )
+                (
+                    title 3. structured document tree reference 
+                )
+                (
+                    paragraph Composing contents in Fractarchy 
+                    Designer is consisted of coding main structure 
+                    document tree &lpar;SDT&rpar; file and importing 
+                    graphical or other resources. Contents of SDT file 
+                    is a s-expr. In computer programming, an s-expr 
+                    &lpar;or symbolic expression, abbreviated as sexpr 
+                    or sexp&rpar; is an expression in a like-named 
+                    notation for nested list 
+                    &lpar;tree-structured&rpar; data. S-expr is 
+                    written as a list of elements inside parenthesis. 
+                    Elements may include words or other s-exprs 
+                    delimited by whitespace. Whitespaces in s-exprs 
+                    include any number of space characters, tabs, and 
+                    line splits. Initially, in a case of Fractarchy 
+                    Designer the first word to the left s-expr 
+                    &lpar;also called head&rpar; is meant to identify 
+                    a s-expr type. In example, s-expr like 
+                    (
+                        icode "(tree ... contents ...)" 
+                    )
+                    means that we assert 
+                    (
+                        icode "... contents ..." 
+                    )
+                    of a type 
+                    (
+                        icode "tree" 
+                    )
+                    , while in s-expr 
+                    (
+                        icode 
+                        "(tree (node ... contents ...) (branches ... contents ...))" 
+                    )
+                    we nested 
+                    (
+                        icode "node" 
+                    )
+                    type and 
+                    (
+                        icode "branches" 
+                    )
+                    type s-exprs within 
+                    (
+                        icode "tree" 
+                    )
+                    type s-expr. 
+                )
+                (
+                    paragraph In Fractarchy Designer, there exist a 
+                    number of s-expr types which we will cover in the 
+                    following sub-sections. 
+                )
+            )
+            (
+                branches 
+                (
+                    tree 
+                    (
+                        (
+                            node 
+                            (
+                                name "3.1. tree structure s-exprs" 
+                            )
+                        )
+                        (
+                            title 3.1. tree structure s-exprs 
+                        )
+                        (
+                            paragraph STD file format is structured in a 
+                            following pattern: 
+                        )
+                        (
+                            bcode
+                            " (                                                "
+                            "     tree                                         "
+                            "     (                                            "
+                            "         node                                     "
+                            "         ... node contents ...                    "
+                            "     )                                            "
+                            "     (                                            "
+                            "         branches                                 "
+                            "         (                                        "
+                            "             tree                                 "
+                            "             ... tree contents, recursively ...   "
+                            "         )                                        "
+                            "         (                                        "
+                            "             tree                                 "
+                            "             ... tree contents, recursively ...   "
+                            "         )                                        "
+                            "         ... other tree items as branches ...     "
+                            "     )                                            "
+                            " )                                                "
+                        )
+                        (
+                            paragraph The tree structure is an s-expr combined 
+                            by 
+                            (
+                                icode "tree" 
+                            )
+                            , 
+                            (
+                                icode "node" 
+                            )
+                            , and 
+                            (
+                                icode "branches" 
+                            )
+                            type s-exprs. From the top, we start with 
+                            (
+                                icode "tree" 
+                            )
+                            type s-expr, nesting 
+                            (
+                                icode "node" 
+                            )
+                            type s-expr within. If we want the 
+                            (
+                                icode "node" 
+                            )
+                            to branch, we put a 
+                            (
+                                icode "branches" 
+                            )
+                            type s-expr next to it, to further enumerate 
+                            branching using 
+                            (
+                                icode "tree" 
+                            )
+                            type s-exprs. We can nest 
+                            (
+                                icode "tree" 
+                            )
+                            type s-exprs recursively to any depth. When we 
+                            reach the final nodes that don't branch further, 
+                            we simply omit the 
+                            (
+                                icode "branches" 
+                            )
+                            type s-expr. 
+                        )
+                        (
+                            paragraph During visualization, each 
+                            (
+                                icode "node" 
+                            )
+                            type s-expr is rendered within its own oval, while 
+                            orbiting child ovals are extracted from relative 
+                            (
+                                icode "branches" 
+                            )
+                            type s-expr. 
+                        )
+                    )
+                )
+                (
+                    tree 
+                    (
+                        (
+                            node 
+                            (
+                                name "3.2. document structure s-exprs" 
+                            )
+                        )
+                        (
+                            title 3.2. document structure s-exprs 
+                        )
+                        (
+                            paragraph STD sub-documents are placed inside 
+                            nodes from the tree structure in a following 
+                            s-expr: 
+                        )
+                        (
+                            bcode
+                            " (                                         "
+                            "     node                                  "
+                            "     ... sub-document contents ...         "
+                            " )                                         "
+                        )
+                        (
+                            paragraph Alternatively, sub-documents may be 
+                            additionally written by the following s-expr: 
+                        )
+                        (
+                            bcode
+                            " (                                         "
+                            "     (                                     "
+                            "         node                              "
+                            "         (                                 "
+                            "             name ... node name ...        "
+                            "         )                                 "
+                            "     )                                     "
+                            "     ... sub-document contents ...         "
+                            " )                                         "
+                        )
+                        (
+                            paragraph where 
+                            (
+                                icode "... node name ..." 
+                            )
+                            is a list of words representing the node name. 
+                        )
+                        (
+                            paragraph 
+                            (
+                                icode "... sub-document contents ..." 
+                            )
+                            from the above two patterns is a list of prose 
+                            words that follow 
+                            (
+                                icode "node" 
+                            )
+                            head. Also, among a list of words, we can combine 
+                            s-exprs of types from the following table: 
+                        )
+                        (
+                            bcode
+                            "+----------------------------------------+---------------------------+"
+                            "!  s-expr type                           !  accepts contents         !"
+                            "+----------------------------------------+---------------------------+"
+                            "!  * `comment`: ignored comments         !  prose                    !"
+                            "!  * `bold`: bold text                   !  prose                    !"
+                            "!  * `italic`: italic text               !  prose                    !"
+                            "!  * `title`: title:                     !  prose                    !"
+                            "!  * `heading1` to `heading6`: headings  !  prose                    !"
+                            "!  * `paragraph`: paragraph              !  prose                    !"
+                            "!  * `bquote`: block quote               !  prose                    !"
+                            "!  * `ulist`: unordered list             !                           !"
+                            "!      * `litem`: unordered list item    !  prose                    !"
+                            "!                                        !                           !"
+                            "!  * `olist`: ordered list               !                           !"
+                            "!      * `litem`: ordered list item      !  prose                    !"
+                            "!                                        !                           !"
+                            "!  * `clist`: checklist                  !                           !"
+                            "!      * `eitem`: empty box item         !  prose                    !"
+                            "!      * `xitem`: crossed box item       !  prose                    !"
+                            "!      * `yitem`: checked box item       !  prose                    !"
+                            "!                                        !                           !"
+                            "!  * `hyperlink`: hyperlink              !                           !"
+                            "!      * `address`: hyperlink address    !  quoted string            !"
+                            "!      * `target`: hyperlink target      !  quoted string            !"
+                            "!                                        !                           !"
+                            "!  * `icode`: inline code                !  quoted string            !"
+                            "!  * `bcode`: block code                 !  a list of quoted strings !"
+                            "!  * `image`: image                      !                           !"
+                            "!      * `source`: source                !  quoted string            !"
+                            "!                                        !                           !"
+                            "!  * `hruler`: horizontal ruler          !                           !"
+                            "+----------------------------------------+---------------------------+"
+                        )
+                        (
+                            paragraph Sub-items from the above itemization are 
+                            describing acceptable assertions within the items. 
+                        )
+                        (
+                            paragraph There are plans for the future versions 
+                            of Fractarchy Designer to extend s-expr types in a 
+                            direction of flexible output styling. Also, 
+                            planned templating and scripting documents would 
+                            follow these extensions to bring a full control 
+                            over generated documents. 
+                        )
+                    )
+                )
+                (
+                    tree 
+                    (
+                        (
+                            node 
+                            (
+                                name "3.3. templating system s-exprs" 
+                            )
+                        )
+                        (
+                            title 3.3. templating system s-exprs 
+                        )
+                        (
+                            paragraph Templating in SDT file format is 
+                            something reserved for the future versions of 
+                            Fractarchy Designer. Coupled with already 
+                            mentioned planned styling extensions, templating 
+                            could bring powerful scripting capabilities to 
+                            Fractarchy Designer platform. This would open a 
+                            wide space for managing diverse libraries in a 
+                            pursuit for displaying expressions like math, 
+                            chemistry, physics, or similar expressions. Not to 
+                            stop there, one could conceive maybe even graph 
+                            visualization libraries that would render vector 
+                            graphics within the Fractarchy Designer user 
+                            interface. 
+                        )
+                        (
+                            paragraph We have to say that we are excited about 
+                            all the planned extensions. If you are interested 
+                            in flexible styling and document templating in 
+                            conjunction with document scripting, we would be 
+                            delighted to receive occasional visit to our 
+                            official GitHub repository to check for new 
+                            Fractarchy Designer version updates. 
+                        )
+                    )
+                )
+            )
+        )
+        (
+            tree 
+            (
+                (
+                    node 
+                    (
+                        name 
+                        "4. licencing, owning a copy, and joining mailing list" 
+                    )
+                )
+                (
+                    title 4. licencing, owning a copy, and joining 
+                    mailing list 
+                )
+                (
+                    hruler 
+                )
+                (
+                    paragraph 
+                    (
+                        italic Fractarchy Designer is shared to public 
+                        under conditional 
+                        (
+                            (
+                                hyperlink 
+                                (
+                                    address 
+                                    "http://creativecommons.org/licenses/by/4.0/" 
+                                )
+                                (
+                                    target "_new" 
+                                )
+                            )
+                            Creative Commons Attribution 4.0 International 
+                            License 
+                        )
+                        by 
+                        (
+                            (
+                                hyperlink 
+                                (
+                                    address "https://github.com/contrast-zone/" 
+                                )
+                                (
+                                    target "_new" 
+                                )
+                            )
+                            Contrast Zone 
+                        )
+                        productions. For details about conditions, please 
+                        refer to Fractarchy Designer software bundle. 
+                    )
+                )
+                (
+                    hruler 
+                )
+                (
+                    paragraph 
+                    (
+                        italic A copy of Fractarchy Designer software 
+                        bundle can be downloaded from 
+                        (
+                            (
+                                hyperlink 
+                                (
+                                    address 
+                                    "https://github.com/fractarchy/fractarchy-designer/" 
+                                )
+                                (
+                                    target "_top" 
+                                )
+                            )
+                            dedicated github pages. 
+                        )
+                    )
+                )
+                (
+                    hruler 
+                )
+                (
+                    paragraph 
+                    (
+                        italic To ask any questions about Fractarchy 
+                        Designer, to report a bug, or to track new 
+                        releases, please refer to 
+                        (
+                            (
+                                hyperlink 
+                                (
+                                    address 
+                                    "https://groups.google.com/g/contrast-zone" 
+                                )
+                                (
+                                    target "_new" 
+                                )
+                            )
+                            our mailing list. 
+                        )
+                    )
+                )
+                (
+                    hruler 
+                )
+                (
+                    paragraph With this section, we conclude 
+                    Fractarchy Designer instructions exposure. Have a 
+                    creative and productive visual contents coding. 
+                )
+            )
+        )
+    )
+)
