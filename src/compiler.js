@@ -5,14 +5,14 @@ var compiler = (function (obj) {
     }
 }) (
     (function () {
-        var env = env || {"ovalForeColorDim": "rgb(128,128,128)"};
-         
-        function node2html (node, baseUrl, fromPrint) {
+        function node2html (node, baseUrl, fromPrint, env) {
             "use strict";
             
+            env = env || {ovalForeColor: "rgb(48,48,48)", ovalForeColor2: "rgb(72,72,72)"};
+
             var maps= {
                 "hruler": {
-                    "open": `<hr style="border-top: 0.2em solid ${env.ovalForeColorDim}; border-bottom: 0; border-left: 0; border-right: 0;">`,
+                    "open": `<hr style="border-top: 0.2em solid ${env.ovalForeColor2}; border-bottom: 0; border-left: 0; border-right: 0;">`,
                     "close": '</hr>'
                 },
                 "bold": {
@@ -24,31 +24,31 @@ var compiler = (function (obj) {
                     "close": '</i>'
                 },
                 "title": {
-                    "open": `<h1 style="overflow: hidden; font-size: 3em; font-weight: bold; margin-top: 0em; border-bottom: 1px solid ${env.ovalForeColorDim};">`,
+                    "open": `<h1 style="overflow: hidden; font-size: 3em; font-weight: bold; margin-top: 0em; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
                     "close": '</h1>'
                 },
                 "heading1": {
-                    "open": `<h1 style="overflow: hidden; border-bottom: 1px solid ${env.ovalForeColorDim};">`,
+                    "open": `<h1 style="overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
                     "close": '</h1>'
                 },
                 "heading2": {
-                    "open": `<h2 style="overflow: hidden; border-bottom: 1px solid ${env.ovalForeColorDim};">`,
+                    "open": `<h2 style="overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
                     "close": '</h2>'
                 },
                 "heading3": {
-                    "open": `<h3 style="overflow: hidden; border-bottom: 1px solid ${env.ovalForeColorDim};">`,
+                    "open": `<h3 style="overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
                     "close": '</h3>'
                 },
                 "heading4": {
-                    "open": `<h4 style="overflow: hidden; border-bottom: 1px solid ${env.ovalForeColorDim};">`,
+                    "open": `<h4 style="overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
                     "close": '</h4>'
                 },
                 "heading5": {
-                    "open": `<h5 style="overflow: hidden; border-bottom: 1px solid ${env.ovalForeColorDim};">`,
+                    "open": `<h5 style="overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
                     "close": '</h5>'
                 },
                 "heading6": {
-                    "open": `<h6 style="overflow: hidden; border-bottom: 1px solid ${env.ovalForeColorDim};">`,
+                    "open": `<h6 style="overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
                     "close": '</h6>'
                 },
                 "paragraph": {
@@ -56,15 +56,15 @@ var compiler = (function (obj) {
                     "close": '</p>'
                 },
                 "bquote": {
-                    "open": `<blockquote style="border-left: 0.2em solid ${env.ovalForeColorDim}; margin-left: 0px; padding-left: 0.7em;">`,
+                    "open": `<blockquote style="border-left: 0.2em solid ${env.ovalForeColor}; margin-left: 0px; padding-left: 0.7em;">`,
                     "close": '</blockquote>'
                 },
                 "icode": {
-                    "open": '<code style="background-color: rgb(180,180,180); border: 1px solid black; white-space: pre-wrap; font-size: 0.9em;">',
+                    "open": `<code style="/*background-color: rgb(180,180,180);*/ border: 1px solid ${env.ovalForeColor}; white-space: pre-wrap; font-size: 0.9em;">`,
                     "close": '</code>'
                 },
                 "bcode": {
-                    "open": '<code><pre style="background-color: rgb(180,180,180); border: 1px solid black; overflow-x: auto; font-size: 0.9em;">',
+                    "open": `<code><pre style="/*background-color: rgb(180,180,180);*/ border: 1px solid ${env.ovalForeColor}; overflow-x: auto; font-size: 0.9em;">`,
                     "close": '</pre></code>'
                 },
                 "hyperlink": {
@@ -179,7 +179,7 @@ var compiler = (function (obj) {
         }
 
                     
-        function tree2html (topNode, baseUrl, width) {
+        function tree2html (topNode, baseUrl, width, env) {
             function getNode (topNode, margin) {
                 if (!margin) margin = 0;
                 var ret = "";
@@ -187,8 +187,9 @@ var compiler = (function (obj) {
                 
                 for (var i = 1; i < node.length; i++) {
                     numberOfNodes++;
-                    ret += `<div style="background-color: rgb(208,208,208); width: ${width}em; border-radius: 2em; border: 0.2em solid rgb(64,64,64); padding: 1em; margin: 1em; margin-left: ` + margin + `;">`
-                        + node2html (node[i][1], baseUrl, true)
+                    //ret += `<div style="background-color: rgb(208,208,208); width: ${width}em; border-radius: 2em; border: 0.2em solid rgb(64,64,64); padding: 1em; margin: 1em; margin-left: ` + margin + `;">`
+                    ret += `<div style="background-color: ${env.ovalBackColor}; color: ${env.ovalForeColor}; width: ${width}em; border-radius: 2em; border: 0.2em solid rgb(64,64,64); padding: 1em; margin: 1em; margin-left: ` + margin + `;">`
+                        + node2html (node[i][1], baseUrl, true, env)
                     
                     if (node[i][2])
                         ret += getNode (node[i][2]);//tree2html (node[i][2]);

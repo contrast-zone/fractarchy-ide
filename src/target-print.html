@@ -147,11 +147,11 @@
                             + '    }'
                             + '</style>'
                         
-                            + `<style>a:link, a:visited {color: rgb(128,128,128); font-weight: bold;}</style>`
+                            + `<style>a:link, a:visited {color: ${env.ovalForeColor2}; /*font-weight: bold;*/}</style>`
                             
                         + `</head>`
                         + `<body style="font-family: Times New Roman, Georgia, Garamond; font-size: ${mfactor}em;">`
-                            + compiler.tree2html (nodeTree, baseUrl, width / mfactor)
+                            + compiler.tree2html (nodeTree, baseUrl, width / mfactor, env)
                         + `</body>`
                     + `</html>`;
                     
@@ -268,7 +268,14 @@
                 });
             }
             
+            var env;
             function init () {
+                env = {
+                    ovalBackColor: "rgb(208,208,208)",
+                    ovalForeColor: "rgb(48,48,48)",
+                    ovalForeColor2: "rgb(78,78,78)"
+                };
+                
                 window.addEventListener("load", wonload ());
                 nodeTree = {nodeRawData: ["tree", ["node"]], parent: {index: 0}};
                 nodeTree.parent.children = [nodeTree];
