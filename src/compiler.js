@@ -5,12 +5,14 @@ var compiler = (function (obj) {
     }
 }) (
     (function () {
+        var env = env || {"ovalForeColorDim": "rgb(128,128,128)"};
+         
         function node2html (node, baseUrl, fromPrint) {
             "use strict";
             
             var maps= {
                 "hruler": {
-                    "open": '<hr style="border-top: 0.2em solid gray; border-bottom: 0; border-left: 0; border-right: 0;">',
+                    "open": `<hr style="border-top: 0.2em solid ${env.ovalForeColorDim}; border-bottom: 0; border-left: 0; border-right: 0;">`,
                     "close": '</hr>'
                 },
                 "bold": {
@@ -22,31 +24,31 @@ var compiler = (function (obj) {
                     "close": '</i>'
                 },
                 "title": {
-                    "open": '<h1 style="overflow: hidden; font-size: 3em; font-weight: bold; margin-top: 0em; border-bottom: 1px solid gray;">',
+                    "open": `<h1 style="overflow: hidden; font-size: 3em; font-weight: bold; margin-top: 0em; border-bottom: 1px solid ${env.ovalForeColorDim};">`,
                     "close": '</h1>'
                 },
                 "heading1": {
-                    "open": '<h1 style="overflow: hidden; border-bottom: 1px solid gray;">',
+                    "open": `<h1 style="overflow: hidden; border-bottom: 1px solid ${env.ovalForeColorDim};">`,
                     "close": '</h1>'
                 },
                 "heading2": {
-                    "open": '<h2 style="overflow: hidden; border-bottom: 1px solid gray;">',
+                    "open": `<h2 style="overflow: hidden; border-bottom: 1px solid ${env.ovalForeColorDim};">`,
                     "close": '</h2>'
                 },
                 "heading3": {
-                    "open": '<h3 style="overflow: hidden; border-bottom: 1px solid gray;">',
+                    "open": `<h3 style="overflow: hidden; border-bottom: 1px solid ${env.ovalForeColorDim};">`,
                     "close": '</h3>'
                 },
                 "heading4": {
-                    "open": '<h4 style="overflow: hidden; border-bottom: 1px solid gray;">',
+                    "open": `<h4 style="overflow: hidden; border-bottom: 1px solid ${env.ovalForeColorDim};">`,
                     "close": '</h4>'
                 },
                 "heading5": {
-                    "open": '<h5 style="overflow: hidden; border-bottom: 1px solid gray;">',
+                    "open": `<h5 style="overflow: hidden; border-bottom: 1px solid ${env.ovalForeColorDim};">`,
                     "close": '</h5>'
                 },
                 "heading6": {
-                    "open": '<h6 style="overflow: hidden; border-bottom: 1px solid gray;">',
+                    "open": `<h6 style="overflow: hidden; border-bottom: 1px solid ${env.ovalForeColorDim};">`,
                     "close": '</h6>'
                 },
                 "paragraph": {
@@ -54,7 +56,7 @@ var compiler = (function (obj) {
                     "close": '</p>'
                 },
                 "bquote": {
-                    "open": '<blockquote style="border-left: 0.2em solid gray; margin-left: 0px; padding-left: 0.7em;">',
+                    "open": `<blockquote style="border-left: 0.2em solid ${env.ovalForeColorDim}; margin-left: 0px; padding-left: 0.7em;">`,
                     "close": '</blockquote>'
                 },
                 "icode": {

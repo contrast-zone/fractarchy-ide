@@ -17,9 +17,10 @@ var editor = (function (obj) {
                     colorSelectionBack: "gray",
                     colorKeyword: "rgb(104,104,104)",
                     colorKeywordBack: "transparent",
+                    colorStringAndComment: "rgb(104,104,104)",
+                    colorStringAndCommentBack: "transparent",
                     colorBracketMatch: "white",
                     colorBracketMatchBack: "rgb(75,75,75)",
-                    colorStringAndComment: "rgb(104,104,104)",
                     keywords: ["\\bRULE\\b|\\bREWRITE\\b|\\bREAD\\b|\\bWRITE\\b|\\bVAR\\b"],
                     stringsAndComments: "(\"([^\"\\\\\\n]|(\\\\.))*((\")|(\\n)|($)))",
                     hilightMatchingBraces: true,
@@ -200,7 +201,7 @@ var editor = (function (obj) {
                 var pos1 = 0;
                 while((result = reg.exec(text)) !== null) {
                     text1 += hilightKeywords (text.substring(pos1, result.index));
-                    text1 += `<span style="color:${options.colorStringAndComment}">` + result[0] + '</span>';
+                    text1 += `<span style="color:${options.colorStringAndComment}; background-color:${options.colorStringAndCommentBack};">` + result[0] + '</span>';
                     pos1 = result.index + result[0].length;
                 }
                 text1 += hilightKeywords (text.substring(pos1, text.length));
@@ -658,7 +659,7 @@ var editor = (function (obj) {
                 var pos1 = 0;
                 while((result = reg.exec(text)) !== null) {
                     text1 += hilightKeywords (text.substring(pos1, result.index));
-                    text1 += `<span style="color:${options.colorStringAndComment}">` + result[0] + '</span>';
+                    text1 += `<span style="color:${options.colorStringAndComment}; background-color:${options.colorStringAndCommentBack};">` + result[0] + '</span>';
                     pos1 = result.index + result[0].length;
                 }
                 text1 += hilightKeywords (text.substring(pos1, text.length));

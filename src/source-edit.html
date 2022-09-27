@@ -103,7 +103,7 @@
                             window.parent.frames[1].postMessage({msg: "error", err: "Error: " + parsed.err + " at " + coord.row + ", " + coord.col, baseUrl: baseUrl}, "*");
                             
                         } else {
-                            document.getElementById('divErr').innerHTML = "";
+                            document.getElementById('divErr').innerHTML = "&nbsp;";
                             window.parent.postMessage({msg: "validEdit"}, "*");
                             window.parent.frames[1].postMessage({msg: "populate", nodeTree: parsed, baseUrl: baseUrl, scrollTop: window.parent.targetScrollTop}, "*");
                         }

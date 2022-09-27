@@ -146,6 +146,8 @@
                             + '      }'
                             + '    }'
                             + '</style>'
+                        
+                            + `<style>a:link, a:visited {color: rgb(128,128,128); font-weight: bold;}</style>`
                             
                         + `</head>`
                         + `<body style="font-family: Times New Roman, Georgia, Garamond; font-size: ${mfactor}em;">`
@@ -265,7 +267,7 @@
                     }, 100);
                 });
             }
-
+            
             function init () {
                 window.addEventListener("load", wonload ());
                 nodeTree = {nodeRawData: ["tree", ["node"]], parent: {index: 0}};

@@ -424,10 +424,12 @@
                 }
                 
                 if (!data["oval-border-color"])
-                    data["oval-border-color"] = data["oval-color"];
+                    data["oval-border-color"] = data["oval-backcolor"];
                     
                 return {
-                    ovalBackColor: data["oval-color"],
+                    ovalBackColor: data["oval-backcolor"],
+                    ovalForeColor: data["oval-forecolor"],
+                    ovalForeColorDim: data["oval-forecolor-dim"],
                     ovalBorderColor: data["oval-border-color"],
                     backColor: data["background-color"],
                     shadowRadius: sradius,
@@ -734,10 +736,10 @@
 
                     node.srcdoc = '<html style="font-size: 1em">' 
                         //+ '<head><style>body {animation: fadein 0.5s;} @keyframes fadein {from { opacity: 0; /*transform: scale(0.5);*/} to { opacity: 1; /*transform: scale(1.0);*/}}</style></head>'
-                        + `<body style="margin: 0; padding: 0; width: ${width / mfactor}em; font-size: ${mfactor}em; color:rgb(208,208,208)">`
-                            + '<heading1 style="font-family: monospace; font-size: 3em; font-weight: bold; margin-top: 0em;">'
+                        + `<body style="margin: 0; padding: 0; width: ${width / mfactor}em; font-size: ${mfactor}em; color: ${env.ovalForeColor};">`
+                            + `<h1 style="font-family: monospace; font-size: 3em; font-weight: bold; margin-top: 0em; margin-bottom: 0.33em; border-bottom: 1px solid ${env.ovalForeColorDim};">`
                                 + nodeName
-                            + '</heading1>'
+                            + '</h1>'
 //                            + `<div style="wrap: none; font: ${options.font}; white-space: pre; color: ${options.colorText}; width: inherit; height: inherit; overflow: hidden; margin: 0; padding:4px;">`
                                 + editor.hilight (parser.stringify (node.nodeRawData[1], Math.round (width / 30 * 50)), options)
 //                            + `</div>`
@@ -771,7 +773,9 @@
             function init () {
                 env = setupEnv ({
                         "background-color": "gray",
-                        "oval-color": "rgb(48,48,48)",
+                        "oval-forecolor": "rgb(208,208,208)",
+                        "oval-forecolor-dim": "rgb(128,128,128)",
+                        "oval-backcolor": "rgb(48,48,48)",
                         "oval-border-color": "rgb(48,48,48)",
                         "oval-shadow-color": "white",
                         "oval-shadow-radius": "0",
