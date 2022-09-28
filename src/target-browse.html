@@ -765,7 +765,6 @@
             
                     node.srcdoc = '<html style="font-size: 1.25em">'
                         //+ '<head><style>body {animation: fadein 0.5s;} @keyframes fadein {from { opacity: 0; /*transform: scale(0.5);*/} to { opacity: 1; /*transform: scale(1.0);*/}}</style></head>'
-                        + `<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">`
                         + `<head><style>a:link, a:visited {color: ${env.ovalForeColor2}; /*font-weight: bold;*/}</style></head>`
                         + `<body style="margin: 0; padding: 0; width: ${width / mfactor}em; font-family: Times New Roman, Georgia, Garamond; font-size: ${mfactor}em; color: ${env.ovalForeColor};">` + compiler.node2html (node.nodeRawData[1], baseUrl, false, env) + '</body>'
                     + '</html>'
@@ -853,11 +852,6 @@
             });
             
             addEventListener('orientationchange', (event) => {
-                //var sc = 1;
-                //(window.matchMedia("(orientation: portrait)").matches? window.innerWidth: window.innerHeight)
-                //document
-                //    .querySelector("meta[name=viewport]")
-                //    .setAttribute('content', 'width=device-width', 'initial-scale=' + sc, 'maximum-scale=' + sc, 'minimum-scale=' + sc, 'user-scalable=no');
             });
 
             init ();
