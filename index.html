@@ -1047,7 +1047,7 @@
             
             addEventListener('orientationchange', (event) => {
                 var viewport = document.querySelector("meta[name=viewport]");
-                viewport.content = viewportmeta.content.replace(/width=[^,]+/, 'width=' + window.innerWidth);
+                viewport.content = viewport.content.replace(/width=[^,]+/, 'width=' + window.innerWidth);
             });
 
             document.getElementById("source").contentWindow.location.replace("./src/source-browse.html");
