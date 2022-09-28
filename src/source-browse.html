@@ -281,21 +281,9 @@
            }
 
             var error;
-            function getDesign() {
-                var design;
-                if (window.matchMedia('only screen and (max-device-width: 320px)').matches) {
-                    design = 'touch';
-                 } else if (window.matchMedia('only screen and (max-device-width: 1024px)').matches) {
-                    design = 'tablet';
-                } else if (window.matchMedia('screen').matches) {
-                    design = 'desktop';
-                } else if (window.matchMedia('handheld').matches) {
-                    design = 'mobile';
-                }
-                return design;
-            }
 
             function setSize () {
+                mfactor = 1;// * window.devicePixelRatio;// * (screen.width < screen.height? 1: screen.height / screen.width);
             }
 
             function dispatchSize () {
@@ -722,16 +710,13 @@
                     else
                         nodeName = "";
                     
-                    var width = Math.round (window.innerWidth / ((1920 - 32) / 2) * 30); // 30em
-                    width = Math.min (width, 45);
+                    var mratio = 1 / 1.61803398875;
+                    var inw = window.innerWidth
+                    if (window.innerWidth > window.innerHeight / mratio)
+                        inw = window.innerHeight / mratio;
 
-                    var mfactor;
-                    if (screen.width <= 360)
-                        mfactor = 2;
-                    else if (screen.width > 360 && screen.width <= 768)
-                        mfactor = 1.5;
-                    else
-                        mfactor = 1;
+                    var width = Math.round (inw / ((1920 - 32) / 2) * 30); // 30em
+                    width = Math.min (width, 45);
 
                     node.srcdoc = '<html style="font-size: 1em">' 
                         //+ '<head><style>body {animation: fadein 0.5s;} @keyframes fadein {from { opacity: 0; /*transform: scale(0.5);*/} to { opacity: 1; /*transform: scale(1.0);*/}}</style></head>'
@@ -769,13 +754,23 @@
             }
                         
             var env;
+            var mfactor;
             function init () {
+                /*
+                if (screen.width <= 360)
+                    mfactor = 2;
+                else if (screen.width > 360 && screen.width <= 768)
+                    mfactor = 1.5;
+                else
+                    mfactor = 1;
+                */
+                
                 env = setupEnv ({
                         "background-color": "gray",
+                        "oval-backcolor": "rgb(48,48,48)",
                         "oval-forecolor-1": "rgb(208,208,208)",
                         "oval-forecolor-2": "rgb(178,178,178)",
-                        "oval-backcolor": "rgb(48,48,48)",
-                        "oval-border-color": "rgb(48,48,48)",
+                        //"oval-border-color": "rgb(48,48,48)",
                         "oval-shadow-color": "white",
                         "oval-shadow-radius": "0",
                         "rod-length": "5%",

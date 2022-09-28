@@ -8,7 +8,7 @@
 > 
 > ![](media/socmedia.png)
 > 
-> Fractarchy Designer is hierarchical content organizer featuring structured document tree (*.sdt) file format. It is a blend between content management system and integrated development environment. Use it for different purposes, from mind mapping and note taking to personal knowledge base keeping and text processing.
+> Fractarchy Designer is a hierarchical content organizer featuring structured document tree (*.sdt) file format. It is a blend between content management system and simplified hierarchical database. Use it for different purposes, from mind mapping and note taking to personal knowledge base keeping and visual contents hierarchical database maintaining.
 
 ## actual screenshots
         

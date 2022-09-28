@@ -71,6 +71,22 @@
         &nbsp;
         </div>
         <script>
+            function getDesign() {
+                var design;
+                if (window.matchMedia('only screen and (max-device-width: 320px)').matches) {
+                    design = 'touch';
+                 } else if (window.matchMedia('only screen and (max-device-width: 1024px)').matches) {
+                    design = 'tablet';
+                } else if (window.matchMedia('screen').matches) {
+                    design = 'desktop';
+                } else if (window.matchMedia('handheld').matches) {
+                    design = 'mobile';
+                }
+                return design;
+            }
+        </script>
+        <script>
+            
             var ed = editor.edit ("divEditE", null);
             
             var firstVisit = true;
@@ -157,21 +173,11 @@
             window.addEventListener("message", msg, false);
 
             var error;
-            function getDesign() {
-                var design;
-                if (window.matchMedia('only screen and (max-device-width: 320px)').matches) {
-                    design = 'touch';
-                 } else if (window.matchMedia('only screen and (max-device-width: 1024px)').matches) {
-                    design = 'tablet';
-                } else if (window.matchMedia('screen').matches) {
-                    design = 'desktop';
-                } else if (window.matchMedia('handheld').matches) {
-                    design = 'mobile';
-                }
-                return design;
-            }
-            
             function setSize () {
+                mfactor = 1.2;// * window.devicePixelRatio * (screen.width < screen.height? 1: screen.height / screen.width);;
+                
+                document.body.style.fontSize = mfactor + "em";
+
                 var marg = 0;
                 var padd = 0;
                 var bord = 4;
@@ -227,7 +233,17 @@
                 });
             }
             
+            var mfactor;
             function init () {
+                /*
+                if (screen.width <= 360)
+                    mfactor = 2.4;
+                else if (screen.width > 360 && screen.width <= 768)
+                    mfactor = 1.8;
+                else
+                    mfactor = 1.2;
+                */
+    
                 ed.setValue ("");
                 onkd ();
                 window.addEventListener("load", wonload ());

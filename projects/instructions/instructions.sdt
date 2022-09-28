@@ -461,7 +461,7 @@
                             "!  * `comment`: ignored comments         !  prose                    !"
                             "!  * `bold`: bold text                   !  prose                    !"
                             "!  * `italic`: italic text               !  prose                    !"
-                            "!  * `title`: title:                     !  prose                    !"
+                            "!  * `title`: title                      !  prose                    !"
                             "!  * `heading1` to `heading6`: headings  !  prose                    !"
                             "!  * `paragraph`: paragraph              !  prose                    !"
                             "!  * `bquote`: block quote               !  prose                    !"

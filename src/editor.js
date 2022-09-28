@@ -21,11 +21,12 @@ var editor = (function (obj) {
             colorStringAndComment: "rgb(128,128,128)",
             colorStringAndCommentBack: "transparent",
             colorBracketMatch: "white",
-            colorBracketMatchBack: "rgb(75,75,75)",
+            colorBracketMatchBack: "rgb(80,80,80)",
             keywords: [`${tag('hruler')}|${tag('bold')}|${tag('italic')}|${tag('clist')}|${tag('eitem')}|${tag('xitem')}|${tag('yitem')}|${tag('comment')}|${tag('tree')}|${tag('node')}|${tag('name')}|${tag('branches')}|${tag('title')}|${tag('heading1')}|${tag('heading2')}|${tag('heading3')}|${tag('heading4')}|${tag('heading5')}|${tag('heading6')}|${tag('paragraph')}|${tag('hyperlink')}|${tag('address')}|${tag('target')}|${tag('bcode')}|${tag('icode')}|${tag('bquote')}|${tag('olist')}|${tag('ulist')}|${tag('litem')}|${tag('image')}|${tag('source')}`],
             stringsAndComments: "(\"([^\"\\\\\\n]|(\\\\.))*((\")|(\\n)|($)))",
             hilightMatchingBraces: false,
-            spaceDots: true
+            spaceDots: true,
+            spaceDotColor: "rgb(128,128,128)"
         }
 
         edit = function (node, options) {
@@ -211,7 +212,7 @@ var editor = (function (obj) {
                 var pos1 = 0;
                 while((result = reg.exec(text)) !== null) {
                     text1 += text.substring(pos1, result.index);
-                    text1 += `<span style="color:gray">` + result[0] + '</span>';
+                    text1 += `<span style="color:${options.spaceDotColor}">` + result[0] + '</span>';
                     pos1 = result.index + result[0].length;
                 }
                 text1 += text.substring(pos1, text.length);
@@ -672,7 +673,7 @@ var editor = (function (obj) {
                 var pos1 = 0;
                 while((result = reg.exec(text)) !== null) {
                     text1 += text.substring(pos1, result.index);
-                    text1 += `<span style="color:gray">` + result[0] + '</span>';
+                    text1 += `<span style="color:${options.spaceDotColor}">` + result[0] + '</span>';
                     pos1 = result.index + result[0].length;
                 }
                 text1 += text.substring(pos1, text.length);
