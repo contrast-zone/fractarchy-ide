@@ -1045,10 +1045,10 @@
                 document.getElementById("btnredpr").style.visibility = "hidden";
             };
             
-            //addEventListener('orientationchange', (event) => {
-            //    var viewport = document.querySelector("meta[name=viewport]");
-            //    viewport.setAttribute('content', 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no')
-            //});
+            addEventListener('orientationchange', (event) => {
+                var viewport = document.querySelector("meta[name=viewport]");
+                viewport.setAttribute('content', 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no')
+            });
 
             document.getElementById("source").contentWindow.location.replace("./src/source-browse.html");
             document.getElementById("target").contentWindow.location.replace("./src/target-browse.html");
