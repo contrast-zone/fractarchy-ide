@@ -21,8 +21,8 @@
                 margin-top: 0px;
                 margin-left: 0px;
                 pointer-events: auto;
-                /*touch-action: pinch-zoom;*/
-                touch-action: none;
+
+                touch-action: none; /*pan-x pany;*/
                 user-select: none;
 
                 font-size: 1.2em;
@@ -70,21 +70,6 @@
         <div id="divErr" align="left" style="position: absolute; font: 9pt monospace; color: rgb(208,208,208); visibility: hidden;">
         &nbsp;
         </div>
-        <script>
-            function getDesign() {
-                var design;
-                if (window.matchMedia('only screen and (max-device-width: 320px)').matches) {
-                    design = 'touch';
-                 } else if (window.matchMedia('only screen and (max-device-width: 1024px)').matches) {
-                    design = 'tablet';
-                } else if (window.matchMedia('screen').matches) {
-                    design = 'desktop';
-                } else if (window.matchMedia('handheld').matches) {
-                    design = 'mobile';
-                }
-                return design;
-            }
-        </script>
         <script>
             
             var ed = editor.edit ("divEditE", null);
@@ -174,7 +159,7 @@
 
             var error;
             function setSize () {
-                mfactor = 1.2;// * window.devicePixelRatio * (screen.width < screen.height? 1: screen.height / screen.width);;
+                mfactor = 1.2 * (1 + (Math.min (screen.width, screen.height) + 360 * 2.5) / (1080 + 360 * 2.5)) / 2;;// * window.devicePixelRatio * (screen.width < screen.height? 1: screen.height / screen.width);;
                 
                 document.body.style.fontSize = mfactor + "em";
 
@@ -213,6 +198,7 @@
                 divEdit.style.visibility = "visible";
                 divStat.style.visibility = "visible";
                 divErr.style.visibility = "visible";
+                ed.setFocus ();
 
                 var resizeId;
                 window.addEventListener('resize', function () {
@@ -228,6 +214,7 @@
                         divEdit.style.visibility = "visible";
                         divStat.style.visibility = "visible";
                         divErr.style.visibility = "visible";
+                        ed.setFocus ();
                         
                     }, 100);
                 });

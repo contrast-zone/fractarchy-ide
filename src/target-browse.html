@@ -284,7 +284,7 @@
             var error;
 
             function setSize () {
-                mfactor = 1;// * window.devicePixelRatio;// * (screen.width < screen.height? 1: screen.height / screen.width);
+                mfactor = 1 * (1 + (Math.min (screen.width, screen.height) + 360 * 2.5) / (1080 + 360 * 2.5)) / 2;// * window.devicePixelRatio;// * (screen.width < screen.height? 1: screen.height / screen.width);
             }
 
             function dispatchSize () {
@@ -312,6 +312,7 @@
                 window.addEventListener('resize', function () {
                     document.getElementById("tooltip").style.visibility = "hidden"
                     divContainer.style.visibility = "hidden";
+                    onBusy ();
                     
                     clearTimeout(resizeId);
                     resizeId = setTimeout(function () {
@@ -319,7 +320,7 @@
                         dispatchSize ();
                         divContainer.style.visibility = "visible";
                         
-                    }, 500);
+                    }, 100);
                 });
             }
             

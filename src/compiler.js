@@ -158,8 +158,10 @@ var compiler = (function (obj) {
                                 if (tmpmap === "bcode")
                                     txt += "\n";
                                     
-                                else if (i < node.length - 1)
-                                    txt += " ";
+                                else if (i < node.length - 1) {
+                                    if (node[i + 1] !== ":" && node[i + 1] !== "," && node[i + 1] !== "." && node[i + 1] !== "...")
+                                        txt += " ";
+                                }
                             }
                             txt += map["close"];
                         }

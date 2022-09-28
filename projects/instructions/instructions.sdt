@@ -19,9 +19,9 @@
         (
             paragraph Let me introduce 
             (
-                bold Fractarchy Designer, 
+                bold Fractarchy Designer 
             )
-            a hierarchical content organizer and text 
+            , a hierarchical content organizer and text 
             processing toolkit. As one might already guess, 
             Fractarchy Designer is a bit unusual creation. 
             Distinctive design choices made in creation of 
@@ -614,8 +614,9 @@
                                     target "_top" 
                                 )
                             )
-                            dedicated github pages. 
+                            dedicated github pages 
                         )
+                        . 
                     )
                 )
                 (
@@ -638,8 +639,9 @@
                                     target "_new" 
                                 )
                             )
-                            our mailing list. 
+                            our mailing list 
                         )
+                        . 
                     )
                 )
                 (
