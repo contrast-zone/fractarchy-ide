@@ -705,14 +705,14 @@
             window.addEventListener("orientationchange", function () {
                 hideAll ();
 
-                var sc = 1;
-                if (window.matchMedia("(orientation: portrait)").matches)
-                document
-                    .querySelector("meta[name=viewport]")
-                    .setAttribute('content', 'width=device-width', 'initial-scale=' + sc, 'maximum-scale=' + sc, 'minimum-scale=' + sc, 'user-scalable=no');
-
                 clearTimeout(resizeId);
                 resizeId = setTimeout(function () {
+                    var sc = 1;
+                    if (window.matchMedia("(orientation: portrait)").matches)
+                    document
+                        .querySelector("meta[name=viewport]")
+                        .setAttribute('content', 'width=' + window.innerWidth, 'initial-scale=' + sc, 'maximum-scale=' + sc, 'minimum-scale=' + sc, 'user-scalable=no');
+
                     setSize ();
                 }, 100);
             });
