@@ -203,7 +203,7 @@
                 var resizeId;
                 window.addEventListener('resize', function () {
                     divEditE.style.visibility = "hidden";
-                    divEdit.style.visibility = "hidden";
+                    //divEdit.style.visibility = "hidden";
                     divStat.style.visibility = "hidden";
                     divErr.style.visibility = "hidden";
                     
@@ -211,7 +211,7 @@
                     resizeId = setTimeout(function () {
                         setSize ();
                         divEditE.style.visibility = "visible";
-                        divEdit.style.visibility = "visible";
+                        //divEdit.style.visibility = "visible";
                         divStat.style.visibility = "visible";
                         divErr.style.visibility = "visible";
                         ed.setFocus ();
