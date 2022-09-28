@@ -516,7 +516,7 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
     var curvature = 1 / 8;
     
     var qang = quant * 0.0192 * Math.PI;              
-    var qpan = quant * 12 * window.devicePixelRatio;  
+    var qpan = quant * 12;// * window.devicePixelRatio;  
     var qlevel = 8 / quant;                           
     var ngonsides = 4 * Math.round (8 / quant * 0.7);
     if (ngonsides > 100) ngonsides = 100;
