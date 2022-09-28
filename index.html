@@ -699,7 +699,7 @@
                 clearTimeout(resizeId);
                 resizeId = setTimeout(function () {
                     setSize ();
-                }, 100);
+                }, 5000);
             });
 
             window.addEventListener("orientationchange", function () {
@@ -707,7 +707,7 @@
                 clearTimeout(resizeId);
                 resizeId = setTimeout(function () {
                     setSize ();
-                }, 100);
+                }, 5000);
             });
 
             //document.getElementById("fullscrbtn").addEventListener('click', toggleFullScreen);
