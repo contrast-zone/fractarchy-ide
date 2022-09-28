@@ -506,8 +506,8 @@
                     s.style.width = "calc(50% - " + 2 * (marg + padd + bord) + "px)";
                 }
                 
-                window.requestAnimationFrame(function () {
-//                setTimeout (() => {
+//                window.requestAnimationFrame(function () {
+                setTimeout (() => {
                     lh.style.left = bord + marg + "px";
                     lh.style.top = marg + bord + "px";
 
@@ -519,8 +519,8 @@
 
                     lf.style.left = Math.round (s.offsetWidth / 2 - btns * 3 / 2) + "px"
                     lf.style.top = mmarg + s.offsetTop + s.offsetHeight - lc.offsetHeight + "px";
-//                }, 0);
-                });
+                }, 0);
+//                });
                 
                 t.style.margin = marg + "px";
                 t.style.padding = padd + "px";
@@ -544,8 +544,8 @@
                     t.style.width = "calc(50% - " + 2 * (marg + padd + bord) + "px)";
                 }
                 
-                window.requestAnimationFrame(function () {
-//                setTimeout (() => {
+//                window.requestAnimationFrame(function () {
+                setTimeout (() => {
                     rh.style.right = marg + bord + "px";
                     rh.style.bottom = bord + marg + "px";
 
@@ -557,8 +557,8 @@
 
                     rf.style.top = marg + "px";
                     rf.style.left = t.offsetLeft + Math.round(t.offsetWidth / 2 - btns * 3 / 2) + "px";
-//                }, 0);
-                });
+                }, 0);
+//                });
                 
                 hlpl.style.transform = "scale(" + 1 + ")";
                 hlpd.style.transform = "scale(" + 1 + ")";
@@ -699,7 +699,7 @@
                 clearTimeout(resizeId);
                 resizeId = setTimeout(function () {
                     setSize ();
-                }, 5000);
+                }, 100);
             });
 
             window.addEventListener("orientationchange", function () {
@@ -707,7 +707,7 @@
                 clearTimeout(resizeId);
                 resizeId = setTimeout(function () {
                     setSize ();
-                }, 5000);
+                }, 100);
             });
 
             //document.getElementById("fullscrbtn").addEventListener('click', toggleFullScreen);
