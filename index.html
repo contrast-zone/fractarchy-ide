@@ -430,6 +430,12 @@
             });
 
             var setSize = function () {
+                    //var sc = 1;
+                    //if (window.matchMedia("(orientation: portrait)").matches)
+                    //document
+                    //    .querySelector("meta[name=viewport]")
+                    //    .setAttribute('content', 'width=device-width', 'initial-scale=' + sc, 'maximum-scale=' + sc, 'minimum-scale=' + sc, 'user-scalable=no');
+
                 if (window.innerWidth < window.innerHeight) {
                     if (document.getElementById("svglcropfull").style.display === document.getElementById("svgrcropfull").style.display) {
                         document.getElementById("svglcropfull").style.display = "inline";
@@ -701,22 +707,22 @@
                     setSize ();
                 }, 100);
             });
-
-            window.addEventListener("orientationchange", function () {
+/*
+            window.orientation.addEventListener('change', function(e) {
+            //window.addEventListener("orientationchange", function () {
                 hideAll ();
-
                 clearTimeout(resizeId);
                 resizeId = setTimeout(function () {
                     var sc = 1;
-                    if (window.matchMedia("(orientation: portrait)").matches)
+                    //if (window.matchMedia("(orientation: portrait)").matches)
                     document
                         .querySelector("meta[name=viewport]")
-                        .setAttribute('content', 'width=' + window.innerWidth, 'initial-scale=' + sc, 'maximum-scale=' + sc, 'minimum-scale=' + sc, 'user-scalable=no');
+                        .setAttribute('content', 'width=device-width', 'initial-scale=' + sc, 'maximum-scale=' + sc, 'minimum-scale=' + sc, 'user-scalable=no');
 
-                    setSize ();
-                }, 100);
+//                    setSize ();
+                }, 10);
             });
-
+*/
             //document.getElementById("fullscrbtn").addEventListener('click', toggleFullScreen);
             document.getElementById("helpcontainer").addEventListener('click', hideHelp);
             
