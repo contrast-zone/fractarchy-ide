@@ -429,7 +429,7 @@
                 setSize();                
             });
 
-            var setSize = function (orientation) {
+            var setSize = function () {
                 if (window.innerWidth < window.innerHeight) {
                     if (document.getElementById("svglcropfull").style.display === document.getElementById("svgrcropfull").style.display) {
                         document.getElementById("svglcropfull").style.display = "inline";
@@ -698,13 +698,16 @@
                 hideAll ();
                 clearTimeout(resizeId);
                 resizeId = setTimeout(function () {
-                    setSize (screen.orientation.type);
+                    setSize ();
                 }, 100);
             });
 
             window.addEventListener("orientationchange", function () {
-                //hideAll ();
-                //setSize (screen.orientation.type);
+                hideAll ();
+                clearTimeout(resizeId);
+                resizeId = setTimeout(function () {
+                    setSize ();
+                }, 100);
             });
 
             //document.getElementById("fullscrbtn").addEventListener('click', toggleFullScreen);
