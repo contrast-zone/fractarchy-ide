@@ -1046,8 +1046,11 @@
             };
             
             addEventListener('orientationchange', (event) => {
-                var viewport = document.querySelector("meta[name=viewport]");
-                viewport.content = viewport.content.replace(/width=[^,]+/, 'width=' + window.innerWidth);
+                //var sc = 1;
+                //(window.matchMedia("(orientation: portrait)").matches? window.innerWidth: window.innerHeight)
+                //document
+                //    .querySelector("meta[name=viewport]")
+                //    .setAttribute('content', 'width=device-width', 'initial-scale=' + sc, 'maximum-scale=' + sc, 'minimum-scale=' + sc, 'user-scalable=no');
             });
 
             document.getElementById("source").contentWindow.location.replace("./src/source-browse.html");
