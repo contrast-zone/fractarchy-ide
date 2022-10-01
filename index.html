@@ -469,17 +469,6 @@
                 var bord = 12;
                 var btns = 48;
 
-                lh.style.visibility = "visible";
-                rh.style.visibility = "visible";
-                s.style.visibility = "visible";
-                bu.style.visibility = "visible";
-                lc.style.visibility = "visible";
-                t.style.visibility = "visible";
-                bd.style.visibility = "visible";
-                rc.style.visibility = "visible";
-                lf.style.visibility = "visible";
-                rf.style.visibility = "visible";
-
                 var mmarg = marg;
                 var onlyleft = false;
                 var onlyright = false;
@@ -492,6 +481,19 @@
                     onlyright = true;
                     marg = 0;
                 }
+
+                lh.style.visibility = "visible";
+                rh.style.visibility = "visible";
+                if (!onlyright)
+                    s.style.visibility = "visible";
+                bu.style.visibility = "visible";
+                lc.style.visibility = "visible";
+                lf.style.visibility = "visible";
+                if (!onlyleft)
+                    t.style.visibility = "visible";
+                bd.style.visibility = "visible";
+                rc.style.visibility = "visible";
+                rf.style.visibility = "visible";
                 
                 s.style.margin = marg + "px";
                 s.style.padding = padd + "px";
