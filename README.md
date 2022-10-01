@@ -1,18 +1,10 @@
 # Fractarchy Designer
 
-(v 0.1 - beta2)
+(v 0.1 - beta3)
 
 **tags:**
 
-structured-document-tree,
-
-electronic-workbook, hierarchical-data-organizer, personal-content-management-system,
-
-note-taking, personal-knowledge-base, personal-wiki,
-
-graph-visualization,
-
-zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
+structured-document-tree, electronic-workbook, hierarchical-data-organizer, personal-content-management-system, note-taking, personal-knowledge-base, personal-wiki, graph-visualization, zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
 
 > ## promotional material
 > 
