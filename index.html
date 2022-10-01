@@ -177,12 +177,14 @@
                     tgtloaded = false;
                     populateFrom = "browse";
 
+                    //document.getElementById("source").style.backgroundColor = "rgb(48,48,48)";
                     document.getElementById("source").contentWindow.location.replace("./src/source-edit.html");
                     document.getElementById("btnledpr").style.display = "none";
                     document.getElementById("svginput").style.display = "none";
                     document.getElementById("svglosel").style.display = "inline";
                     document.getElementById("svgkeepl").style.display = "inline";
                 
+                    //document.getElementById("target").style.backgroundColor = "rgb(208,208,208)";
                     document.getElementById("target").contentWindow.location.replace("./src/target-print.html");
                     document.getElementById("btnredpr").style.display = "none";
                     document.getElementById("svgoutput").style.display = "none";
@@ -330,7 +332,7 @@
                     document.getElementById("myPopupContainer").style.display = "inline";
 
                 } else {
-                    alert ("Please install this application on local computer to use this feature.");
+                    alert ("Please manually install this application on local computer to use this feature.");
                 }
 
                 //showIO ("readDoc", fullUrl);
@@ -512,8 +514,8 @@
                     s.style.width = "calc(50% - " + 2 * (marg + padd + bord) + "px)";
                 }
                 
-//                window.requestAnimationFrame(function () {
-                setTimeout (() => {
+                window.requestAnimationFrame(function () {
+//                setTimeout (() => {
                     lh.style.left = bord + marg + "px";
                     lh.style.top = marg + bord + "px";
 
@@ -525,8 +527,8 @@
 
                     lf.style.left = Math.round (s.offsetWidth / 2 - btns * 3 / 2) + "px"
                     lf.style.top = mmarg + s.offsetTop + s.offsetHeight - lc.offsetHeight + "px";
-                }, 0);
-//                });
+//                }, 0);
+                });
                 
                 t.style.margin = marg + "px";
                 t.style.padding = padd + "px";
@@ -550,8 +552,8 @@
                     t.style.width = "calc(50% - " + 2 * (marg + padd + bord) + "px)";
                 }
                 
-//                window.requestAnimationFrame(function () {
-                setTimeout (() => {
+                window.requestAnimationFrame(function () {
+//                setTimeout (() => {
                     rh.style.right = marg + bord + "px";
                     rh.style.bottom = bord + marg + "px";
 
@@ -563,8 +565,8 @@
 
                     rf.style.top = marg + "px";
                     rf.style.left = t.offsetLeft + Math.round(t.offsetWidth / 2 - btns * 3 / 2) + "px";
-                }, 0);
-//                });
+//                }, 0);
+                });
                 
                 hlpl.style.transform = "scale(" + 1 + ")";
                 hlpd.style.transform = "scale(" + 1 + ")";
@@ -701,11 +703,20 @@
             
             var resizeId;
             window.addEventListener('resize', function () {
-                hideAll ();
-                clearTimeout(resizeId);
-                resizeId = setTimeout(function () {
-                    setSize ();
-                }, 100);
+                if (populateFrom === "browse") {
+                    hideAll ();
+                    clearTimeout(resizeId);
+                    resizeId = setTimeout(function () {
+                        setSize ();
+                    }, 50);
+                    
+                } else {
+                    hideAll ();
+                    clearTimeout(resizeId);
+                    resizeId = setTimeout(function () {
+                        setSize ();
+                    }, 50);
+                }
             });
 /*
             window.orientation.addEventListener('change', function(e) {
@@ -740,15 +751,18 @@
                     document.getElementById("svglcrophalf").style.display = "none";
                     document.getElementById("svgrcropfull").style.display = "none";
                     document.getElementById("svgrcrophalf").style.display = "inline";
+                    slide = "right";
 
                 } else {
                     if (document.getElementById("svglcropfull").style.display === "none") {
                         document.getElementById("svglcropfull").style.display = "inline";
                         document.getElementById("svglcrophalf").style.display = "none";
+                        slide = "both";
                         
                     } else {
                         document.getElementById("svglcropfull").style.display = "none";
                         document.getElementById("svglcrophalf").style.display = "inline";
+                        slide = "left";
                     }
                 }
                 
@@ -761,15 +775,18 @@
                     document.getElementById("svglcrophalf").style.display = "inline";
                     document.getElementById("svgrcropfull").style.display = "inline";
                     document.getElementById("svgrcrophalf").style.display = "none";
+                    slide = "left";
 
                 } else {
                     if (document.getElementById("svgrcropfull").style.display === "none") {
                         document.getElementById("svgrcropfull").style.display = "inline";
                         document.getElementById("svgrcrophalf").style.display = "none";
+                        slide = "both";
                         
                     } else {
                         document.getElementById("svgrcropfull").style.display = "none";
                         document.getElementById("svgrcrophalf").style.display = "inline";
+                        slide = "right";
                     }
                 }
                 
@@ -1021,6 +1038,7 @@
             var srcloaded, tgtloaded;
             var nodeTree;
             var populateFrom;
+            var slide;
             var baseUrl;
             var fullUrl;
             var unnamed;
@@ -1049,8 +1067,9 @@
             });
             
             function hideAll () {
-                document.getElementById("source").style.visibility = "hidden";
-                document.getElementById("target").style.visibility = "hidden";
+                //document.getElementById("source").style.visibility = "hidden";
+                //document.getElementById("target").style.visibility = "hidden";
+
                 document.getElementById("btnlhlp").style.visibility = "hidden";
                 document.getElementById("btnrhlp").style.visibility = "hidden";
                 document.getElementById("btnupload").style.visibility = "hidden";
@@ -1065,9 +1084,16 @@
             });
 
             document.getElementById("source").contentWindow.location.replace("./src/source-browse.html");
+            document.getElementById("source").addEventListener("load", function () {
+                document.getElementById("source").style.backgroundColor = "gray";
+            });
+            
             document.getElementById("target").contentWindow.location.replace("./src/target-browse.html");
+            document.getElementById("target").addEventListener("load", function () {
+                document.getElementById("target").style.backgroundColor = "gray";
+            });
             
             detectServer ((responseText) => {server = responseText});
-          </script>
+        </script>
     </body>
 </html>

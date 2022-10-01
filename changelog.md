@@ -20,4 +20,4 @@
     - alert on closing unsaved changes  
     - creating new file ignites save-as  
     - remembering print pane scrolltop after editing  
-    - responsive mode font sizes
+    - excluded spaces before interpunction signs  

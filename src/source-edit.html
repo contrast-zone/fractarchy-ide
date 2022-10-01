@@ -26,7 +26,7 @@
                 user-select: none;
 
                 font-size: 1.2em;
-                background-color: gray;
+                background-color: rgb(48,48,48);
             }
 
             a, a.exHover:visited, a.exHover:link {cursor: pointer; color: lightgray; text-decoration:none; border:0px solid #4466DD;}
@@ -202,16 +202,16 @@
 
                 var resizeId;
                 window.addEventListener('resize', function () {
-                    //divEditE.style.visibility = "hidden";
-                    //divEdit.style.visibility = "hidden";
-                    //divStat.style.visibility = "hidden";
-                    //divErr.style.visibility = "hidden";
+                    divEditE.style.visibility = "hidden";
+                    divEdit.style.visibility = "hidden";
+                    divStat.style.visibility = "hidden";
+                    divErr.style.visibility = "hidden";
                     
                     clearTimeout(resizeId);
                     resizeId = setTimeout(function () {
                         setSize ();
                         divEditE.style.visibility = "visible";
-                        //divEdit.style.visibility = "visible";
+                        divEdit.style.visibility = "visible";
                         divStat.style.visibility = "visible";
                         divErr.style.visibility = "visible";
                         //ed.setFocus ();
@@ -234,6 +234,7 @@
                 ed.setValue ("");
                 onkd ();
                 window.addEventListener("load", wonload ());
+                document.body.style.backgroundColor = "rgb(48,48,48)";
             }
 
             var nodeTree;

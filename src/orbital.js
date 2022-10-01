@@ -820,7 +820,7 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
                     var clipPath1 = document.createElementNS(svgns, 'clipPath');
                     clipPath1.setAttributeNS(null, 'id', "cl1" + rand1);
                     svg.appendChild(clipPath1);
-                    var clip1 = round ((xa * squashX - l) / magn, (ya * squashY - t) / magn, (ra * squashX - 2 * window.devicePixelRatio * magn - lw * squashX) / magn - 1 / magn, (ra * squashY - 2 * window.devicePixelRatio * magn - lw * squashY) / magn - 1 / magn, n).node;
+                    var clip1 = round ((xa * squashX - l) / magn, (ya * squashY - t) / magn, (ra * squashX - 2 * magn - lw * squashX) / magn - 1 / magn, (ra * squashY - 2 * magn - lw * squashY) / magn - 1 / magn, n).node;
                     clipPath1.appendChild(clip1);
 
                     // global

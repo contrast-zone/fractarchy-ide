@@ -23,10 +23,12 @@ var compiler = (function (obj) {
                     "open": '<i>',
                     "close": '</i>'
                 },
+                
                 "title": {
                     "open": `<h1 style="overflow: hidden; font-size: 3em; font-weight: bold; margin-top: 0em; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
                     "close": '</h1>'
                 },
+                
                 "heading1": {
                     "open": `<h1 style="overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
                     "close": '</h1>'
