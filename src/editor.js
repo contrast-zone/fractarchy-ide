@@ -505,8 +505,8 @@ var editor = (function (obj) {
             
             function handleResize () {
                 
-                container.style.width = "0px";
-                container.style.height = "0px";
+                //container.style.width = "0px";
+                //container.style.height = "0px";
                 //container.style.visibility = "hidden";
                 
                 setTimeout (function () {
