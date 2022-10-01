@@ -21,3 +21,4 @@
     - creating new file ignites save-as  
     - remembering print pane scrolltop after editing  
     - excluded spaces before interpunction signs  
+    - minimum viable mobile rendering  
