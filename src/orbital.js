@@ -2251,7 +2251,10 @@ select.cursor.angle = Math.PI;
                 //parent = cursor;
                 for (var i = 0; i <= idx; i++) {
                     var olddata = data;
-                    if (topc2 && data.children[topc2.index]) {
+                    if (topc2) {
+                        if (!data.children[topc2.index])
+                            topc2.index = 0;
+                            
                         cursor = {parent: parent, index: topc2.index, data: data, centerX: topc1?topc1.centerX: 0, centerY: topc1?topc1.centerY: 0, angle: topc2.angle, children: []};
                         if (!topc1)
                             alignOval (data, cursor)
