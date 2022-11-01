@@ -26,4 +26,5 @@
 - v0.1 - release
     - only one pane on portrait, may be both panes on landscape  
     - mobile keyboard friendly  
+    - inline html  
     - bug fixes  
