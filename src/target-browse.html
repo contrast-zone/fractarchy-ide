@@ -420,7 +420,7 @@
                     ovalForeColor2: data["oval-forecolor-2"],
                     ovalBackColor: data["oval-backcolor"],
                     ovalBorderColor: data["oval-border-color"],
-                    backColor: data["background-color"],
+                    backColor: data["backcolor"],
                     shadowRadius: sradius,
                     shadowColor: data["oval-shadow-color"],
                     contentScale: cscale,
@@ -594,15 +594,20 @@
 
                             ifr.width  = rect.width;
                             ifr.height = rect.height;
+
+                            divContainer.dispatchEvent(new CustomEvent('updateOvalAlign', {detail: node}));
+                            divContainer.dispatchEvent(new CustomEvent('redraw', null));
                         });
 
                         // start observing for resize
                         resize_ob.observe(ifr.contentWindow.document.body);
 
                         //extractLinks (node);
+
                         var interval = setInterval (function () {
                             if (node.ifr) {
                                 extractLinks (node);
+                                                                
                             } else {
                                 clearInterval (interval);
                             }
@@ -765,7 +770,7 @@
                     node.srcdoc = '<html style="font-size: 1.25em">'
                         //+ '<head><style>body {animation: fadein 0.5s;} @keyframes fadein {from { opacity: 0; /*transform: scale(0.5);*/} to { opacity: 1; /*transform: scale(1.0);*/}}</style></head>'
                         + `<head><style>a:link, a:visited {color: ${env.ovalForeColor2}; /*font-weight: bold;*/}</style></head>`
-                        + `<body style="margin: 0; padding: 0; width: ${width / mfactor}em; font-family: Times New Roman, Georgia, Garamond; font-size: ${mfactor}em; color: ${env.ovalForeColor};">` + compiler.node2html (node.nodeRawData[1], baseUrl, false, env) + '</body>'
+                        + `<body style="margin: 0; padding: 0; width: ${width / 1}em; font-family: Times New Roman, Georgia, Garamond; font-size: ${1}em; color: ${env.ovalForeColor};">` + compiler.node2html (node.nodeRawData[1], baseUrl, false, env) + '</body>'
                     + '</html>'
                     node.children = [];
                     if (node.nodeRawData[2])
@@ -812,7 +817,7 @@
                 */
                 
                 env = setupEnv ({
-                        "background-color": "gray",
+                        "backcolor": "gray",
                         "oval-backcolor": "rgb(208,208,208)",
                         "oval-forecolor-1": "rgb(48,48,48)",
                         "oval-forecolor-2": "rgb(78,78,78)",

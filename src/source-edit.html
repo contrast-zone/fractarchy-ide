@@ -25,7 +25,7 @@
                 touch-action: none; /*pan-x pany;*/
                 user-select: none;
 
-                font-size: 1.2em;
+                font-size: 1em;
                 background-color: rgb(48,48,48);
             }
 
@@ -91,6 +91,7 @@
             }
                             
             function oninp () {
+                window.parent.editedNotAccepted = true;
                 window.parent.postMessage({msg: "invalidEdit"}, "*");
                 if (!firstVisit) {
                     if (myTimeout) clearTimeout (myTimeout);
@@ -150,6 +151,7 @@
                         alert ("Error: " + parsed.err + " at " + coord.row + ", " + coord.col);
                         
                     } else {
+                        window.parent.editedNotAccepted = false;
                         window.parent.postMessage({msg: "acceptChanges", nodeTree: parsed, currentNode: currentNode}, "*");
                     }
                 }
@@ -159,9 +161,9 @@
 
             var error;
             function setSize () {
-                mfactor = 1.2 * (1 + (Math.min (screen.width, screen.height) + 360 * 2.5) / (1080 + 360 * 2.5)) / 2;;// * window.devicePixelRatio * (screen.width < screen.height? 1: screen.height / screen.width);;
+                mfactor = 1.25; //1.2 * (1 + (Math.min (screen.width, screen.height) + 360 * 2.5) / (1080 + 360 * 2.5)) / 2;;// * window.devicePixelRatio * (screen.width < screen.height? 1: screen.height / screen.width);;
                 
-                document.body.style.fontSize = mfactor + "em";
+                document.body.style.fontSize = "1em";
 
                 var marg = 0;
                 var padd = 0;

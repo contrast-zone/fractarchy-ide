@@ -10,7 +10,7 @@ structured-document-tree, electronic-workbook, hierarchical-data-organizer, pers
 > 
 > ![](media/socmedia.png)
 > 
-> Fractarchy Designer is a (deviant) hierarchical content organizer featuring structured document tree (*.sdt) file format. It is an elementary blend between content management system and hierarchical database. Use it as an electronic workbook, hierarchical data organizer, or personal content management system.
+> Fractarchy Designer is a (deviant) hierarchical content organizer featuring structured document tree (*.sdt) file format. It is an elementary blend between content management system and hierarchical database. Use it for various purposes as an electronic workbook, hierarchical data organizer, or personal content management system.
 
 ## actual screenshots
         
@@ -54,6 +54,6 @@ Open `./projects/instructions/instructions.sdt` in the visual interface.
 
 ## licensing
 
-This software is released under [conditional Creative Commons Attribution 4.0 International License](LICENSE). It is free for students and for limited personal use, but if you use it a lot, or your plans meet commercial use, please refer to the licence file for details about pricing.
+This software is released under [conditional Creative Commons Attribution 4.0 International License](LICENSE). It is free for students and for limited personal use, but if you use it a lot, or your plans meet commercial use, please refer to the license file for details about pricing.
 
 

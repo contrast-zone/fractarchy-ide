@@ -94,7 +94,7 @@
                     var width = Math.round (window.innerWidth / ((1920 - 32) / 2) * 24); // 24em
                     width = Math.min (width, 36);
 
-                    ifrPreview.srcdoc = `<html style="font-size: 1.5em; background-color: inherit;">`
+                    ifrPreview.srcdoc = `<html style="font-size: 1.25em; background-color: inherit;">`
                         + `<head>`
                             + `<style>`
                                 + `html {`
@@ -146,8 +146,8 @@
                             + `<style>a:link, a:visited {color: ${env.ovalForeColor2}; /*font-weight: bold;*/}</style>`
                             
                         + `</head>`
-                        + `<body style="font-family: Times New Roman, Georgia, Garamond; font-size: ${mfactor}em;">`
-                            + compiler.tree2html (nodeTree, baseUrl, width / mfactor, env)
+                        + `<body style="font-family: Times New Roman, Georgia, Garamond; font-size: ${1}em;">`
+                            + compiler.tree2html (nodeTree, baseUrl, width / 1, env)
                         + `</body>`
                     + `</html>`;
                     
@@ -156,7 +156,7 @@
                 } else if (event.data.msg === "error") {
                     nodeTree = ["branches", event.data.nodeTree];
                     numberOfNodes = 0;
-                    ifrPreview.srcdoc = `<html style="font-size: 1.5em; background-color: inherit;">`
+                    ifrPreview.srcdoc = `<html style="font-size: 1.25em; background-color: inherit;">`
                         + `<head>`
                             + `<style>`
                                 + `html {`
@@ -195,7 +195,7 @@
                             + `</style>`
                         + `</head>`
                         + `<body>`
-                            //+ event.data.err
+                            + event.data.err
                         + `</body>`
                     + `</html>`;
                     

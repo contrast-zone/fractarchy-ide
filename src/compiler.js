@@ -30,31 +30,31 @@ var compiler = (function (obj) {
                 },
                 
                 "heading1": {
-                    "open": `<h1 style="overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
+                    "open": `<h1 style="font-size: 2.5em; overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
                     "close": '</h1>'
                 },
                 "heading2": {
-                    "open": `<h2 style="overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
+                    "open": `<h2 style="font-size: 2em; overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
                     "close": '</h2>'
                 },
                 "heading3": {
-                    "open": `<h3 style="overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
+                    "open": `<h3 style="font-size: 1.5em; overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
                     "close": '</h3>'
                 },
                 "heading4": {
-                    "open": `<h4 style="overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
+                    "open": `<h4 style="font-size: 1.17em; overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
                     "close": '</h4>'
                 },
                 "heading5": {
-                    "open": `<h5 style="overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
+                    "open": `<h5 style="font-size: 1em; overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
                     "close": '</h5>'
                 },
                 "heading6": {
-                    "open": `<h6 style="overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
+                    "open": `<h6 style="font-size: 0.83em; 0.83; overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
                     "close": '</h6>'
                 },
                 "paragraph": {
-                    "open": '<p>',
+                    "open": '<p style="font-size: 0.9em;">',
                     "close": '</p>'
                 },
                 "bquote": {
@@ -69,6 +69,10 @@ var compiler = (function (obj) {
                     "open": `<code><pre style="/*background-color: rgb(180,180,180);*/ border: 1px solid ${env.ovalForeColor}; overflow-x: auto; font-size: 0.9em;">`,
                     "close": '</pre></code>'
                 },
+                "html": {
+                    "open": `<section>`,
+                    "close": '</section>'
+                },
                 "hyperlink": {
                     "open": '<a href="$address$" target="$target$">',
                     "close": '</a>'
@@ -78,7 +82,7 @@ var compiler = (function (obj) {
                     "close": '</ol>'
                 },
                 "ulist": {
-                    "open": '<ul>',
+                    "open": '<ul style="font-size: 0.9em;">',
                     "close": '</ul>'
                 },
                 "litem": {
@@ -150,14 +154,14 @@ var compiler = (function (obj) {
                             }
                                 
                             for (var i = 1; i < node.length; i++) {
-                                if (tmpmap === "icode" || tmpmap === "bcode") {
+                                if (tmpmap === "icode" || tmpmap === "bcode" || tmpmap === "html") {
                                     txt += stripQuotes (node[i]);
 
                                 } else {
                                     txt += getNode (node[i]);
                                 }
                                 
-                                if (tmpmap === "bcode")
+                                if (tmpmap === "bcode" || tmpmap === "html")
                                     txt += "\n";
                                     
                                 else if (i < node.length - 1) {
@@ -192,7 +196,7 @@ var compiler = (function (obj) {
                 for (var i = 1; i < node.length; i++) {
                     numberOfNodes++;
                     //ret += `<div style="background-color: rgb(208,208,208); width: ${width}em; border-radius: 2em; border: 0.2em solid rgb(64,64,64); padding: 1em; margin: 1em; margin-left: ` + margin + `;">`
-                    ret += `<div style="background-color: ${env.ovalBackColor}; color: ${env.ovalForeColor}; width: ${width}em; border-radius: 2em; border: 0.2em solid rgb(64,64,64); padding: 1em; /*margin: 1em; margin-left: ` + margin + `;*/">`
+                    ret += `<div style="background-color: ${env.ovalBackColor}; color: ${env.ovalForeColor}; width: ${width}em; border-radius: 2em; border: 0.2em solid rgb(64,64,64); padding: 1em; margin-bottom: 1em; /*margin: 1em; margin-left: ` + margin + `;*/">`
                         + node2html (node[i][1], baseUrl, true, env)
                     
                     if (node[i][2])

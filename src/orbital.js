@@ -1813,8 +1813,8 @@ select.cursor.angle = Math.PI;
         setDimensions (width, height);
         svg.style.width = width + "px";
         svg.style.height = height + "px";
-        alignX = squashX * rr * 1 / 2.5 / scale;// / window.devicePixelRatio;
-        alignY = squashY * rr * circleSize * 1 / 2.5 / scale;// / window.devicePixelRatio;
+        alignX = squashX * rr * circleSize * 1 / 2.4 / scale;// / window.devicePixelRatio;
+        alignY = squashY * rr * circleSize * 1 / 2.4 / scale;// / window.devicePixelRatio;
     
         n = fractalOvals (ctx, ratio, xx, yy, ww, hh, rr, squashX, squashY, drawCircle, fill1, stroke1, back1, shadowRadius, shadowColor);
         

@@ -22,11 +22,11 @@ var editor = (function (obj) {
             colorStringAndCommentBack: "transparent",
             colorBracketMatch: "white",
             colorBracketMatchBack: "rgb(80,80,80)",
-            keywords: [`${tag('hruler')}|${tag('bold')}|${tag('italic')}|${tag('clist')}|${tag('eitem')}|${tag('xitem')}|${tag('yitem')}|${tag('comment')}|${tag('tree')}|${tag('node')}|${tag('name')}|${tag('branches')}|${tag('title')}|${tag('heading1')}|${tag('heading2')}|${tag('heading3')}|${tag('heading4')}|${tag('heading5')}|${tag('heading6')}|${tag('paragraph')}|${tag('hyperlink')}|${tag('address')}|${tag('target')}|${tag('bcode')}|${tag('icode')}|${tag('bquote')}|${tag('olist')}|${tag('ulist')}|${tag('litem')}|${tag('image')}|${tag('source')}`],
+            keywords: [`${tag('html')}|${tag('hruler')}|${tag('bold')}|${tag('italic')}|${tag('clist')}|${tag('eitem')}|${tag('xitem')}|${tag('yitem')}|${tag('comment')}|${tag('tree')}|${tag('node')}|${tag('name')}|${tag('branches')}|${tag('title')}|${tag('heading1')}|${tag('heading2')}|${tag('heading3')}|${tag('heading4')}|${tag('heading5')}|${tag('heading6')}|${tag('paragraph')}|${tag('hyperlink')}|${tag('address')}|${tag('target')}|${tag('bcode')}|${tag('icode')}|${tag('bquote')}|${tag('olist')}|${tag('ulist')}|${tag('litem')}|${tag('image')}|${tag('source')}`],
             stringsAndComments: "(\"([^\"\\\\\\n]|(\\\\.))*((\")|(\\n)|($)))",
             hilightMatchingBraces: false,
             spaceDots: true,
-            spaceDotColor: "rgb(128,128,128)"
+            colorSpaceDot: "rgb(128,128,128)"
         }
 
         edit = function (node, options) {
@@ -139,14 +139,14 @@ var editor = (function (obj) {
                 if (updateall) {
                     var text = input.value;
                     text = hilight (input.value);
-                    text += "     <br/><br/><br/><br/><br/> ";
+                    //text += "     <br/><br/><br/><br/><br/> ";
 
                     // scroll fix
                     text = text
-                    .replace(/\n$/g, '<br/>')
+                    .replace(/\n$/g, '     <br/>')
                     .replace(/\n/g, '     <br/>');
 
-                    hilights.innerHTML = text;
+                    hilights.innerHTML = text + "<br/><br/>";
 
                     updateall = false;
                 }
@@ -156,27 +156,28 @@ var editor = (function (obj) {
                 var text = input.value;
 
                 var nlines = getCoords (text, text.length).row;
-                var ntop = Math.floor (nlines * input.scrollTop / input.scrollHeight);
-                var nbot = Math.ceil (nlines * (input.scrollTop + input.clientHeight) / input.scrollHeight + 1);
+                var ntop = nlines * Math.floor (input.scrollTop / input.scrollHeight);
+                var nbot = nlines * Math.ceil ((input.scrollTop + input.clientHeight) / input.scrollHeight);
                 var ntopoff = findLine (text, ntop);
-                var nbotoff = Math.min (findLine (text, nbot), input.value.length);
+                var nbotoff = findLine (text, Math.min (findLine (text, nbot), input.value.length));
                 
                 text = text.substring (ntopoff, nbotoff);            
                 text = hilight (text, true);
                 text = input.value.substring (0, ntopoff) + text + input.value.substring (nbotoff, input.value.length);
-                text += "     <br/><br/><br/><br/><br/> ";
+                //text += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/><br/><br/><br/><br/>&nbsp;";
                 
                 // scroll fix
                 text = text
                 .replace(/\n$/g, '<br/>')
                 .replace(/\n/g, '     <br/>');
 
-                hilights.innerHTML = text;
+                hilights.innerHTML = text + "<br/><br/>";
             }
             
             function hilight(text, nobraces, nocontents) {
                 if (options.spaceDots)
-                    text = text.replaceAll("    ", "·   ").replaceAll("·   (", "· · (");
+                    //text = text.replaceAll("    ", "·   ").replaceAll("·   (", "· · (");
+                    text = text.replaceAll(/(?<=\n(\s|·)*)    /g, "·   ").replaceAll("·   (", "· · (");
                     
 
                 if (!nobraces) {
@@ -212,7 +213,7 @@ var editor = (function (obj) {
                 var pos1 = 0;
                 while((result = reg.exec(text)) !== null) {
                     text1 += text.substring(pos1, result.index);
-                    text1 += `<span style="color:${options.spaceDotColor}">` + result[0] + '</span>';
+                    text1 += `<span style="color:${options.colorSpaceDot}">` + result[0] + '</span>';
                     pos1 = result.index + result[0].length;
                 }
                 text1 += text.substring(pos1, text.length);
@@ -440,10 +441,8 @@ var editor = (function (obj) {
                                 break;
                             }
                         
-                        if (i === input.value.length) {
-                            var farEnd = true;
+                        if (i === input.value.length)
                             lineStarts.push (i);
-                        }
 
                         if (e.shiftKey) {
                             var ins = "";
@@ -452,7 +451,11 @@ var editor = (function (obj) {
                                     if (" \t\v".indexOf (input.value.substr (lineStarts[i] + j, 1)) === -1)
                                         break;
                                         
-                                ins += input.value.substring (lineStarts[i] + j, lineStarts[i + 1])
+                                if (!!window.chrome)
+                                    ins += input.value.substring (lineStarts[i] + j, lineStarts[i + 1]).replaceAll ("<", "&lt;").replaceAll (">", "&gt;");
+                                
+                                else
+                                    ins += input.value.substring (lineStarts[i] + j, lineStarts[i + 1]);
                             }
 
                             input.selectionStart = lineStarts[0];
@@ -470,7 +473,11 @@ var editor = (function (obj) {
                         } else {
                             var ins = "";
                             for (var i = 0; i < lineStarts.length - 1; i++) {
-                                ins += " ".repeat (options.tabWidth) + input.value.substring (lineStarts[i], lineStarts[i + 1])
+                                if (!!window.chrome)
+                                    ins += " ".repeat (options.tabWidth) + input.value.substring (lineStarts[i], lineStarts[i + 1]).replaceAll ("<", "&lt;").replaceAll (">", "&gt;");
+                                
+                                else
+                                    ins += " ".repeat (options.tabWidth) + input.value.substring (lineStarts[i], lineStarts[i + 1]);
                             }
 
                             input.selectionStart = lineStarts[0];
@@ -489,13 +496,16 @@ var editor = (function (obj) {
                         centerSel();
                     }
                 }
+
+                hilights.scrollTop = input.scrollTop;
+                hilights.scrollLeft = input.scrollLeft;
             }
 
             function centerSel () {
                 var coord = getCoords (input.value, input.value.length);
-                var nlines = coord.row;
+                var nLines = coord.row;
                 var nCols = coord.maxCol;
-                var ln = Math.floor ((input.scrollHeight) / nlines);
+                var ln = Math.floor ((input.scrollHeight) / nLines);
                 var cl = Math.floor ((input.scrollWidth) / nCols);
                 var top = getCoords (input.value, input.selectionStart).row;
                 var left = getCoords (input.value, input.selectionStart).col;
@@ -652,9 +662,9 @@ var editor = (function (obj) {
             
             function hilight(text) {
                 if (options.spaceDots)
-                    text = text.replaceAll("    ", "·   ").replaceAll("·   (", "· · (");
+                    //text = text.replaceAll("    ", "·   ").replaceAll("·   (", "· · (");
+                    text = text.replaceAll(/(?<=\n(\s|·)*)    /g, "·   ").replaceAll("·   (", "· · (");
                     
-
                 text = text
                 .replaceAll(/&/g, '&amp;')
                 .replaceAll(/</g, '&lt;')
@@ -673,7 +683,7 @@ var editor = (function (obj) {
                 var pos1 = 0;
                 while((result = reg.exec(text)) !== null) {
                     text1 += text.substring(pos1, result.index);
-                    text1 += `<span style="color:${options.spaceDotColor}">` + result[0] + '</span>';
+                    text1 += `<span style="color:${options.colorSpaceDot}">` + result[0] + '</span>';
                     pos1 = result.index + result[0].length;
                 }
                 text1 += text.substring(pos1, text.length);

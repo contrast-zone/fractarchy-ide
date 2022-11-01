@@ -8,7 +8,7 @@
             )
         )
         (
-            title Fractarchy Designer Basics 
+            heading1 Fractarchy Designer Basics 
         )
         (
             image 
@@ -53,7 +53,7 @@
                     )
                 )
                 (
-                    title 1. system outline 
+                    heading1 1. system outline 
                 )
                 (
                     paragraph Fractarchy Designer is a hierarchical 
@@ -87,7 +87,7 @@
                             )
                         )
                         (
-                            title 1.1. use cases 
+                            heading1 1.1. use cases 
                         )
                         (
                             paragraph Fractarchy Designer 
@@ -150,7 +150,7 @@
                     )
                 )
                 (
-                    title 2. skimming the features 
+                    heading1 2. skimming the features 
                 )
                 (
                     paragraph Fractarchy Designer user interface and 
@@ -180,7 +180,7 @@
                             )
                         )
                         (
-                            title 2.1. browsing mode 
+                            heading1 2.1. browsing mode 
                         )
                         (
                             paragraph The application starts in browsing mode. 
@@ -208,7 +208,7 @@
                             )
                         )
                         (
-                            title 2.2. edit/print mode 
+                            heading1 2.2. edit/print mode 
                         )
                         (
                             paragraph From browsing mode we can enter 
@@ -237,14 +237,14 @@
                     )
                 )
                 (
-                    title 3. structured document tree reference 
+                    heading1 3. structured document tree reference 
                 )
                 (
                     paragraph Composing contents in Fractarchy 
-                    Designer is consisted of coding main structure 
+                    Designer is consisted of coding main structured 
                     document tree &lpar;SDT&rpar; file and importing 
                     graphical or other resources. Contents of SDT file 
-                    is a s-expr. In computer programming, an s-expr 
+                    is an s-expr. In computer programming, an s-expr 
                     &lpar;or symbolic expression, abbreviated as sexpr 
                     or sexp&rpar; is an expression in a like-named 
                     notation for nested list 
@@ -254,9 +254,9 @@
                     delimited by whitespace. Whitespaces in s-exprs 
                     include any number of space characters, tabs, and 
                     line splits. Initially, in a case of Fractarchy 
-                    Designer the first word to the left s-expr 
+                    Designer the first word to the left in s-expr 
                     &lpar;also called head&rpar; is meant to identify 
-                    a s-expr type. In example, s-expr like 
+                    an s-expr type. In example, s-expr like 
                     (
                         icode "(tree ... contents ...)" 
                     )
@@ -289,8 +289,8 @@
                 )
                 (
                     paragraph In Fractarchy Designer, there exist a 
-                    number of s-expr types which we will cover in the 
-                    following sub-sections. 
+                    number of predefined s-expr types which we will 
+                    cover in the following sub-sections. 
                 )
             )
             (
@@ -305,7 +305,7 @@
                             )
                         )
                         (
-                            title 3.1. tree structure s-exprs 
+                            heading1 3.1. tree structure s-exprs 
                         )
                         (
                             paragraph STD file format is structured in a 
@@ -404,7 +404,7 @@
                             )
                         )
                         (
-                            title 3.2. document structure s-exprs 
+                            heading1 3.2. document structure s-exprs 
                         )
                         (
                             paragraph STD sub-documents are placed inside 
@@ -462,7 +462,6 @@
                             "!  * `comment`: ignored comments         !  prose                    !"
                             "!  * `bold`: bold text                   !  prose                    !"
                             "!  * `italic`: italic text               !  prose                    !"
-                            "!  * `title`: title                      !  prose                    !"
                             "!  * `heading1` to `heading6`: headings  !  prose                    !"
                             "!  * `paragraph`: paragraph              !  prose                    !"
                             "!  * `bquote`: block quote               !  prose                    !"
@@ -513,7 +512,7 @@
                             )
                         )
                         (
-                            title 3.3. templating system s-exprs 
+                            heading1 3.3. templating system s-exprs 
                         )
                         (
                             paragraph Templating in SDT file format is 
@@ -535,7 +534,7 @@
                             all the planned extensions. If you are interested 
                             in flexible styling and document templating in 
                             conjunction with document scripting, we would be 
-                            delighted to receive occasional visit to our 
+                            delighted to receive occasional visits to our 
                             official GitHub repository to check for new 
                             Fractarchy Designer version updates. 
                         )
@@ -554,7 +553,7 @@
                     )
                 )
                 (
-                    title 4. licencing, owning a copy, and joining 
+                    heading1 4. licencing, owning a copy, and joining 
                     mailing list 
                 )
                 (
@@ -592,8 +591,69 @@
                             )
                             Contrast Zone 
                         )
-                        productions. For details about conditions, please 
-                        refer to Fractarchy Designer software bundle. 
+                        productions. Conditions are defined as follows: 
+                    )
+                    (
+                        paragraph 
+                        (
+                            italic 
+                            (
+                                ulist 
+                                (
+                                    litem 
+                                    (
+                                        bold use-type: student 
+                                    )
+                                    </br> 100% free 
+                                )
+                                (
+                                    litem 
+                                    (
+                                        bold use-type: personal 
+                                    )
+                                    </br> personal use limited up to 5 projects </br> 
+                                    100% free 
+                                )
+                                (
+                                    litem 
+                                    (
+                                        bold use-type: patron 
+                                    )
+                                    </br> unlimited personal use </br> 20$ one-time 
+                                    payment to support development 
+                                )
+                                (
+                                    litem 
+                                    (
+                                        bold use-type: commercial 
+                                    )
+                                    <br> 14 days trial before purchasing </br> 
+                                    unlimited commercial use </br> 40$ one-time 
+                                    payment per user 
+                                )
+                            )
+                        )
+                    )
+                    (
+                        paragraph 
+                        (
+                            italic Purchasing is conducted using our software 
+                            official PayPal funding pages at: 
+                            (
+                                (
+                                    hyperlink 
+                                    (
+                                        address 
+                                        "https://www.paypal.com/paypalme/contrastzone/0" 
+                                    )
+                                    (
+                                        target "_new" 
+                                    )
+                                )
+                                paypalme 
+                            )
+                            web site. 
+                        )
                     )
                 )
                 (

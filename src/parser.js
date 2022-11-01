@@ -22,7 +22,7 @@ var parser = (function (obj) {
                         return flatten (ret.arr);
                     
                     else
-                        return {err: "unexpected characters", pos: ret.pos};
+                        return {err: "unbalanced parenthesis, unexpected characters", pos: ret.pos};
                 }
 
                 var deepParse = function (text, pos) {
@@ -98,7 +98,7 @@ var parser = (function (obj) {
                             return {pos: i, arr: array};
                         
                     } else
-                        return {err: "expected ')'", pos: i};
+                        return {err: "unbalanced parenthesis, expected ')'", pos: i};
                 }
                 
                 var insert = function (arr, node) {
@@ -177,7 +177,7 @@ var parser = (function (obj) {
             if (!indent) indent = "";
             if (!index) index = 0;
             
-            var code = node[0] === "bcode";
+            var code = (node[0] === "bcode") || (node[0] === "html");
             str += indent + "(\n";
             str += Array.isArray (node[0])? "": indent + "    ";
             var linechars = 0;
@@ -195,8 +195,11 @@ var parser = (function (obj) {
                     else if (node [i] === null)
                         part = "";
                         
-                    else
+                    else {
                         part = node[i].replaceAll("\n", "\\n");
+                        if (node [i][0] === '"')
+                            part = '"' + part.substring (1, part.length - 1).replaceAll('"', '\\"') + '"';
+                    }
                      
                     if (code) {
                         str += (i > 0? indent + "    ": "") + part + "\n";

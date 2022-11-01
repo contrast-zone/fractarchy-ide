@@ -419,7 +419,7 @@
                     ovalForeColor: data["oval-forecolor-1"],
                     ovalForeColor2: data["oval-forecolor-2"],
                     ovalBorderColor: data["oval-border-color"],
-                    backColor: data["background-color"],
+                    backColor: data["backcolor"],
                     shadowRadius: sradius,
                     shadowColor: data["oval-shadow-color"],
                     contentScale: cscale,
@@ -721,12 +721,13 @@
 
                     node.srcdoc = '<html style="font-size: 1em">' 
                         //+ '<head><style>body {animation: fadein 0.5s;} @keyframes fadein {from { opacity: 0; /*transform: scale(0.5);*/} to { opacity: 1; /*transform: scale(1.0);*/}}</style></head>'
-                        + `<body style="margin: 0; padding: 0; width: ${width / mfactor}em; font-size: ${mfactor}em; color: ${env.ovalForeColor};">`
-                            + `<h1 style="font-family: monospace; font-size: 3em; font-weight: bold; margin-top: 0em; margin-bottom: 0.33em; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`
+                        + `<body style="margin: 0; padding: 0; width: ${width / 1}em; font-size: ${1}em; color: ${env.ovalForeColor};">`
+                            + `<h1 style="font-family: monospace; font-size: 2.5em; font-weight: bold; margin-bottom: 0.33em; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`
                                 + nodeName
                             + '</h1>'
 //                            + `<div style="wrap: none; font: ${options.font}; white-space: pre; color: ${options.colorText}; width: inherit; height: inherit; overflow: hidden; margin: 0; padding:4px;">`
                                 + editor.hilight (parser.stringify (node.nodeRawData[1], Math.round (width / 30 * 50)), null)
+                                + '</br>'
 //                            + `</div>`
                         + '</body>'
                     + '</html>'
@@ -767,7 +768,7 @@
                 */
                 
                 env = setupEnv ({
-                        "background-color": "gray",
+                        "backcolor": "gray",
                         "oval-backcolor": "rgb(48,48,48)",
                         "oval-forecolor-1": "rgb(208,208,208)",
                         "oval-forecolor-2": "rgb(178,178,178)",

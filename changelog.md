@@ -22,3 +22,8 @@
     - remembering print pane scrolltop after editing  
     - excluded spaces before interpunction signs  
     - minimum viable mobile rendering  
+
+- v0.1 - release
+    - only one pane on portrait, may be both panes on landscape  
+    - mobile keyboard friendly  
+    - bug fixes  
