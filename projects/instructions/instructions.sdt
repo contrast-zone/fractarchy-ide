@@ -486,6 +486,7 @@
                             "!      * `source`: source                !  quoted string            !"
                             "!                                        !                           !"
                             "!  * `hruler`: horizontal ruler          !                           !"
+                            "!  * `html`: HTML code                   !  a list of quoted strings !"
                             "+----------------------------------------+---------------------------+"
                         )
                         (
