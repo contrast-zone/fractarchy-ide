@@ -4,7 +4,7 @@
         (
             node 
             (
-                name "Uvod u elektrotehniku" 
+                name Uvod u elektrotehniku 
             )
         )
         (
@@ -18,13 +18,13 @@
             )
             (
                 html
-                "<hr>"
+                "<hr/>"
                 "Elementarni naboj"
                 "<h1 align=\"center\">`e_0=1.6*10^-19 (C)`</h1>"
-                "<hr>"
+                "<hr/>"
                 "Količina nekog naboja"
                 "<h1 align=\"center\">`Q = n * e_0 (C)`</h1>"
-                "<hr>"
+                "<hr/>"
             )
         )
     )
@@ -265,7 +265,7 @@
                     (
                         html
                         "<hr/>"
-                        "<h1 align=\"center\">`R_t = R_h (1 + alpha * Delta vartheta)]`</h1>"
+                        "<h1 align=\"center\">`R_t = R_h (1 + alpha * Delta vartheta)`</h1>"
                         "<hr/>"
                         "<h1 align=\"center\">`Delta vartheta = vartheta_2 - vartheta_1`</h1>"
                         "<hr/>"
@@ -273,7 +273,7 @@
                         "<hr/>"
                         "<h1 align=\"center\">`Delta R = R_h * alpha * Delta vartheta`</h1>"
                         "<hr/>"
-                        "<h1 align=\"center\">`Delta vartheta = (Delta R) / (R_h * alpha) = (R_t - R_h) / (R_h * alpha) Delta vartheta`</h1>"
+                        "<h1 align=\"center\">`Delta vartheta = (Delta R) / (R_h * alpha) = (R_t - R_h) / (R_h * alpha)`</h1>"
                         "<hr/>"
                     )
                 )
