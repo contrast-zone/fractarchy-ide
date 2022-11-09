@@ -176,49 +176,50 @@ var parser = (function (obj) {
             
             if (!indent) indent = "";
             if (!index) index = 0;
-            
-            var code = (node[0] === "bcode") || (node[0] === "html");
             str += indent + "(\n";
-            str += Array.isArray (node[0])? "": indent + "    ";
-            var linechars = 0;
-            for (var i = 0; i < node.length; i++) {
-                if (Array.isArray (node[i])) {
-                    str += ((i === 0 || Array.isArray (node[i - 1]))? "": "\n") + stringify (node[i], maxcols, indent + "    ", i);
-                    str += Array.isArray (node[i + 1]) || i === node.length - 1? "": indent + "    ";
-                    linechars = 0;
-                    
-                } else {
-                    var part
-                    if (node [i] === undefined)
-                        part = "UNDEFINED";
+            if (node) {
+                var code = (node[0] === "bcode") || (node[0] === "html");
+                str += Array.isArray (node[0])? "": indent + "    ";
+                var linechars = 0;
+                for (var i = 0; i < node.length; i++) {
+                    if (Array.isArray (node[i])) {
+                        str += ((i === 0 || Array.isArray (node[i - 1]))? "": "\n") + stringify (node[i], maxcols, indent + "    ", i);
+                        str += Array.isArray (node[i + 1]) || i === node.length - 1? "": indent + "    ";
+                        linechars = 0;
                         
-                    else if (node [i] === null)
-                        part = "";
-                        
-                    else {
-                        part = node[i].replaceAll("\n", "\\n");
-                        if (node [i][0] === '"')
-                            part = '"' + part.substring (1, part.length - 1).replaceAll('"', '\\"') + '"';
-                    }
-                     
-                    if (code) {
-                        str += (i > 0? indent + "    ": "") + part + "\n";
-                    
                     } else {
-                        if (linechars + part.length > maxcols) {
-                           str += "\n" + indent + "    ";
-                           str += part + " ";
-                           linechars = part.length + 1;
-
+                        var part
+                        if (node [i] === undefined)
+                            part = "UNDEFINED";
+                            
+                        else if (node [i] === null)
+                            part = "";
+                            
+                        else {
+                            part = node[i].replaceAll("\n", "\\n");
+                            if (node [i][0] === '"')
+                                part = '"' + part.substring (1, part.length - 1).replaceAll('"', '\\"') + '"';
+                        }
+                         
+                        if (code) {
+                            str += (i > 0? indent + "    ": "") + part + "\n";
+                        
                         } else {
-                            str += part + " ";
-                            linechars += part.length + 1;
+                            if (linechars + part.length > maxcols) {
+                               str += "\n" + indent + "    ";
+                               str += part + " ";
+                               linechars = part.length + 1;
+
+                            } else {
+                                str += part + " ";
+                                linechars += part.length + 1;
+                            }
                         }
                     }
                 }
+                
+                if (!Array.isArray (node[i - 1]) && !code) str += "\n";
             }
-            
-            if (!Array.isArray (node[i - 1]) && !code) str += "\n";
             str += indent + ")\n";// + indent + "\n";
             
             return str;

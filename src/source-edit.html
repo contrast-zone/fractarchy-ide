@@ -67,7 +67,7 @@
         <div id="divStat" align="right" style="position: absolute; font: 9pt monospace; color: rgb(208,208,208); visibility: hidden;">
         &nbsp;
         </div>
-        <div id="divErr" align="left" style="position: absolute; font: 9pt monospace; color: rgb(208,208,208); visibility: hidden;">
+        <div id="divErr" align="left" style="position: absolute; font: 9pt monospace; color: rgb(255,0,0); visibility: hidden;">
         &nbsp;
         </div>
         <script>
@@ -76,11 +76,36 @@
             
             var firstVisit = true;
             var myTimeout;
+            
+            var myTimeoutFn = function () {    
+                var txt = ed.getValue ();
+                var parsed = parser.parsesexpr (txt);
+                if (parsed.err) {
+                    var coord = parser.getCoords (txt, parsed.pos);
+                    document.getElementById('divErr').innerHTML = "Error: " + parsed.err + " at " + coord.row + ", " + coord.col;
+                    window.parent.frames[1].postMessage({msg: "error", err: "Error: " + parsed.err + " at " + coord.row + ", " + coord.col, baseUrl: baseUrl}, "*");
+                    
+                } else {
+                    document.getElementById('divErr').innerHTML = "&nbsp;";
+                    window.parent.postMessage({msg: "validEdit"}, "*");
+                    window.parent.frames[1].postMessage({msg: "populate", nodeTree: parsed, baseUrl: baseUrl, scrollTop: window.parent.targetScrollTop}, "*");
+                }
+            };
 
             document.addEventListener('selectionchange', function(e) {
                 onkd ();
             });
             
+            
+            // uncomment to fix the bug: update on keypress after edit
+            ed.getInput ().addEventListener("keydown", function (e) {
+                if (!firstVisit) {
+                    if (myTimeout) clearTimeout (myTimeout);
+                    myTimeout = setTimeout(myTimeoutFn, 500);
+                }
+            }, false);
+            
+
             ed.getInput ().addEventListener("input", onkd, false);
 
             ed.getInput ().addEventListener("input", oninp, false);
@@ -95,20 +120,7 @@
                 window.parent.postMessage({msg: "invalidEdit"}, "*");
                 if (!firstVisit) {
                     if (myTimeout) clearTimeout (myTimeout);
-                    myTimeout = setTimeout(function () {    
-                        var txt = ed.getValue ();
-                        var parsed = parser.parsesexpr (txt);
-                        if (parsed.err) {
-                            var coord = parser.getCoords (txt, parsed.pos);
-                            document.getElementById('divErr').innerHTML = "Error: " + parsed.err + " at " + coord.row + ", " + coord.col;
-                            window.parent.frames[1].postMessage({msg: "error", err: "Error: " + parsed.err + " at " + coord.row + ", " + coord.col, baseUrl: baseUrl}, "*");
-                            
-                        } else {
-                            document.getElementById('divErr').innerHTML = "&nbsp;";
-                            window.parent.postMessage({msg: "validEdit"}, "*");
-                            window.parent.frames[1].postMessage({msg: "populate", nodeTree: parsed, baseUrl: baseUrl, scrollTop: window.parent.targetScrollTop}, "*");
-                        }
-                    }, 500);
+                    myTimeout = setTimeout(myTimeoutFn, 500);
                 }
             }
             

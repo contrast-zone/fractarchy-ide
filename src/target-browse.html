@@ -302,8 +302,8 @@
             }
 
             wonload = function () {
-                setSize ();
                 objOrbit = Orbital (divContainer, nodeTree, env.quant / 100, env.contentScale / 100, env.ovalBackColor, env.ovalBorderColor, env.backColor, env.shadowRadius, env.shadowRadius? env.shadowColor: null, env.uiscale / 100, onIdle, onBusy, env.rodLength, 0, env.vShift / 100);
+                setSize ();
                 dispatchSize ();
                 divContainer.style.visibility = "visible";
                 window.addEventListener("message", msg, false);
@@ -319,9 +319,13 @@
                         setSize ();
                         dispatchSize ();
                         divContainer.style.visibility = "visible";
-                        
+                        if (env.shadowRadius === 0)
+                            divContainer.style.filter = "";
+                        else
+                            divContainer.style.filter = "drop-shadow(0px 0px " + objOrbit.getRadius () * env.shadowRadius / 100 + "px " + env.shadowColor + ")";                        
                     }, 100);
                 });
+                window.dispatchEvent(new CustomEvent('resize'));
             }
             
             function setupEnv (data) {
@@ -406,11 +410,20 @@
                     quant = 80;
                 
                 if (data["oval-shadow-radius"]) {
-                    var sradius = parseFloat (data["oval-shadow-radius"]);// * window.devicePixelRatio;
-                    
-                } else {
+                    try {
+                        if (data["oval-shadow-radius"].substr(data["oval-shadow-radius"].length - 1, 1) !== "%")
+                            throw new error ();
+                        
+                        var sradius = parseFloat (data["oval-shadow-radius"].substr(0, data["oval-shadow-radius"].length - 1));
+                        if (sradius < 0 || sradius > 100)
+                            throw new error ();
+                        
+                    } catch (e) {
+                        alert ('Error in init.json: "oval-shadow-radius" has to be a percent between "0%" and "100%"');
+                        throw new error ();
+                    }
+                } else
                     sradius = 0;
-                }
                 
                 if (!data["oval-border-color"])
                     data["oval-border-color"] = data["oval-backcolor"];
@@ -822,8 +835,8 @@
                         "oval-forecolor-1": "rgb(48,48,48)",
                         "oval-forecolor-2": "rgb(78,78,78)",
                         //"oval-border-color": "rgb(48,48,48)",
-                        "oval-shadow-color": "black",
-                        "oval-shadow-radius": "0",
+                        "oval-shadow-color": "rgba(48,48,48)",
+                        //"oval-shadow-radius": "10%",
                         "rod-length": "5%",
                         "contents-scale": "100%",
                         "ui-scale": "140%",
@@ -836,7 +849,6 @@
                 nodeTree.parent.children = [nodeTree];
                 
                 document.body.style.backgroundColor = env.backColor;
-                divContainer.style.filter = "drop-shadow(0px 0px " + env.shadowRadius + "px " + env.shadowColor + ")";
                 window.addEventListener("load", wonload ());
             }
             

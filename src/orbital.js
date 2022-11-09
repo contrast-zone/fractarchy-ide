@@ -2326,6 +2326,9 @@ select.cursor.angle = Math.PI;
         },
         getPathLength: function () {
             return path.length;
+        },
+        getRadius: function () {
+            return rr;
         }
     }
 }

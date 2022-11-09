@@ -8,23 +8,36 @@
             )
         )
         (
+            html
+            "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+        )
+        (
             heading1 Uvod u elektrotehniku 
         )
         (
             paragraph 
             (
-                html
-                "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                hruler 
             )
+            Elementarni naboj 
             (
                 html
-                "<hr/>"
-                "Elementarni naboj"
-                "<h1 align=\"center\">`e_0=1.6*10^-19 (C)`</h1>"
-                "<hr/>"
-                "Količina nekog naboja"
-                "<h1 align=\"center\">`Q = n * e_0 (C)`</h1>"
-                "<hr/>"
+                "<h1 align=\"center\">   "
+                "    `e_0=1.6*10^-19 (C)`"
+                "</h1>                   "
+            )
+            (
+                hruler 
+            )
+            Količina nekog naboja 
+            (
+                html
+                "<h1 align=\"center\">"
+                "    `Q = n * e_0 (C)`"
+                "</h1>                "
+            )
+            (
+                hruler 
             )
         )
     )
@@ -40,21 +53,28 @@
                     )
                 )
                 (
+                    html
+                    "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                )
+                (
                     heading1 Količina elektriciteta 
                 )
                 (
                     paragraph 
                     (
-                        html
-                        "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                        hruler 
                     )
+                    Količina elektriciteta po jedinici površine 
+                    predstavlja površinsku gustoću naboja koja se 
+                    označava slovom D ili `sigma` 
                     (
                         html
-                        "<hr/>"
-                        "Količina elektriciteta po jedinici površine predstavlja"
-                        "površinsku gustoću naboja koja se označava slovom D ili `sigma`"
-                        "<h1 align=\"center\">`D = sigma = Q / S [C / m^2]`</h1>"
-                        "<hr/>"
+                        "<h1 align=\"center\">            "
+                        "    `D = sigma = Q / S [C / m^2]`"
+                        "</h1>                            "
+                    )
+                    (
+                        hruler 
                     )
                 )
             )
@@ -72,20 +92,26 @@
                     )
                 )
                 (
+                    html
+                    "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                )
+                (
                     heading1 Električni potencijal 
                 )
                 (
                     paragraph 
                     (
-                        html
-                        "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                        hruler 
                     )
+                    Električni potencijal se označava sa `varphi` 
                     (
                         html
-                        "<hr/>"
-                        "Električni potencijal se označava sa `varphi`"
-                        "<h1 align=\"center\">`varphi = (Delta W) / Q_0 [V]`</h1>"
-                        "<hr/>"
+                        "<h1 align=\"center\">             "
+                        "    `varphi = (Delta W) / Q_0 [V]`"
+                        "</h1>                             "
+                    )
+                    (
+                        hruler 
                     )
                 )
             )
@@ -103,20 +129,27 @@
                     )
                 )
                 (
+                    html
+                    "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                )
+                (
                     heading1 Električni napon 
                 )
                 (
                     paragraph 
                     (
-                        html
-                        "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                        hruler 
                     )
+                    Električni napon je razlika potencijala između 
+                    dviju ekvipotencijalnih ploha 
                     (
                         html
-                        "<hr/>"
-                        "Električni napon je razlika potencijala između dviju ekvipotencijalnih ploha"
-                        "<h1 align=\"center\">`U_12 = varphi_1 - varphi_2[V]`</h1>"
-                        "<hr/>"
+                        "<h1 align=\"center\">              "
+                        "    `U_12 = varphi_1 - varphi_2[V]`"
+                        "</h1>                              "
+                    )
+                    (
+                        hruler 
                     )
                 )
             )
@@ -134,19 +167,25 @@
                     )
                 )
                 (
+                    html
+                    "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                )
+                (
                     heading1 Jakost struje 
                 )
                 (
                     paragraph 
                     (
-                        html
-                        "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                        hruler 
                     )
                     (
                         html
-                        "<hr/>"
-                        "<h1 align=\"center\">`I = Q / t [C / s = A]`</h1>"
-                        "<hr/>"
+                        "<h1 align=\"center\">      "
+                        "    `I = Q / t [C / s = A]`"
+                        "</h1>                      "
+                    )
+                    (
+                        hruler 
                     )
                 )
             )
@@ -164,19 +203,25 @@
                     )
                 )
                 (
+                    html
+                    "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                )
+                (
                     heading1 Gustoća struje 
                 )
                 (
                     paragraph 
                     (
-                        html
-                        "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                        hruler 
                     )
                     (
                         html
-                        "<hr/>"
-                        "<h1 align=\"center\">`J = I / S [A / m^2]`</h1>"
-                        "<hr/>"
+                        "<h1 align=\"center\">    "
+                        "    `J = I / S [A / m^2]`"
+                        "</h1>                    "
+                    )
+                    (
+                        hruler 
                     )
                 )
             )
@@ -194,19 +239,25 @@
                     )
                 )
                 (
+                    html
+                    "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                )
+                (
                     heading1 Otpor vodiča 
                 )
                 (
                     paragraph 
                     (
-                        html
-                        "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                        hruler 
                     )
                     (
                         html
-                        "<hr/>"
-                        "<h1 align=\"center\">`R = rho * l / S [Omega]`</h1>"
-                        "<hr/>"
+                        "<h1 align=\"center\">        "
+                        "    `R = rho * l / S [Omega]`"
+                        "</h1>                        "
+                    )
+                    (
+                        hruler 
                     )
                 )
             )
@@ -224,19 +275,25 @@
                     )
                 )
                 (
+                    html
+                    "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                )
+                (
                     heading1 Električna vodljivost 
                 )
                 (
                     paragraph 
                     (
-                        html
-                        "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                        hruler 
                     )
                     (
                         html
-                        "<hr/>"
-                        "<h1 align=\"center\">`G = 1 / R [1S = 1 / (1Omega)]`</h1>"
-                        "<hr/>"
+                        "<h1 align=\"center\">              "
+                        "    `G = 1 / R [1S = 1 / (1Omega)]`"
+                        "</h1>                              "
+                    )
+                    (
+                        hruler 
                     )
                 )
             )
@@ -254,27 +311,61 @@
                     )
                 )
                 (
+                    html
+                    "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                )
+                (
                     heading1 Otpor na nekoj temperaturi 
                 )
                 (
                     paragraph 
                     (
-                        html
-                        "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                        hruler 
                     )
                     (
                         html
-                        "<hr/>"
-                        "<h1 align=\"center\">`R_t = R_h (1 + alpha * Delta vartheta)`</h1>"
-                        "<hr/>"
-                        "<h1 align=\"center\">`Delta vartheta = vartheta_2 - vartheta_1`</h1>"
-                        "<hr/>"
-                        "<h1 align=\"center\">`Delta R = R_t - R_h`</h1>"
-                        "<hr/>"
-                        "<h1 align=\"center\">`Delta R = R_h * alpha * Delta vartheta`</h1>"
-                        "<hr/>"
-                        "<h1 align=\"center\">`Delta vartheta = (Delta R) / (R_h * alpha) = (R_t - R_h) / (R_h * alpha)`</h1>"
-                        "<hr/>"
+                        "<h1 align=\"center\">                       "
+                        "    `R_t = R_h (1 + alpha * Delta vartheta)`"
+                        "</h1>                                       "
+                    )
+                    (
+                        hruler 
+                    )
+                    (
+                        html
+                        "<h1 align=\"center\">                         "
+                        "    `Delta vartheta = vartheta_2 - vartheta_1`"
+                        "</h1>                                         "
+                    )
+                    (
+                        hruler 
+                    )
+                    (
+                        html
+                        "<h1 align=\"center\">    "
+                        "    `Delta R = R_t - R_h`"
+                        "</h1>                    "
+                    )
+                    (
+                        hruler 
+                    )
+                    (
+                        html
+                        "<h1 align=\"center\">                       "
+                        "    `Delta R = R_h * alpha * Delta vartheta`"
+                        "</h1>                                       "
+                    )
+                    (
+                        hruler 
+                    )
+                    (
+                        html
+                        "<h1 align=\"center\">                                                         "
+                        "    `Delta vartheta = (Delta R) / (R_h * alpha) = (R_t - R_h) / (R_h * alpha)`"
+                        "</h1>                                                                         "
+                    )
+                    (
+                        hruler 
                     )
                 )
             )
@@ -292,19 +383,25 @@
                     )
                 )
                 (
+                    html
+                    "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                )
+                (
                     heading1 Ohmov zakon 
                 )
                 (
                     paragraph 
                     (
-                        html
-                        "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                        hruler 
                     )
                     (
                         html
-                        "<hr/>"
-                        "<h1 align=\"center\">`I = U / R [V / Omega = A]`</h1>"
-                        "<hr/>"
+                        "<h1 align=\"center\">          "
+                        "    `I = U / R [V / Omega = A]`"
+                        "</h1>                          "
+                    )
+                    (
+                        hruler 
                     )
                 )
             )
@@ -322,13 +419,16 @@
                     )
                 )
                 (
+                    html
+                    "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                )
+                (
                     heading1 Koeficijenti 
                 )
                 (
                     paragraph 
                     (
-                        html
-                        "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML\"></script>"
+                        hruler 
                     )
                     (
                         html
@@ -336,7 +436,7 @@
                         "  <tr align=\"center\" style=\"vertical-align: top;\">"
                         "    <td style=\"border-bottom: 1px solid black; padding: 0.5em;\"><b>materijal</b></td>"
                         "    <td style=\"border-bottom: 1px solid black; border-left:1px solid black; padding: 0.5em;\"><b>otpornost<br/>`rho`<br/>`(* 10^-6 Omega m)`</b></td>"
-                        "    <td style=\"border-bottom: 1px solid black; border-left:1px solid black; padding: 0.5em;\"><b>provodnost<br/>`k`<br/>`(*10^-6 S / m)`</b></td>"
+                        "    <td style=\"border-bottom: 1px solid black; border-left:1px solid black; padding: 0.5em;\"><b>provodnost<br/>`kappa`<br/>`(*10^-6 S / m)`</b></td>"
                         "  </tr>"
                         "  <tr>"
                         "    <td align=\"left\" style=\" padding: 0.5em;\">srebro</td>"
@@ -365,6 +465,9 @@
                         "  </tr>"
                         "</table>"
                     )
+                )
+                (
+                    hruler 
                 )
             )
             (

@@ -11,6 +11,10 @@ var compiler = (function (obj) {
             env = env || {ovalForeColor: "rgb(48,48,48)", ovalForeColor2: "rgb(72,72,72)"};
 
             var maps= {
+                "newline": {
+                    "open": `<br/>`,
+                    "close": ''
+                },
                 "hruler": {
                     "open": `<hr style="border-top: 0.2em solid ${env.ovalForeColor2}; border-bottom: 0; border-left: 0; border-right: 0;">`,
                     "close": '</hr>'
@@ -23,12 +27,10 @@ var compiler = (function (obj) {
                     "open": '<i>',
                     "close": '</i>'
                 },
-                
                 "title": {
                     "open": `<h1 style="overflow: hidden; font-size: 3em; font-weight: bold; margin-top: 0em; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
                     "close": '</h1>'
                 },
-                
                 "heading1": {
                     "open": `<h1 style="font-size: 2.5em; overflow: hidden; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`,
                     "close": '</h1>'
@@ -62,11 +64,11 @@ var compiler = (function (obj) {
                     "close": '</blockquote>'
                 },
                 "icode": {
-                    "open": `<code style="/*background-color: rgb(180,180,180);*/ border: 1px solid ${env.ovalForeColor}; white-space: pre-wrap; font-size: 0.9em;">`,
+                    "open": `<code style="/*background-color: rgb(180,180,180);*/ border: 1px solid ${"rgb(128,128,128)"/*env.ovalForeColor*/}; white-space: pre-wrap; word-break: break-all; font-size: 0.9em;">`,
                     "close": '</code>'
                 },
                 "bcode": {
-                    "open": `<code><pre style="/*background-color: rgb(180,180,180);*/ border: 1px solid ${env.ovalForeColor}; overflow-x: auto; font-size: 0.9em;">`,
+                    "open": `<code><pre style="/*background-color: rgb(180,180,180);*/ border: 1px solid ${"rgb(128,128,128)"/*env.ovalForeColor*/}; overflow-x: auto; font-size: 0.9em;">`,
                     "close": '</pre></code>'
                 },
                 "html": {
@@ -165,7 +167,7 @@ var compiler = (function (obj) {
                                     txt += "\n";
                                     
                                 else if (i < node.length - 1) {
-                                    if (node[i + 1] !== ":" && node[i + 1] !== "," && node[i + 1] !== "." && node[i + 1] !== "...")
+                                    if (node[i + 1] !== ":" && node[i + 1] !== "," && node[i + 1] !== "." && node[i + 1] !== "?" && node[i + 1] !== "???" && node[i + 1] !== "!" && node[i + 1] !== "!!!" && node[i + 1] !== "?!" && node[i + 1] !== "?!!" && node[i + 1] !== "...")
                                         txt += " ";
                                 }
                             }
@@ -183,7 +185,7 @@ var compiler = (function (obj) {
             //var ret = `<section style="overflow: hidden;">` + getNode(node) + `</div>`;
             //return ret;
             
-            return getNode (node) + (fromPrint? "": "<br/>");
+            return (node? getNode (node) + (fromPrint? "": "<br/>"): "<br/>");
         }
 
                     

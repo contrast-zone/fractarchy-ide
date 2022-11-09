@@ -6,7 +6,7 @@ var editor = (function (obj) {
 }) (
     (function () {
         function tag (str) {
-            return `((?<=\\((\\s|·)*)${str}(?=(\\s|·)))`
+            return `((?<=\\((\\s|·)*)${str}(?=(\\s|·|\\))))`
         }
 
         var opt = {
@@ -22,7 +22,7 @@ var editor = (function (obj) {
             colorStringAndCommentBack: "transparent",
             colorBracketMatch: "white",
             colorBracketMatchBack: "rgb(80,80,80)",
-            keywords: [`${tag('html')}|${tag('hruler')}|${tag('bold')}|${tag('italic')}|${tag('clist')}|${tag('eitem')}|${tag('xitem')}|${tag('yitem')}|${tag('comment')}|${tag('tree')}|${tag('node')}|${tag('name')}|${tag('branches')}|${tag('title')}|${tag('heading1')}|${tag('heading2')}|${tag('heading3')}|${tag('heading4')}|${tag('heading5')}|${tag('heading6')}|${tag('paragraph')}|${tag('hyperlink')}|${tag('address')}|${tag('target')}|${tag('bcode')}|${tag('icode')}|${tag('bquote')}|${tag('olist')}|${tag('ulist')}|${tag('litem')}|${tag('image')}|${tag('source')}`],
+            keywords: [`${tag('html')}|${tag('hruler')}|${tag('newline')}|${tag('bold')}|${tag('italic')}|${tag('clist')}|${tag('eitem')}|${tag('xitem')}|${tag('yitem')}|${tag('comment')}|${tag('tree')}|${tag('node')}|${tag('name')}|${tag('branches')}|${tag('title')}|${tag('heading1')}|${tag('heading2')}|${tag('heading3')}|${tag('heading4')}|${tag('heading5')}|${tag('heading6')}|${tag('paragraph')}|${tag('hyperlink')}|${tag('address')}|${tag('target')}|${tag('bcode')}|${tag('icode')}|${tag('bquote')}|${tag('olist')}|${tag('ulist')}|${tag('litem')}|${tag('image')}|${tag('source')}`],
             stringsAndComments: "(\"([^\"\\\\\\n]|(\\\\.))*((\")|(\\n)|($)))",
             hilightMatchingBraces: false,
             spaceDots: true,
@@ -31,27 +31,26 @@ var editor = (function (obj) {
 
         edit = function (node, options) {
             "use strict";
-            if (!options)
-                options = opt;
-                /*{
-                    font: "8pt monospace",
-                    tabWidth: 4,
-                    colorText: "rgb(208,208,208)",
-                    colorTextBack: "black",
-                    colorSelection: "white",
-                    colorSelectionBack: "gray",
-                    colorKeyword: "rgb(104,104,104)",
-                    colorKeywordBack: "transparent",
-                    colorStringAndComment: "rgb(104,104,104)",
-                    colorStringAndCommentBack: "transparent",
-                    colorBracketMatch: "white",
-                    colorBracketMatchBack: "rgb(75,75,75)",
-                    keywords: ["\\bRULE\\b|\\bREWRITE\\b|\\bREAD\\b|\\bWRITE\\b|\\bVAR\\b"],
-                    stringsAndComments: "(\"([^\"\\\\\\n]|(\\\\.))*((\")|(\\n)|($)))",
-                    hilightMatchingBraces: true,
-                    spaceDots: false
-                }
-                */
+            options = options || opt;
+            /*{
+                font: "8pt monospace",
+                tabWidth: 4,
+                colorText: "rgb(208,208,208)",
+                colorTextBack: "black",
+                colorSelection: "white",
+                colorSelectionBack: "gray",
+                colorKeyword: "rgb(104,104,104)",
+                colorKeywordBack: "transparent",
+                colorStringAndComment: "rgb(104,104,104)",
+                colorStringAndCommentBack: "transparent",
+                colorBracketMatch: "white",
+                colorBracketMatchBack: "rgb(75,75,75)",
+                keywords: ["\\bRULE\\b|\\bREWRITE\\b|\\bREAD\\b|\\bWRITE\\b|\\bVAR\\b"],
+                stringsAndComments: "(\"([^\"\\\\\\n]|(\\\\.))*((\")|(\\n)|($)))",
+                hilightMatchingBraces: true,
+                spaceDots: false
+            }
+            */
 
             var ww, hh;
             var rndid = Math.round (Math.random () * 32768);
@@ -109,7 +108,7 @@ var editor = (function (obj) {
                 
                 return {row: row, col: col, maxCol: maxCol};
             }
-
+            
             function findLine (text, ln, cl) {
                 if (!cl) cl = 0;
                 var i = 0, ch, row = 1, col = 1;
@@ -134,7 +133,7 @@ var editor = (function (obj) {
                 
                 return i;
             }
-            
+
             function hilightAll() {
                 if (updateall) {
                     var text = input.value;
@@ -156,20 +155,32 @@ var editor = (function (obj) {
                 var text = input.value;
 
                 var nlines = getCoords (text, text.length).row;
-                var ntop = nlines * Math.floor (input.scrollTop / input.scrollHeight);
-                var nbot = nlines * Math.ceil ((input.scrollTop + input.clientHeight) / input.scrollHeight);
-                var ntopoff = findLine (text, ntop);
-                var nbotoff = findLine (text, Math.min (findLine (text, nbot), input.value.length));
+                var ntop = Math.floor (nlines * input.scrollTop / input.scrollHeight);
+                var nbot = Math.ceil (nlines * (input.scrollTop + input.clientHeight) / input.scrollHeight);
                 
-                text = text.substring (ntopoff, nbotoff);            
-                text = hilight (text, true);
-                text = input.value.substring (0, ntopoff) + text + input.value.substring (nbotoff, input.value.length);
-                //text += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/><br/><br/><br/><br/>&nbsp;";
+                var ntopoff = Math.max (findLine (text, ntop), 0);
+                var nbotoff = Math.min (findLine (text, nbot), input.value.length);
+
+                var text1 = text.substr (0, ntopoff);
+                var text2 = text.substr (ntopoff, nbotoff);
+                var text3 = text.substr (nbotoff, input.value.length);
+
+                text =
+                    text1
+                    .replaceAll(/&/g, '&amp;')
+                    .replaceAll(/</g, '&lt;')
+                    .replaceAll(/>/g, '&gt;')
+                    + hilight (text2, true)
+                    +text3
+                    .replaceAll(/&/g, '&amp;')
+                    .replaceAll(/</g, '&lt;')
+                    .replaceAll(/>/g, '&gt;');
                 
                 // scroll fix
-                text = text
-                .replace(/\n$/g, '<br/>')
-                .replace(/\n/g, '     <br/>');
+                text =
+                    text
+                    .replaceAll(/\n$/g, '     <br/>')
+                    .replaceAll(/\n/g, '     <br/>');
 
                 hilights.innerHTML = text + "<br/><br/>";
             }
@@ -497,8 +508,8 @@ var editor = (function (obj) {
                     }
                 }
 
-                hilights.scrollTop = input.scrollTop;
-                hilights.scrollLeft = input.scrollLeft;
+                //hilights.scrollTop = input.scrollTop;
+                //hilights.scrollLeft = input.scrollLeft;
             }
 
             function centerSel () {

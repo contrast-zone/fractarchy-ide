@@ -164,8 +164,8 @@
                     edit/print mode &lpar;alternate&rpar;. Underneath 
                     the Fractarchy Designer user interface, the 
                     backend core comprises structured document tree 
-                    &lpar;SDT&rpar;, thus forming a kind of 
-                    hierarchical database of sub-documents. 
+                    &lpar;SDT&rpar;, thus forming an elementary kind 
+                    of hierarchical database of sub-documents. 
                 )
             )
             (
@@ -447,11 +447,11 @@
                                 icode "... sub-document contents ..." 
                             )
                             from the above two patterns is a list of prose 
-                            words that follow 
+                            words that follow the 
                             (
                                 icode "node" 
                             )
-                            head. Also, among a list of words, we can combine 
+                            head. Within the prose words, we can combine 
                             s-exprs of types from the following table: 
                         )
                         (
@@ -486,6 +486,7 @@
                             "!      * `source`: source                !  quoted string            !"
                             "!                                        !                           !"
                             "!  * `hruler`: horizontal ruler          !                           !"
+                            "!  * `newline`: line break               !                           !"
                             "!  * `html`: HTML code                   !  a list of quoted strings !"
                             "+----------------------------------------+---------------------------+"
                         )
@@ -497,7 +498,7 @@
                             paragraph There are plans for the future versions 
                             of Fractarchy Designer to extend s-expr types in a 
                             direction of flexible output styling. Also, 
-                            planned templating and scripting documents would 
+                            planned templating and scripting support would 
                             follow these extensions to bring a full control 
                             over generated documents. 
                         )
@@ -525,7 +526,7 @@
                             wide space for managing diverse libraries in a 
                             pursuit for displaying expressions like math, 
                             chemistry, physics, or similar expressions. Not to 
-                            stop there, one could conceive maybe even graph 
+                            stop there, one could maybe conceive even graph 
                             visualization libraries that would render vector 
                             graphics within the Fractarchy Designer user 
                             interface. 
@@ -605,32 +606,56 @@
                                     (
                                         bold use-type: student 
                                     )
-                                    </br> 100% free 
+                                    (
+                                        newline 
+                                    )
+                                    100% free 
                                 )
                                 (
                                     litem 
                                     (
                                         bold use-type: personal 
                                     )
-                                    </br> personal use limited up to 5 projects </br> 
+                                    (
+                                        newline 
+                                    )
+                                    personal use limited to 5 projects 
+                                    (
+                                        newline 
+                                    )
                                     100% free 
                                 )
                                 (
                                     litem 
                                     (
-                                        bold use-type: patron 
+                                        bold use-type: sponsor 
                                     )
-                                    </br> unlimited personal use </br> 20$ one-time 
-                                    payment to support development 
+                                    (
+                                        newline 
+                                    )
+                                    unlimited personal use 
+                                    (
+                                        newline 
+                                    )
+                                    20$ one-time payment to support development 
                                 )
                                 (
                                     litem 
                                     (
                                         bold use-type: commercial 
                                     )
-                                    <br> 14 days trial before purchasing </br> 
-                                    unlimited commercial use </br> 40$ one-time 
-                                    payment per user 
+                                    (
+                                        newline 
+                                    )
+                                    14 days trial before purchasing 
+                                    (
+                                        newline 
+                                    )
+                                    unlimited commercial use 
+                                    (
+                                        newline 
+                                    )
+                                    40$ one-time payment per user 
                                 )
                             )
                         )
@@ -639,7 +664,7 @@
                         paragraph 
                         (
                             italic Purchasing is conducted using our software 
-                            official PayPal funding pages at: 
+                            official PayPal funding pages at 
                             (
                                 (
                                     hyperlink 
