@@ -194,6 +194,8 @@
                     document.getElementById("btnlhlp").style.display = "none";
                     document.getElementById("btnrhlp").style.display = "none";
                     
+                    mode = "edit/print";
+                    
                 } else if (event.data.msg === "cancelIO") {
                     hideIO ();
                     
@@ -220,8 +222,11 @@
                     
                     backToBrowse ();
 
+                    mode = "browse";
+
                 } else if (event.data.msg === "keep") {
                     document.getElementById("source").contentWindow.postMessage({msg: "acceptChanges"}, "*");
+                    mode = "browse";
 
                 } else if (event.data.msg === "invalidEdit") {
                     document.getElementById("svgkeepl").style.display = "none";
@@ -479,6 +484,10 @@
                 var onlyright = false;
                 
                 if (slide === "left") {
+                    if (mode === "edit/print") {
+                        s.style.display = "inline";
+                    }
+
                     onlyleft = true;
                     marg = 0;
                     document.getElementById("svglcropfull").style.display = "none";
@@ -487,6 +496,10 @@
                     document.getElementById("svgrcrophalf").style.display = "inline";
 
                 } else if (slide === "right") {
+                    if (mode === "edit/print") {
+                        s.style.display = "none";
+                    }
+
                     onlyright = true;
                     marg = 0;
                     document.getElementById("svglcropfull").style.display = "none";
@@ -495,6 +508,10 @@
                     document.getElementById("svgrcrophalf").style.display = "inline";
 
                 } else {
+                    if (mode === "edit/print") {
+                        s.style.display = "inline";
+                    }
+
                     document.getElementById("svglcropfull").style.display = "inline";
                     document.getElementById("svglcrophalf").style.display = "none";
                     document.getElementById("svgrcropfull").style.display = "inline";
@@ -778,9 +795,6 @@
             }, false);
 
             document.getElementById("btnlslide").addEventListener('click', () => {
-                document.activeElement.blur ();
-                setSize();
-
                 if (window.innerWidth < window.innerHeight) {
                     //document.getElementById("svglcropfull").style.display = "none";
                     //document.getElementById("svglcrophalf").style.display = "inline";
@@ -1081,6 +1095,7 @@
             var fullUrl;
             var unnamed;
             var server;
+            var mode = "browse";
             var editedNotAccepted = false;
             
             document.getElementById("source").addEventListener ('load', () => {
