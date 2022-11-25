@@ -791,55 +791,37 @@
             }, false);
 
             document.getElementById("btnlslide").addEventListener('click', () => {
-                if (window.innerWidth < window.innerHeight) {
-                    //document.getElementById("svglcropfull").style.display = "none";
-                    //document.getElementById("svglcrophalf").style.display = "inline";
-                    //document.getElementById("svgrcropfull").style.display = "none";
-                    //document.getElementById("svgrcrophalf").style.display = "inline";
-                    slide = "right";
+                setTimeout(() => {
+                    if (window.innerWidth < window.innerHeight) {
+                        slide = "right";
 
-                } else {
-                    if (document.getElementById("svglcropfull").style.display === "none") {
-                        //document.getElementById("svglcropfull").style.display = "inline";
-                        //document.getElementById("svglcrophalf").style.display = "none";
-                        slide = "both";
-                        
                     } else {
-                        //document.getElementById("svglcropfull").style.display = "none";
-                        //document.getElementById("svglcrophalf").style.display = "inline";
-                        slide = "left";
+                        if (document.getElementById("svglcropfull").style.display === "none") {
+                            slide = "both";
+                            
+                        } else {
+                            slide = "left";
+                        }
                     }
                     
-                }
-                
-                setTimeout(() => {
                     setSize();
                 }, 100);
             }, false);
             
             document.getElementById("btnrslide").addEventListener('click', () => {
-                if (window.innerWidth < window.innerHeight) {
-                    //document.getElementById("svglcropfull").style.display = "none";
-                    //document.getElementById("svglcrophalf").style.display = "inline";
-                    //document.getElementById("svgrcropfull").style.display = "none";
-                    //document.getElementById("svgrcrophalf").style.display = "inline";
-                    slide = "left";
+                setTimeout(() => {
+                    if (window.innerWidth < window.innerHeight) {
+                        slide = "left";
 
-                } else {
-                    if (document.getElementById("svgrcropfull").style.display === "none") {
-                        //document.getElementById("svgrcropfull").style.display = "inline";
-                        //document.getElementById("svgrcrophalf").style.display = "none";
-                        slide = "both";
-                        
                     } else {
-                        //document.getElementById("svgrcropfull").style.display = "none";
-                        //document.getElementById("svgrcrophalf").style.display = "inline";
-                        slide = "right";
+                        if (document.getElementById("svgrcropfull").style.display === "none") {
+                            slide = "both";
+                            
+                        } else {
+                            slide = "right";
+                        }
                     }
                     
-                }
-                
-                setTimeout(() => {
                     setSize();
                 }, 100);
             }, false);
