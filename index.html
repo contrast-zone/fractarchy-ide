@@ -624,7 +624,7 @@
 
                 setTimeout (() => {
                     if (slide === "left" && mode === "edit/print")
-                        document.getElementById("source").contentWindow.divEditE.dispatchEvent(new CustomEvent('resize', null));
+                        document.getElementById("source").contentWindow.setSize ();//.divEditE.dispatchEvent(new CustomEvent('resize', null));
                 }, 0);
             };
 
