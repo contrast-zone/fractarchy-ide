@@ -473,12 +473,17 @@
                 var mmarg = marg;
                 var onlyleft = false;
                 var onlyright = false;
+                
+                s.blur();
+                t.blur();
 
                 if (document.getElementById("svglcrophalf").style.display === "inline") {
+                //if (slide === "left") {
                     onlyleft = true;
                     marg = 0;
                     
                 } else if (document.getElementById("svgrcrophalf").style.display === "inline") {
+                //} else if (slide = "right") {
                     onlyright = true;
                     marg = 0;
                 }
