@@ -453,7 +453,7 @@
                     }
                 }
                 */
-                if (window.innerWidth < window.innerHeight && slide === "both") {
+                if (window.innerWidth < window.innerHeight * minRatio && slide === "both") {
                     slide = "right";
                 }
                 
@@ -800,7 +800,7 @@
 
             document.getElementById("btnlslide").addEventListener('click', () => {
                 setTimeout(() => {
-                    if (window.innerWidth < window.innerHeight) {
+                    if (window.innerWidth < window.innerHeight * minRatio) {
                         slide = "right";
 
                     } else {
@@ -813,12 +813,12 @@
                     }
                     
                     setSize();
-                }, 250);
+                }, 100);
             }, false);
             
             document.getElementById("btnrslide").addEventListener('click', () => {
                 setTimeout(() => {
-                    if (window.innerWidth < window.innerHeight) {
+                    if (window.innerWidth < window.innerHeight * minRatio) {
                         slide = "left";
 
                     } else {
@@ -831,7 +831,7 @@
                     }
                     
                     setSize();
-                }, 250);
+                }, 100);
             }, false);
 
             document.getElementById("btnlhlp").addEventListener('click', () => {showHelp ("dark");});
@@ -1076,6 +1076,7 @@
                 }
             };
             
+            var minRatio = 1.3;
             var currentNode;
             var srcloaded, tgtloaded;
             var nodeTree;
@@ -1138,7 +1139,7 @@
                 document.getElementById("target").style.backgroundColor = "gray";
             });
             
-            if (window.innerWidth < window.innerHeight) {
+            if (window.innerWidth < window.innerHeight * minRatio) {
                 slide = "right";
             } else {
                 slide = "both";
