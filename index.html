@@ -483,7 +483,7 @@
                 var onlyleft = false;
                 var onlyright = false;
                 
-                s.style.display = "inline";
+                s.style.visibility = "visible";
                 if (slide === "left") {
 //                    s.style.display = "inline";
 
@@ -496,7 +496,8 @@
 
                 } else if (slide === "right") {
                     if (mode === "edit/print") {
-                        s.style.display = "none";
+//                        s.style.display = "none";
+                        s.style.visibility = "hidden";
                     }
 
                     onlyright = true;
