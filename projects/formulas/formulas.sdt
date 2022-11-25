@@ -22,9 +22,9 @@
             Elementarni naboj 
             (
                 html
-                "<h1 align=\"center\">   "
-                "    `e_0=1.6*10^-19 (C)`"
-                "</h1>                   "
+                "<div align=\"center\" style=\"font-size: 50px\">"
+                "    `e_0=1.6*10^-19 (C)`                        "
+                "</div>                                          "
             )
             (
                 hruler 
@@ -32,9 +32,9 @@
             Količina nekog naboja 
             (
                 html
-                "<h1 align=\"center\">"
-                "    `Q = n * e_0 (C)`"
-                "</h1>                "
+                "<div align=\"center\" style=\"font-size: 50px\">"
+                "    `Q = n * e_0 (C)`                           "
+                "</div>                                          "
             )
             (
                 hruler 
@@ -69,9 +69,9 @@
                     označava slovom D ili `sigma` 
                     (
                         html
-                        "<h1 align=\"center\">            "
-                        "    `D = sigma = Q / S [C / m^2]`"
-                        "</h1>                            "
+                        "<div align=\"center\" style=\"font-size: 50px\">"
+                        "    `D = sigma = Q / S [C / m^2]`               "
+                        "</div>                                          "
                     )
                     (
                         hruler 
@@ -106,9 +106,9 @@
                     Električni potencijal se označava sa `varphi` 
                     (
                         html
-                        "<h1 align=\"center\">             "
-                        "    `varphi = (Delta W) / Q_0 [V]`"
-                        "</h1>                             "
+                        "<div align=\"center\" style=\"font-size: 50px\">"
+                        "    `varphi = (Delta W) / Q_0 [V]`              "
+                        "</div>                                          "
                     )
                     (
                         hruler 
@@ -144,9 +144,9 @@
                     dviju ekvipotencijalnih ploha 
                     (
                         html
-                        "<h1 align=\"center\">              "
-                        "    `U_12 = varphi_1 - varphi_2[V]`"
-                        "</h1>                              "
+                        "<div align=\"center\" style=\"font-size: 50px\">"
+                        "    `U_12 = varphi_1 - varphi_2[V]`             "
+                        "</div>                                          "
                     )
                     (
                         hruler 
@@ -180,9 +180,9 @@
                     )
                     (
                         html
-                        "<h1 align=\"center\">      "
-                        "    `I = Q / t [C / s = A]`"
-                        "</h1>                      "
+                        "<div align=\"center\" style=\"font-size: 50px\">"
+                        "    `I = Q / t [C / s = A]`                     "
+                        "</div>                                          "
                     )
                     (
                         hruler 
@@ -216,9 +216,9 @@
                     )
                     (
                         html
-                        "<h1 align=\"center\">    "
-                        "    `J = I / S [A / m^2]`"
-                        "</h1>                    "
+                        "<div align=\"center\" style=\"font-size: 50px\">"
+                        "    `J = I / S [A / m^2]`                       "
+                        "</div>                                          "
                     )
                     (
                         hruler 
@@ -252,9 +252,9 @@
                     )
                     (
                         html
-                        "<h1 align=\"center\">        "
-                        "    `R = rho * l / S [Omega]`"
-                        "</h1>                        "
+                        "<div align=\"center\" style=\"font-size: 50px\">"
+                        "    `R = rho * l / S [Omega]`                   "
+                        "</div>                                          "
                     )
                     (
                         hruler 
@@ -288,9 +288,9 @@
                     )
                     (
                         html
-                        "<h1 align=\"center\">              "
-                        "    `G = 1 / R [1S = 1 / (1Omega)]`"
-                        "</h1>                              "
+                        "<div align=\"center\" style=\"font-size: 50px\">"
+                        "    `G = 1 / R [1S = 1 / (1Omega)]`             "
+                        "</div>                                          "
                     )
                     (
                         hruler 
@@ -324,45 +324,45 @@
                     )
                     (
                         html
-                        "<h1 align=\"center\">                       "
-                        "    `R_t = R_h (1 + alpha * Delta vartheta)`"
-                        "</h1>                                       "
+                        "<div align=\"center\" style=\"font-size: 30px\">"
+                        "    `R_t = R_h (1 + alpha * Delta vartheta)`    "
+                        "</div>                                          "
                     )
                     (
                         hruler 
                     )
                     (
                         html
-                        "<h1 align=\"center\">                         "
-                        "    `Delta vartheta = vartheta_2 - vartheta_1`"
-                        "</h1>                                         "
+                        "<div align=\"center\" style=\"font-size: 30px\">"
+                        "    `Delta vartheta = vartheta_2 - vartheta_1`  "
+                        "</div>                                          "
                     )
                     (
                         hruler 
                     )
                     (
                         html
-                        "<h1 align=\"center\">    "
-                        "    `Delta R = R_t - R_h`"
-                        "</h1>                    "
+                        "<div align=\"center\" style=\"font-size: 30px\">"
+                        "    `Delta R = R_t - R_h`                       "
+                        "</div>                                          "
                     )
                     (
                         hruler 
                     )
                     (
                         html
-                        "<h1 align=\"center\">                       "
-                        "    `Delta R = R_h * alpha * Delta vartheta`"
-                        "</h1>                                       "
+                        "<div align=\"center\" style=\"font-size: 30px\">"
+                        "    `Delta R = R_h * alpha * Delta vartheta`    "
+                        "</div>                                          "
                     )
                     (
                         hruler 
                     )
                     (
                         html
-                        "<h1 align=\"center\">                                                         "
+                        "<div align=\"center\" style=\"font-size: 30px\">                              "
                         "    `Delta vartheta = (Delta R) / (R_h * alpha) = (R_t - R_h) / (R_h * alpha)`"
-                        "</h1>                                                                         "
+                        "</div>                                                                        "
                     )
                     (
                         hruler 
@@ -396,9 +396,9 @@
                     )
                     (
                         html
-                        "<h1 align=\"center\">          "
-                        "    `I = U / R [V / Omega = A]`"
-                        "</h1>                          "
+                        "<div align=\"center\" style=\"font-size: 50px\">"
+                        "    `I = U / R [V / Omega = A]`                 "
+                        "</div>                                          "
                     )
                     (
                         hruler 
