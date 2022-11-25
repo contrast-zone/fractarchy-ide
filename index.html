@@ -778,7 +778,9 @@
             }, false);
 
             document.getElementById("btnlslide").addEventListener('click', () => {
-                document.getElementById("source").blur();
+                document.getElementById("source").setFocus();
+                setSize();
+
                 if (window.innerWidth < window.innerHeight) {
                     //document.getElementById("svglcropfull").style.display = "none";
                     //document.getElementById("svglcrophalf").style.display = "inline";
@@ -804,7 +806,9 @@
             }, false);
             
             document.getElementById("btnrslide").addEventListener('click', () => {
-                document.getElementById("target").blur();
+                document.getElementById("target").setFocus();
+                setSize();
+
                 if (window.innerWidth < window.innerHeight) {
                     //document.getElementById("svglcropfull").style.display = "none";
                     //document.getElementById("svglcrophalf").style.display = "inline";
