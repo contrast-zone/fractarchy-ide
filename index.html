@@ -778,7 +778,7 @@
             }, false);
 
             document.getElementById("btnlslide").addEventListener('click', () => {
-                document.activeElement.blur ();
+                document.getElementById("source").activeElement.blur ();
                 setSize();
 
                 if (window.innerWidth < window.innerHeight) {
@@ -806,9 +806,6 @@
             }, false);
             
             document.getElementById("btnrslide").addEventListener('click', () => {
-                document.activeElement.blur ();
-                setSize();
-
                 if (window.innerWidth < window.innerHeight) {
                     //document.getElementById("svglcropfull").style.display = "none";
                     //document.getElementById("svglcrophalf").style.display = "inline";
