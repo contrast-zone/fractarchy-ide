@@ -49,7 +49,7 @@ function round (x, y, r1, r2, s) {
     return polygon;
 }
 
-function fractalOvals (ctx, ratio, xx, yy, ww, hh, rr, squashX, squashY, drawCircle, fill1, stroke1, str1, shadowr, shadowColor) {
+function fractalOvals (ctx, ratio, xx, yy, ww, hh, rr, squashX, squashY, drawCircle, fill1, stroke1, str1, shadowr, shadowColor, circleSize) {
     var pixelPrecision = 1 / Math.pow (2, 1); /* set it to less and you are doomed */
     var qang = 0.025 * Math.PI;
 
@@ -273,9 +273,14 @@ function fractalOvals (ctx, ratio, xx, yy, ww, hh, rr, squashX, squashY, drawCir
                     }
                 }
                 
+                var ra = r0 * circleSize;
+                var xa = x0 + (r0 - ra) * Math.cos (angle - Math.PI / 2)
+                var ya = y0 + (r0 - ra) * Math.sin (angle - Math.PI / 2)
                 //var cond = selectedCursor? (cursor === selectedCursor) : (mouse && Math.sqrt(Math.pow(mouse.x / squashX - x0, 2) + Math.pow(mouse.y / squashY - y0, 2)) <= r0);
+
                 var cond1 = (rec === 2)? ((selectedCursor)? (cursor === selectedCursor) : (mouse && Math.sqrt(Math.pow(mouse.x / squashX - x1, 2) + Math.pow(mouse.y / squashY - y1, 2)) <= r1)) : false;
-                var cond2 = (rec === 1)? ((selectedCursor)? (cursor === selectedCursor) : (mouse && Math.sqrt(Math.pow(mouse.x / squashX - x0, 2) + Math.pow(mouse.y / squashY - y0, 2)) <= r0)) : false;
+                //var cond2 = (rec === 1)? ((selectedCursor)? (cursor === selectedCursor) : (mouse && Math.sqrt(Math.pow(mouse.x / squashX - x0, 2) + Math.pow(mouse.y / squashY - y0, 2)) <= r0)) : false;
+                var cond2 = (rec === 1)? ((selectedCursor)? (cursor === selectedCursor) : (mouse && Math.sqrt(Math.pow(mouse.x / squashX - xa, 2) + Math.pow(mouse.y / squashY - ya, 2)) <= ra)) : false;
                 var cond = cond1 || cond2;
                 
                 if (cursor) {
@@ -457,7 +462,7 @@ function fractalOvals (ctx, ratio, xx, yy, ww, hh, rr, squashX, squashY, drawCir
                     };
                     
                     if (ret) ret.parent = pass;
-                                        
+
                     return pass;
                 }
             }
@@ -1061,8 +1066,13 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
             if (mouseDown === 1) {
                 if (3 < Math.sqrt(Math.pow(mouse.x - dragX, 2) + Math.pow(mouse.y - dragY, 2))) {
                     setupSelect(preSelect);
-                    
-                    if (!animating && select && Math.sqrt((mouse.x - x0) / squashX * (mouse.x - x0) / squashX + (mouse.y - y0) / squashY * (mouse.y - y0) / squashY) < r0) {
+        
+                    var angle = Math.PI;
+                    var ra = r0 * circleSize;
+                    var xa = x0 + (r0 - ra) * Math.cos (angle - Math.PI / 2)
+                    var ya = y0 + (r0 - ra) * Math.sin (angle - Math.PI / 2)
+                    //if (!animating && select && Math.sqrt((mouse.x - x0) / squashX * (mouse.x - x0) / squashX + (mouse.y - y0) / squashY * (mouse.y - y0) / squashY) < r0) {
+                    if (!animating && select && Math.sqrt((mouse.x - xa) / squashX * (mouse.x - xa) / squashX + (mouse.y - ya) / squashY * (mouse.y - ya) / squashY) < ra) {
                         panning = true;
                         
                         oldCenterX = select.cursor.centerX;
@@ -1103,11 +1113,19 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
 
             var isOnParent = select.parent;
             while (isOnParent) {
-                if (isOnParent.smallR - 1 > Math.sqrt (Math.pow (isOnParent.smallX - mouse.x / squashX, 2) + Math.pow (isOnParent.smallY - mouse.y / squashY, 2)))
+                if (isOnParent.data.currRA - 1 > Math.sqrt (Math.pow (isOnParent.data.currXA - mouse.x / squashX, 2) + Math.pow (isOnParent.data.currYA - mouse.y / squashY, 2)))
                     break;
                     
                 isOnParent = isOnParent.parent
             }
+            
+            //var isOnParent = select.parent;
+            //while (isOnParent) {
+            //    if (isOnParent.smallR - 1 > Math.sqrt (Math.pow (isOnParent.smallX - mouse.x / squashX, 2) + Math.pow (isOnParent.smallY - mouse.y / squashY, 2)))
+            //        break;
+            //        
+            //    isOnParent = isOnParent.parent
+            //}
             
             var minR, maxR, mouseDistance;
             
@@ -1556,7 +1574,12 @@ select.cursor.angle = Math.PI;
                 var x0 = Math.floor (x1 * squashX);
                 var y0 = Math.floor ((y1 - (r1 - r0)) * squashY);
                 
-                if (!noPan && Math.sqrt ((dragX - x0) / squashX * (dragX - x0) / squashX + (dragY - y0) / squashY * (dragY - y0) / squashY) >= r0) {
+                var angle = Math.PI;
+                var ra = r0 * circleSize;
+                var xa = x0 + (r0 - ra) * Math.cos (angle - Math.PI / 2)
+                var ya = y0 + (r0 - ra) * Math.sin (angle - Math.PI / 2)
+                //if (!noPan && Math.sqrt ((dragX - x0) / squashX * (dragX - x0) / squashX + (dragY - y0) / squashY * (dragY - y0) / squashY) >= r0) {
+                if (!noPan && Math.sqrt ((dragX - xa) / squashX * (dragX - xa) / squashX + (dragY - ya) / squashY * (dragY - ya) / squashY) >= ra) {
                     if (panning) {
                         panning = false;
                     }
@@ -1816,7 +1839,7 @@ select.cursor.angle = Math.PI;
         alignX = squashX * rr * circleSize * 1 / 2.4 / scale;// / window.devicePixelRatio;
         alignY = squashY * rr * circleSize * 1 / 2.4 / scale;// / window.devicePixelRatio;
     
-        n = fractalOvals (ctx, ratio, xx, yy, ww, hh, rr, squashX, squashY, drawCircle, fill1, stroke1, back1, shadowRadius, shadowColor);
+        n = fractalOvals (ctx, ratio, xx, yy, ww, hh, rr, squashX, squashY, drawCircle, fill1, stroke1, back1, shadowRadius, shadowColor, circleSize);
         
         //minRadius = rr * squashX * squashY * Math.pow((1 - ratio), recCount) * ratio * window.devicePixelRatio;
         minRadius = Math.floor(rr / ratio * Math.pow ((1 - ratio), recCount) * window.devicePixelRatio);
@@ -1939,7 +1962,7 @@ select.cursor.angle = Math.PI;
     
     var device = "mouse";
 
-    var n = fractalOvals (ctx, ratio, xx, yy, ww, hh, rr, squashX, squashY, drawCircle, fill1, stroke1, back1, shadowRadius, shadowColor);
+    var n = fractalOvals (ctx, ratio, xx, yy, ww, hh, rr, squashX, squashY, drawCircle, fill1, stroke1, back1, shadowRadius, shadowColor, circleSize);
     var movingNode = null;
 
     var clipPath = document.createElementNS(svgns, 'clipPath');
