@@ -622,6 +622,9 @@
                 var hh = window.innerHeight / hlpl.clientHeight * 0.85;
                 hlpl.style.transform = "scale(" + hh + ")";
                 hlpd.style.transform = "scale(" + hh + ")";
+
+if (slide === "left" && mode === "edit/print")
+document.getElementById("source").contentWindow.divEditE.dispatchEvent(new CustomEvent('resize', null));
             };
 
             var toggleFullScreen = function () {
