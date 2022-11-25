@@ -473,9 +473,6 @@
                 var mmarg = marg;
                 var onlyleft = false;
                 var onlyright = false;
-                
-                s.blur();
-                t.blur();
 
                 if (document.getElementById("svglcrophalf").style.display === "inline") {
                 //if (slide === "left") {
@@ -754,6 +751,7 @@
             }, false);
 
             document.getElementById("btnlslide").addEventListener('click', () => {
+                document.getElementById("source").blur();
                 if (window.innerWidth < window.innerHeight) {
                     document.getElementById("svglcropfull").style.display = "inline";
                     document.getElementById("svglcrophalf").style.display = "none";
@@ -778,6 +776,7 @@
             }, false);
             
             document.getElementById("btnrslide").addEventListener('click', () => {
+                document.getElementById("target").blur();
                 if (window.innerWidth < window.innerHeight) {
                     document.getElementById("svglcropfull").style.display = "none";
                     document.getElementById("svglcrophalf").style.display = "inline";
