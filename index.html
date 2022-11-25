@@ -614,7 +614,6 @@
 
                     rf.style.top = marg + "px";
                     rf.style.left = t.offsetLeft + Math.round(t.offsetWidth / 2 - btns * 3 / 2) + "px";
-//                }, 0);
                 });
                 
                 hlpl.style.transform = "scale(" + 1 + ")";
@@ -623,8 +622,10 @@
                 hlpl.style.transform = "scale(" + hh + ")";
                 hlpd.style.transform = "scale(" + hh + ")";
 
-if (slide === "left" && mode === "edit/print")
-document.getElementById("source").contentWindow.divEditE.dispatchEvent(new CustomEvent('resize', null));
+                setTimeout (() => {
+                    if (slide === "left" && mode === "edit/print")
+                        document.getElementById("source").contentWindow.divEditE.dispatchEvent(new CustomEvent('resize', null));
+                }, 0);
             };
 
             var toggleFullScreen = function () {
