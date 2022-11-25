@@ -495,11 +495,11 @@
                     document.getElementById("svgrcrophalf").style.display = "inline";
 
                 } else if (slide === "right") {
-//                    if (mode === "edit/print") {
+                    if (mode === "edit/print") {
+                        t.focus();
 //                        s.style.display = "none";
 //                        s.style.visibility = "hidden";
-//                    }
-                    s.blur();
+                    }
 
                     onlyright = true;
                     marg = 0;
