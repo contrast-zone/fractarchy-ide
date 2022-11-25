@@ -778,7 +778,7 @@
             }, false);
 
             document.getElementById("btnlslide").addEventListener('click', () => {
-                document.getElementById("source").setFocus();
+                document.activeElement.blur ();
                 setSize();
 
                 if (window.innerWidth < window.innerHeight) {
@@ -806,7 +806,7 @@
             }, false);
             
             document.getElementById("btnrslide").addEventListener('click', () => {
-                document.getElementById("target").setFocus();
+                document.activeElement.blur ();
                 setSize();
 
                 if (window.innerWidth < window.innerHeight) {
