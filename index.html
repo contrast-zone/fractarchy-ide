@@ -438,7 +438,7 @@
                     //document
                     //    .querySelector("meta[name=viewport]")
                     //    .setAttribute('content', 'width=device-width', 'initial-scale=' + sc, 'maximum-scale=' + sc, 'minimum-scale=' + sc, 'user-scalable=no');
-
+                /*
                 if (window.innerWidth < window.innerHeight) {
                     if (document.getElementById("svglcropfull").style.display === document.getElementById("svgrcropfull").style.display) {
                         document.getElementById("svglcropfull").style.display = "inline";
@@ -446,6 +446,10 @@
                         document.getElementById("svgrcropfull").style.display = "none";
                         document.getElementById("svgrcrophalf").style.display = "inline";
                     }
+                }
+                */
+                if (window.innerWidth < window.innerHeight && slide === "both") {
+                    slide = "right";
                 }
                 
                 var s = document.getElementById("source");
@@ -473,18 +477,41 @@
                 var mmarg = marg;
                 var onlyleft = false;
                 var onlyright = false;
+                
+                if (slide === "left") {
+                    onlyleft = true;
+                    marg = 0;
+                    document.getElementById("svglcropfull").style.display = "none";
+                    document.getElementById("svglcrophalf").style.display = "inline";
+                    document.getElementById("svgrcropfull").style.display = "none";
+                    document.getElementById("svgrcrophalf").style.display = "inline";
 
-                if (document.getElementById("svglcrophalf").style.display === "inline") {
+                } else if (slide === "right") {
+                    onlyright = true;
+                    marg = 0;
+                    document.getElementById("svglcropfull").style.display = "none";
+                    document.getElementById("svglcrophalf").style.display = "inline";
+                    document.getElementById("svgrcropfull").style.display = "none";
+                    document.getElementById("svgrcrophalf").style.display = "inline";
+
+                } else {
+                    document.getElementById("svglcropfull").style.display = "inline";
+                    document.getElementById("svglcrophalf").style.display = "none";
+                    document.getElementById("svgrcropfull").style.display = "inline";
+                    document.getElementById("svgrcrophalf").style.display = "none";
+                }
+                /*
+                if (slide === "left" || document.getElementById("svglcrophalf").style.display === "inline") {
                 //if (slide === "left") {
                     onlyleft = true;
                     marg = 0;
                     
-                } else if (document.getElementById("svgrcrophalf").style.display === "inline") {
+                } else if (slide = "right" || document.getElementById("svgrcrophalf").style.display === "inline") {
                 //} else if (slide = "right") {
                     onlyright = true;
                     marg = 0;
                 }
-
+                */
                 lh.style.visibility = "visible";
                 rh.style.visibility = "visible";
                 if (!onlyright)
@@ -753,21 +780,21 @@
             document.getElementById("btnlslide").addEventListener('click', () => {
                 document.getElementById("source").blur();
                 if (window.innerWidth < window.innerHeight) {
-                    document.getElementById("svglcropfull").style.display = "inline";
-                    document.getElementById("svglcrophalf").style.display = "none";
-                    document.getElementById("svgrcropfull").style.display = "none";
-                    document.getElementById("svgrcrophalf").style.display = "inline";
+                    //document.getElementById("svglcropfull").style.display = "none";
+                    //document.getElementById("svglcrophalf").style.display = "inline";
+                    //document.getElementById("svgrcropfull").style.display = "none";
+                    //document.getElementById("svgrcrophalf").style.display = "inline";
                     slide = "right";
 
                 } else {
                     if (document.getElementById("svglcropfull").style.display === "none") {
-                        document.getElementById("svglcropfull").style.display = "inline";
-                        document.getElementById("svglcrophalf").style.display = "none";
+                        //document.getElementById("svglcropfull").style.display = "inline";
+                        //document.getElementById("svglcrophalf").style.display = "none";
                         slide = "both";
                         
                     } else {
-                        document.getElementById("svglcropfull").style.display = "none";
-                        document.getElementById("svglcrophalf").style.display = "inline";
+                        //document.getElementById("svglcropfull").style.display = "none";
+                        //document.getElementById("svglcrophalf").style.display = "inline";
                         slide = "left";
                     }
                 }
@@ -778,21 +805,21 @@
             document.getElementById("btnrslide").addEventListener('click', () => {
                 document.getElementById("target").blur();
                 if (window.innerWidth < window.innerHeight) {
-                    document.getElementById("svglcropfull").style.display = "none";
-                    document.getElementById("svglcrophalf").style.display = "inline";
-                    document.getElementById("svgrcropfull").style.display = "inline";
-                    document.getElementById("svgrcrophalf").style.display = "none";
+                    //document.getElementById("svglcropfull").style.display = "none";
+                    //document.getElementById("svglcrophalf").style.display = "inline";
+                    //document.getElementById("svgrcropfull").style.display = "none";
+                    //document.getElementById("svgrcrophalf").style.display = "inline";
                     slide = "left";
 
                 } else {
                     if (document.getElementById("svgrcropfull").style.display === "none") {
-                        document.getElementById("svgrcropfull").style.display = "inline";
-                        document.getElementById("svgrcrophalf").style.display = "none";
+                        //document.getElementById("svgrcropfull").style.display = "inline";
+                        //document.getElementById("svgrcrophalf").style.display = "none";
                         slide = "both";
                         
                     } else {
-                        document.getElementById("svgrcropfull").style.display = "none";
-                        document.getElementById("svgrcrophalf").style.display = "inline";
+                        //document.getElementById("svgrcropfull").style.display = "none";
+                        //document.getElementById("svgrcrophalf").style.display = "inline";
                         slide = "right";
                     }
                 }
@@ -1103,6 +1130,12 @@
                 document.getElementById("target").style.backgroundColor = "gray";
             });
             
+            if (window.innerWidth < window.innerHeight) {
+                slide = "right";
+            } else {
+                slide = "both";
+            }
+
             detectServer ((responseText) => {server = responseText});
         </script>
     </body>
