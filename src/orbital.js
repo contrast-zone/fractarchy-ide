@@ -1,54 +1,3 @@
-function Polygon() {
-    var pointList = [];
-
-    this.node = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
-
-    function build(arg) {
-        var res = [];
-        for (var i = 0, l = arg.length; i < l; i++) {
-            res.push(arg[i].join(','));
-        }
-        return res.join(' ');
-    }
-
-    this.attribute = function (key, val) {
-        if (val === undefined) return this.node.getAttribute(key);
-        this.node.setAttribute(key, val);
-    };
-
-    this.getPoint = function (i) {
-        return pointList[i]
-    };
-
-    this.setPoint = function (i, x, y) {
-        pointList[i] = [x, y];
-        this.attribute('points', build(pointList));
-    };
-
-    this.points = function (arg) {
-        for (var i = 0, l = arg.length; i < l; i += 2) {
-            pointList.push([arg[i], arg[i + 1]]);
-        }
-        this.attribute('points', build(pointList));
-    };
-
-    this.points.apply(this, arguments);
-}
-
-function round (x, y, r1, r2, s) {
-    var polygon = new Polygon (0, 0, 0, 0);
-
-    var p = [];
-    for (var i = 0.5; i < s; i++) {
-        p.push (x + Math.cos (2 * Math.PI / s * i) * r1);
-        p.push (y + Math.sin (2 * Math.PI / s * i) * r2);
-    }
-    polygon.points (p);
-    polygon.attribute('style', 'fill:red');
-    
-    return polygon;
-}
-
 function fractalOvals (ctx, ratio, xx, yy, ww, hh, rr, squashX, squashY, drawCircle, fill1, stroke1, str1, shadowr, shadowColor, circleSize) {
     var pixelPrecision = 1 / Math.pow (2, 1); /* set it to less and you are doomed */
     var qang = 0.025 * Math.PI;
@@ -623,6 +572,56 @@ function Orbital (divContainer, data, quant, scale, ovalFillColor, ovalStrokeCol
 
     function drawCircle (data, angle, parentR, x, y, r, fill, stroke, cursor, renderHint, level, shadow) {
 
+        function Polygon() {
+            var pointList = [];
+
+            this.node = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+
+            function build(arg) {
+                var res = [];
+                for (var i = 0, l = arg.length; i < l; i++) {
+                    res.push(arg[i].join(','));
+                }
+                return res.join(' ');
+            }
+
+            this.attribute = function (key, val) {
+                if (val === undefined) return this.node.getAttribute(key);
+                this.node.setAttribute(key, val);
+            };
+
+            this.getPoint = function (i) {
+                return pointList[i]
+            };
+
+            this.setPoint = function (i, x, y) {
+                pointList[i] = [x, y];
+                this.attribute('points', build(pointList));
+            };
+
+            this.points = function (arg) {
+                for (var i = 0, l = arg.length; i < l; i += 2) {
+                    pointList.push([arg[i], arg[i + 1]]);
+                }
+                this.attribute('points', build(pointList));
+            };
+
+            this.points.apply(this, arguments);
+        }
+
+        function round (x, y, r1, r2, s) {
+            var polygon = new Polygon (0, 0, 0, 0);
+
+            var p = [];
+            for (var i = 0.5; i < s; i++) {
+                p.push (x + Math.cos (2 * Math.PI / s * i) * r1);
+                p.push (y + Math.sin (2 * Math.PI / s * i) * r2);
+            }
+            polygon.points (p);
+            polygon.attribute('style', 'fill:red');
+            
+            return polygon;
+        }
     //////////////////////
     var diff;
     if (renderHint === "1") diff = 1; else diff = 1;
@@ -1820,10 +1819,12 @@ select.cursor.angle = Math.PI;
             }
         }
         
+        rr = rr * uiscale;
+        
         x1 = Math.cos(orient + Math.PI / 2) * rr * shiftY + (ww) / squashX / 2;
         y1 = Math.sin(orient + Math.PI / 2) * rr * shiftY + (hh) / squashY / 2 /* + rr * (uiscale - 1) / 4*/; // touch it and you're doomed
         
-        rr = rr * uiscale;
+        //rr = rr * uiscale;
         r1 = rr;
 
         xx = x1;
@@ -1923,11 +1924,12 @@ select.cursor.angle = Math.PI;
     
     function rescale (m) {
         magn = m;
-        if (m === 1)
+        if (m === 1) {
             document.body.style.transform = "";
-        
-        else
-            document.body.style.transform = "scale(" + magn + ") translateY(" + transformY() + "px)";
+
+        } else {
+             document.body.style.transform = "scale(" + magn + ") translateY(" + transformY() + "px)";
+        }
     }
     
     function busy () {
@@ -1941,7 +1943,7 @@ select.cursor.angle = Math.PI;
     }
     
     var onStop;
-    
+    var receiveMouseEvents = true;
     var magn = 1;
     var oldAng, newAng, oldPan, newPan;
     var renderData;
@@ -1976,50 +1978,55 @@ select.cursor.angle = Math.PI;
     
     function transformY () {
         var ret = Math.floor ((hh / 2 - shadowr) * (1 - 1 / magn));
-        
         if (orient !== 0) {
             ret = - ret;
         }
-
+        
         return ret;
     }
 
     function setupMouseEvents () {
         window.addEventListener('mousemove', function (evt) {
-            device = "mouse";
-            if (evt.detail.W !== undefined) {
-                evt.pageX = evt.detail.X;
-                evt.pageY = evt.detail.Y;
-                evt.which = evt.detail.W;
-                noPan = true;
-            } else {
-                noPan = false;
+            if (receiveMouseEvents) {
+                device = "mouse";
+                if (evt.detail.W !== undefined) {
+                    evt.pageX = evt.detail.X;
+                    evt.pageY = evt.detail.Y;
+                    evt.which = evt.detail.W;
+                    noPan = true;
+                } else {
+                    noPan = false;
+                }
+                mousemove (evt)
             }
-            mousemove (evt)
         }, false);
         window.addEventListener('mousedown',  function (evt) {
-            device = "mouse";
-            if (evt.detail.W !== undefined) {
-                evt.pageX = evt.detail.X;
-                evt.pageY = evt.detail.Y;
-                evt.which = evt.detail.W;
-                noPan = true;
-            } else {
-                noPan = false;
+            if (receiveMouseEvents) {
+                device = "mouse";
+                if (evt.detail.W !== undefined) {
+                    evt.pageX = evt.detail.X;
+                    evt.pageY = evt.detail.Y;
+                    evt.which = evt.detail.W;
+                    noPan = true;
+                } else {
+                    noPan = false;
+                }
+                mousedown (evt)
             }
-            mousedown (evt)
         }, false);
         window.addEventListener('mouseup',  function (evt) {
-            device = "mouse";
-            if (evt.detail.W !== undefined) {
-                evt.pageX = evt.detail.X;
-                evt.pageY = evt.detail.Y;
-                evt.which = evt.detail.W;
-                noPan = true;
-            } else {
-                noPan = false;
+            if (receiveMouseEvents) {
+                device = "mouse";
+                if (evt.detail.W !== undefined) {
+                    evt.pageX = evt.detail.X;
+                    evt.pageY = evt.detail.Y;
+                    evt.which = evt.detail.W;
+                    noPan = true;
+                } else {
+                    noPan = false;
+                }
+                mouseup (evt)
             }
-            mouseup (evt)
         }, false);
     }
 
@@ -2042,23 +2049,25 @@ select.cursor.angle = Math.PI;
         }
 
         window.addEventListener("touchstart", function (evt) {
-            device = "touch";
+            if (receiveMouseEvents) {
+                device = "touch";
 
-            if (evt.detail.CT !== undefined) {
-                var touches = evt.detail.CT;
-                noPan = true;
+                if (evt.detail.CT !== undefined) {
+                    var touches = evt.detail.CT;
+                    noPan = true;
+                    
+                } else {
+                    var touches = evt.changedTouches;
+                    noPan = false;
+                }
                 
-            } else {
-                var touches = evt.changedTouches;
-                noPan = false;
-            }
-            
-            for (var i = 0; i < touches.length; i++) {
-                ongoingTouches.push(copyTouch(touches[i]));
-                var idx = ongoingTouchIndexById(touches[i].identifier);
-                
-                if (idx >= 0) {
-                    mousedown (ongoingTouches[idx]);
+                for (var i = 0; i < touches.length; i++) {
+                    ongoingTouches.push(copyTouch(touches[i]));
+                    var idx = ongoingTouchIndexById(touches[i].identifier);
+                    
+                    if (idx >= 0) {
+                        mousedown (ongoingTouches[idx]);
+                    }
                 }
             }
 
@@ -2068,55 +2077,57 @@ select.cursor.angle = Math.PI;
         var scaleD0 = 0;
         var curMagn = 1;
         window.addEventListener("touchmove", function (evt) {
-            device = "touch";
+            if (receiveMouseEvents) {
+                device = "touch";
 
-            if (evt.detail.CT !== undefined) {
-                var touches = evt.detail.CT;
-                noPan = true;
-                
-            } else {
-                var touches = evt.changedTouches;
-                noPan = false;
-            }
-            
-            for (var i = 0; i < touches.length; i++) {
-                var idx = ongoingTouchIndexById(touches[i].identifier);
-
-                if (idx >= 0) {
-                    ongoingTouches[idx].pageX = touches[i].pageX;
-                    ongoingTouches[idx].pageY = touches[i].pageY;
-                }
-            }
-
-            var tchs = ongoingTouches;
-
-            if (tchs.length === 1) {
-                mousemove (ongoingTouches[idx]);
-            
-            } else if (tchs.length === 2) {
-                if (scaleD0 === 0) {
-                    var tx = tchs[0].pageX - tchs[1].pageX;
-                    var ty = tchs[0].pageY - tchs[1].pageY;
-                    scaleD0 = Math.sqrt(tx * tx + ty * ty);
-
-                } else {
-                    var tx = tchs[0].pageX - tchs[1].pageX;
-                    var ty = tchs[0].pageY - tchs[1].pageY;
-                    var scaleD1 = Math.sqrt(tx * tx + ty * ty);
-
-                    magn = curMagn * scaleD1 / scaleD0;
-
-                    var ty = (hh / 2 - shadowr) * (1 - 1 / uiscale);
-                    var magnmax = 1 * (rr - rr * shiftY + ty / squashY) / (rr) / ratio / circleSize;
+                if (evt.detail.CT !== undefined) {
+                    var touches = evt.detail.CT;
+                    noPan = true;
                     
-                    if (magn < 1)
-                        magn = 1;
+                } else {
+                    var touches = evt.changedTouches;
+                    noPan = false;
+                }
+                
+                for (var i = 0; i < touches.length; i++) {
+                    var idx = ongoingTouchIndexById(touches[i].identifier);
+
+                    if (idx >= 0) {
+                        ongoingTouches[idx].pageX = touches[i].pageX;
+                        ongoingTouches[idx].pageY = touches[i].pageY;
+                    }
+                }
+
+                var tchs = ongoingTouches;
+
+                if (tchs.length === 1) {
+                    mousemove (ongoingTouches[idx]);
+                
+                } else if (tchs.length === 2) {
+                    if (scaleD0 === 0) {
+                        var tx = tchs[0].pageX - tchs[1].pageX;
+                        var ty = tchs[0].pageY - tchs[1].pageY;
+                        scaleD0 = Math.sqrt(tx * tx + ty * ty);
+
+                    } else {
+                        var tx = tchs[0].pageX - tchs[1].pageX;
+                        var ty = tchs[0].pageY - tchs[1].pageY;
+                        var scaleD1 = Math.sqrt(tx * tx + ty * ty);
+
+                        magn = curMagn * scaleD1 / scaleD0;
+
+                        var ty = (hh / 2 - shadowr) * (1 - 1 / uiscale);
+                        var magnmax = 1 * (rr - rr * shiftY + ty / squashY) / (rr) / ratio / circleSize;
                         
-                    else if (magn > magnmax)
-                        magn = magnmax;
+                        if (magn < 1)
+                            magn = 1;
                             
-                    rescale (magn);
-                    redraw();
+                        else if (magn > magnmax)
+                            magn = magnmax;
+                                
+                        rescale (magn);
+                        redraw();
+                    }
                 }
             }
 
@@ -2124,32 +2135,34 @@ select.cursor.angle = Math.PI;
         }, false);
 
         window.addEventListener("touchcancel", function (evt) {
-            device = "touch";
+            if (receiveMouseEvents) {
+                device = "touch";
 
-            if (evt.detail.CT !== undefined) {
-                var touches = evt.detail.CT;
-                noPan = true;
-                
-            } else {
-                var touches = evt.changedTouches;
-                noPan = false;
-            }
-
-            for (var i = 0; i < touches.length; i++) {
-                var idx = ongoingTouchIndexById(touches[i].identifier);
-
-                if (idx >= 0) {
-                    ongoingTouches[idx].pageX = touches[i].pageX;
-                    ongoingTouches[idx].pageY = touches[i].pageY;
-
-                    mouseup (ongoingTouches[idx]);
-
-                    ongoingTouches.splice(idx, 1);
+                if (evt.detail.CT !== undefined) {
+                    var touches = evt.detail.CT;
+                    noPan = true;
+                    
+                } else {
+                    var touches = evt.changedTouches;
+                    noPan = false;
                 }
-            }
 
-            scaleD0 = 0;
-            curMagn = magn;
+                for (var i = 0; i < touches.length; i++) {
+                    var idx = ongoingTouchIndexById(touches[i].identifier);
+
+                    if (idx >= 0) {
+                        ongoingTouches[idx].pageX = touches[i].pageX;
+                        ongoingTouches[idx].pageY = touches[i].pageY;
+
+                        mouseup (ongoingTouches[idx]);
+
+                        ongoingTouches.splice(idx, 1);
+                    }
+                }
+
+                scaleD0 = 0;
+                curMagn = magn;
+            }
         }, false);
 
         window.addEventListener("touchend", function (evt) {
@@ -2193,8 +2206,10 @@ select.cursor.angle = Math.PI;
                 noPan = false;
             }
             
-            var ty = (hh / 2 - shadowr) * (1 - 1 / uiscale);
-            var magnmax = 1 * (rr - rr * shiftY + ty / squashY) / (rr) / ratio / circleSize;
+            var ma = rr * ratio * circleSize * squashY
+            var mb = rr * shiftY * squashY;
+            var mc = hh * (uiscale - 1) / 2;
+            var magnmax =  hh / (2 * ma - 2 * (mc - mb));
 
             magn = magn + Math.sign(event.deltaY) * Math.sign (Math.sin(orient + Math.PI / 2)) * (magnmax - 1) / 5;
 

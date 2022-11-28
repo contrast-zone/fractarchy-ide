@@ -90,6 +90,7 @@
                     window.parent.postMessage({msg: "validEdit"}, "*");
                     window.parent.frames[1].postMessage({msg: "populate", nodeTree: parsed, baseUrl: baseUrl, scrollTop: window.parent.targetScrollTop}, "*");
                 }
+                myTimeout = null;
             };
 
             document.addEventListener('selectionchange', function(e) {
@@ -100,8 +101,10 @@
             // uncomment to fix the bug: update on keypress after edit
             ed.getInput ().addEventListener("keydown", function (e) {
                 if (!firstVisit) {
-                    if (myTimeout) clearTimeout (myTimeout);
-                    myTimeout = setTimeout(myTimeoutFn, 500);
+                    if (myTimeout) {
+                        clearTimeout (myTimeout);
+                        myTimeout = setTimeout(myTimeoutFn, 500);
+                    }
                 }
             }, false);
             
@@ -228,7 +231,7 @@
                         //divEdit.style.visibility = "visible";
                         //divStat.style.visibility = "visible";
                         //divErr.style.visibility = "visible";
-                        ed.setFocus ();
+                        //ed.setFocus ();
                         
                     }, 100);
                 });

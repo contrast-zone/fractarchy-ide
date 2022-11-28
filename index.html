@@ -77,16 +77,88 @@
         <!--a id="fullscrbtn" class="btn" style="position: absolute; text-shadow: 0px 0px 10px black;" hidden>
             <i class="material-icons" style="font-size: 7em;">fullscreen</i>
         </a-->
-        <a id="btnlhlp" style="position: absolute; background-color: rgb(48,48,48); border-radius: 24px; /*filter: drop-shadow(0px 0px 5px black);*/" hidden>
+        <div id="navr" style="opacity: 1; visibility: hidden; z-index: 4000000000; position: absolute; background-color: rgb(48,48,48); right: 1px; bottom: 1px; width: 144px; height: 144px; border-radius: 72px;" hidden>
+            <a id="zoomin" style="position: absolute; border-radius: 30px; top: 48px; left: 48px; padding: 2px; border: 2px solid rgba(208,208,208, 0.7); transform: translateX(-4px) translateY(-4px)">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style=" display: block;">
+                    <title>zoom in</title>
+                    <path fill="rgb(208,208,208)" stroke-width="0px" d="M7.2 43.25 4.75 40.8l7.15-7.15H5.7v-3.4h12.05V42.3h-3.4v-6.2Zm33.6 0-7.15-7.15v6.2h-3.4V30.25H42.3v3.4h-6.2l7.15 7.15ZM5.7 17.75v-3.4h6.2L4.75 7.2 7.2 4.75l7.15 7.15V5.7h3.4v12.05Zm24.55 0V5.7h3.4v6.2l7.2-7.2 2.45 2.45-7.2 7.2h6.2v3.4Z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style=" display: none;">
+                    <title>zoom out</title>
+                    <path fill="rgb(208,208,208)" stroke-width="0px" d="M5.7 42.3V30.25h3.4v6.2l7.2-7.2 2.45 2.45-7.2 7.2h6.2v3.4Zm24.55 0v-3.4h6.2l-7.15-7.15 2.45-2.45 7.15 7.15v-6.2h3.4V42.3Zm-14-23.6L9.1 11.55v6.2H5.7V5.7h12.05v3.4h-6.2l7.15 7.15Zm15.5 0-2.45-2.45 7.15-7.15h-6.2V5.7H42.3v12.05h-3.4v-6.2Z"/>
+                </svg>
+            </a>
+            <a id="north" style="position: absolute; border-radius: 24px; top: 0px; left: 48px;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block;">
+                    <title>go north</title>
+                    <path fill="rgb(208,208,208)" stroke-width="0px" d="M22.3 44.2v-34L12.1 20.4 9.7 18 24 3.7 38.3 18l-2.4 2.4-10.2-10.2v34Z"/>
+                </svg>
+            </a>
+            <a id="west" style="position: absolute; border-radius: 24px; bottom: 48px; left: 0px;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block;">
+                    <title>go west</title>
+                    <path fill="rgb(208,208,208)" stroke-width="0px" d="M18.1 38.3 3.8 24 18.1 9.7l2.4 2.4-10.2 10.2h34v3.4h-34l10.2 10.2"/>
+                </svg>
+            </a>
+            <a id="east" style="position: absolute; border-radius: 24px; top: 48px; right: 0px;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block;">
+                    <title>go east</title>
+                    <path fill="rgb(208,208,208)" stroke-width="0px" d="m30 38.3-2.4-2.4 10.2-10.2h-34v-3.4h34L27.6 12.1 30 9.7 44.3 24Z"/>
+                </svg>
+            </a>
+            <a id="south" style="position: absolute; border-radius: 24px; bottom: 0px; right: 48px;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block;">
+                    <title>go south</title>
+                    <path fill="rgb(208,208,208)" stroke-width="0px" d="M24 44.2 9.7 29.9l2.4-2.4 10.2 10.25V3.7h3.4v34.05L35.9 27.5l2.4 2.4Z"/>
+                </svg>
+            </a>
+        </div>
+        <div id="navl" style="border: 0px solid rgba(48,48,48, 0.7); opacity: 1; visibility: hidden; z-index: 4000000000; position: absolute; background-color: rgb(208,208,208); right: 1px; bottom: 1px; width: 144px; height: 144px; border-radius: 72px;" hidden>
+            <a id="zoomin" style="position: absolute; border-radius: 30px; top: 48px; left: 48px; padding: 2px; border: 2px solid rgba(48,48,48, 0.7); transform: translateX(-4px) translateY(-4px)">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block;">
+                    <title>zoom in</title>
+                    <path fill="rgb(48,48,48)" stroke-width="0px" d="M7.2 43.25 4.75 40.8l7.15-7.15H5.7v-3.4h12.05V42.3h-3.4v-6.2Zm33.6 0-7.15-7.15v6.2h-3.4V30.25H42.3v3.4h-6.2l7.15 7.15ZM5.7 17.75v-3.4h6.2L4.75 7.2 7.2 4.75l7.15 7.15V5.7h3.4v12.05Zm24.55 0V5.7h3.4v6.2l7.2-7.2 2.45 2.45-7.2 7.2h6.2v3.4Z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: none;">
+                    <title>zoom out</title>
+                    <path fill="rgb(48,48,48)" stroke-width="0px" d="M5.7 42.3V30.25h3.4v6.2l7.2-7.2 2.45 2.45-7.2 7.2h6.2v3.4Zm24.55 0v-3.4h6.2l-7.15-7.15 2.45-2.45 7.15 7.15v-6.2h3.4V42.3Zm-14-23.6L9.1 11.55v6.2H5.7V5.7h12.05v3.4h-6.2l7.15 7.15Zm15.5 0-2.45-2.45 7.15-7.15h-6.2V5.7H42.3v12.05h-3.4v-6.2Z"/>
+                </svg>
+            </a>
+            <a id="north" style="position: absolute; border-radius: 24px; top: 0px; left: 48px;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block;">
+                    <title>go north</title>
+                    <path fill="rgb(48,48,48)" stroke-width="0px" d="M22.3 44.2v-34L12.1 20.4 9.7 18 24 3.7 38.3 18l-2.4 2.4-10.2-10.2v34Z"/>
+                </svg>
+            </a>
+            <a id="west" style="position: absolute; border-radius: 24px; bottom: 48px; left: 0px;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block;">
+                    <title>go west</title>
+                    <path fill="rgb(48,48,48)" stroke-width="0px" d="M18.1 38.3 3.8 24 18.1 9.7l2.4 2.4-10.2 10.2h34v3.4h-34l10.2 10.2"/>
+                </svg>
+            </a>
+            <a id="east" style="position: absolute; border-radius: 24px; top: 48px; right: 0px;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block;">
+                    <title>go east</title>
+                    <path fill="rgb(48,48,48)" stroke-width="0px" d="m30 38.3-2.4-2.4 10.2-10.2h-34v-3.4h34L27.6 12.1 30 9.7 44.3 24Z"/>
+                </svg>
+            </a>
+            <a id="south" style="position: absolute; border-radius: 24px; bottom: 0px; right: 48px;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block;">
+                    <title>go south</title>
+                    <path fill="rgb(48,48,48)" stroke-width="0px" d="M24 44.2 9.7 29.9l2.4-2.4 10.2 10.25V3.7h3.4v34.05L35.9 27.5l2.4 2.4Z"/>
+                </svg>
+            </a>
+        </div>
+        <a id="btnlhlp" style="position: absolute; background-color: rgb(208,208,208); border-radius: 24px; /*filter: drop-shadow(0px 0px 5px black);*/" hidden>
             <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block;">
                 <title>help</title>
-                <path fill="rgb(208,208,208)" stroke-width="1px" d="M24.1 35.65q.9 0 1.6-.7.7-.7.7-1.65 0-.9-.7-1.575-.7-.675-1.6-.675-.95 0-1.625.675T21.8 33.35q0 .9.675 1.6.675.7 1.625.7Zm-2.15-7.3h3.7q0-1.2.325-2.275T27.85 23.7q1.45-1.1 2.075-2.4.625-1.3.625-2.9 0-2.8-1.65-4.475-1.65-1.675-4.5-1.675-2.6 0-4.65 1.425-2.05 1.425-3 3.775l3.45 1.3q.6-1.45 1.625-2.2 1.025-.75 2.225-.75 1.25 0 2.1.725.85.725.85 1.975 0 .9-.575 1.825-.575.925-1.575 1.725-1.4 1.2-2.15 2.625t-.75 3.675ZM24 45.25q-4.4 0-8.275-1.65T8.95 39.05q-2.9-2.9-4.55-6.775Q2.75 28.4 2.75 24q0-4.45 1.65-8.325 1.65-3.875 4.55-6.75t6.775-4.55Q19.6 2.7 24 2.7q4.45 0 8.325 1.675 3.875 1.675 6.75 4.55t4.55 6.75Q45.3 19.55 45.3 24q0 4.4-1.675 8.275t-4.55 6.775q-2.875 2.9-6.75 4.55T24 45.25Zm0-4.7q6.9 0 11.725-4.825Q40.55 30.9 40.55 24q0-6.9-4.825-11.725Q30.9 7.45 24 7.45q-6.9 0-11.725 4.825Q7.45 17.1 7.45 24q0 6.9 4.825 11.725Q17.1 40.55 24 40.55ZM24 24Z"/>
+                <path fill="rgb(48,48,48)" stroke-width="1px" d="M24.1 35.65q.9 0 1.6-.7.7-.7.7-1.65 0-.9-.7-1.575-.7-.675-1.6-.675-.95 0-1.625.675T21.8 33.35q0 .9.675 1.6.675.7 1.625.7Zm-2.15-7.3h3.7q0-1.2.325-2.275T27.85 23.7q1.45-1.1 2.075-2.4.625-1.3.625-2.9 0-2.8-1.65-4.475-1.65-1.675-4.5-1.675-2.6 0-4.65 1.425-2.05 1.425-3 3.775l3.45 1.3q.6-1.45 1.625-2.2 1.025-.75 2.225-.75 1.25 0 2.1.725.85.725.85 1.975 0 .9-.575 1.825-.575.925-1.575 1.725-1.4 1.2-2.15 2.625t-.75 3.675ZM24 45.25q-4.4 0-8.275-1.65T8.95 39.05q-2.9-2.9-4.55-6.775Q2.75 28.4 2.75 24q0-4.45 1.65-8.325 1.65-3.875 4.55-6.75t6.775-4.55Q19.6 2.7 24 2.7q4.45 0 8.325 1.675 3.875 1.675 6.75 4.55t4.55 6.75Q45.3 19.55 45.3 24q0 4.4-1.675 8.275t-4.55 6.775q-2.875 2.9-6.75 4.55T24 45.25Zm0-4.7q6.9 0 11.725-4.825Q40.55 30.9 40.55 24q0-6.9-4.825-11.725Q30.9 7.45 24 7.45q-6.9 0-11.725 4.825Q7.45 17.1 7.45 24q0 6.9 4.825 11.725Q17.1 40.55 24 40.55ZM24 24Z"/>
             </svg>
         </a>
-        <a id="btnrhlp" style="position: absolute; background-color: rgb(208,208,208); border-radius: 24px; /*filter: drop-shadow(0px 0px 5px black);*/" hidden>
+        <a id="btnrhlp" style="position: absolute; background-color: rgb(48,48,48); border-radius: 24px; /*filter: drop-shadow(0px 0px 5px black);*/" hidden>
             <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block;">
                 <title>help</title>
-                <path class="path" fill="rgb(48,48,48)" stroke-width="1px" d="M24.1 35.65q.9 0 1.6-.7.7-.7.7-1.65 0-.9-.7-1.575-.7-.675-1.6-.675-.95 0-1.625.675T21.8 33.35q0 .9.675 1.6.675.7 1.625.7Zm-2.15-7.3h3.7q0-1.2.325-2.275T27.85 23.7q1.45-1.1 2.075-2.4.625-1.3.625-2.9 0-2.8-1.65-4.475-1.65-1.675-4.5-1.675-2.6 0-4.65 1.425-2.05 1.425-3 3.775l3.45 1.3q.6-1.45 1.625-2.2 1.025-.75 2.225-.75 1.25 0 2.1.725.85.725.85 1.975 0 .9-.575 1.825-.575.925-1.575 1.725-1.4 1.2-2.15 2.625t-.75 3.675ZM24 45.25q-4.4 0-8.275-1.65T8.95 39.05q-2.9-2.9-4.55-6.775Q2.75 28.4 2.75 24q0-4.45 1.65-8.325 1.65-3.875 4.55-6.75t6.775-4.55Q19.6 2.7 24 2.7q4.45 0 8.325 1.675 3.875 1.675 6.75 4.55t4.55 6.75Q45.3 19.55 45.3 24q0 4.4-1.675 8.275t-4.55 6.775q-2.875 2.9-6.75 4.55T24 45.25Zm0-4.7q6.9 0 11.725-4.825Q40.55 30.9 40.55 24q0-6.9-4.825-11.725Q30.9 7.45 24 7.45q-6.9 0-11.725 4.825Q7.45 17.1 7.45 24q0 6.9 4.825 11.725Q17.1 40.55 24 40.55ZM24 24Z"/>
+                <path class="path" fill="rgb(208,208,208)" stroke-width="1px" d="M24.1 35.65q.9 0 1.6-.7.7-.7.7-1.65 0-.9-.7-1.575-.7-.675-1.6-.675-.95 0-1.625.675T21.8 33.35q0 .9.675 1.6.675.7 1.625.7Zm-2.15-7.3h3.7q0-1.2.325-2.275T27.85 23.7q1.45-1.1 2.075-2.4.625-1.3.625-2.9 0-2.8-1.65-4.475-1.65-1.675-4.5-1.675-2.6 0-4.65 1.425-2.05 1.425-3 3.775l3.45 1.3q.6-1.45 1.625-2.2 1.025-.75 2.225-.75 1.25 0 2.1.725.85.725.85 1.975 0 .9-.575 1.825-.575.925-1.575 1.725-1.4 1.2-2.15 2.625t-.75 3.675ZM24 45.25q-4.4 0-8.275-1.65T8.95 39.05q-2.9-2.9-4.55-6.775Q2.75 28.4 2.75 24q0-4.45 1.65-8.325 1.65-3.875 4.55-6.75t6.775-4.55Q19.6 2.7 24 2.7q4.45 0 8.325 1.675 3.875 1.675 6.75 4.55t4.55 6.75Q45.3 19.55 45.3 24q0 4.4-1.675 8.275t-4.55 6.775q-2.875 2.9-6.75 4.55T24 45.25Zm0-4.7q6.9 0 11.725-4.825Q40.55 30.9 40.55 24q0-6.9-4.825-11.725Q30.9 7.45 24 7.45q-6.9 0-11.725 4.825Q7.45 17.1 7.45 24q0 6.9 4.825 11.725Q17.1 40.55 24 40.55ZM24 24Z"/>
             </svg>
         </a>
         <!--a id="btnlmenu" style="position: absolute; color: rgb(208,208,208);" hidden>
@@ -151,6 +223,10 @@
             </span>
         </div>
         <script>
+            var navmagn = 2/3;//0.75;
+            document.getElementById("navl").style.transform = "translateX(" + -Math.floor (144 / 2 - 144 * navmagn / 2) + "px)" + " translateY(" + -Math.floor (144 / 2 - 144 * navmagn / 2) + "px)" + " scale(" + navmagn + ") ";
+            document.getElementById("navr").style.transform = "translateX(" + Math.floor (144 / 2 - 144 * navmagn / 2) + "px)" + " translateY(" + Math.floor (144 / 2 - 144 * navmagn / 2) + "px)" + " scale(" + navmagn + ") ";
+
             document.addEventListener('contextmenu', event => event.preventDefault());
             
             function backToBrowse () {
@@ -168,7 +244,7 @@
 
 
                 //document.getElementById("btnlhlp").style.display = "inline";
-                document.getElementById("btnrhlp").style.display = "inline";
+                //document.getElementById("btnrhlp").style.display = "inline";
             }
 
             var msg = (event) => {
@@ -194,6 +270,9 @@
                     document.getElementById("btnlhlp").style.display = "none";
                     document.getElementById("btnrhlp").style.display = "none";
                     
+                    document.getElementById("navl").style.visibility = "hidden";
+                    document.getElementById("navr").style.visibility = "hidden";
+
                     mode = "edit/print";
                     
                 } else if (event.data.msg === "cancelIO") {
@@ -222,10 +301,23 @@
                     
                     backToBrowse ();
 
+                    if (slide !== "right")
+                        document.getElementById("navl").style.visibility = "visible";
+                        
+                    if (slide !== "left")
+                        document.getElementById("navr").style.visibility = "visible";
+
                     mode = "browse";
 
                 } else if (event.data.msg === "keep") {
                     document.getElementById("source").contentWindow.postMessage({msg: "acceptChanges"}, "*");
+                    
+                    if (slide !== "right")
+                        document.getElementById("navl").style.visibility = "visible";
+                        
+                    if (slide !== "left")
+                        document.getElementById("navr").style.visibility = "visible";
+
                     mode = "browse";
 
                 } else if (event.data.msg === "invalidEdit") {
@@ -466,6 +558,8 @@
                 var rm = document.getElementById("btnrmenu");
                 var lh = document.getElementById("btnlhlp");
                 var rh = document.getElementById("btnrhlp");
+                var ln = document.getElementById("navl");
+                var rn = document.getElementById("navr");
                 
                 var bu = document.getElementById("btnupload");
                 var bd = document.getElementById("btndownload");
@@ -478,154 +572,179 @@
                 var padd = 1;
                 var bord = 12;
                 var btns = 48;
-
-                var mmarg = marg;
-                var onlyleft = false;
-                var onlyright = false;
                 
-//                s.disabled = false;
-                s.style.display = "inline";
-                if (slide === "left") {
-//                    s.style.display = "inline";
-
-                    onlyleft = true;
-                    marg = 0;
-                    document.getElementById("svglcropfull").style.display = "none";
-                    document.getElementById("svglcrophalf").style.display = "inline";
-                    document.getElementById("svgrcropfull").style.display = "none";
-                    document.getElementById("svgrcrophalf").style.display = "inline";
-
-                } else if (slide === "right") {
-                    if (mode === "edit/print") {
-//                        s.disabled = true;
-                        s.style.display = "none";
-//                        s.style.visibility = "hidden";
-                    }
-
-                    onlyright = true;
-                    marg = 0;
-                    document.getElementById("svglcropfull").style.display = "none";
-                    document.getElementById("svglcrophalf").style.display = "inline";
-                    document.getElementById("svgrcropfull").style.display = "none";
-                    document.getElementById("svgrcrophalf").style.display = "inline";
-
+                if (!(window.innerHeight > marg * 2 + padd * 2 + bord + btns + ln.clientHeight * navmagn + 2)) {
+                    hideAll ();
+                    s.style.display = "none";
+                    t.style.display = "none";
+                    
                 } else {
-//                    s.style.display = "inline";
-
-                    document.getElementById("svglcropfull").style.display = "inline";
-                    document.getElementById("svglcrophalf").style.display = "none";
-                    document.getElementById("svgrcropfull").style.display = "inline";
-                    document.getElementById("svgrcrophalf").style.display = "none";
-                }
-                /*
-                if (slide === "left" || document.getElementById("svglcrophalf").style.display === "inline") {
-                //if (slide === "left") {
-                    onlyleft = true;
-                    marg = 0;
+                    var mmarg = marg;
+                    var onlyleft = false;
+                    var onlyright = false;
                     
-                } else if (slide = "right" || document.getElementById("svgrcrophalf").style.display === "inline") {
-                //} else if (slide = "right") {
-                    onlyright = true;
-                    marg = 0;
-                }
-                */
-                lh.style.visibility = "visible";
-                rh.style.visibility = "visible";
-                if (!onlyright)
-                    s.style.visibility = "visible";
-                bu.style.visibility = "visible";
-                lc.style.visibility = "visible";
-                lf.style.visibility = "visible";
-                if (!onlyleft)
-                    t.style.visibility = "visible";
-                bd.style.visibility = "visible";
-                rc.style.visibility = "visible";
-                rf.style.visibility = "visible";
-                
-                s.style.margin = marg + "px";
-                s.style.padding = padd + "px";
-                s.style.border = bord + "px solid rgb(48,48,48)";
-                s.style.borderBottomWidth = btns + "px";
-                s.style.top = "0px";
-                s.style.left = "0px";
-                s.style.height = "calc(100% - " + (2 * (marg + padd) + bord) + "px - " + btns + "px)";
-                
-                if (onlyleft) {
-                    rh.style.visibility = "hidden";
-                    t.style.visibility = "hidden";
-                    bd.style.visibility = "hidden";
-                    rc.style.visibility = "hidden";
-                    rf.style.visibility = "hidden";
-                    s.style.width = "calc(100% - " + 2 * (marg + padd + bord) + "px)";
-                    t.style.width = "calc(100% - " + 2 * (marg + padd + bord) + "px)";
+    //                s.disabled = false;
+                    s.style.display = "inline";
+                    if (slide === "left") {
+                        s.style.display = "inline";
+                        t.style.display = "none";
+    //                    s.style.display = "inline";
+
+                        onlyleft = true;
+                        marg = 0;
+                        document.getElementById("svglcropfull").style.display = "none";
+                        document.getElementById("svglcrophalf").style.display = "inline";
+                        document.getElementById("svgrcropfull").style.display = "none";
+                        document.getElementById("svgrcrophalf").style.display = "inline";
+
+                    } else if (slide === "right") {
+                        s.style.display = "none";
+                        t.style.display = "inline";
+                        /*
+                        if (mode === "edit/print") {
+    //                        s.disabled = true;
+                            s.style.display = "none";
+    //                        s.style.visibility = "hidden";
+                        }
+                        */
+
+                        onlyright = true;
+                        marg = 0;
+                        document.getElementById("svglcropfull").style.display = "none";
+                        document.getElementById("svglcrophalf").style.display = "inline";
+                        document.getElementById("svgrcropfull").style.display = "none";
+                        document.getElementById("svgrcrophalf").style.display = "inline";
+
+                    } else {
+                        s.style.display = "inline";
+                        t.style.display = "inline";
+
+                        document.getElementById("svglcropfull").style.display = "inline";
+                        document.getElementById("svglcrophalf").style.display = "none";
+                        document.getElementById("svgrcropfull").style.display = "inline";
+                        document.getElementById("svgrcrophalf").style.display = "none";
+                    }
+                    /*
+                    if (slide === "left" || document.getElementById("svglcrophalf").style.display === "inline") {
+                    //if (slide === "left") {
+                        onlyleft = true;
+                        marg = 0;
+                        
+                    } else if (slide = "right" || document.getElementById("svgrcrophalf").style.display === "inline") {
+                    //} else if (slide = "right") {
+                        onlyright = true;
+                        marg = 0;
+                    }
+                    */
+                    lh.style.visibility = "visible";
+                    rh.style.visibility = "visible";
+                    if (!onlyright)
+                        s.style.visibility = "visible";
+                    bu.style.visibility = "visible";
+                    lc.style.visibility = "visible";
+                    lf.style.visibility = "visible";
+                    if (!onlyleft)
+                        t.style.visibility = "visible";
+                    bd.style.visibility = "visible";
+                    rc.style.visibility = "visible";
+                    rf.style.visibility = "visible";
+                    if (mode === "browse") {
+                        rn.style.visibility = "visible";
+                        ln.style.visibility = "visible";
+                    }
+                    s.style.margin = marg + "px";
+                    s.style.padding = padd + "px";
+                    s.style.border = bord + "px solid rgb(48,48,48)";
+                    s.style.borderBottomWidth = btns + "px";
+                    s.style.top = "0px";
+                    s.style.left = "0px";
+                    s.style.height = "calc(100% - " + (2 * (marg + padd) + bord) + "px - " + btns + "px)";
                     
-                } else if (!onlyright) {
-                    s.style.width = "calc(50% - " + 2 * (marg + padd + bord) + "px)";
-                }
-                
-                window.requestAnimationFrame(function () {
-//                setTimeout (() => {
-                    lh.style.left = bord + marg + 3 + "px";
-                    lh.style.top = marg + bord + 3 + "px";
-
-                    bu.style.left = marg + bord + "px";
-                    bu.style.top = mmarg + s.offsetTop + s.offsetHeight - bu.offsetHeight + "px";
-
-                    lc.style.left = (- bord + s.offsetLeft + s.offsetWidth - lc.offsetWidth) + "px";
-                    lc.style.top = mmarg + s.offsetTop + s.offsetHeight - lc.offsetHeight + "px";
-
-                    lf.style.left = Math.round (s.offsetWidth / 2 - btns * 3 / 2) + "px"
-                    lf.style.top = mmarg + s.offsetTop + s.offsetHeight - lc.offsetHeight + "px";
-//                }, 0);
-                });
-                
-                t.style.margin = marg + "px";
-                t.style.padding = padd + "px";
-                t.style.border = bord + "px solid rgb(208,208,208)";
-                t.style.borderTopWidth = btns + "px";
-                t.style.top = "0px";
-                t.style.right = "0px";
-                //t.style.left = Math.floor (window.innerWidth / 2) + "px";
-                t.style.height = "calc(100% - " + (2 * (marg + padd) + bord) + "px - " + btns + "px)";
-
-                if (onlyright) {
-                    lh.style.visibility = "hidden";
-                    s.style.visibility = "hidden";
-                    bu.style.visibility = "hidden";
-                    lc.style.visibility = "hidden";
-                    lf.style.visibility = "hidden";
-                    t.style.width = "calc(100% - " + 2 * (marg + padd + bord) + "px)";
-                    s.style.width = "calc(100% - " + 2 * (marg + padd + bord) + "px)";
+                    if (onlyleft) {
+                        rh.style.visibility = "hidden";
+                        t.style.visibility = "hidden";
+                        bd.style.visibility = "hidden";
+                        rc.style.visibility = "hidden";
+                        rf.style.visibility = "hidden";
+                        rn.style.visibility = "hidden";
+                        s.style.width = "calc(100% - " + 2 * (marg + padd + bord) + "px)";
+                        t.style.width = "calc(100% - " + 2 * (marg + padd + bord) + "px)";
+                        
+                    } else if (!onlyright) {
+                        s.style.width = "calc(50% - " + 2 * (marg + padd + bord) + "px)";
+                    }
                     
-                } else if (!onlyleft) {
-                    t.style.width = "calc(50% - " + 2 * (marg + padd + bord) + "px)";
-                }
-                
-                window.requestAnimationFrame(function () {
-//                setTimeout (() => {
-                    rh.style.right = marg + bord + 4 + "px";
-                    rh.style.bottom = bord + marg + 4 + "px";
+                    window.requestAnimationFrame(function () {
+    //                setTimeout (() => {
+                        lh.style.left = bord + marg + 3 + "px";
+                        lh.style.top = marg + bord + 3 + "px";
 
-                    bd.style.right = marg + bord + "px";
-                    bd.style.top = marg + "px";
+                        bu.style.left = marg + bord + "px";
+                        bu.style.top = mmarg + s.offsetTop + s.offsetHeight - bu.offsetHeight + "px";
+
+                        lc.style.left = (- bord + s.offsetLeft + s.offsetWidth - lc.offsetWidth) + "px";
+                        lc.style.top = mmarg + s.offsetTop + s.offsetHeight - lc.offsetHeight + "px";
+
+                        lf.style.left = Math.round (s.offsetWidth / 2 - btns * 3 / 2) + "px"
+                        lf.style.top = mmarg + s.offsetTop + s.offsetHeight - lc.offsetHeight + "px";
+
+                        ln.style.top = marg + padd + bord + "px";
+                        ln.style.left =  marg + padd + bord + "px";
+    //                }, 0);
+                    });
                     
-                    rc.style.left = (bord + t.offsetLeft) + "px";
-                    rc.style.top = marg + "px";
+                    t.style.margin = marg + "px";
+                    t.style.padding = padd + "px";
+                    t.style.border = bord + "px solid rgb(208,208,208)";
+                    t.style.borderTopWidth = btns + "px";
+                    t.style.top = "0px";
+                    t.style.right = "0px";
+                    //t.style.left = Math.floor (window.innerWidth / 2) + "px";
+                    t.style.height = "calc(100% - " + (2 * (marg + padd) + bord) + "px - " + btns + "px)";
 
-                    rf.style.top = marg + "px";
-                    rf.style.left = t.offsetLeft + Math.round(t.offsetWidth / 2 - btns * 3 / 2) + "px";
-                });
+                    if (onlyright) {
+                        lh.style.visibility = "hidden";
+                        s.style.visibility = "hidden";
+                        bu.style.visibility = "hidden";
+                        lc.style.visibility = "hidden";
+                        lf.style.visibility = "hidden";
+                        ln.style.visibility = "hidden";
+                        t.style.width = "calc(100% - " + 2 * (marg + padd + bord) + "px)";
+                        s.style.width = "calc(100% - " + 2 * (marg + padd + bord) + "px)";
+                        
+                    } else if (!onlyleft) {
+                        t.style.width = "calc(50% - " + 2 * (marg + padd + bord) + "px)";
+                    }
+                    
+                    window.requestAnimationFrame(function () {
+    //                setTimeout (() => {
+                        rh.style.right = marg + bord + 4 + "px";
+                        rh.style.bottom = bord + marg + 4 + "px";
+
+                        bd.style.right = marg + bord + "px";
+                        bd.style.top = marg + "px";
+                        
+                        rc.style.left = (bord + t.offsetLeft) + "px";
+                        rc.style.top = marg + "px";
+
+                        rf.style.top = marg + "px";
+                        rf.style.left = t.offsetLeft + Math.round(t.offsetWidth / 2 - btns * 3 / 2) + "px";
+                        
+                        rn.style.bottom = marg + padd + bord + "px";
+                        rn.style.right =  marg + padd + bord + "px";
+                    });
+                    
+                    setTimeout (() => {
+                        if (slide === "left" && mode === "edit/print")
+                            document.getElementById("source").contentWindow.setSize ();//.divEditE.dispatchEvent(new CustomEvent('resize', null));
+                    }, 0);
+                }
                 
                 hlpl.style.transform = "scale(" + 1 + ")";
                 hlpd.style.transform = "scale(" + 1 + ")";
                 var hh = window.innerHeight / hlpl.clientHeight * 0.85;
                 hlpl.style.transform = "scale(" + hh + ")";
                 hlpd.style.transform = "scale(" + hh + ")";
-
-                setTimeout (() => {
-                    if (slide === "left" && mode === "edit/print")
-                        document.getElementById("source").contentWindow.setSize ();//.divEditE.dispatchEvent(new CustomEvent('resize', null));
-                }, 0);
             };
 
             var toggleFullScreen = function () {
@@ -1108,7 +1227,7 @@
             window.addEventListener("load", function () {
                 lnks = document.querySelectorAll("a");
                 for (var i = 0; i < lnks.length; i++)
-                    if (document.getElementById("btnlhlp") !== lnks[i])
+                    if (document.getElementById("btnlhlp") !== lnks[i] && document.getElementById("btnrhlp") !== lnks[i])
                         lnks[i].style.display = "inline";
             });
             
@@ -1116,6 +1235,8 @@
                 //document.getElementById("source").style.visibility = "hidden";
                 //document.getElementById("target").style.visibility = "hidden";
 
+                document.getElementById("navl").style.visibility = "hidden";
+                document.getElementById("navr").style.visibility = "hidden";
                 document.getElementById("btnlhlp").style.visibility = "hidden";
                 document.getElementById("btnrhlp").style.visibility = "hidden";
                 document.getElementById("btnupload").style.visibility = "hidden";

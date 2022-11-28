@@ -26,6 +26,9 @@
                 touch-action: none;
                 user-select: none;
             }
+
+            svg {opacity : 0.7;}
+            svg:hover {cursor: pointer; opacity :1;}
             
         </style>
         <script src="parser.js"></script>
@@ -35,7 +38,7 @@
     <body>
       <section>
         <div id="divContainer" style="/*border: 5px dotted rgb(208,208,208);*/ position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; /*filter: drop-shadow(0px 0px 20px black);*/">
-        </div>        
+        </div>
         <script>
             document.addEventListener('contextmenu', event => event.preventDefault());
 
@@ -288,13 +291,15 @@
             }
 
             function dispatchSize () {
-                var c = getCursor ();
+                if (window.innerWidth > 10 && window.innerHeight > 10) {
+                    var c = getCursor ();
 
-                divContainer.dispatchEvent(new CustomEvent('resize1', null));
-                divContainer.dispatchEvent(new CustomEvent('redefineData', {detail: nodeTree}));
+                    divContainer.dispatchEvent(new CustomEvent('resize1', null));
+                    divContainer.dispatchEvent(new CustomEvent('redefineData', {detail: nodeTree}));
 
-                msg ({data: {msg: "setCurNode", cursor: c.cursor, pathLength: c.pathLength}});
-                msg ({data: {msg: "sync", cursor: c.cursor, pathLength: c.pathLength}});
+                    msg ({data: {msg: "setCurNode", cursor: c.cursor, pathLength: c.pathLength}});
+                    msg ({data: {msg: "sync", cursor: c.cursor, pathLength: c.pathLength}});
+                }
             }
 
             function dispatchDraw () {
@@ -511,7 +516,7 @@
                         }
                     }
                     
-                    if (!is) {
+                    if (!is && sortedOvals[0]) {
                         var p = sortedOvals[0].data;
                         do {
                             if (oldOvals[i1].data === p) {
@@ -650,6 +655,8 @@
                         node.ifr = ifr;
                         document.body.appendChild (ifr);
 
+                        ifr.style.zIndex = "0";
+
                         dispatchDraw(); //Size ();
                     });
                     //resolve ();
@@ -777,13 +784,15 @@
                     if (window.innerWidth > window.innerHeight / mratio)
                         inw = window.innerHeight / mratio;
 
-                    var width = Math.round (inw / ((1920 - 32) / 2) * 24); // 24em
+                    var width = Math.round (inw / ((1920 - 32) / 2) * 30); // 24em
                     width = Math.min (width, 36);
             
-                    node.srcdoc = '<html style="font-size: 1.25em">'
+                    node.srcdoc = '<html style="font-size: 1em">'
                         //+ '<head><style>body {animation: fadein 0.5s;} @keyframes fadein {from { opacity: 0; /*transform: scale(0.5);*/} to { opacity: 1; /*transform: scale(1.0);*/}}</style></head>'
                         + `<head><style>a:link, a:visited {color: ${env.ovalForeColor2}; /*font-weight: bold;*/}</style></head>`
-                        + `<body style="margin: 0; padding: 0; width: ${width / 1}em; font-family: Times New Roman, Georgia, Garamond; font-size: ${1}em; color: ${env.ovalForeColor};">` + compiler.node2html (node.nodeRawData[1], baseUrl, false, env) + '</body>'
+                        + `<body style="margin: 0; padding: 0; width: ${width / 1}em; font-family: Times New Roman, Georgia, Garamond; font-size: ${1}em; color: ${env.ovalForeColor};">`
+                            + compiler.node2html (node.nodeRawData[1], baseUrl, false, env)
+                        + '</body>'
                     + '</html>'
                     node.children = [];
                     if (node.nodeRawData[2])
@@ -840,7 +849,7 @@
                         "rod-length": "5%",
                         "contents-scale": "100%",
                         "ui-scale": "140%",
-                        "vertical-shift": "14%",
+                        "vertical-shift": "10%",
                         "power-consumption-optimisation": "75%",
                     }
                 );

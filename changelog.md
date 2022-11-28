@@ -27,4 +27,5 @@
     - only one pane on portrait, may be both panes on landscape  
     - mobile keyboard friendly  
     - inline html  
+    - errors shown in red  
     - bug fixes  

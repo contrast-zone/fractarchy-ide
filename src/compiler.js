@@ -56,19 +56,19 @@ var compiler = (function (obj) {
                     "close": '</h6>'
                 },
                 "paragraph": {
-                    "open": '<p style="font-size: 0.9em;">',
+                    "open": '<p style="font-size: 1em;">',
                     "close": '</p>'
                 },
                 "bquote": {
-                    "open": `<blockquote style="border-left: 0.2em solid ${env.ovalForeColor}; margin-left: 0px; padding-left: 0.7em;">`,
+                    "open": `<blockquote style="border-left: 0.2em solid ${env.ovalForeColor}; margin-left: 0px; padding-left: 0.9em;">`,
                     "close": '</blockquote>'
                 },
                 "icode": {
-                    "open": `<code style="/*background-color: rgb(180,180,180);*/ border: 1px solid ${"rgb(128,128,128)"/*env.ovalForeColor*/}; white-space: pre-wrap; word-break: break-all; font-size: 0.9em;">`,
+                    "open": `<code style="/*background-color: rgb(180,180,180);*/ color: ${env.ovalForeColor}; border: 1px solid ${"rgb(128,128,128)"/*env.ovalForeColor*/}; white-space: pre-wrap; word-break: break-all; font-size: 0.9em;">`,
                     "close": '</code>'
                 },
                 "bcode": {
-                    "open": `<code><pre style="/*background-color: rgb(180,180,180);*/ border: 1px solid ${"rgb(128,128,128)"/*env.ovalForeColor*/}; overflow-x: auto; font-size: 0.9em;">`,
+                    "open": `<code><pre style="/*background-color: rgb(180,180,180);*/ color: ${env.ovalForeColor}; border: 1px solid ${"rgb(128,128,128)"/*env.ovalForeColor*/}; overflow-x: auto; font-size: 0.9em;">`,
                     "close": '</pre></code>'
                 },
                 "html": {
@@ -80,11 +80,11 @@ var compiler = (function (obj) {
                     "close": '</a>'
                 },
                 "olist": {
-                    "open": '<ol>',
+                    "open": '<ol style="font-size: 1em;>',
                     "close": '</ol>'
                 },
                 "ulist": {
-                    "open": '<ul style="font-size: 0.9em;">',
+                    "open": '<ul style="font-size: 1em;">',
                     "close": '</ul>'
                 },
                 "litem": {
@@ -198,7 +198,7 @@ var compiler = (function (obj) {
                 for (var i = 1; i < node.length; i++) {
                     numberOfNodes++;
                     //ret += `<div style="background-color: rgb(208,208,208); width: ${width}em; border-radius: 2em; border: 0.2em solid rgb(64,64,64); padding: 1em; margin: 1em; margin-left: ` + margin + `;">`
-                    ret += `<div style="background-color: ${env.ovalBackColor}; color: ${env.ovalForeColor}; width: ${width}em; border-radius: 2em; border: 0.2em solid rgb(64,64,64); padding: 1em; margin-bottom: 1em; /*margin: 1em; margin-left: ` + margin + `;*/">`
+                    ret += `<div style="background-color: ${env.ovalBackColor}; color: ${env.ovalForeColor}; width: ${width}em; border-radius: 2em; border: 0.2em solid rgb(78,78,78); padding: 1em; margin-bottom: 1em; /*margin: 1em; margin-left: ` + margin + `;*/">`
                         + node2html (node[i][1], baseUrl, true, env)
                     
                     if (node[i][2])
