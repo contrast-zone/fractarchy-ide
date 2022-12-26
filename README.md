@@ -6,7 +6,7 @@ structured-document-tree, note-taking-app, hierarchical-data-outliner, personal-
 
 ## about
 
-Fractarchy Note is a (deviant) hierarchical content organizer featuring structured document tree (*.sdt) file format. It is an elementary blend between personal content management system and hierarchical database. Use it for keeping knowledge and retrieving related information.
+Fractarchy Note is a (deviant) hierarchical content organizer featuring structured document tree (*.sdt) file format. It is a blend between note taking application, hierarchical data outliner, and personal knowledge base. Use it for keeping knowledge and retrieving related information.
 
 ## screenshots
         
