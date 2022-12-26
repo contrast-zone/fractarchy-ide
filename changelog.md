@@ -23,7 +23,7 @@
     - excluded spaces before interpunction signs  
     - minimum viable mobile rendering  
 
-- v0.1 - release
+- v0.1 - preview  
     - only one pane on portrait, may be both panes on landscape  
     - mobile keyboard friendly  
     - inline html  

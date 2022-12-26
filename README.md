@@ -46,7 +46,7 @@ Prerequisites:
 Installing and running the app:
 
 1. Download and unzip this package to an arbitrary local directory
-2. Open OS terminal, navigate to the package directory, and run `node index.js 8080`
+2. Open OS terminal, navigate to the package directory, and enter `node index.js 8080`
 3. The app is running at port 8080. Visit [http://localhost:8080/](http://localhost:8080/) from the browser.
 
 ## use instructions and creating content
