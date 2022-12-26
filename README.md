@@ -46,10 +46,7 @@ Prerequisites:
 Installing and running the app:
 
 1. Download and unzip this package to an arbitrary local directory
-2. Open OS terminal, navigate to the package directory, and run the following command:
-
-        node index.js 8080
-
+2. Open OS terminal, navigate to the package directory, and run `node index.js 8080`
 3. The app is running at port 8080. Visit [http://localhost:8080/](http://localhost:8080/) from the browser.
 
 ## use instructions and creating content
@@ -59,5 +56,3 @@ Upon running the app, instructions are opened as an initial content in the app v
 ## licensing
 
 This software is released under [conditional Creative Commons Attribution-NoDerivatives 4.0 International License](LICENSE). It is free for students and for limited personal use, but if you use it a lot, or your plans meet commercial use, please refer to the license file for details about pricing.
-
-
