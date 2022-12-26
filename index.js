@@ -1,3 +1,6 @@
+const process = require('process');
+process.chdir(__dirname);
+
 var http = require("http"),
     url = require("url"),
     path = require("path"),
