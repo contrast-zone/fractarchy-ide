@@ -47,7 +47,7 @@ Installing and running the app:
 
 ## use instructions and creating content
 
-Upon running the app, instructions are opened as an initial content in the app visual interface. To create new content, click `input -> new document` menu item. To open existing content, click `input -> open document` menu item.
+After starting the app, instructions are opened as an initial content in the app visual interface. To create new content, click `input -> new document` menu item. To open existing content, click `input -> open document` menu item.
 
 ## licensing
 
