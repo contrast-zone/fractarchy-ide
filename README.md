@@ -45,7 +45,7 @@ Prerequisites:
 
 Installing and running the app:
 
-1. install the app: `git clone https://github.com/fractarchy/fractarchy-note`
+1. clone the app: `git clone https://github.com/fractarchy/fractarchy-note`
 2. start the app: `node fractarchy-note 8080`
 3. the app is running at port 8080. Visit [http://localhost:8080/](http://localhost:8080/) from the browser.
 
