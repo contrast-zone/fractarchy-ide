@@ -8,8 +8,6 @@ structured-document-tree, electronic-workbook, hierarchical-data-organizer, pers
 
 > ## promotional material
 > 
-> ![](media/social-media.png)
-> 
 > Fractarchy Note is a (deviant) hierarchical content organizer featuring structured document tree (*.sdt) file format. It is an elementary blend between content management system and hierarchical database. Use it for various purposes as an electronic workbook, hierarchical data organizer, or personal content management system.
 
 ## screenshots
