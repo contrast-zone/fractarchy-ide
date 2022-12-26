@@ -233,7 +233,7 @@
                     divContainer.dispatchEvent(new CustomEvent('redefineData', {detail: nodeTree}));
                 
                 } else if (event.data.msg === "sync") {
-                    divContainer.dispatchEvent(new CustomEvent('redefineCursor', {detail: {cursor: event.data.cursor, pathLength: event.data.pathLength}}));
+                    divContainer.dispatchEvent(new CustomEvent('redefineCursor', {detail: {magn: event.data.magn, cursor: event.data.cursor, pathLength: event.data.pathLength}}));
                 
                 } else if (event.data.msg === "setCurNode") {
                     function loadNodes (pl, cn, nt) {
@@ -243,18 +243,19 @@
                     }
 
                     loadNodes (event.data.pathLength, event.data.cursor.children[0], objOrbit.getData ());
-/*                    
-                } else if (event.data.msg === "save") {
-                    nodeRawTree = event.data.nodeTree;
                     
-                    nodeTree = {nodeRawData: nodeRawTree, parent: {index: 0}};
-                    nodeTree.parent.children = [nodeTree];
+                } else if (event.data.msg === "zoomIn") {
+                    objOrbit.zoomIn ();
+
+                } else if (event.data.msg === "zoomOut") {
+                    objOrbit.zoomOut ();
                     
-                    divContainer.dispatchEvent(new CustomEvent('redefineData', {detail: nodeTree}));
-                
-                } else if (event.data.msg === "open") {
-                    window.parent.frames[0].postMessage({msg: "open", nodeTree: nodeRawTree}, "*");
-*/
+                } else if (event.data.msg === "goSouth") {
+                    objOrbit.levelDown ();
+
+                } else if (event.data.msg === "goNorth") {
+                    objOrbit.levelUp ();
+
                 }
             };
             
@@ -281,7 +282,7 @@
             function msgSync () {
                 var c = getCursor ();
                 if (!loaded)
-                    window.parent.postMessage({msg: "syncSource", cursor: c.cursor, pathLength: c.pathLength}, "*");
+                    window.parent.postMessage({msg: "syncSource", magn: objOrbit.getMagn (), cursor: c.cursor, pathLength: c.pathLength}, "*");
             }
 
             var error;
@@ -291,7 +292,7 @@
             }
 
             function dispatchSize () {
-                if (window.innerWidth > 10 && window.innerHeight > 10) {
+                //if (window.parent.slide !== "left" && window.innerWidth > 10 && window.innerHeight > 10) {
                     var c = getCursor ();
 
                     divContainer.dispatchEvent(new CustomEvent('resize1', null));
@@ -299,7 +300,7 @@
 
                     msg ({data: {msg: "setCurNode", cursor: c.cursor, pathLength: c.pathLength}});
                     msg ({data: {msg: "sync", cursor: c.cursor, pathLength: c.pathLength}});
-                }
+                //}
             }
 
             function dispatchDraw () {
@@ -307,9 +308,10 @@
             }
 
             wonload = function () {
-                objOrbit = Orbital (divContainer, nodeTree, env.quant / 100, env.contentScale / 100, env.ovalBackColor, env.ovalBorderColor, env.backColor, env.shadowRadius, env.shadowRadius? env.shadowColor: null, env.uiscale / 100, onIdle, onBusy, env.rodLength, 0, env.vShift / 100);
+                objOrbit = Orbital (divContainer, nodeTree, env.quant / 100, env.contentScale / 100, env.ovalBackColor, env.ovalBorderColor, env.backColor, env.shadowRadius, env.shadowRadius? env.shadowColor: null, env.uiscale / 100, onIdle, onBusy, env.rodLength, 0, env.vShift / 100, window.parent.zoomedInR, window.parent.zoomedOutR, window.parent.zoomingOutR);
                 setSize ();
                 dispatchSize ();
+                window.parent.magnMax = objOrbit.getMagnMax ();
                 divContainer.style.visibility = "visible";
                 window.addEventListener("message", msg, false);
 
@@ -516,19 +518,21 @@
                         }
                     }
                     
-                    if (!is && sortedOvals[0]) {
-                        var p = sortedOvals[0].data;
-                        do {
-                            if (oldOvals[i1].data === p) {
-                                is = true;
-                                break;
+                    if (!is) {
+                        if (sortedOvals[0]) {
+                            var p = sortedOvals[0].data;
+                            do {
+                                if (oldOvals[i1].data === p) {
+                                    is = true;
+                                    break;
+                                }
+                                p = p.parent;
+                            } while (p);
+                            
+                            if (!is) {
+                                oldOvals[i1].data.ifr = null;
+                                oldOvals[i1].data.children = [];
                             }
-                            p = p.parent;
-                        } while (p);
-                        
-                        if (!is) {
-                            oldOvals[i1].data.ifr = null;
-                            oldOvals[i1].data.children = [];
                         }
                     }
                 }
@@ -789,8 +793,8 @@
             
                     node.srcdoc = '<html style="font-size: 1em">'
                         //+ '<head><style>body {animation: fadein 0.5s;} @keyframes fadein {from { opacity: 0; /*transform: scale(0.5);*/} to { opacity: 1; /*transform: scale(1.0);*/}}</style></head>'
-                        + `<head><style>a:link, a:visited {color: ${env.ovalForeColor2}; /*font-weight: bold;*/}</style></head>`
-                        + `<body style="margin: 0; padding: 0; width: ${width / 1}em; font-family: Times New Roman, Georgia, Garamond; font-size: ${1}em; color: ${env.ovalForeColor};">`
+                        + `<head><!--base href="${'file://'+baseUrl}"--><style>::-webkit-scrollbar{display: none;} html {-ms-overflow-style: none; scrollbar-width: none;} a:link, a:visited {color: ${env.ovalForeColor2}; /*font-weight: bold;*/}</style></head>`
+                        + `<body style="margin: 0; padding: 0; width: ${objOrbit.getMagnMax () * width / magnFactor}em; font-family: Times New Roman, Georgia, Garamond; font-size: ${magnFactor / objOrbit.getMagnMax ()}em; color: ${env.ovalForeColor};">`
                             + compiler.node2html (node.nodeRawData[1], baseUrl, false, env)
                         + '</body>'
                     + '</html>'
@@ -866,6 +870,7 @@
             var nodeTree;
             var nodeRawTree;
             var baseUrl;
+            var magnFactor = window.parent.magnFactor;
             
             var divContainer = document.getElementById ("divContainer")
             

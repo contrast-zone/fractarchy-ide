@@ -1,0 +1,37 @@
+{
+  "id": "cz-fn-v0.1",
+  "short_name": "Fractarchy Note",
+  "name": "Fractarchy Note v0.1",
+  "description": "Deviant hierarchical content organizer featuring structured document tree file format",
+  "start_url": "index.html",
+  "display": "fullscreen",
+  "background_color": "gray",
+  "theme_color": "rgb(48,48,48)",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./media/icons-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "./media/icons-vector.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./media/screenshot-1.png",
+      "type": "image/png",
+      "sizes": "960x540",
+      "form_factor": "wide"
+    },
+    {
+      "src": "./media/screenshot-2.png",
+      "type": "image/png",
+      "sizes": "960x540",
+      "form_factor": "wide"
+    }
+  ]
+}

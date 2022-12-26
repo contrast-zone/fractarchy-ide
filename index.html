@@ -3,26 +3,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-    <title>Fractarchy-ORG</title>
-    <link rel="icon" type="image/png" href="./media/favicon128.png"/>
+    <title>Fractarchy Note</title>
+    
+    <link rel="manifest" href="manifest.json">
+    
+    <link rel="icon" type="image/png" href="./media/icons-192.png">
+    
 
     <!-- Primary Meta Tags -->
-    <meta name="title" content="Fractarchy-ORG">
-    <meta name="description" content="Hierarchical content organizer featuring structured document tree file format. Fractal-structure inspired, parent-child orbiting, zooming-elements based.">
+    <meta name="title" content="Fractarchy Note v0.1">
+    <meta name="description" content="Deviant hierarchical content organizer featuring structured document tree file format">
+    <meta name="theme-color" content="rgb(48,48,48)">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://github.com/contrast-zone/fractarchy-org">
-    <meta property="og:title" content="Fractarchy-ORG">
-    <meta property="og:description" content="Hierarchical content organizer featuring structured document tree file format. Fractal-structure inspired, parent-child orbiting, zooming-elements based.">
-    <meta property="og:image" content="media/socmedia.png">
+    <meta property="og:url" content="https://github.com/fractarchy/fractarchy-note">
+    <meta property="og:title" content="Fractarchy Note v0.1">
+    <meta property="og:description" content="Deviant hierarchical content organizer featuring structured document tree file format">
+    <meta property="og:image" content="./media/social-media.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://github.com/contrast-zone/fractarchy-org">
-    <meta property="twitter:title" content="Fractarchy-ORG">
-    <meta property="twitter:description" content="Hierarchical content organizer featuring structured document tree file format. Fractal-structure inspired, parent-child orbiting, zooming-elements based.">
-    <meta property="twitter:image" content="media/socmedia.png">
+    <meta property="twitter:url" content="https://github.com/fractarchy/fractarchy-note">
+    <meta property="twitter:title" content="Fractarchy Note v0.1">
+    <meta property="twitter:description" content="Deviant hierarchical content organizer featuring structured document tree file format">
+    <meta property="twitter:image" content="./media/social-media.png">
 
     <!--meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"-->
     
@@ -72,41 +77,41 @@
             title: Fractadocs
             tags: digital-workbook, text-processing, hierarchical-data, fractal-structure-inspired, parent-child-orbiting, zooming-elements-based
         </noscript>
-        <iframe id="source" style="visibility: hidden; border-style:none; position:fixed;/* top:0; left:0; bottom:0; right:0; width:100%; height:100%;*/ border:none; background-color: gray;"></iframe>
-        <iframe id="target" style="visibility: hidden; border-style:none; position:fixed;/* top:0; left:0; bottom:0; right:0; width:100%; height:100%;*/ border:none; background-color: gray;"></iframe>
+        <iframe id="source" style="border-radius: 0px; visibility: hidden; border-style:none; position:fixed;/* top:0; left:0; bottom:0; right:0; width:100%; height:100%;*/ border:none; background-color: gray;"></iframe>
+        <iframe id="target" style="border-radius: 0px; visibility: hidden; border-style:none; position:fixed;/* top:0; left:0; bottom:0; right:0; width:100%; height:100%;*/ border:none; background-color: gray;"></iframe>
         <!--a id="fullscrbtn" class="btn" style="position: absolute; text-shadow: 0px 0px 10px black;" hidden>
             <i class="material-icons" style="font-size: 7em;">fullscreen</i>
         </a-->
         <div id="navr" style="opacity: 1; visibility: hidden; z-index: 4000000000; position: absolute; background-color: rgb(48,48,48); right: 1px; bottom: 1px; width: 144px; height: 144px; border-radius: 72px;" hidden>
-            <a id="zoomin" style="position: absolute; border-radius: 30px; top: 48px; left: 48px; padding: 1px; border: 2px solid rgba(208,208,208, 0.7); transform: translateX(-3px) translateY(-3px);">
-                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style=" display: block; transform: scale(0.8);">
+            <a id="zoomr" style="position: absolute; border-radius: 30px; top: 48px; left: 48px; padding: 1px; border: 2px solid rgba(208,208,208, 0.7); transform: translateX(-3px) translateY(-3px);">
+                <svg id="zoominr" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style=" display: block; transform: scale(0.8);">
                     <title>zoom in</title>
                     <path fill="rgb(208,208,208)" stroke="rgb(208,208,208)" stroke-width="0px" d="M7.2 43.25 4.75 40.8l7.15-7.15H5.7v-3.4h12.05V42.3h-3.4v-6.2Zm33.6 0-7.15-7.15v6.2h-3.4V30.25H42.3v3.4h-6.2l7.15 7.15ZM5.7 17.75v-3.4h6.2L4.75 7.2 7.2 4.75l7.15 7.15V5.7h3.4v12.05Zm24.55 0V5.7h3.4v6.2l7.2-7.2 2.45 2.45-7.2 7.2h6.2v3.4Z"/>
                 </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style=" display: none; transform: scale(0.8);">
+                <svg id="zoomoutr" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style=" display: none; transform: scale(0.8);">
                     <title>zoom out</title>
                     <path fill="rgb(208,208,208)" stroke="rgb(208,208,208)" stroke-width="0px" d="M5.7 42.3V30.25h3.4v6.2l7.2-7.2 2.45 2.45-7.2 7.2h6.2v3.4Zm24.55 0v-3.4h6.2l-7.15-7.15 2.45-2.45 7.15 7.15v-6.2h3.4V42.3Zm-14-23.6L9.1 11.55v6.2H5.7V5.7h12.05v3.4h-6.2l7.15 7.15Zm15.5 0-2.45-2.45 7.15-7.15h-6.2V5.7H42.3v12.05h-3.4v-6.2Z"/>
                 </svg>
             </a>
-            <a id="north" style="position: absolute; border-radius: 24px; top: 0px; left: 48px;">
+            <a id="northr" style="position: absolute; border-radius: 24px; top: 0px; left: 48px;">
                 <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block; transform: scale(0.8);">
                     <title>go north</title>
                     <path fill="rgb(208,208,208)" stroke="rgb(208,208,208)" stroke-width="1px" d="M22.3 44.2v-34L12.1 20.4 9.7 18 24 3.7 38.3 18l-2.4 2.4-10.2-10.2v34Z"/>
                 </svg>
             </a>
-            <a id="west" style="position: absolute; border-radius: 24px; bottom: 48px; left: 0px;">
+            <a id="westr" style="position: absolute; border-radius: 24px; bottom: 48px; left: 0px;">
                 <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block; transform: scale(0.8);">
                     <title>go west</title>
                     <path fill="rgb(208,208,208)" stroke="rgb(208,208,208)" stroke-width="1px" d="M18.1 38.3 3.8 24 18.1 9.7l2.4 2.4-10.2 10.2h34v3.4h-34l10.2 10.2"/>
                 </svg>
             </a>
-            <a id="east" style="position: absolute; border-radius: 24px; top: 48px; right: 0px;">
+            <a id="eastr" style="position: absolute; border-radius: 24px; top: 48px; right: 0px;">
                 <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block; transform: scale(0.8);">
                     <title>go east</title>
                     <path fill="rgb(208,208,208)" stroke="rgb(208,208,208)" stroke-width="1px" d="m30 38.3-2.4-2.4 10.2-10.2h-34v-3.4h34L27.6 12.1 30 9.7 44.3 24Z"/>
                 </svg>
             </a>
-            <a id="south" style="position: absolute; border-radius: 24px; bottom: 0px; right: 48px;">
+            <a id="southr" style="position: absolute; border-radius: 24px; bottom: 0px; right: 48px;">
                 <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block; transform: scale(0.8);">
                     <title>go south</title>
                     <path fill="rgb(208,208,208)" stroke="rgb(208,208,208)" stroke-width="1px" d="M24 44.2 9.7 29.9l2.4-2.4 10.2 10.25V3.7h3.4v34.05L35.9 27.5l2.4 2.4Z"/>
@@ -114,35 +119,35 @@
             </a>
         </div>
         <div id="navl" style="border: 0px solid rgba(48,48,48, 0.7); opacity: 1; visibility: hidden; z-index: 4000000000; position: absolute; background-color: rgb(208,208,208); right: 1px; bottom: 1px; width: 144px; height: 144px; border-radius: 72px;" hidden>
-            <a id="zoomin" style="position: absolute; border-radius: 30px; top: 48px; left: 48px; padding: 1px; border: 2px solid rgba(48,48,48, 0.7); transform: translateX(-3px) translateY(-3px);">
-                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block; transform: scale(0.8);">
+            <a id="zooml" style="position: absolute; border-radius: 30px; top: 48px; left: 48px; padding: 1px; border: 2px solid rgba(48,48,48, 0.7); transform: translateX(-3px) translateY(-3px);">
+                <svg id="zoominl" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block; transform: scale(0.8);">
                     <title>zoom in</title>
                     <path fill="rgb(48,48,48)" stroke="rgb(48,48,48)" stroke-width="0px" d="M7.2 43.25 4.75 40.8l7.15-7.15H5.7v-3.4h12.05V42.3h-3.4v-6.2Zm33.6 0-7.15-7.15v6.2h-3.4V30.25H42.3v3.4h-6.2l7.15 7.15ZM5.7 17.75v-3.4h6.2L4.75 7.2 7.2 4.75l7.15 7.15V5.7h3.4v12.05Zm24.55 0V5.7h3.4v6.2l7.2-7.2 2.45 2.45-7.2 7.2h6.2v3.4Z"/>
                 </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: none; transform: scale(0.8);">
+                <svg id = "zoomoutl" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: none; transform: scale(0.8);">
                     <title>zoom out</title>
                     <path fill="rgb(48,48,48)" stroke="rgb(48,48,48)" stroke-width="0px" d="M5.7 42.3V30.25h3.4v6.2l7.2-7.2 2.45 2.45-7.2 7.2h6.2v3.4Zm24.55 0v-3.4h6.2l-7.15-7.15 2.45-2.45 7.15 7.15v-6.2h3.4V42.3Zm-14-23.6L9.1 11.55v6.2H5.7V5.7h12.05v3.4h-6.2l7.15 7.15Zm15.5 0-2.45-2.45 7.15-7.15h-6.2V5.7H42.3v12.05h-3.4v-6.2Z"/>
                 </svg>
             </a>
-            <a id="north" style="position: absolute; border-radius: 24px; top: 0px; left: 48px;">
+            <a id="northl" style="position: absolute; border-radius: 24px; top: 0px; left: 48px;">
                 <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block; transform: scale(0.8);">
                     <title>go north</title>
                     <path fill="rgb(48,48,48)" stroke="rgb(48,48,48)" stroke-width="1px" d="M22.3 44.2v-34L12.1 20.4 9.7 18 24 3.7 38.3 18l-2.4 2.4-10.2-10.2v34Z"/>
                 </svg>
             </a>
-            <a id="west" style="position: absolute; border-radius: 24px; bottom: 48px; left: 0px;">
+            <a id="westl" style="position: absolute; border-radius: 24px; bottom: 48px; left: 0px;">
                 <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block; transform: scale(0.8);">
                     <title>go west</title>
                     <path fill="rgb(48,48,48)" stroke="rgb(48,48,48)" stroke-width="1px" d="M18.1 38.3 3.8 24 18.1 9.7l2.4 2.4-10.2 10.2h34v3.4h-34l10.2 10.2"/>
                 </svg>
             </a>
-            <a id="east" style="position: absolute; border-radius: 24px; top: 48px; right: 0px;">
+            <a id="eastl" style="position: absolute; border-radius: 24px; top: 48px; right: 0px;">
                 <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block; transform: scale(0.8);">
                     <title>go east</title>
                     <path fill="rgb(48,48,48)" stroke="rgb(48,48,48)" stroke-width="1px" d="m30 38.3-2.4-2.4 10.2-10.2h-34v-3.4h34L27.6 12.1 30 9.7 44.3 24Z"/>
                 </svg>
             </a>
-            <a id="south" style="position: absolute; border-radius: 24px; bottom: 0px; right: 48px;">
+            <a id="southl" style="position: absolute; border-radius: 24px; bottom: 0px; right: 48px;">
                 <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display: block; transform: scale(0.8);">
                     <title>go south</title>
                     <path fill="rgb(48,48,48)" stroke="rgb(48,48,48)" stroke-width="1px" d="M24 44.2 9.7 29.9l2.4-2.4 10.2 10.25V3.7h3.4v34.05L35.9 27.5l2.4 2.4Z"/>
@@ -166,13 +171,13 @@
         </a-->
         <a id="btnledpr" style="position: absolute; color: rgb(208,208,208);">
             <svg id="fold" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="visibility: hidden;"><title>fold</title><path fill="rgb(208,208,208,0.2)" d="m17.15 40.3-2.45-2.45 9.3-9.3 9.3 9.3-2.45 2.45L24 33.45ZM24 19.45l-9.3-9.3 2.45-2.45L24 14.55l6.85-6.85 2.45 2.45Z"/></svg>
-            <svg id="svgledpr" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><title>enter edit/print mode</title><path fill="rgb(208,208,208)" d="M23.8 42.2v-3.85L34.65 27.5l3.85 3.85L27.65 42.2Zm-18-10.35V28.4h15.55v3.45Zm34.85-2.65-3.85-3.85 1.45-1.45q.45-.45 1.2-.45t1.2.45l1.45 1.45q.45.45.45 1.2t-.45 1.2ZM5.8 23.3v-3.4h23.9v3.4Zm0-8.55v-3.4h23.9v3.4Z"/></svg>
+            <svg id="svgledpr" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><title>enter edit/preview mode</title><path fill="rgb(208,208,208)" d="M9.1 39h2.05L33.2 16.95l-2.05-2.05L9.1 36.95Zm30.65-24.2L33.3 8.35l1.85-1.85q.95-1 2.375-1t2.375.95l1.9 1.9q.95.9.9 2.2-.05 1.3-.9 2.2Zm-2.1 2.1L12.4 42.15H5.95V35.7L31.2 10.45Zm-5.45-1-1.05-1 2.05 2.05Z"/></svg>
             <svg id="unfold" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="visibility: hidden;"><title>unfold</title><path fill="rgb(208,208,208,0.2)" d="M24 42.3 14.7 33l2.5-2.5 6.8 6.8 6.8-6.8 2.5 2.5Zm-6.8-24.6-2.5-2.5L24 5.9l9.3 9.3-2.5 2.5-6.8-6.85Z"/></svg>
         </a>
         <a id="btnupload" style="position: absolute; color: rgb(208,208,208);">
             <svg id="svginput" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:inline;"><title>input from storage</title><path fill="rgb(208,208,208)" d="M9.1 42.3q-1.35 0-2.375-1.025T5.7 38.9V28.7h3.4v10.2h29.8V9H9.1v10.3H5.7V9q0-1.4 1.025-2.4t2.375-1h29.8q1.4 0 2.4 1t1 2.4v29.9q0 1.35-1 2.375T38.9 42.3ZM20.8 34l-2.5-2.5 5.75-5.8H5.7v-3.4h18.35l-5.75-5.8 2.5-2.5 10.05 10Z"/></svg>
             <svg id="svglosel" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:none"><title>cancel</title><path fill="rgb(208,208,208)" d="m16.6 33.6 7.4-7.4 7.4 7.4 2.2-2.2-7.4-7.4 7.4-7.4-2.2-2.2-7.4 7.4-7.4-7.4-2.2 2.2 7.4 7.4-7.4 7.4ZM24 44.3q-4.15 0-7.875-1.6-3.725-1.6-6.475-4.35Q6.9 35.6 5.3 31.9 3.7 28.2 3.7 24t1.6-7.925q1.6-3.725 4.35-6.45Q12.4 6.9 16.1 5.3T24 3.7q4.2 0 7.925 1.6 3.725 1.6 6.45 4.325T42.7 16.05q1.6 3.7 1.6 7.95 0 4.2-1.6 7.9t-4.325 6.45Q35.65 41.1 31.95 42.7q-3.7 1.6-7.95 1.6Zm0-3.4q7.05 0 11.975-4.95T40.9 24q0-7.05-4.925-11.975T24 7.1q-7 0-11.95 4.925Q7.1 16.95 7.1 24q0 7 4.95 11.95Q17 40.9 24 40.9ZM24 24Z"/></svg>
-            <svg id="svgkeepl" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:none"><title>accept changes</title><path fill="rgb(208,208,208)" d="M21.05 33.3 35.3 19l-2.55-2.5-11.7 11.75-5.9-5.9-2.5 2.5Zm2.95 11q-4.15 0-7.875-1.6-3.725-1.6-6.475-4.35Q6.9 35.6 5.3 31.9 3.7 28.2 3.7 24t1.6-7.925q1.6-3.725 4.35-6.45Q12.4 6.9 16.1 5.3T24 3.7q4.2 0 7.925 1.6 3.725 1.6 6.45 4.325T42.7 16.05q1.6 3.7 1.6 7.95 0 4.2-1.6 7.9t-4.325 6.45Q35.65 41.1 31.95 42.7q-3.7 1.6-7.95 1.6Zm0-3.4q7.05 0 11.975-4.95T40.9 24q0-7.05-4.925-11.975T24 7.1q-7 0-11.95 4.925Q7.1 16.95 7.1 24q0 7 4.95 11.95Q17 40.9 24 40.9ZM24 24Z"/></svg>
+            <svg id="svgkeepl" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:none"><title>accept changes</title><path fill="rgb(208,208,208)" d="m21.9 27.65 10.9-10.9-2.45-2.4-8.45 8.5-4.25-4.25L15.2 21ZM1.7 42.45V39.3h44.6v3.15Zm5.4-6.15q-1.35 0-2.375-1.025T3.7 32.9V9.1q0-1.4 1.025-2.4t2.375-1h33.8q1.4 0 2.4 1t1 2.4v23.8q0 1.35-1 2.375T40.9 36.3Zm0-3.4h33.8V9.1H7.1v23.8Zm0 0V9.1v23.8Z"/></svg>
         </a>
         <a id="btnlslide" style="position: absolute; color: rgb(208,208,208);">
             <svg id="svglcropfull" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:inline;"><title>full width</title><path fill="rgb(208,208,208)" d="M9.1 42.3q-1.35 0-2.375-1.025T5.7 38.9V9.1q0-1.4 1.025-2.4t2.375-1h29.8q1.4 0 2.4 1t1 2.4v29.8q0 1.35-1 2.375T38.9 42.3Zm0-3.4h29.8V9.1H9.1v29.8Zm0 0V9.1v29.8Z"/></svg>
@@ -180,7 +185,7 @@
         </a>
         <a id="btnredpr" style="position: absolute; color: rgb(208,208,208);">
             <svg id="unfold" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="visibility: hidden;"><title>unfold</title><path fill="rgb(48,48,48,0.2)" d="M24 42.3 14.7 33l2.5-2.5 6.8 6.8 6.8-6.8 2.5 2.5Zm-6.8-24.6-2.5-2.5L24 5.9l9.3 9.3-2.5 2.5-6.8-6.85Z"/></svg>
-            <svg id="svgredpr" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><title>enter edit/print mode</title><path fill="rgb(48,48,48)" d="M32.8 15.3V9.1H15.2v6.2h-3.4V5.7h24.4v9.6ZM7.1 18.7h33.8H11.8Zm29.65 5.05q.65 0 1.15-.5.5-.5.5-1.15 0-.65-.5-1.15-.5-.5-1.15-.5-.65 0-1.15.5-.5.5-.5 1.15 0 .65.5 1.15.5.5 1.15.5ZM32.8 39.1v-8.9H15.2v8.9Zm3.4 3.35H11.8v-9H3.7V20.9q0-2.35 1.6-3.975t4-1.625h29.4q2.4 0 4 1.625t1.6 3.975v12.55h-8.1Zm4.7-12.4V20.9q0-.95-.625-1.575T38.75 18.7H9.3q-.95 0-1.575.625T7.1 20.9v9.15h4.7V26.8h24.4v3.25Z"/></svg>
+            <svg id="svgredpr" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><title>enter edit/preview mode</title><path fill="rgb(48,48,48)" d="M24 31.5q3.55 0 6.025-2.475Q32.5 26.55 32.5 23q0-3.55-2.475-6.025Q27.55 14.5 24 14.5q-3.55 0-6.025 2.475Q15.5 19.45 15.5 23q0 3.55 2.475 6.025Q20.45 31.5 24 31.5Zm0-3.1q-2.25 0-3.825-1.575Q18.6 25.25 18.6 23t1.575-3.825Q21.75 17.6 24 17.6t3.825 1.575Q29.4 20.75 29.4 23t-1.575 3.825Q26.25 28.4 24 28.4Zm0 9.9q-7.4 0-13.375-4.25T1.7 23q2.95-6.8 8.925-11.05Q16.6 7.7 24 7.7t13.375 4.25Q43.35 16.2 46.3 23q-2.95 6.8-8.925 11.05Q31.4 38.3 24 38.3ZM24 23Zm0 12q6.05 0 11.125-3.275T42.85 23q-2.65-5.45-7.725-8.725Q30.05 11 24 11t-11.125 3.275Q7.8 17.55 5.1 23q2.7 5.45 7.775 8.725Q17.95 35 24 35Z"/></svg>
             <svg id="fold" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="visibility: hidden;"><title>fold</title><path fill="rgb(48,48,48,0.2)" d="m17.15 40.3-2.45-2.45 9.3-9.3 9.3 9.3-2.45 2.45L24 33.45ZM24 19.45l-9.3-9.3 2.45-2.45L24 14.55l6.85-6.85 2.45 2.45Z"/></svg>
         </a>
         <a id="btnrslide" style="position: absolute; color: rgb(208,208,208);">
@@ -189,30 +194,30 @@
         </a>
         <a id="btndownload" style="position: absolute; color: rgb(48,48,48);">
             <svg id="svgoutput" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:inline;"><title>output to storage</title><path fill="rgb(48,48,48)" d="M9.1 42.3q-1.35 0-2.375-1.025T5.7 38.9V9.1q0-1.4 1.025-2.4t2.375-1h29.8q1.4 0 2.4 1t1 2.4v4.4h-3.4V9.1H9.1v29.8h29.8v-4.4h3.4v4.4q0 1.35-1 2.375T38.9 42.3Zm25.4-8.85-2.35-2.4 5.3-5.35H18.9v-3.4h18.55l-5.3-5.35 2.35-2.4L43.95 24Z"/></svg>
-            <svg id="svgkeepr" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:none"><title>print document</title><path fill="rgb(48,48,48)" d="M21.05 33.3 35.3 19l-2.55-2.5-11.7 11.75-5.9-5.9-2.5 2.5Zm2.95 11q-4.15 0-7.875-1.6-3.725-1.6-6.475-4.35Q6.9 35.6 5.3 31.9 3.7 28.2 3.7 24t1.6-7.925q1.6-3.725 4.35-6.45Q12.4 6.9 16.1 5.3T24 3.7q4.2 0 7.925 1.6 3.725 1.6 6.45 4.325T42.7 16.05q1.6 3.7 1.6 7.95 0 4.2-1.6 7.9t-4.325 6.45Q35.65 41.1 31.95 42.7q-3.7 1.6-7.95 1.6Zm0-3.4q7.05 0 11.975-4.95T40.9 24q0-7.05-4.925-11.975T24 7.1q-7 0-11.95 4.925Q7.1 16.95 7.1 24q0 7 4.95 11.95Q17 40.9 24 40.9ZM24 24Z"/></svg>
+            <svg id="svgkeepr" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:none"><title>print document</title><path fill="rgb(48,48,48)" d="M32.8 15.3V9.1H15.2v6.2h-3.4V5.7h24.4v9.6ZM7.1 18.7h33.8H11.8Zm29.65 5.05q.65 0 1.15-.5.5-.5.5-1.15 0-.65-.5-1.15-.5-.5-1.15-.5-.65 0-1.15.5-.5.5-.5 1.15 0 .65.5 1.15.5.5 1.15.5ZM32.8 39.1v-8.9H15.2v8.9Zm3.4 3.35H11.8v-9H3.7V20.9q0-2.35 1.6-3.975t4-1.625h29.4q2.4 0 4 1.625t1.6 3.975v12.55h-8.1Zm4.7-12.4V20.9q0-.95-.625-1.575T38.75 18.7H9.3q-.95 0-1.575.625T7.1 20.9v9.15h4.7V26.8h24.4v3.25Z"/></svg>
             <svg id="svgloser" xmlns="http://www.w3.org/2000/svg" height="48" width="48" style="display:none"><title>cancel</title><path fill="rgb(48,48,48)" d="m16.6 33.6 7.4-7.4 7.4 7.4 2.2-2.2-7.4-7.4 7.4-7.4-2.2-2.2-7.4 7.4-7.4-7.4-2.2 2.2 7.4 7.4-7.4 7.4ZM24 44.3q-4.15 0-7.875-1.6-3.725-1.6-6.475-4.35Q6.9 35.6 5.3 31.9 3.7 28.2 3.7 24t1.6-7.925q1.6-3.725 4.35-6.45Q12.4 6.9 16.1 5.3T24 3.7q4.2 0 7.925 1.6 3.725 1.6 6.45 4.325T42.7 16.05q1.6 3.7 1.6 7.95 0 4.2-1.6 7.9t-4.325 6.45Q35.65 41.1 31.95 42.7q-3.7 1.6-7.95 1.6Zm0-3.4q7.05 0 11.975-4.95T40.9 24q0-7.05-4.925-11.975T24 7.1q-7 0-11.95 4.925Q7.1 16.95 7.1 24q0 7 4.95 11.95Q17 40.9 24 40.9ZM24 24Z"/></svg>
         </a>
         <!--a id="btnrmenu" style="position: absolute; color: rgb(208,208,208);" hidden>
             <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><title>menu</title><path fill="rgb(48,48,48, 0.2)" d="M5.8 36.35v-3.4h36.4v3.4Zm0-10.65v-3.4h36.4v3.4Zm0-10.65v-3.4h36.4v3.4Z"/></svg>
         </a-->
         <div id="helpcontainer" class="center" style="position: absolute; visibility: hidden; left: 0; top: 0; right: 0; bottom: 0; background-color: rgb(128,128,128,0.95);">
-            <img id="helpl" src="./media/instrl.svg" height="90%" style="cursor:pointer; display: none"/>
-            <img id="helpd" src="./media/instrd.svg" height="90%" style="cursor:pointer; display: none"/>
+            <!--img id="helpl" src="./media/instrl.svg" height="90%" style="cursor:pointer; display: none"/-->
+            <!--img id="helpd" src="./media/instrd.svg" height="90%" style="cursor:pointer; display: none"/-->
         </div>
-        <div id="iocontainer" class="center" style="position: absolute; visibility: hidden; left: 0; top: 0; right: 0; bottom: 0; background-color: rgb(128,128,128,0.95);">
+        <div id="iocontainer" class="center" style="z-index: 8000000000; position: absolute; visibility: hidden; left: 0; top: 0; right: 0; bottom: 0; background-color: rgb(128,128,128,0.95);">
             <iframe id="iofr" style="display: none; border: none;"></iframe>
         </div>
-        <div id="myPopupContainer" style="position: absolute; display: none; left: 0; top: 0; right: 0; bottom: 0;">
+        <div id="myPopupContainer" style="z-index: 8000000000; position: absolute; display: none; left: 0; top: 0; right: 0; bottom: 0;">
             <span id="myPopup" style="padding: 4px; position: absolute; width: 175px; font-family: sans-serif; background-color: rgb(208,208,208); color: rgb(48,48,48);">
-                <div id="openDocument" onmouseenter="this.style.backgroundColor='rgb(48,48,48)';this.style.color='rgb(208,208,208)';" onmouseleave="this.style.backgroundColor='rgb(208,208,208)';this.style.color='rgb(48,48,48)';" style="width: 175px;">
-                    &nbsp;&nbsp;&nbsp; open document
-                </div>
                 <div id="newDocument" onmouseenter="this.style.backgroundColor='rgb(48,48,48)';this.style.color='rgb(208,208,208)';" onmouseleave="this.style.backgroundColor='rgb(208,208,208)';this.style.color='rgb(48,48,48)';" style="width: 175px;">
                     &nbsp;&nbsp;&nbsp; new document
                 </div>
+                <div id="openDocument" onmouseenter="this.style.backgroundColor='rgb(48,48,48)';this.style.color='rgb(208,208,208)';" onmouseleave="this.style.backgroundColor='rgb(208,208,208)';this.style.color='rgb(48,48,48)';" style="width: 175px;">
+                    &nbsp;&nbsp;&nbsp; open document
+                </div>
             </span>
         </div>
-        <div id="myPopdownContainer" style="position: absolute; display: none; left: 0; top: 0; right: 0; bottom: 0;">
+        <div id="myPopdownContainer" style="z-index: 8000000000; position: absolute; display: none; left: 0; top: 0; right: 0; bottom: 0;">
             <span id="myPopdown" style="padding: 4px; position: absolute; width: 175px; font-family: sans-serif; background-color: rgb(48,48,48); color: rgb(208,208,208)">
                 <div id="saveDocument" onmouseenter="this.style.backgroundColor='rgb(208,208,208)';this.style.color='rgb(48,48,48)';" onmouseleave="this.style.backgroundColor='rgb(48,48,48)';this.style.color='rgb(208,208,208)';" style="width: 175px;">
                     &nbsp;&nbsp;&nbsp; save document
@@ -223,22 +228,128 @@
             </span>
         </div>
         <script>
-            var navmagn = 2/3;//0.75;
-            document.getElementById("navl").style.transform = "translateX(" + -Math.floor (144 / 2 - 144 * navmagn / 2) + "px)" + " translateY(" + -Math.floor (144 / 2 - 144 * navmagn / 2) + "px)" + " scale(" + navmagn + ") ";
-            document.getElementById("navr").style.transform = "translateX(" + Math.floor (144 / 2 - 144 * navmagn / 2) + "px)" + " translateY(" + Math.floor (144 / 2 - 144 * navmagn / 2) + "px)" + " scale(" + navmagn + ") ";
+            var zoom = 1;
+
+            function zoomAll (f) {
+                document.body.style.transformOrigin = "left top";
+                document.body.style.transform = "scale(" + f + ")";
+                document.body.style.width = (100 / f) + "%";
+                document.body.style.height = (100 / f) + "%";
+            }
+            
+            zoomAll (zoom);
+
+            var magnFactor = 1.5;
+            var magnFactorIco = 1;            
+            var magnFactorNav = 0.625;
+            
+            // --- navigator --- //
+            
+                document.getElementById("navl").style.transform = "translateX(" + -Math.floor (144 / 2 - 144 * magnFactorNav / 2) + "px)" + " translateY(" + -Math.floor (144 / 2 - 144 * magnFactorNav / 2) + "px)" + " scale(" + magnFactorNav + ") ";
+                document.getElementById("navr").style.transform = "translateX(" +  Math.floor (144 / 2 - 144 * magnFactorNav / 2) + "px)" + " translateY(" +  Math.floor (144 / 2 - 144 * magnFactorNav / 2) + "px)" + " scale(" + magnFactorNav + ") ";
+
+                // --- zooming start --- //
+                    
+                    document.getElementById("zoominl").addEventListener('click', () => {
+                        document.getElementById("source").contentWindow.postMessage({msg: "zoomIn"}, "*");
+                    }, false);
+
+                    document.getElementById("zoomoutl").addEventListener('click', () => {
+                        document.getElementById("source").contentWindow.postMessage({msg: "zoomOut"}, "*");
+                    }, false);
+                    
+                    function zoomedInL () {
+                        document.getElementById("zoominl").style.display = "none";
+                        document.getElementById("zoomoutl").style.display = "block";
+                        document.getElementById("zoominr").style.display = "none";
+                        document.getElementById("zoomoutr").style.display = "block";
+
+                        document.getElementById("btnledpr").style.display = "inline";
+                        document.getElementById("btnredpr").style.display = "inline";
+                    }
+                    
+                    function zoomedOutL () {
+                        document.getElementById("zoomoutl").style.display = "none";
+                        document.getElementById("zoominl").style.display = "block";
+                        document.getElementById("zoomoutr").style.display = "none";
+                        document.getElementById("zoominr").style.display = "block";
+                    }
+                    
+                    function zoomingOutL () {
+                        document.getElementById("btnledpr").style.display = "none";
+                        document.getElementById("btnredpr").style.display = "none";
+                    }
+                    
+                    // - - - //
+
+                    document.getElementById("zoominr").addEventListener('click', () => {
+                        document.getElementById("target").contentWindow.postMessage({msg: "zoomIn"}, "*");
+                    }, false);
+
+                    document.getElementById("zoomoutr").addEventListener('click', () => {
+                        document.getElementById("target").contentWindow.postMessage({msg: "zoomOut"}, "*");
+                    }, false);
+                    
+                    function zoomedInR () {
+                        document.getElementById("zoominl").style.display = "none";
+                        document.getElementById("zoomoutl").style.display = "block";
+                        document.getElementById("zoominr").style.display = "none";
+                        document.getElementById("zoomoutr").style.display = "block";
+
+                        document.getElementById("btnledpr").style.display = "inline";
+                        document.getElementById("btnredpr").style.display = "inline";
+                    }
+                    
+                    function zoomedOutR () {
+                        document.getElementById("zoomoutl").style.display = "none";
+                        document.getElementById("zoominl").style.display = "block";
+                        document.getElementById("zoomoutr").style.display = "none";
+                        document.getElementById("zoominr").style.display = "block";
+                    }
+                    
+                    function zoomingOutR () {
+                        document.getElementById("btnledpr").style.display = "none";
+                        document.getElementById("btnredpr").style.display = "none";
+                    }
+                    
+                // --- zooming end --- //
+                
+                // --- movement --- //
+
+                    document.getElementById("northl").addEventListener('click', () => {
+                        document.getElementById("source").contentWindow.postMessage({msg: "goNorth"}, "*");
+                    }, false);
+                    
+                    document.getElementById("southl").addEventListener('click', () => {
+                        document.getElementById("source").contentWindow.postMessage({msg: "goSouth"}, "*");
+                    }, false);
+                    
+                    // - - - //
+                    
+                    document.getElementById("northr").addEventListener('click', () => {
+                        document.getElementById("target").contentWindow.postMessage({msg: "goNorth"}, "*");
+                    }, false);
+                    
+                    document.getElementById("southr").addEventListener('click', () => {
+                        document.getElementById("target").contentWindow.postMessage({msg: "goSouth"}, "*");
+                    }, false);
+
+                // --- movement end --- //
+
+            // --- navigator end --- //
 
             document.addEventListener('contextmenu', event => event.preventDefault());
             
             function backToBrowse () {
                 document.getElementById("source").contentWindow.location.replace("./src/source-browse.html");
                 document.getElementById("svginput").style.display = "inline";
-                document.getElementById("btnledpr").style.display = "inline";
+                document.getElementById("btnledpr").style.display = (document.getElementById("zoominl").style.display === "none"? "inline": "none");
                 document.getElementById("svglosel").style.display = "none";
                 document.getElementById("svgkeepl").style.display = "none";
                 
                 document.getElementById("target").contentWindow.location.replace("./src/target-browse.html");
                 document.getElementById("svgoutput").style.display = "inline";
-                document.getElementById("btnredpr").style.display = "inline";
+                document.getElementById("btnredpr").style.display = (document.getElementById("zoominr").style.display === "none"? "inline": "none");
                 document.getElementById("svgloser").style.display = "none";
                 document.getElementById("svgkeepr").style.display = "none";
 
@@ -248,32 +359,34 @@
             }
 
             var msg = (event) => {
-                if (event.data.msg === "edit/print") {
-                    srcloaded = false;
-                    tgtloaded = false;
-                    populateFrom = "browse";
+                if (event.data.msg === "edit/preview") {
+                    if (magnMax) {
+                        srcloaded = false;
+                        tgtloaded = false;
+                        populateFrom = "browse";
 
-                    //document.getElementById("source").style.backgroundColor = "rgb(48,48,48)";
-                    document.getElementById("source").contentWindow.location.replace("./src/source-edit.html");
-                    document.getElementById("btnledpr").style.display = "none";
-                    document.getElementById("svginput").style.display = "none";
-                    document.getElementById("svglosel").style.display = "inline";
-                    document.getElementById("svgkeepl").style.display = "inline";
-                
-                    //document.getElementById("target").style.backgroundColor = "rgb(208,208,208)";
-                    document.getElementById("target").contentWindow.location.replace("./src/target-print.html");
-                    document.getElementById("btnredpr").style.display = "none";
-                    document.getElementById("svgoutput").style.display = "none";
-                    document.getElementById("svgloser").style.display = "inline";
-                    document.getElementById("svgkeepr").style.display = "inline";
-
-                    document.getElementById("btnlhlp").style.display = "none";
-                    document.getElementById("btnrhlp").style.display = "none";
+                        //document.getElementById("source").style.backgroundColor = "rgb(48,48,48)";
+                        document.getElementById("source").contentWindow.location.replace("./src/source-edit.html?magnMax=" + magnMax);
+                        document.getElementById("btnledpr").style.display = "none";
+                        document.getElementById("svginput").style.display = "none";
+                        document.getElementById("svglosel").style.display = "inline";
+                        document.getElementById("svgkeepl").style.display = "inline";
                     
-                    document.getElementById("navl").style.visibility = "hidden";
-                    document.getElementById("navr").style.visibility = "hidden";
+                        //document.getElementById("target").style.backgroundColor = "rgb(208,208,208)";
+                        document.getElementById("target").contentWindow.location.replace("./src/target-print.html?magnMax=" + magnMax);
+                        document.getElementById("btnredpr").style.display = "none";
+                        document.getElementById("svgoutput").style.display = "none";
+                        document.getElementById("svgloser").style.display = "inline";
+                        document.getElementById("svgkeepr").style.display = "inline";
 
-                    mode = "edit/print";
+                        document.getElementById("btnlhlp").style.display = "none";
+                        document.getElementById("btnrhlp").style.display = "none";
+                        
+                        document.getElementById("navl").style.visibility = "hidden";
+                        document.getElementById("navr").style.visibility = "hidden";
+
+                        mode = "edit/preview";
+                    }
                     
                 } else if (event.data.msg === "cancelIO") {
                     hideIO ();
@@ -297,7 +410,7 @@
                     editedNotAccepted = false;
                     srcloaded = false;
                     tgtloaded = false;
-                    populateFrom = "edit/print";
+                    populateFrom = "edit/preview";
                     
                     backToBrowse ();
 
@@ -306,6 +419,11 @@
                         
                     if (slide !== "left")
                         document.getElementById("navr").style.visibility = "visible";
+
+                    //document.getElementById("zoomoutl").style.display = "none";
+                    //document.getElementById("zoominl").style.display = "block";
+                    //document.getElementById("zoomoutr").style.display = "none";
+                    //document.getElementById("zoominr").style.display = "block";
 
                     mode = "browse";
 
@@ -318,6 +436,11 @@
                     if (slide !== "left")
                         document.getElementById("navr").style.visibility = "visible";
 
+                    //document.getElementById("zoomoutl").style.display = "none";
+                    //document.getElementById("zoominl").style.display = "block";
+                    //document.getElementById("zoomoutr").style.display = "none";
+                    //document.getElementById("zoominr").style.display = "block";
+                    
                     mode = "browse";
 
                 } else if (event.data.msg === "invalidEdit") {
@@ -331,7 +454,7 @@
                 } else if (event.data.msg === "acceptChanges") {
                     srcloaded = false;
                     tgtloaded = false;
-                    populateFrom = "edit/print";
+                    populateFrom = "edit/preview";
                     
                     function setNodeTree (pl, cn, nt, newnt) {
                         if (pl > 1) {
@@ -357,21 +480,20 @@
                         document.title = "*" + t;
                     
                 } else if (event.data.msg === "syncSource") {
-                    currentNode = {cursor: event.data.cursor, pathLength: event.data.pathLength};
-                    document.getElementById("source").contentWindow.postMessage({msg: "sync", cursor: event.data.cursor, pathLength: event.data.pathLength}, "*");
-                    
+                    currentNode = {magn: event.data.magn, cursor: event.data.cursor, pathLength: event.data.pathLength};
+                    document.getElementById("source").contentWindow.postMessage({msg: "sync", magn: event.data.magn, cursor: event.data.cursor, pathLength: event.data.pathLength}, "*");
                 } else  if (event.data.msg === "syncTarget") {
-                    currentNode = {cursor: event.data.cursor, pathLength: event.data.pathLength};
-                    document.getElementById("target").contentWindow.postMessage({msg: "sync", cursor: event.data.cursor, pathLength: event.data.pathLength}, "*");
+                    currentNode = {magn: event.data.magn, cursor: event.data.cursor, pathLength: event.data.pathLength};
+                    document.getElementById("target").contentWindow.postMessage({msg: "sync", magn: event.data.magn, cursor: event.data.cursor, pathLength: event.data.pathLength}, "*");
                 }
             };
             
             document.getElementById("svgledpr").addEventListener ("click", function () {
-                msg ({data: {msg: "edit/print"}});
+                msg ({data: {msg: "edit/preview"}});
             }, false);
             
             document.getElementById("svgredpr").addEventListener ("click", function () {
-                msg ({data: {msg: "edit/print"}});
+                msg ({data: {msg: "edit/preview"}});
             }, false);
             
             document.getElementById("svglosel").addEventListener ("click", function () {
@@ -422,10 +544,12 @@
                     document.getElementById("myPopup").draggable = false;
                     document.getElementById("myPopup").ondragstart = function () {return false};
                     
-                    setTimeout (() => {
+                    window.requestAnimationFrame(() => {
+                    //setTimeout (() => {
                         document.getElementById("myPopup").style.left = document.getElementById("btnupload").offsetLeft + 3 + "px";
                         document.getElementById("myPopup").style.top = document.getElementById("btnupload").offsetTop - document.getElementById("myPopup").clientHeight - 3 + "px";
-                    }, 0);                
+                    //}, 0);                
+                    });
 
                     document.getElementById("myPopupContainer").style.display = "inline";
 
@@ -471,6 +595,7 @@
             }, false);
 
             document.getElementById("saveDocument").addEventListener ("click", function () {
+                populateFrom = "edit/preview";
                 if (unnamed)
                     showIO ("writeDoc", fullUrl);
                 else
@@ -478,6 +603,7 @@
             }, false);
 
             document.getElementById("saveAsDocument").addEventListener ("click", function () {
+                populateFrom = "edit/preview";
                 showIO ("writeDoc", fullUrl);
             }, false);
             
@@ -491,10 +617,13 @@
                 if (server === "Node.js") {
                     document.getElementById("myPopdown").draggable = false;
                     document.getElementById("myPopdown").ondragstart = function () {return false};
-                    setTimeout (() => {
+
+                    window.requestAnimationFrame(() => {
+                    //setTimeout (() => {
                         document.getElementById("myPopdown").style.left = document.getElementById("btndownload").offsetLeft + document.getElementById("btndownload").clientWidth - document.getElementById("myPopdown").clientWidth - 3 + "px";
                         document.getElementById("myPopdown").style.top = document.getElementById("btndownload").offsetTop + document.getElementById("btndownload").clientHeight - 1 + "px";
-                    }, 0);
+                    //}, 0);
+                    });
 
                     document.getElementById("myPopdownContainer").style.display = "inline";
 
@@ -569,12 +698,18 @@
                 var ln = document.getElementById("navl");
                 var rn = document.getElementById("navr");
 
+                var pu = document.getElementById("myPopupContainer");
+                var pd = document.getElementById("myPopdownContainer");
+                
+                pu.style.display = "none";
+                pd.style.display = "none";
+
                 var marg = 4;
                 var padd = 1;
                 var bord = 12;
                 var btns = 48;
 
-                if (!(window.innerHeight > marg * 2 + padd * 2 + bord + btns + ln.clientHeight * navmagn + 2)) {
+                if (!(window.innerHeight > marg * 2 + padd * 2 + bord + btns + ln.clientHeight * magnFactorNav + 2)) {
                     hideAll ();
                     s.style.display = "none";
                     t.style.display = "none";
@@ -601,7 +736,7 @@
                         document.getElementById("svgrcrophalf").style.display = "inline";
 
                     } else if (slide === "right") {
-                        if (mode === "edit/print") {
+                        if (mode === "edit/preview") {
     //                        s.disabled = true;
                             s.style.display = "none";
     //                        s.style.visibility = "hidden";
@@ -670,7 +805,7 @@
                         rn.style.visibility = "hidden";
                         
                     } else if (!onlyright) {
-                        s.style.width = "calc(50% - " + 2 * (marg + padd + bord) + "px)";
+                        s.style.width = "calc(50% - " + (2 * (marg + padd + bord) - 0.25) + "px)";
                     }
                     
                     window.requestAnimationFrame(function () {
@@ -687,8 +822,9 @@
                         lf.style.left = Math.round (s.offsetWidth / 2 - btns * 3 / 2) + "px"
                         lf.style.top = mmarg + s.offsetTop + s.offsetHeight - lc.offsetHeight + "px";
 
-                        ln.style.top = marg + padd + bord + "px";
-                        ln.style.left =  marg + padd + bord + "px";
+                        ln.style.top = mmarg + marg + padd + bord + "px";
+                        ln.style.left =  mmarg + marg + padd + bord + "px";
+                        
     //                }, 0);
                     });
                     
@@ -712,7 +848,7 @@
                         ln.style.visibility = "hidden";
                         
                     } else if (!onlyleft) {
-                        t.style.width = "calc(50% - " + 2 * (marg + padd + bord) + "px)";
+                        t.style.width = "calc(50% - " + (2 * (marg + padd + bord) - 0.25) + "px)";
                     }
                     
                     window.requestAnimationFrame(function () {
@@ -729,18 +865,24 @@
                         rf.style.top = marg + "px";
                         rf.style.left = t.offsetLeft + Math.round(t.offsetWidth / 2 - btns * 3 / 2) + "px";
 
-                        rn.style.bottom = marg + padd + bord + "px";
-                        rn.style.right =  marg + padd + bord + "px";
+                        rn.style.bottom = mmarg + marg + padd + bord + "px";
+                        rn.style.right =  mmarg + marg + padd + bord + "px";
+
                     });
                     
+                    if (hlpl)
                     hlpl.style.transform = "scale(" + 1 + ")";
+                    if (hlpd)
                     hlpd.style.transform = "scale(" + 1 + ")";
+                    if (hlpl)
                     var hh = window.innerHeight / hlpl.clientHeight * 0.85;
+                    if (hlpl)
                     hlpl.style.transform = "scale(" + hh + ")";
+                    if (hlpd)
                     hlpd.style.transform = "scale(" + hh + ")";
 
                     setTimeout (() => {
-                        if (slide === "left" && mode === "edit/print")
+                        if (slide === "left" && mode === "edit/preview")
                             document.getElementById("source").contentWindow.setSize ();//.divEditE.dispatchEvent(new CustomEvent('resize', null));
                     }, 0);
                 }
@@ -971,6 +1113,19 @@
                     });
                 };
                 
+                function bindIFrameWheel(iframe, fun){
+                    iframe.contentWindow.addEventListener('wheel', function(event) {
+                        var clRect = iframe.getBoundingClientRect();
+                        var evt = new CustomEvent('wheel', {bubbles: true, cancelable: false});
+
+                        evt.deltaY = event.deltaY;
+
+                        iframe.dispatchEvent(evt);
+                        
+                        fun ();
+                    });
+                };
+                
                 function loadSource () {
                     document.getElementById("source").contentWindow.postMessage({msg: "loaded"}, "*");
                     document.getElementById("target").contentWindow.postMessage({msg: "unloaded"}, "*");
@@ -982,9 +1137,30 @@
                 }
 
                 bindIFrameMousedown(document.getElementById('source'), loadTarget);
+                bindIFrameWheel(document.getElementById('source'), loadTarget);
                 bindIFrameMousedown(document.getElementById('target'), loadSource);
+                bindIFrameWheel(document.getElementById('target'), loadSource);
+                
+                /*
+                document.getElementById("source").contentWindow.addEventListener("wheel", loadTarget, false);
+                document.getElementById("source").contentWindow.addEventListener("mousedown", loadTarget, false);
+                document.getElementById("target").contentWindow.addEventListener("wheel", loadTarget, false);
+                document.getElementById("target").contentWindow.addEventListener("mousedown", loadTarget, false);
+                */
+
                 document.getElementById("source").contentWindow.addEventListener("touchstart", loadTarget, false);
                 document.getElementById("target").contentWindow.addEventListener("touchstart", loadSource, false);
+
+                document.getElementById("northl").addEventListener('click', loadTarget, false);
+                document.getElementById("southl").addEventListener('click', loadTarget, false);
+                document.getElementById("zoominl").addEventListener('click', loadTarget, false);
+                document.getElementById("zoomoutl").addEventListener('click', loadTarget, false);
+                
+                document.getElementById("northr").addEventListener('click', loadSource, false);
+                document.getElementById("southr").addEventListener('click', loadSource, false);
+                document.getElementById("zoominr").addEventListener('click', loadSource, false);
+                document.getElementById("zoomoutr").addEventListener('click', loadSource, false);
+
             }
             
             function getBaseUrl (url) {
@@ -993,7 +1169,7 @@
                 base.href = baseUrl;
                 const head = document.getElementsByTagName('head')[0];
                 head.insertBefore(base, head.childNodes[0]);
-                baseUrl = base.baseURI.substring(0, base.baseURI.lastIndexOf("/") + 1);
+                baseUrl = base.baseURI.substring(0, base.baseURI.lastIndexOf("/"));
                 base.remove();
                 
                 return baseUrl;
@@ -1084,7 +1260,49 @@
                         baseUrl = this.responseText;
                         fullUrl = this.responseText + "/new document.sdt";
                         document.title = "*new document";
-                        nodeTree = ["tree", ["node"], ["branches", ["tree", ["node"], ["branches"]], ["tree", ["node"], ["branches"]]]];
+                        nodeTree = [
+                            "tree",
+                            [
+                                [
+                                    "node",
+                                    [
+                                        "name", "\"Node 1.\""
+                                    ]
+                                ], [
+                                    "title", "Node 1."
+                                ]
+                            ], [
+                                "branches",
+                                [
+                                    "tree",
+                                    [
+                                        [
+                                            "node",
+                                            [
+                                                "name", "\"Node 1.1.\""
+                                            ]
+                                        ], [
+                                            "title", "Node 1.1."
+                                        ]
+                                    ], [
+                                        "branches"
+                                    ]
+                                ], [
+                                    "tree", [
+                                        [
+                                            "node",
+                                            [
+                                                "name", "\"Node 1.2.\""
+                                            ]
+                                        ], [
+                                            "title", "Node 1.2."
+                                        ]
+                                    ], [
+                                        "branches"
+                                    ]
+                                ]
+                            ]
+                        ];
                         document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: nodeTree}, "*");
                         document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: nodeTree, baseUrl: baseUrl}, "*");
                     }
@@ -1092,7 +1310,6 @@
                 xhttp.open("GET", "getHomeDir", true);
                 xhttp.overrideMimeType("text/plain");
                 xhttp.send();
-
             }
 
             function fileOutput (url) {
@@ -1157,7 +1374,7 @@
                         document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: nt, currentNode: currentNode, baseUrl: baseUrl}, "*");
                         document.getElementById("target").contentWindow.postMessage({msg: "populate", nodeTree: nt, baseUrl: baseUrl}, "*");
                     
-                    } else if (populateFrom === "edit/print") {
+                    } else if (populateFrom === "edit/preview") {
                         var nt = nodeTree;
                         
                         document.getElementById("source").contentWindow.postMessage({msg: "populate", nodeTree: nt}, "*");
@@ -1166,8 +1383,8 @@
                         document.getElementById("source").contentWindow.postMessage({msg: "setCurNode", cursor: currentNode.cursor, pathLength: currentNode.pathLength}, "*");
                         document.getElementById("target").contentWindow.postMessage({msg: "setCurNode", cursor: currentNode.cursor, pathLength: currentNode.pathLength}, "*");
     
-                        document.getElementById("source").contentWindow.postMessage({msg: "sync", cursor: currentNode.cursor, pathLength: currentNode.pathLength}, "*");
-                        document.getElementById("target").contentWindow.postMessage({msg: "sync", cursor: currentNode.cursor, pathLength: currentNode.pathLength}, "*");
+                        document.getElementById("source").contentWindow.postMessage({msg: "sync", magn: currentNode.magn, cursor: currentNode.cursor, pathLength: currentNode.pathLength}, "*");
+                        document.getElementById("target").contentWindow.postMessage({msg: "sync", magn: currentNode.magn, cursor: currentNode.cursor, pathLength: currentNode.pathLength}, "*");
                     }
                 }
             }
@@ -1206,6 +1423,7 @@
             var server;
             var mode = "browse";
             var editedNotAccepted = false;
+            var magnMax;
             
             document.getElementById("source").addEventListener ('load', () => {
                 srcloaded = true;
@@ -1226,7 +1444,7 @@
             window.addEventListener("load", function () {
                 lnks = document.querySelectorAll("a");
                 for (var i = 0; i < lnks.length; i++)
-                    if (document.getElementById("btnlhlp") !== lnks[i] && document.getElementById("btnrhlp") !== lnks[i])
+                    if (document.getElementById("btnledpr") !== lnks[i] && document.getElementById("btnredpr") !== lnks[i] && document.getElementById("btnlhlp") !== lnks[i] && document.getElementById("btnrhlp") !== lnks[i])
                         lnks[i].style.display = "inline";
             });
             
@@ -1265,7 +1483,11 @@
                 slide = "both";
             }
 
+            document.getElementById("btnledpr").style.display = "none";
+            document.getElementById("btnredpr").style.display = "none";
+
             detectServer ((responseText) => {server = responseText});
         </script>
+        <script src="app.js"></script>
     </body>
 </html>

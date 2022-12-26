@@ -22,7 +22,7 @@ var parser = (function (obj) {
                         return flatten (ret.arr);
                     
                     else
-                        return {err: "unbalanced parenthesis, unexpected characters", pos: ret.pos};
+                        return {err: "unbalanced brackets, unexpected chars", pos: ret.pos};
                 }
 
                 var deepParse = function (text, pos) {
@@ -98,7 +98,7 @@ var parser = (function (obj) {
                             return {pos: i, arr: array};
                         
                     } else
-                        return {err: "unbalanced parenthesis, expected ')'", pos: i};
+                        return {err: "unbalanced brackets, expected ')'", pos: i};
                 }
                 
                 var insert = function (arr, node) {

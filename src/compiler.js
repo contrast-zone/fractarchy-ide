@@ -56,11 +56,11 @@ var compiler = (function (obj) {
                     "close": '</h6>'
                 },
                 "paragraph": {
-                    "open": '<p style="font-size: 1em;">',
+                    "open": '<p style="font-size: 1em; overflow: hidden;">',
                     "close": '</p>'
                 },
                 "bquote": {
-                    "open": `<blockquote style="border-left: 0.2em solid ${env.ovalForeColor}; margin-left: 0px; padding-left: 0.9em;">`,
+                    "open": `<blockquote style="overflow: hidden; border-left: 0.2em solid ${env.ovalForeColor2}; margin-left: 0px; padding-left: 0.9em;">`,
                     "close": '</blockquote>'
                 },
                 "icode": {
@@ -71,16 +71,8 @@ var compiler = (function (obj) {
                     "open": `<code><pre style="/*background-color: rgb(180,180,180);*/ color: ${env.ovalForeColor}; border: 1px solid ${"rgb(128,128,128)"/*env.ovalForeColor*/}; overflow-x: auto; font-size: 0.9em;">`,
                     "close": '</pre></code>'
                 },
-                "html": {
-                    "open": `<section>`,
-                    "close": '</section>'
-                },
-                "hyperlink": {
-                    "open": '<a href="$address$" target="$target$">',
-                    "close": '</a>'
-                },
                 "olist": {
-                    "open": '<ol style="font-size: 1em;>',
+                    "open": '<ol style="font-size: 1em;">',
                     "close": '</ol>'
                 },
                 "ulist": {
@@ -92,29 +84,40 @@ var compiler = (function (obj) {
                     "close": '</li>'
                 },
                 "clist": {
-                    "open": '<ul style="list-style-type: none; margin:0; padding-left:1em">',
+                    "open": '<ul style="font-size: 1em;/*list-style: none; margin-left:0; padding-left:1em; text-indent-1em;*/">',
                     "close": '</ul>'
                 },
                 "eitem": {
-                    "open": '<li><b>☐</b>&nbsp;&nbsp;',
+                    "open": '<li style="list-style-type: \'☐  \'">',
                     "close": '</li>'
                 },
                 "xitem": {
-                    "open": '<li><b>☒</b>&nbsp;&nbsp;',
+                    "open": '<li style="list-style-type: \'☒  \'">',
                     "close": '</li>'
                 },
                 "yitem": {
-                    "open": '<li><b>☑</b>&nbsp;&nbsp;',
+                    "open": '<li style="list-style-type: \'☑  \'">',
                     "close": '</li>'
+                },
+                "hyperlink": {
+                    "open": '<a href="$address$" target="$target$" style="/*white-space: pre-wrap; word-break: break-all;*/">',
+                    "close": '</a>'
                 },
                 "image": {
                     "open": '<img src="$source$" width="100%">',
                     "close": '</img>'
+                },
+                "html": {
+                    "open": '',
+                    "close": ''
                 }
             }
             
             function stripQuotes (txt) {
-                return txt.substring (1, txt.length - 1);
+                if (txt.substring(0, 1) === "\"")
+                    return txt.substring (1, txt.length - 1);
+                else
+                    return txt
             }
             
             function getNode (node) {
@@ -138,17 +141,22 @@ var compiler = (function (obj) {
                         var map = maps[tmpmap];
                             
                         if (map) {
-                            if (tmpmap === "hyperlink") {
-                                txt += map["open"].replace("$address$", stripQuotes (node[0][1][1])).replace("$target$", stripQuotes (node[0][2][1]));
+                            if (tmpmap === "hyperlink" && !Array.isArray (node[0][1])) {
+                                txt += map["open"].replace("$address$", stripQuotes (node[0][1])).replace("$target$", "_new");
                             
-                            } else if (tmpmap === "image") {
-                                if (stripQuotes (node[1][1]).substring(0, 7) === "http://" || stripQuotes (node[1][1]).substring(0, 8) === "https://") {
-                                    txt += map["open"].replace("$source$", stripQuotes (node[1][1]));
+                            } else if (tmpmap === "image" && !Array.isArray (node[1])) {
+                                if (stripQuotes (node[1]).substring(0, 7) === "http://" || stripQuotes (node[1]).substring(0, 8) === "https://") {
+                                    txt += map["open"].replace("$source$", stripQuotes (node[1]));
                                     
                                 } else if (baseUrl.substring(0, 1) === "/") {
-                                    txt += map["open"].replace("$source$", "open-file?fname=" + encodeURIComponent (baseUrl + "/" + stripQuotes (node[1][1])));
+                                    if (stripQuotes (node[1]).substring(0, 1) !== "/") {
+                                        txt += map["open"].replace("$source$", "open-file?fname=" + /*encodeURIComponent*/ (baseUrl + "/" + stripQuotes (node[1])));
+                                    
+                                    } else {
+                                        txt += map["open"].replace("$source$", "open-file?fname=" + /*encodeURIComponent*/ (stripQuotes (node[1])));
+                                    }
                                 } else {
-                                    txt += map["open"].replace("$source$", baseUrl + "/" + stripQuotes (node[1][1]));
+                                    txt += map["open"].replace("$source$", baseUrl + "/" + stripQuotes (node[1]));
                                 }
                             
                             } else {
@@ -156,34 +164,77 @@ var compiler = (function (obj) {
                             }
                                 
                             for (var i = 1; i < node.length; i++) {
-                                if (tmpmap === "icode" || tmpmap === "bcode" || tmpmap === "html") {
-                                    txt += stripQuotes (node[i]);
-
-                                } else {
-                                    txt += getNode (node[i]);
+                                if (tmpmap === "html") {
+                                    var sq = stripQuotes (node[i])
+                                        .replaceAll (/<\s*script.*?\/>/g, ' ')
+                                        .replaceAll (/<\s*script.*?>.*?<\/\s*script.*?>/g, ' ')
+                                        .replaceAll (/on.*?=".*?"/g, '');
+                                        
+                                    if (baseUrl.substring(0, 1) === "/") {
+                                        txt += sq
+                                            .replaceAll (/src\s*=\s*"(?!\/)(?!.*http:\/\/)(?!.*https:\/\/)(.*?)"/g, ' src="open-file?fname=' + /*encodeURIComponent*/ (baseUrl + "/") + '$1"')
+                                            .replaceAll (/src\s*=\s*"(?=\/)(?!.*http:\/\/)(?!.*https:\/\/)(.*?)"/g, ' src="open-file?fname=' + '$1"');
+                                            
+                                    } else {
+                                        txt += sq.replaceAll (/src\s*=\s*"(?!\/)(?!.*http:\/\/)(?!.*https:\/\/)(.*?)"/g, ' src="' + baseUrl + '/$1"');
+                                    }
+                                    
+                                } else if (tmpmap === "icode" || tmpmap === "bcode") {
+                                    if (!Array.isArray (node[i]))
+                                        txt += stripQuotes (node[i])
+                                            .replaceAll(/&/g, '&amp;')
+                                            .replaceAll(/</g, '&lt;')
+                                            .replaceAll(/>/g, '&gt;')
+                                            .replaceAll(" ", '&nbsp;')
+                                            .replaceAll("-", '&#8209;');
+                                } else if (tmpmap !== "image") {
+                                    if (!Array.isArray (node[i])) {
+                                        if (node[i].substring(0, 1) === "\"") {
+                                            txt += stripQuotes (node[i])
+                                                .replaceAll("&", '&amp;')
+                                                .replaceAll("<", '&lt;')
+                                                .replaceAll(">", '&gt;')
+                                                .replaceAll(" ", '&nbsp;')
+                                                .replaceAll("-", '&#8209;');
+                                                
+                                        } else {
+                                            txt += node[i]
+                                                //.replaceAll(/&/g, '&amp;')
+                                                .replaceAll(/</g, '&lt;')
+                                                .replaceAll(/>/g, '&gt;');
+                                        }
+                                    } else
+                                        txt += getNode (node[i]);
                                 }
                                 
-                                if (tmpmap === "bcode" || tmpmap === "html")
-                                    txt += "\n";
+                                if (i < node.length - 1) {
+                                    if (tmpmap === "bcode" /*|| tmpmap === "html"*/)
+                                        txt += "\n";
                                     
-                                else if (i < node.length - 1) {
-                                    if (node[i + 1] !== ":" && node[i + 1] !== "," && node[i + 1] !== "." && node[i + 1] !== "?" && node[i + 1] !== "???" && node[i + 1] !== "!" && node[i + 1] !== "!!!" && node[i + 1] !== "?!" && node[i + 1] !== "?!!" && node[i + 1] !== "...")
+                                    else if (node[i + 1] !== ":" && node[i + 1] !== "," && node[i + 1] !== "." && node[i + 1] !== "?" && node[i + 1] !== "???" && node[i + 1] !== "!" && node[i + 1] !== "!!!" && node[i + 1] !== "?!" && node[i + 1] !== "?!!" && node[i + 1] !== "...")
                                         txt += " ";
                                 }
                             }
                             txt += map["close"];
                         }
                     } 
+                } else if (node.substring(0, 1) === "\"") {
+                    txt += stripQuotes (node)
+                        .replaceAll("&", '&amp;')
+                        .replaceAll("<", '&lt;')
+                        .replaceAll(">", '&gt;')
+                        .replaceAll(" ", '&nbsp;')
+                        .replaceAll("-", '&#8209;');
+                        
                 } else {
-                    txt += node;
+                    txt += node
+                        //.replaceAll(/&/g, '&amp;')
+                        .replaceAll(/</g, '&lt;')
+                        .replaceAll(/>/g, '&gt;');
                 }
                 
                 return txt;
             }
-            
-            //width = 1920 / window.innerWidth * 480;
-            //var ret = `<section style="overflow: hidden;">` + getNode(node) + `</div>`;
-            //return ret;
             
             return (node? getNode (node) + (fromPrint? "": "<br/>"): "<br/>");
         }
@@ -197,13 +248,17 @@ var compiler = (function (obj) {
                 
                 for (var i = 1; i < node.length; i++) {
                     numberOfNodes++;
-                    //ret += `<div style="background-color: rgb(208,208,208); width: ${width}em; border-radius: 2em; border: 0.2em solid rgb(64,64,64); padding: 1em; margin: 1em; margin-left: ` + margin + `;">`
-                    ret += `<div style="background-color: ${env.ovalBackColor}; color: ${env.ovalForeColor}; width: ${width}em; border-radius: 2em; border: 0.2em solid rgb(78,78,78); padding: 1em; margin-bottom: 1em; /*margin: 1em; margin-left: ` + margin + `;*/">`
-                        + node2html (node[i][1], baseUrl, true, env)
-                    
-                    if (node[i][2])
-                        ret += getNode (node[i][2]);//tree2html (node[i][2]);
-                    ret += `</div>`;
+                    if (node[i]) {
+                        if (node[i][1])
+                            ret += `<div style="background-color: ${env.ovalBackColor}; color: ${env.ovalForeColor}; width: ${width}em; border-radius: 2em; border: 0.2em solid rgb(78,78,78); padding: 1em; margin-bottom: 1em; /*margin: 1em; margin-left: ` + margin + `;*/">`
+                                + node2html (node[i][1], baseUrl, true, env)
+                        
+                        if (node[i][2])
+                            ret += getNode (node[i][2]);
+                            
+                        if (node[i][1])
+                            ret += `</div>`;
+                    }
                 }
                 
                 return ret;

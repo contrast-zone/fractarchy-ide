@@ -1,6 +1,6 @@
-# Fractarchy Designer
+# Fractarchy Note
 
-(v 0.1 - release candidate 0)
+(v0.1-preview)
 
 **tags:**
 
@@ -8,19 +8,19 @@ structured-document-tree, electronic-workbook, hierarchical-data-organizer, pers
 
 > ## promotional material
 > 
-> ![](media/socmedia.png)
+> ![](media/social-media.png)
 > 
-> Fractarchy Designer is a (deviant) hierarchical content organizer featuring structured document tree (*.sdt) file format. It is an elementary blend between content management system and hierarchical database. Use it for various purposes as an electronic workbook, hierarchical data organizer, or personal content management system.
+> Fractarchy Note is a (deviant) hierarchical content organizer featuring structured document tree (*.sdt) file format. It is an elementary blend between content management system and hierarchical database. Use it for various purposes as an electronic workbook, hierarchical data organizer, or personal content management system.
 
 ## screenshots
         
-![](media/ssh1.png)
+![](media/screenshot-1.png)
 
-![](media/ssh2.png)
+![](media/screenshot-2.png)
 
 ## use cases
 
-Fractarchy Designer **is suited** to be used as:
+Fractarchy Note **is suited** to be used as:
 
 - static content pages creation platform
 - mind map planner
@@ -31,29 +31,35 @@ Fractarchy Designer **is suited** to be used as:
 - multi-purpose documentation system
 - ...
 
-Fractarchy Designer **is not suited** to be used for:
+Fractarchy Note **is not suited** to be used for:
 
 - dynamic content pages creation
 
 ## online test
 
-Visit [https://fractarchy.github.io/fractarchy-designer/](https://fractarchy.github.io/fractarchy-designer/) to try Fractarchy Designer online.
+Visit [https://fractarchy.github.io/fractarchy-Note/](https://fractarchy.github.io/fractarchy-Note/) to try Fractarchy Note online.
 
 ## installing and running on local computer
 
+Prerequisites:
+
+* *Node.js* environment
+
+Installing and running the app:
+
 1. Download and unzip this package to an arbitrary local directory
-2. Make sure you have installed *Node.js* (it's only about 30MB - *npm* is not necessary)
-3. Open the download directory in terminal and enter `node main.js` to start the local server. Server starts at default port 8080. If you want to start server at another port, type the port number after the command. For example, for port 8088, enter `node main.js 8088`
-4. Once that the server is started, open a browser and type `http://localhost:8080/` at the address bar to start the application
+2. Open OS terminal, navigate to the package directory, and run the following command:
 
-Don't forget to adjust proper file access privileges to directories below `./projects/` if you want to save your work within them.
+        node index.js 8080
 
-## use instructions
+3. The app is running at port 8080. Visit [http://localhost:8080/](http://localhost:8080/) from the browser.
 
-Open `./projects/instructions/instructions.sdt` in the visual interface.
+## use instructions and creating content
+
+Upon running the app, instructions are opened as an initial content in the app visual interface. To create new content, click `input -> new document` menu item. To open existing content, click `input -> open document` menu item.
 
 ## licensing
 
-This software is released under [conditional Creative Commons Attribution 4.0 International License](LICENSE). It is free for students and for limited personal use, but if you use it a lot, or your plans meet commercial use, please refer to the license file for details about pricing.
+This software is released under [conditional Creative Commons Attribution-NoDerivatives 4.0 International License](LICENSE). It is free for students and for limited personal use, but if you use it a lot, or your plans meet commercial use, please refer to the license file for details about pricing.
 
 

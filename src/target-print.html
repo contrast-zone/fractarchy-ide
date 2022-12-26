@@ -91,10 +91,10 @@
                     baseUrl = event.data.baseUrl;
                     nodeTree = ["branches", event.data.nodeTree];
                     numberOfNodes = 0;
-                    var width = Math.round (window.innerWidth / ((1920 - 32) / 2) * 30); // 24em
-                    width = Math.min (width, 36);
+                    var width = magnMax * 2 / 3 / magnFactor * Math.round (window.innerWidth / ((1920 - 32) / 2) * 30); // 24em
+                    width = Math.min (width, magnMax * 2 / 3 / magnFactor * 36);
 
-                    ifrPreview.srcdoc = `<html style="font-size: 1em; background-color: inherit;">`
+                    ifrPreview.srcdoc = `<html style="font-size: ${magnFactor}em; background-color: inherit;">`
                         + `<head>`
                             + `<style>`
                                 + `html {`
@@ -293,6 +293,21 @@
                 document.body.style.backgroundColor = "rgb(208,208,208)";
             }
 
+            function getURLParameter (sParam) {
+                var sPageURL = window.location.search.substring(1);
+                var sURLVariables = sPageURL.split('&');
+                for (var i = 0; i < sURLVariables.length; i++) 
+                {
+                    var sParameterName = sURLVariables[i].split('=');
+                    if (sParameterName[0] == sParam) 
+                    {
+                        return sParameterName[1];
+                    }
+                }
+            }
+
+            var magnMax = getURLParameter ("magnMax");
+
             var nodeTree;
             var baseUrl;
             var targetScrollTop;
@@ -301,6 +316,11 @@
             var divPreview = document.getElementById ("divPreview");
             var ifrPreview = document.getElementById ("ifrPreview");
             
+            var magnFactor = window.parent.magnFactor;
+            var magnFactorUI = window.parent.magnFactorUI;
+            
+            document.getElementById('divStat').style.fontSize = magnFactorUI + "em";
+
             var pixelRatioBox = document.querySelector(".pixel-ratio");
             var mqString = `(resolution: ${window.devicePixelRatio}dppx)`;
             matchMedia(mqString).addListener(() => {

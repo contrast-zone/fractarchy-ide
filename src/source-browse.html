@@ -229,8 +229,8 @@
                     divContainer.dispatchEvent(new CustomEvent('redefineData', {detail: nodeTree}));
 
                 } else if (event.data.msg === "sync") {
-                    divContainer.dispatchEvent(new CustomEvent('redefineCursor', {detail: {cursor: event.data.cursor, pathLength: event.data.pathLength}}));
-                
+                    divContainer.dispatchEvent(new CustomEvent('redefineCursor', {detail: {magn: event.data.magn, cursor: event.data.cursor, pathLength: event.data.pathLength}}));
+
                 } else if (event.data.msg === "setCurNode") {
                     function loadNodes (pl, cn, nt) {
                         loadNode (nt)
@@ -239,18 +239,19 @@
                     }
 
                     loadNodes (event.data.pathLength, event.data.cursor.children[0], objOrbit.getData ());
-                /*   
-                } else if (event.data.msg === "save") {
-                    nodeRawTree = event.data.nodeTree;
                     
-                    nodeTree = {nodeRawData: nodeRawTree, parent: {index: 0}};
-                    nodeTree.parent.children = [nodeTree];
-                    
-                    divContainer.dispatchEvent(new CustomEvent('redefineData', {detail: nodeTree}));
-                
-                } else if (event.data.msg === "open") {
-                    window.parent.frames[0].postMessage({msg: "open", nodeTree: nodeRawTree}, "*");
-                */
+                } else if (event.data.msg === "zoomIn") {
+                    objOrbit.zoomIn ();
+
+                } else if (event.data.msg === "zoomOut") {
+                    objOrbit.zoomOut ();
+
+                } else if (event.data.msg === "goSouth") {
+                    objOrbit.levelUp ();
+
+                } else if (event.data.msg === "goNorth") {
+                    objOrbit.levelDown ();
+
                 }
             };
             
@@ -277,7 +278,7 @@
             function msgSync () {
                 var c = getCursor ();
                 if (!loaded)
-                    window.parent.postMessage({msg: "syncTarget", cursor: c.cursor, pathLength: c.pathLength}, "*");
+                    window.parent.postMessage({msg: "syncTarget", magn: objOrbit.getMagn (), cursor: c.cursor, pathLength: c.pathLength}, "*");
            }
 
             var error;
@@ -287,7 +288,7 @@
             }
 
             function dispatchSize () {
-                if (window.innerWidth > 10 && window.innerHeight > 10) {
+                //if (window.parent.slide !== "right" && window.innerWidth > 10 && window.innerHeight > 10) {
                     var c = getCursor ();
 
                     divContainer.dispatchEvent(new CustomEvent('resize1', null));
@@ -295,7 +296,7 @@
 
                     msg ({data: {msg: "setCurNode", cursor: c.cursor, pathLength: c.pathLength}});
                     msg ({data: {msg: "sync", cursor: c.cursor, pathLength: c.pathLength}});
-                }
+                //}
             }
 
             function dispatchDraw () {
@@ -303,9 +304,10 @@
             }
 
             wonload = function () {
-                objOrbit = Orbital (divContainer, nodeTree, env.quant / 100, env.contentScale / 100, env.ovalBackColor, env.ovalBorderColor, env.backColor, env.shadowRadius, env.shadowRadius? env.shadowColor: null, env.uiscale / 100, onIdle, onBusy, env.rodLength, Math.PI, env.vShift / 100);
+                objOrbit = Orbital (divContainer, nodeTree, env.quant / 100, env.contentScale / 100, env.ovalBackColor, env.ovalBorderColor, env.backColor, env.shadowRadius, env.shadowRadius? env.shadowColor: null, env.uiscale / 100, onIdle, onBusy, env.rodLength, Math.PI, env.vShift / 100, window.parent.zoomedInL, window.parent.zoomedOutL, window.parent.zoomingOutL);
                 setSize ();
                 dispatchSize ();
+                window.parent.magnMax = objOrbit.getMagnMax ();
                 divContainer.style.visibility = "visible";
                 window.addEventListener("message", msg, false);
 
@@ -512,15 +514,17 @@
                         }
                     }
                     
-                    if (!is && sortedOvals[0]) {
-                        var p = sortedOvals[0].data;
-                        do {
-                            if (oldOvals[i1].data === p) {
-                                is = true;
-                                break;
-                            }
-                            p = p.parent;
-                        } while (p);
+                    if (!is) {
+                        if (sortedOvals[0]) {
+                            var p = sortedOvals[0].data;
+                            do {
+                                if (oldOvals[i1].data === p) {
+                                    is = true;
+                                    break;
+                                }
+                                p = p.parent;
+                            } while (p);
+                        }
                         
                         if (!is) {
                             oldOvals[i1].data.ifr = null;
@@ -719,13 +723,13 @@
                     //node.vAlign = att.nodeValue;
                     //node.hAlign = att.nodeValue;
                     //node.backColor = "yellow";
-                    
+                    /*
                     if (node.nodeRawData[1] && node.nodeRawData[1][0] && Array.isArray (node.nodeRawData[1][0][1]))
                         nodeName = getTitle (node.nodeRawData[1][0][1]);
                     
                     else
                         nodeName = "";
-                    
+                    */
                     var mratio = 1 / 1.61803398875;
                     var inw = window.innerWidth
                     if (window.innerWidth > window.innerHeight / mratio)
@@ -734,14 +738,34 @@
                     var width = Math.round (inw / ((1920 - 32) / 2) * 30); // 30em
                     width = Math.min (width, 45);
 
-                    node.srcdoc = '<html style="font-size: 1em">' 
+                    function stripQuotes (txt) {
+                        if (!txt) return "";
+                        
+                        if (txt.substring(0, 1) === "\"")
+                            return txt.substring (1, txt.length - 1)
+                                .replaceAll(/&/g, '&amp;')
+                                .replaceAll(/</g, '&lt;')
+                                .replaceAll(/>/g, '&gt;')
+                                .replaceAll(" ", '&nbsp;')
+                                .replaceAll("-", '&#8209;');
+                        else
+                            return txt
+                                .replaceAll(/&/g, '&amp;')
+                                .replaceAll(/</g, '&lt;')
+                                .replaceAll(/>/g, '&gt;')
+                                .replaceAll(" ", '&nbsp;')
+                                .replaceAll("-", '&#8209;');
+                    }
+
+                    node.srcdoc = `<html style="font-size: ${1}em">`
                         //+ '<head><style>body {animation: fadein 0.5s;} @keyframes fadein {from { opacity: 0; /*transform: scale(0.5);*/} to { opacity: 1; /*transform: scale(1.0);*/}}</style></head>'
-                        + `<body style="margin: 0; padding: 0; width: ${width / 1}em; font-size: ${1}em; color: ${env.ovalForeColor};">`
-                            + `<h1 style="font-family: monospace; font-size: 2.7em; font-weight: bold; margin-bottom: 0.33em; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`
-                                + nodeName
+                        + `<body style="margin: 0; padding: 0; width: ${objOrbit.getMagnMax () * width / magnFactor}em; font-size: ${magnFactor / objOrbit.getMagnMax ()}em; color: ${env.ovalForeColor};">`
+                            + `<h1 style="font-family: monospace; font-size: 3em; font-weight: bold; margin-bottom: 0.33em; margin-top: 0em; color: ${env.ovalForeColor2}; border-bottom: 1px solid ${env.ovalForeColor2};">`
+                                //+ stripQuotes (nodeName)
+                                + stripQuotes (node.nodeRawData[1][0][1] && node.nodeRawData[1][0][1][0] === "name"? node.nodeRawData[1][0][1][1]: "")
                             + '</h1>'
 //                            + `<div style="wrap: none; font: ${options.font}; white-space: pre; color: ${options.colorText}; width: inherit; height: inherit; overflow: hidden; margin: 0; padding:4px;">`
-                                + editor.hilight (parser.stringify (node.nodeRawData?node.nodeRawData[1]:"", Math.round (width / 30 * 50)), null)
+                                + editor.hilight (parser.stringify (node.nodeRawData?node.nodeRawData[1]:"", Math.round (objOrbit.getMagnMax () * width / magnFactor / 30 * 45)), null)
                                 + '</br>'
 //                            + `</div>`
                         + '</body>'
@@ -757,6 +781,7 @@
                 return node;
             }
             
+            /*
             function getTitle (l) {
                 if (!l) l = "";
                 var ret = "";
@@ -769,6 +794,7 @@
                     
                 return ret
             }
+            */
                         
             var env;
             var mfactor;
@@ -809,6 +835,7 @@
             var loaded = true;
             var nodeTree;
             var nodeRawTree;
+            var magnFactor = window.parent.magnFactor;
             
             var divContainer = document.getElementById ("divContainer")
             

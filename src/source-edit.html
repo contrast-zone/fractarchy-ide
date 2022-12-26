@@ -134,10 +134,19 @@
             var currentNode;
             
             var msg = (event) => {
+                var mratio = 1 / 1.61803398875;
+                var inw = window.innerWidth
+                if (window.innerWidth > window.innerHeight / mratio)
+                    inw = window.innerHeight / mratio;
+
+                var width = Math.round (inw / ((1920 - 32) / 2) * 30); // 30em
+                width = Math.min (width, 45);
+
                 if (event.data.msg === "open") {
                     console.log ("message from source: " + event.data.msg);
 
-                    ed.setValue (parser.stringify (event.data.nodeTree, 50));
+                    //ed.setValue (parser.stringify (event.data.nodeTree, 50));
+                    ed.setValue (parser.stringify (event.data.nodeTree, Math.round (width / 30 * 50)));
                     onkd ();
                     
                 } else if (event.data.msg === "save") {
@@ -154,7 +163,10 @@
                 } else if (event.data.msg === "populate") {
                     baseUrl = event.data.baseUrl;
                     currentNode = event.data.currentNode;
-                    ed.setValue (parser.stringify (event.data.nodeTree, 50));
+                    //ed.setValue (parser.stringify (event.data.nodeTree, 50));
+                    //ed.setValue (parser.stringify (event.data.nodeTree, Math.round (width / 30 * 50)));
+                    ed.setValue (parser.stringify (event.data.nodeTree, Math.round (magnMax * width / magnFactor / 30 * 45)));
+                    
                     onkd ();
                     firstVisit = false;
 
@@ -185,19 +197,19 @@
                 var bord = 4;
                 var btns = 48;
                 
-                divStat.style.backgroundColor = "rgb(48,48,48)"
+                divStat.style.backgroundColor = "rgb(48,48,48)";
                 divStat.style.border = bord + "px solid rgb(48,48,48)";
                 divStat.style.bottom = "0px";
                 divStat.style.left = "0px";
                 divStat.style.right = "0px";
 
-                divErr.style.backgroundColor = "transparent"
+                divErr.style.backgroundColor = "transparent";
                 divErr.style.border = bord + "px solid rgb(48,48,48)";
                 divErr.style.bottom = "0px";
                 divErr.style.left = "0px";
                 divErr.style.right = "0px";
 
-                divEdit.style.backgroundColor = "rgb(48,48,48)"
+                divEdit.style.backgroundColor = "rgb(48,48,48)";
                 divEdit.style.margin = 0 + "px";
                 divEdit.style.padding = 0 + "px";
                 divEdit.style.border = bord + "px solid rgb(48,48,48)";
@@ -206,6 +218,24 @@
                 divEdit.style.right = "0px";
                 divEdit.style.height = (document.body.clientHeight - 2 * bord - divStat.offsetHeight) + "px";
                 
+                
+                var mratio = 1 / 1.61803398875;
+                var inw = window.innerWidth
+                if (window.innerWidth > window.innerHeight / mratio)
+                    inw = window.innerHeight / mratio;
+
+                var width = Math.round (inw / ((1920 - 32) / 2) * 30); // 30em
+                width = Math.min (width, 45);
+                
+                //divEdit.style.width = window.parent.magnMax * width / magnFactor + "em";
+                //divEdit.style.margin = "auto";
+                
+                var w = magnMax * width / magnFactor;
+                ed.getInput ().style.paddingLeft = "calc((" + window.innerWidth/2 + "px - " + w*16/2*magnFactor + "px))";
+                //ed.getInput ().style.paddingRight = ed.getInput ().style.paddingLeft;
+                ed.getHilights ().style.paddingLeft = "calc((" + window.innerWidth/2 + "px - " + w*16/2*magnFactor + "px))";
+                //ed.getHilights ().style.paddingRight = ed.getHilights ().style.paddingLeft;
+
                 divEditE.dispatchEvent(new CustomEvent('resize', null));
             }
 
@@ -250,9 +280,11 @@
     
                 ed.setValue ("");
                 onkd ();
+
                 window.addEventListener("load", wonload ());
                 document.body.style.backgroundColor = "rgb(48,48,48)";
-            }
+                
+          }
 
             var nodeTree;
             var baseUrl;
@@ -262,6 +294,14 @@
             var divEdit = document.getElementById ("divEdit");
             var divEditE = document.getElementById ("divEditE");
             
+            var magnFactor = window.parent.magnFactor;
+            var magnMax = window.parent.magnMax;
+            var magnFactorUI = window.parent.magnFactorUI;
+
+            document.getElementById('divStat').style.fontSize = magnFactorUI + "em";
+            document.getElementById('divErr').style.fontSize = magnFactorUI + "em";
+            document.getElementById('divEdit').style.fontSize = magnFactor + "em";
+
             var pixelRatioBox = document.querySelector(".pixel-ratio");
             var mqString = `(resolution: ${window.devicePixelRatio}dppx)`;
             matchMedia(mqString).addListener(() => {

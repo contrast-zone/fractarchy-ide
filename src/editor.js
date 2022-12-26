@@ -29,7 +29,7 @@ var editor = (function (obj) {
             colorSpaceDot: "rgb(128,128,128)"
         }
 
-        edit = function (node, options) {
+        var edit = function (node, options) {
             "use strict";
             options = options || opt;
             /*{
@@ -156,7 +156,7 @@ var editor = (function (obj) {
 
                 var nlines = getCoords (text, text.length).row;
                 var ntop = Math.floor (nlines * input.scrollTop / input.scrollHeight);
-                var nbot = Math.ceil (nlines * (input.scrollTop + input.clientHeight) / input.scrollHeight);
+                var nbot = Math.ceil (nlines * (input.scrollTop + input.clientHeight) / input.scrollHeight) + 1;
                 
                 var ntopoff = Math.max (findLine (text, ntop), 0);
                 var nbotoff = Math.min (findLine (text, nbot), input.value.length);
@@ -384,16 +384,29 @@ var editor = (function (obj) {
                     if (e.ctrlKey) {
                         setTimeout (() => {
                             centerSel ();
-                        }, 50);
+                        }, 0);
                     }
 
                 } else if (event.key === 'Z') {
                     if (e.ctrlKey) {
                         setTimeout (() => {
                             centerSel ();
-                        }, 50);
+                        }, 0);
                     }
                     
+                } else if (event.key === 'v') {
+                    if (e.ctrlKey) {
+                        setTimeout (() => {
+                            centerSel ();
+                        }, 0);
+                    }
+
+                } else if (event.key === 'x') {
+                    if (e.ctrlKey) {
+                        setTimeout (() => {
+                            centerSel ();
+                        }, 0);
+                    }
                 }
 
                 if (e.key === "Enter") {
@@ -463,7 +476,7 @@ var editor = (function (obj) {
                                         break;
                                         
                                 if (!!window.chrome)
-                                    ins += input.value.substring (lineStarts[i] + j, lineStarts[i + 1]).replaceAll ("<", "&lt;").replaceAll (">", "&gt;");
+                                    ins += input.value.substring (lineStarts[i] + j, lineStarts[i + 1]).replaceAll ("<", "&lt;").replaceAll (">", "&gt;").replaceAll ("&", "&amp;");
                                 
                                 else
                                     ins += input.value.substring (lineStarts[i] + j, lineStarts[i + 1]);
@@ -485,7 +498,7 @@ var editor = (function (obj) {
                             var ins = "";
                             for (var i = 0; i < lineStarts.length - 1; i++) {
                                 if (!!window.chrome)
-                                    ins += " ".repeat (options.tabWidth) + input.value.substring (lineStarts[i], lineStarts[i + 1]).replaceAll ("<", "&lt;").replaceAll (">", "&gt;");
+                                    ins += " ".repeat (options.tabWidth) + input.value.substring (lineStarts[i], lineStarts[i + 1]).replaceAll ("<", "&lt;").replaceAll (">", "&gt;").replaceAll ("&", "&amp;");
                                 
                                 else
                                     ins += " ".repeat (options.tabWidth) + input.value.substring (lineStarts[i], lineStarts[i + 1]);
@@ -650,11 +663,17 @@ var editor = (function (obj) {
                 },
                 getInput: function () {
                     return input;
+                },
+                getHilights: function () {
+                    return hilights;
+                },
+                getContainer: function () {
+                    return container;
                 }
             }
         };
         
-        hilight = function (text, options) {
+        var hilight = function (text, options) {
             "use strict";
 
             if (!options)

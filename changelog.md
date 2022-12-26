@@ -28,4 +28,6 @@
     - mobile keyboard friendly  
     - inline html  
     - errors shown in red  
-    - bug fixes  
+    - synchronized magnification in left and right browsing panes  
+    - entering edit/print mode only in magnified state  
+    - synchronized browsing/edit/print magnification  

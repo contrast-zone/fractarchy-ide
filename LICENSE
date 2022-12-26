@@ -2,29 +2,37 @@
 
 License Type
 ------------
-This software is licensed under *conditional* Creative Commons Attribution 4.0
-International License. Find more details about the license at:
 
-(http://creativecommons.org/licenses/by/4.0/)
+This software is licensed under *conditional* Creative Commons
+Attribution-NoDerivatives 4.0 International License. Find more
+details about the license at:
 
-Conditions
-----------
+(http://creativecommons.org/licenses/by-nd/4.0/)
+
+Conditions for acquiring the license
+------------------------------------
+
 * use-type: student
     100% free
+    
+* use-type: starter
+    personal use
+    up to 50 nodes per project
+    free of charge
 
 * use-type: personal
-    personal use limited up to 5 projects
-    100% free
-
-* use-type: sponsor
     unlimited personal use
-    20$ one-time payment to support development
-
-* use-type: commercial
+    personal customer support
     14 days trial before purchasing
+    20$ one-time payment per user
+    
+* use-type: commercial
     unlimited commercial use
+    commercial customer support
+    14 days trial before purchasing
     40$ one-time payment per user
 
-Purchasing is conducted using our software official PayPal funding pages at:
+Purchasing is conducted using our software official PayPal
+funding pages at:
 
 (https://www.paypal.com/paypalme/contrastzone/0)
