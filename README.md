@@ -1,14 +1,12 @@
-# Fractarchy Note
-
-(v0.1-preview)
+# Fractarchy Note (v0.1-preview)
 
 **tags:**
 
-structured-document-tree, electronic-workbook, hierarchical-data-organizer, personal-content-management-system, graph-visualization, zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
+structured-document-tree, note-taking-app, hierarchical-data-outliner, personal-knowledge-base, zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
 
 ## about
 
-Fractarchy Note is a (deviant) hierarchical content organizer featuring structured document tree (*.sdt) file format. It is an elementary blend between content management system and hierarchical database. Use it for various purposes as an electronic workbook, hierarchical data organizer, or personal content management system.
+Fractarchy Note is a (deviant) hierarchical content organizer featuring structured document tree (*.sdt) file format. It is an elementary blend between content management system and hierarchical database. Use it for keeping knowledge and retrieving related information.
 
 ## screenshots
         
@@ -22,11 +20,9 @@ Fractarchy Note **is suited** to be used as:
 
 - static content pages creation platform
 - mind map planner
-- slide show composer
-- text processing toolkit
-- hierarchical data organizer
+- note taking manager
+- hierarchical data outliner
 - personal knowledge base keeper
-- multi-purpose documentation system
 - ...
 
 Fractarchy Note **is not suited** to be used for:
@@ -41,7 +37,7 @@ Visit [https://fractarchy.github.io/fractarchy-note/](https://fractarchy.github.
 
 Prerequisites:
 
-* *Node.js* environment
+- *Node.js* environment
 
 Installing and running the app:
 
