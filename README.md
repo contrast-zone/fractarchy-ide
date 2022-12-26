@@ -37,7 +37,7 @@ Fractarchy Note **is not suited** to be used for:
 
 ## online test
 
-Visit [https://fractarchy.github.io/fractarchy-Note/](https://fractarchy.github.io/fractarchy-Note/) to try Fractarchy Note online.
+Visit [https://fractarchy.github.io/fractarchy-note/](https://fractarchy.github.io/fractarchy-note/) to try Fractarchy Note online.
 
 ## installing and running on local computer
 
