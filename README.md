@@ -1,8 +1,6 @@
 # Fractarchy Note (v0.1-preview)
 
-**tags:**
-
-structured-document-tree, note-taking-app, hierarchical-data-outliner, personal-knowledge-base, zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
+tags: structured-document-tree, note-taking-app, hierarchical-data-outliner, personal-knowledge-base, zooming-elements-based, parent-children-orbiting, fractal-structure-inspired
 
 ## about
 
